@@ -96,7 +96,7 @@ const GearOrderViewModal: React.FC<GearOrderViewModalProps> = ({
           <div className="text-right">
             <span className=" text-sm">Price</span>
             <p className="text-xl font-semibold">
-              {currentRecord?.gearMarketplaceId?.mainPrice || 0}€
+              {currentRecord?.gearMarketplaceId?.mainPrice?.toFixed(2) || 0}€
             </p>
           </div>
         </div>
@@ -156,7 +156,7 @@ const GearOrderViewModal: React.FC<GearOrderViewModalProps> = ({
           <h3 className="font-semibold mb-2">Preferred Shipping Method</h3>
           <p className="text-sm ">
             {currentRecord?.gearMarketplaceId?.shippingCompany?.name} -{" "}
-            {currentRecord?.gearMarketplaceId?.shippingCompany?.price}€
+            {currentRecord?.gearMarketplaceId?.shippingCompany?.price?.toFixed(2)}€
           </p>
         </div>
 

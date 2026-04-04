@@ -136,12 +136,12 @@ const UserOrderCard = ({
             <span>{formetTime(data?.time)}</span>
           </div>
         </div>
-        <p className="text-sm sm:text-sm text-[#5D5D5D] flex items-start gap-2 my-1">
+        <div className="text-sm sm:text-sm text-[#5D5D5D] flex items-start gap-2 my-1">
           <div className="flex items-center text-nowrap  gap-1">
             <FaMapMarkerAlt /> <span>Location : </span>
           </div>
           {data?.location}
-        </p>
+        </div>
         {activeTab === "extension" && (
           <div className="my-5">
             {" "}
@@ -180,11 +180,11 @@ const UserOrderCard = ({
         )}
         <div className="flex items-center justify-between">
           <div>
-            <p className="text-sm sm:text-base lg:text-lg xl:text-xl font-bold text-secondary-color mt-1">
+            <div className="text-sm sm:text-base lg:text-lg xl:text-xl font-bold text-secondary-color mt-1">
               {data?.totalPrice ? (
                 <div className={`${couponStatus && "w-40 text-end"}`}>
                   <p className="text-base sm:text-lg lg:text-xl font-semibold">
-                    {data?.totalPrice}€
+                    {data?.totalPrice?.toFixed(2)}€
                   </p>
                   {
                     couponStatus &&
@@ -194,7 +194,7 @@ const UserOrderCard = ({
                       </p>
                       <hr className="" />
                       <p className="text-base sm:text-lg lg:text-xl font-semibold">
-                        {data?.totalPrice as number - couponStatus?.data?.amount}€
+                        {(data?.totalPrice as number - couponStatus?.data?.amount)?.toFixed(2)}€
                       </p>
                     </>
                   }
@@ -206,7 +206,7 @@ const UserOrderCard = ({
                     data?.budget_range}
                 </span>
               )}
-            </p>
+            </div>
 
             {(activeTab === "accepted" || activeTab === "orderOffer") && (
               <ReusableForm

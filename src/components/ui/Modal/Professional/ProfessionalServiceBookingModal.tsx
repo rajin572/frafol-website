@@ -146,7 +146,7 @@ const ProfessionalServiceBookingModal: React.FC<
                     Price:
                   </p>
                 </div>
-                <p className="text-sm sm:text-sm lg:text-base">{packageData?.mainPrice} </p>
+                <p className="text-sm sm:text-sm lg:text-base">{packageData?.mainPrice?.toFixed(2)} </p>
               </div>
 
               <div className="flex items-center gap-3">

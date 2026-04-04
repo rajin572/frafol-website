@@ -105,7 +105,7 @@ const UserWorkshopPage = ({
               <div className="flex items-center gap-2 mt-1">
                 <FaEuroSign className="text-secondary-color text-sm sm:text-base lg:text-lg" />
                 <p className="text-sm sm:text-sm lg:text-base font-semibold">
-                  {workshop?.workshop?.mainPrice}
+                  {workshop?.workshop?.mainPrice?.toFixed(2)}
                 </p>
               </div>
             </div>

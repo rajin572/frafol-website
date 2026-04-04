@@ -41,7 +41,7 @@ const PaymentsCard = ({
                   <span className="font-bold">
                     {gear.gearMarketplaceId.description}
                   </span>{" "}
-                  - ${gear.gearMarketplaceId.price}
+                  - ${gear.gearMarketplaceId.price?.toFixed(2)}
                 </p>
                 <p className="text-gray-500 text-sm">
                   Seller: {gear.sellerId.name}

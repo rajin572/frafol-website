@@ -53,7 +53,7 @@ const GearMarketViewModal: React.FC<GearMarketViewModalProps> = ({
                   Product Price
                 </h4>
                 <p className="text-sm sm:text-sm lg:text-base bg-zinc-100 p-2 rounded mb-5">
-                  {currentRecord?.price}€
+                  {currentRecord?.price?.toFixed(2)}€
                 </p>
               </div>
               <div>
@@ -70,7 +70,7 @@ const GearMarketViewModal: React.FC<GearMarketViewModalProps> = ({
                 </h4>
                 <p className="text-sm sm:text-sm lg:text-base bg-zinc-100 p-2 rounded mb-5">
                   {currentRecord?.shippingCompany?.name} -
-                  {currentRecord?.shippingCompany?.price}€
+                  {currentRecord?.shippingCompany?.price?.toFixed(2)}€
                 </p>
               </div>
               <div>

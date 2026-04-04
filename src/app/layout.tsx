@@ -1,12 +1,12 @@
 import "@ant-design/v5-patch-for-react-19";
 import { Nunito } from "next/font/google";
-import "./globals.css";
 import { AntdRegistry } from "@ant-design/nextjs-registry";
 import { Toaster } from "sonner";
 import { ConfigProvider } from "antd";
 import { mainTheme } from "@/theme";
 import Providers from "@/providers/Providers";
 import NavbarWraper from "@/components/shared/NavbarWraper";
+import "./globals.css";
 
 const nunito = Nunito({
   subsets: ["latin"],
@@ -72,7 +72,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="sk">
       <body
         className={`${nunito.variable} antialiased`}
         cz-shortcut-listen="true"

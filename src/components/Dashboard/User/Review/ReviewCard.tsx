@@ -60,7 +60,7 @@ const ReviewCard = ({
               {data?.eventOrderId?.location}
             </p>
             <p className="text-sm sm:text-base lg:text-lg xl:text-xl font-bold text-secondary-color mt-1">
-              <span>{data?.eventOrderId?.totalPrice}€</span>
+              <span>{data?.eventOrderId?.totalPrice?.toFixed(2)}€</span>
             </p>
             {activeTab === "allReviews" && (
               <div>

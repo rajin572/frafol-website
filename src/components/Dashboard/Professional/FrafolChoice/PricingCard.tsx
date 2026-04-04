@@ -53,7 +53,7 @@ export default function PricingCard({
 
                 <div className="mt-2 flex items-baseline">
                     <p className="text-3xl sm:text-4xl lg:text-5xl text-[#2C2C2C] font-black ">
-                        €{pack?.price}
+                        €{pack?.price?.toFixed(2)}
                     </p>
                 </div>
 

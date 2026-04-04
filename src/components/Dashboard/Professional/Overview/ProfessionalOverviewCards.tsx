@@ -43,9 +43,9 @@ const ProfessionalOverviewCards = async () => {
     {
       id: 3,
       background: "#ffffff",
-      name: "May Earnings",
+      name: "Earnings",
       icon: <RiMoneyEuroCircleFill className="size-6 text-secondary-color" />,
-      count: `${overview?.totalOverallEarnings}`,
+      count: `${overview?.totalOverallEarnings?.toFixed(2)}€`,
     },
     {
       id: 4,

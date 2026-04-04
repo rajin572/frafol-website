@@ -97,9 +97,12 @@ const ApplyCouponOption = ({ successStatus, setSuccessStatus }: { successStatus:
                                 />
                             ))}
                             <ReuseButton
-                                htmlType="submit"
+                                htmlType="button"
                                 variant="secondary"
                                 className="w-fit text-base! !py-5 px-4! bg-red-900! text-white!"
+                                onClick={() => {
+                                    form.validateFields().then(onFinish).catch(() => {});
+                                }}
                             >
                                 {isLoading ? "Applying..." : "Apply"}
                             </ReuseButton>

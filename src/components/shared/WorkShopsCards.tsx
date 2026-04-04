@@ -98,7 +98,7 @@ const WorkShopsCards = ({ data, handleModalOpen }: { data: IWorkshop, handleModa
 
       <div className="flex items-center gap-2 pt-5 justify-between">
         <p className="text-base sm:text-lg lg:text-xl font-semibold">
-          {data?.mainPrice}€
+          {data?.mainPrice?.toFixed(2)}€
         </p>
         {(userData?.userId && userData?.userId !== data?.authorId?._id) && (
           <ReuseButton

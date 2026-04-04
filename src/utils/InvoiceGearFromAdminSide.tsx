@@ -7,14 +7,22 @@ import {
   View,
   StyleSheet,
   Image,
+  Font,
+
 } from "@react-pdf/renderer";
-import { formatDate, formetTime } from "@/utils/dateFormet";
+import { formatDate } from "@/utils/dateFormet";
 import { IGearOrder } from "@/types";
 import { AllImages } from "../../public/assets/AllImages";
 
+Font.register({
+  family: 'Roboto',
+  src: 'https://cdnjs.cloudflare.com/ajax/libs/ink/3.1.10/fonts/Roboto/roboto-light-webfont.ttf',
+});
+
 const styles = StyleSheet.create({
   page: {
-    backgroundColor: "#efefef",
+    fontFamily: 'Roboto',
+    backgroundColor: "#fafafa",
     padding: 30,
   },
   header: {
@@ -95,8 +103,10 @@ const InvoiceGearFromAdminSide = ({
   const vatAmount = (gearPrice * vatPercentage) / 100;
   const platformCommission = mainPrice - (gearPrice + vatAmount);
 
+  const sellerIsCompany = !!(currentRecord?.sellerId?.ico);
+
   return (
-    <Document>
+    <Document language="sk">
       <Page size="A4" style={styles.page}>
         {/* Invoice Header */}
         <Text style={styles.header}>F A K T Ú R A / I N V O I C E</Text>
@@ -104,16 +114,16 @@ const InvoiceGearFromAdminSide = ({
           <Image src={AllImages.logo.src} style={styles.image} />
           <View style={styles.section}>
             <Text style={styles.text}>
-              <Text style={styles.textBold}>Císlo faktúry / Invoice number:</Text> [{currentRecord.orderId}]
+              <Text style={styles.textBold}>Číslo faktúry / Invoice number:</Text> [{currentRecord.orderId}]
             </Text>
             <Text style={styles.text}>
               <Text style={styles.textBold}>Dátum vystavenia / Issue date:</Text>{" "}
-              {formatDate(currentRecord.createdAt)} at {formetTime(currentRecord.createdAt)}
+              {formatDate(currentRecord.createdAt)}
             </Text>
             <Text style={styles.text}>
-              <Text style={styles.textBold}>Dátum dodania služby / Date of service delivery:</Text>{" "}
+              <Text style={styles.textBold}>Dátum dodania / Date of service delivery:</Text>{" "}
               {currentRecord.statusTimestamps?.deliveredAt
-                ? `${formatDate(currentRecord.statusTimestamps.deliveredAt)} at ${formetTime(currentRecord.statusTimestamps.deliveredAt)}`
+                ? formatDate(currentRecord.statusTimestamps.deliveredAt)
                 : "[dd.mm.yyyy]"}
             </Text>
           </View>
@@ -130,19 +140,13 @@ const InvoiceGearFromAdminSide = ({
               <Text style={styles.textBold}>Adresa sídla / Company address:</Text> Vysokoškolákov 8556/33B, Žilina 010 08
             </Text>
             <Text style={styles.text}>
-              <Text style={styles.textBold}>ICO / Company ID:</Text>  57 113 904
+              <Text style={styles.textBold}>IČO / Company ID:</Text>  57 113 904
             </Text>
             <Text style={styles.text}>
-              <Text style={styles.textBold}>DIC / Tax ID:</Text> 2122571286
+              <Text style={styles.textBold}>DIČ / Tax ID:</Text> 2122571286
             </Text>
             <Text style={styles.text}>
-              <Text style={styles.textBold}>IBAN:</Text> SK2383300000002403278954
-            </Text>
-            <Text style={styles.text}>
-              <Text style={styles.textBold}>Telefón / Phone:</Text>  0917 174 707
-            </Text>
-            <Text style={styles.text}>
-              <Text style={styles.textBold}>E-mail:</Text>  cvak@frafol.sk
+              <Text style={styles.textBold}>IBAN:</Text> SK3483300000002203424224
             </Text>
           </View>
 
@@ -157,18 +161,22 @@ const InvoiceGearFromAdminSide = ({
               {currentRecord?.sellerId?.companyName || "____"}
             </Text>
             <Text style={styles.text}>
-              <Text style={styles.textBold}>Adresa sídla / Address:</Text>{" "}
+              <Text style={styles.textBold}>Adresa / Address:</Text>{" "}
               {currentRecord?.sellerId?.address || "__________"}
             </Text>
-            <Text style={styles.text}>
-              <Text style={styles.textBold}>ICO / Company ID:</Text> {currentRecord?.sellerId?.ico || "__"}
-            </Text>
-            <Text style={styles.text}>
-              <Text style={styles.textBold}>DIC / Tax ID:</Text> {currentRecord?.sellerId?.dic || "____"}
-            </Text>
-            <Text style={styles.text}>
-              <Text style={styles.textBold}>IC DPH / VAT ID:</Text> {currentRecord?.sellerId?.ic_dph || "____"}
-            </Text>
+            {sellerIsCompany && (
+              <>
+                <Text style={styles.text}>
+                  <Text style={styles.textBold}>IČO / Company ID:</Text> {currentRecord?.sellerId?.ico}
+                </Text>
+                <Text style={styles.text}>
+                  <Text style={styles.textBold}>DIČ / Tax ID:</Text> {currentRecord?.sellerId?.dic || "____"}
+                </Text>
+                <Text style={styles.text}>
+                  <Text style={styles.textBold}>IČ DPH / VAT ID:</Text> {currentRecord?.sellerId?.ic_dph || "____"}
+                </Text>
+              </>
+            )}
             <Text style={styles.text}>
               <Text style={styles.textBold}>Email:</Text> {currentRecord.sellerId.email}
             </Text>
@@ -180,18 +188,18 @@ const InvoiceGearFromAdminSide = ({
 
         {/* Order Details */}
         <View style={{ ...styles.section, marginBottom: 20 }}>
-          <Text style={styles.subHeader}>ORDER DETAILS</Text>
+          <Text style={styles.subHeader}>DETAILY OBJEDNÁVKY (ORDER DETAILS)</Text>
           <Text style={styles.text}>
-            <Text style={styles.textBold}>Product:</Text> {currentRecord.gearMarketplaceId.name}
+            <Text style={styles.textBold}>Produkt (Product):</Text> {currentRecord.gearMarketplaceId.name}
           </Text>
           <Text style={styles.text}>
-            <Text style={styles.textBold}>Order ID:</Text> {currentRecord.orderId}
+            <Text style={styles.textBold}>ID objednávky (Order ID):</Text> {currentRecord.orderId}
           </Text>
           <Text style={styles.text}>
-            <Text style={styles.textBold}>Buyer:</Text> {currentRecord.clientId.name} ({currentRecord.clientId.email})
+            <Text style={styles.textBold}>Kupujúci (Buyer):</Text> {currentRecord.clientId.name} ({currentRecord.clientId.email})
           </Text>
           <Text style={styles.text}>
-            <Text style={styles.textBold}>Shipping Address:</Text> {currentRecord.shippingAddress}, {currentRecord.town}, {currentRecord.postCode}
+            <Text style={styles.textBold}>Dodacia adresa (Shipping Address):</Text> {currentRecord.shippingAddress}, {currentRecord.town}, {currentRecord.postCode}
           </Text>
         </View>
 

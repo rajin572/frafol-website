@@ -322,17 +322,17 @@ const RegisterWrokshopModal: React.FC<RegisterWrokshopModalProps<any>> = ({
                     <div className="flex items-end gap-2 pt-5 justify-between">
                         <div className={`${couponStatus && "w-40 text-end"}`}>
                             <p className="text-base sm:text-lg lg:text-xl font-semibold">
-                                {currentRecord?.mainPrice}€
+                                {currentRecord?.mainPrice?.toFixed(2)}€
                             </p>
                             {
                                 couponStatus &&
                                 <>
                                     <p className="text-base sm:text-lg lg:text-xl font-semibold text-red-500">
-                                        -{couponStatus?.data?.amount}€
+                                        -{couponStatus?.data?.amount?.toFixed(2)}€
                                     </p>
                                     <hr className="" />
                                     <p className="text-base sm:text-lg lg:text-xl font-semibold">
-                                        {currentRecord?.mainPrice - couponStatus?.data?.amount}€
+                                        {(currentRecord?.mainPrice - couponStatus?.data?.amount)?.toFixed(2)}€
                                     </p>
                                 </>
                             }

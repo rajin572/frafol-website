@@ -55,6 +55,7 @@ const UserOrderViewModal: React.FC<UserOrderViewModalProps> = ({
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
       .catch((error: any) => {
         toast.error("Download failed", { id: toastId });
+        console.log(error)
       });
   };
 
@@ -269,7 +270,7 @@ const UserOrderViewModal: React.FC<UserOrderViewModalProps> = ({
             <span className="font-semibold">
               {currentRecord?.totalPrice ? "Total Amount" : "Budget Range"} :
             </span>{" "}
-            {currentRecord?.totalPrice ||
+            {currentRecord?.totalPrice?.toFixed(2) ||
               budgetLabels[currentRecord?.budget_range as string] ||
               currentRecord?.budget_range}
           </p>

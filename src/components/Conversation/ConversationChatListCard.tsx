@@ -68,7 +68,7 @@ const ConversationChatListCard = ({
             className="rounded-full aspect-square h-12 w-fit object-cover relative"
             src={
               imageUrlSrc
-                ? imageUrl + "/" + imageUrlSrc
+                ? imageUrl + imageUrlSrc
                 : AllImages?.dummyProfile
             }
             width={100}

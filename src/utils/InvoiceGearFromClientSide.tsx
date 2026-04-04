@@ -7,14 +7,22 @@ import {
   View,
   StyleSheet,
   Image,
+  Font,
+
 } from "@react-pdf/renderer";
 import { formatDate } from "@/utils/dateFormet";
 import { IGearOrder } from "@/types";
 import { AllImages } from "../../public/assets/AllImages";
 
+Font.register({
+  family: 'Roboto',
+  src: 'https://cdnjs.cloudflare.com/ajax/libs/ink/3.1.10/fonts/Roboto/roboto-light-webfont.ttf',
+});
+
 const styles = StyleSheet.create({
   page: {
-    backgroundColor: "#efefef",
+    fontFamily: 'Roboto',
+    backgroundColor: "#fafafa",
     padding: 30,
   },
   header: {
@@ -87,13 +95,11 @@ const InvoiceGearFromClientSide = ({
 
   console.log(currentRecord)
 
-
   // Calculate values from your data structure
   const gearPrice = currentRecord.gearMarketplaceId.price || 0;
   const shippingPrice = currentRecord.gearMarketplaceId.shippingCompany.price || 0;
   const vatPercentage = currentRecord.gearMarketplaceId.vatAmount || 0;
   const platformCommission = currentRecord.gearMarketplaceId.mainPrice - (gearPrice + (gearPrice * vatPercentage / 100)) || 0;
-
 
   // Calculate subtotal (gear + shipping + commission)
   const subtotal = gearPrice + shippingPrice + platformCommission;
@@ -104,9 +110,10 @@ const InvoiceGearFromClientSide = ({
   // Calculate total
   const total = subtotal + vatAmount;
 
+  const clientIsCompany = currentRecord.loginAsCompany;
 
   return (
-    <Document>
+    <Document language="sk">
       <Page size="A4" style={styles.page}>
         {/* Invoice Header */}
         <Text style={styles.header}>F A K T Ú R A / I N V O I C E</Text>
@@ -114,13 +121,13 @@ const InvoiceGearFromClientSide = ({
           <Image src={AllImages.logo.src} style={styles.image} />
           <View style={styles.section}>
             <Text style={styles.text}>
-              <Text style={styles.textBold}>Císlo faktúry / Invoice number:</Text> [{currentRecord.orderId}]
+              <Text style={styles.textBold}>Číslo faktúry / Invoice number:</Text> [{currentRecord.orderId}]
             </Text>
             <Text style={styles.text}>
               <Text style={styles.textBold}>Dátum vystavenia / Issue date:</Text> {formatDate(currentRecord.createdAt)}
             </Text>
             <Text style={styles.text}>
-              <Text style={styles.textBold}>Dátum dodania služby / Date of service delivery:</Text>{" "}
+              <Text style={styles.textBold}>Dátum dodania / Date of service delivery:</Text>{" "}
               {currentRecord.statusTimestamps?.deliveredAt
                 ? formatDate(currentRecord.statusTimestamps.deliveredAt)
                 : "[dd.mm.yyyy]"}
@@ -137,35 +144,21 @@ const InvoiceGearFromClientSide = ({
               <Text style={styles.textBold}>Názov firmy / Company name:</Text>{" "}
               {currentRecord?.sellerId?.companyName || "____"}
             </Text>
-
             <Text style={styles.text}>
               <Text style={styles.textBold}>Adresa sídla / Company address:</Text>{" "}
               {currentRecord?.sellerId?.address || "____"}
             </Text>
-
             <Text style={styles.text}>
-              <Text style={styles.textBold}>ICO / Company ID:</Text>{" "}
+              <Text style={styles.textBold}>IČO / Company ID:</Text>{" "}
               {currentRecord?.sellerId?.ico || "__________"}
             </Text>
-
             <Text style={styles.text}>
-              <Text style={styles.textBold}>DIC / Tax ID (if company):</Text>{" "}
+              <Text style={styles.textBold}>DIČ / Tax ID (if company):</Text>{" "}
               {currentRecord?.sellerId?.dic || "__________"}
             </Text>
-
             <Text style={styles.text}>
-              <Text style={styles.textBold}>IC DPH / VAT ID (if VAT payer):</Text>{" "}
+              <Text style={styles.textBold}>IČ DPH / VAT ID (if VAT payer):</Text>{" "}
               {currentRecord?.sellerId?.ic_dph || "__________"}
-            </Text>
-
-            <Text style={styles.text}>
-              <Text style={styles.textBold}>Email:</Text>{" "}
-              {currentRecord?.sellerId?.email || "____"}
-            </Text>
-
-            <Text style={styles.text}>
-              <Text style={styles.textBold}>Phone:</Text>{" "}
-              {currentRecord?.sellerId?.phone || "____"}
             </Text>
           </View>
 
@@ -177,18 +170,22 @@ const InvoiceGearFromClientSide = ({
               {currentRecord?.clientId?.companyName || currentRecord?.clientId?.name || currentRecord.name || "___"}
             </Text>
             <Text style={styles.text}>
-              <Text style={styles.textBold}>Adresa sídla / Address:</Text>{" "}
+              <Text style={styles.textBold}>Adresa / Address:</Text>{" "}
               {currentRecord?.clientId?.address || currentRecord.shippingAddress || "__________"}
             </Text>
-            <Text style={styles.text}>
-              <Text style={styles.textBold}>ICO / Company ID (if company):</Text> {currentRecord?.clientId?.ico || "__"}
-            </Text>
-            <Text style={styles.text}>
-              <Text style={styles.textBold}>DIC / Tax ID (if company):</Text> {currentRecord?.clientId?.dic || "____"}
-            </Text>
-            <Text style={styles.text}>
-              <Text style={styles.textBold}>IC DPH / VAT ID (if VAT payer):</Text> {currentRecord?.clientId?.ic_dph || "____"}
-            </Text>
+            {clientIsCompany && (
+              <>
+                <Text style={styles.text}>
+                  <Text style={styles.textBold}>IČO / Company ID:</Text> {currentRecord?.clientId?.ico || "__"}
+                </Text>
+                <Text style={styles.text}>
+                  <Text style={styles.textBold}>DIČ / Tax ID:</Text> {currentRecord?.clientId?.dic || "____"}
+                </Text>
+                <Text style={styles.text}>
+                  <Text style={styles.textBold}>IČ DPH / VAT ID:</Text> {currentRecord?.clientId?.ic_dph || "____"}
+                </Text>
+              </>
+            )}
           </View>
         </View>
 
@@ -196,7 +193,7 @@ const InvoiceGearFromClientSide = ({
         <View style={{ ...styles.section, marginBottom: 20 }}>
           <Text style={styles.text}>
             <Text style={styles.textBold}>
-              Dodacia adresa / Delivery address :
+              Dodacia adresa / Delivery address:
             </Text>
           </Text>
           <Text style={styles.text}>
@@ -232,7 +229,7 @@ const InvoiceGearFromClientSide = ({
           {/* Shipping */}
           <View style={styles.tableRow}>
             <Text style={styles.tableCellDark}>
-              Preprava / Shipping ({currentRecord.gearMarketplaceId.shippingCompany.name})
+              Doručenie / Shipping ({currentRecord.gearMarketplaceId.shippingCompany.name})
             </Text>
             <Text style={styles.tableCellDark}>1 ks / pc</Text>
             <Text style={styles.tableCellDark}>€{shippingPrice.toFixed(2)}</Text>
@@ -255,7 +252,7 @@ const InvoiceGearFromClientSide = ({
         {/* Subtotal and Total */}
         <View style={{ ...styles.section, marginTop: 50, alignItems: "flex-end" }}>
           <Text style={{ ...styles.text, marginBottom: 5 }}>
-            <Text style={{ fontWeight: "bold", color: "#000000" }}>MEDZISÚCET / </Text>
+            <Text style={{ fontWeight: "bold", color: "#000000" }}>MEDZISÚČET / </Text>
             <Text style={{ fontWeight: "bold", color: "#ad2b08" }}>SUBTOTAL: </Text>
             <Text style={{ fontWeight: "bold", color: "#ad2b08" }}>
               €{subtotal.toFixed(2)}

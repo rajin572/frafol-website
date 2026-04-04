@@ -82,7 +82,7 @@ const ProfessionalPackageCard = ({
               </p>
             </div>
             <p className="text-sm sm:text-sm lg:text-base">
-              {priceWithoutServiceFee}€
+              {priceWithoutServiceFee?.toFixed(2)}€
             </p>
           </div>
           <div className="flex items-center gap-3">
@@ -93,7 +93,7 @@ const ProfessionalPackageCard = ({
               </p>
             </div>
             <p className="text-sm sm:text-sm lg:text-base">
-              {serviceFee}€
+              {serviceFee?.toFixed(2)}€
             </p>
           </div>
           <div className="flex items-center gap-3">
@@ -104,7 +104,7 @@ const ProfessionalPackageCard = ({
               </p>
             </div>
             <p className="text-sm sm:text-sm lg:text-base">
-              {item?.mainPrice}€
+              {item?.mainPrice?.toFixed(2)}€
             </p>
           </div>
           <div className="flex items-center gap-3">

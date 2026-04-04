@@ -4,10 +4,11 @@ import Container from "../ui/Container";
 import SectionHeader from "../ui/SectionHeader";
 import FeaturedProfessionalsCard from "../shared/FeaturedProfessionalsCard";
 
-// Import Swiper styles
-import "swiper/css";
-import "swiper/css/effect-fade";
-import "swiper/css/navigation";
+//! Import Swiper styles
+// import "swiper/css";
+// import "swiper/css/effect-fade";
+// import "swiper/css/navigation";
+
 import { fetchWithAuth } from "@/lib/fetchWraper";
 import TagTypes from "@/helpers/config/TagTypes";
 import { IProfessional } from "@/types";

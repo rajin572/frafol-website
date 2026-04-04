@@ -56,7 +56,7 @@ const CartCard = ({ product }: { product: IGear }) => {
             </p>
           </div>
           <h2 className="text-sm sm:text-sm lg:text-base mb-2">
-            Price: <span className="font-semibold">{product?.mainPrice}€</span>
+            Price: <span className="font-semibold">{product?.mainPrice?.toFixed(2)}€</span>
           </h2>
         </div>
       </div>

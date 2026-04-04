@@ -61,7 +61,7 @@ const ProfessionalServiceCard = ({
                   Price:
                 </p>
               </div>
-              <p className="text-sm sm:text-sm lg:text-base">{data.mainPrice} </p>
+              <p className="text-sm sm:text-sm lg:text-base">{data.mainPrice?.toFixed(2)} </p>
             </div>
 
             <div className="flex items-center gap-3">

@@ -56,19 +56,20 @@ const GearOrderTable: React.FC<GearOrderTableProps> = ({
       title: "Amount",
       dataIndex: ["gearMarketplaceId", "mainPrice"],
       key: "amount",
+      render: (text: number) => `${text?.toFixed(2)}`,
     },
     {
       title: "Shipping Details",
       dataIndex: ["gearMarketplaceId", "shippingCompany"],
       key: "shippingDetails",
       render: (shippingCompany: { name: string; price: number }) =>
-        `${shippingCompany.name} - $${shippingCompany.price}`,
+        `${shippingCompany?.name} - $${shippingCompany?.price?.toFixed(2)}`,
     },
     {
       title: "Payment Confirmation By Admin",
       dataIndex: "paymentStatus",
       key: "paymentStatus",
-      render: (text: string) => text.charAt(0).toUpperCase() + text.slice(1),
+      render: (text: string) => text?.charAt(0).toUpperCase() + text?.slice(1),
     },
     {
       title: "Order Status",
