@@ -106,6 +106,25 @@ export const updateGallery = async (
   }
 };
 
+export const requestDeleteAccount = async (
+  req = { body: {}, params: {} },
+) => {
+  try {
+    const res = await fetchWithAuth(`/users/delete-my-account`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(req.body),
+    });
+    const result = await res.json();
+    updateTag(TagTypes.profile);
+    return result;
+  } catch (error: any) {
+    return Error(error);
+  }
+};
+
 export const updateUnavailableDates = async (
   req = { body: FormData, params: {} },
 ) => {

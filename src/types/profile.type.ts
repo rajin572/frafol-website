@@ -42,6 +42,10 @@ interface IProfile {
   gallery: string[];
   unAvailability: string[];
   newsLetterSub: boolean;
+  deleteRequestStatus: "none" | "pending" | "approve" | "rejected";
+  deleteRequestedAt: string | null;
+  deleteApprovedBy: string | null;
+  deleteRequestReason: string | null;
   isBlocked: boolean;
   isDeleted: boolean;
   createdAt: string;

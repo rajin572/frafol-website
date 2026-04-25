@@ -3,7 +3,6 @@ import ProfileSettingsPage from "@/components/Dashboard/User/ProfileSettings/Pro
 import TagTypes from "@/helpers/config/TagTypes";
 import { fetchWithAuth } from "@/lib/fetchWraper";
 import { ICategory, IProfile } from "@/types";
-import React from "react";
 
 const page = async ({
   searchParams,
@@ -17,8 +16,11 @@ const page = async ({
       | "portfolio"
       | "accountCredentials"
       | "unavailability"
-      | "changePassword") || "profile";
-  const portfolio = (params?.portfolio as "introVideo" | "bannerImage" | "galleryImage") || "introVideo";
+      | "changePassword"
+      | "deleteAccount") || "profile";
+  const portfolio =
+    (params?.portfolio as "introVideo" | "bannerImage" | "galleryImage") ||
+    "introVideo";
 
   const res = await fetchWithAuth("/users/my-profile", {
     next: {
@@ -46,7 +48,22 @@ const page = async ({
   const categories: ICategory[] = dataRole?.data?.categories || [];
   const towns: ITown[] = dataRole?.data?.towns || [];
 
-  return <ProfileSettingsPage activeTab={tab} portfolio={portfolio} myData={myData} categories={categories} towns={towns} />;
+  const deleteStatus = {
+    deleteRequestStatus: myData?.deleteRequestStatus ?? "none",
+    deleteRequestReason: myData?.deleteRequestReason,
+    deleteRequestedAt: myData?.deleteRequestedAt,
+  };
+
+  return (
+    <ProfileSettingsPage
+      activeTab={tab}
+      portfolio={portfolio}
+      myData={myData}
+      categories={categories}
+      towns={towns}
+      deleteStatus={deleteStatus}
+    />
+  );
 };
 
 export default page;

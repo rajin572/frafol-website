@@ -6,6 +6,7 @@ import React from "react";
 import PortfolioPage from "./PortfolioPage";
 import AccountCredentialPage from "./AccountCredentialPage";
 import OtherInformationPage from "./OtherInformationPage";
+import DeleteAccountPage, { TDeleteAccountStatus } from "./DeleteAccountPage";
 import { ICategory, IProfile } from "@/types";
 import { ITown } from "@/app/(Auth)/sign-up/professional/legal-invoice/page";
 
@@ -14,18 +15,21 @@ const ProfileSettingsPage = ({
   myData,
   portfolio,
   categories,
-  towns
+  towns,
+  deleteStatus,
 }: {
   activeTab:
   | "profile"
   | "portfolio"
   | "accountCredentials"
   | "unavailability"
-  | "changePassword";
+  | "changePassword"
+  | "deleteAccount";
   myData: IProfile;
   portfolio: "introVideo" | "bannerImage" | "galleryImage";
   categories: ICategory[];
-  towns: ITown[]
+  towns: ITown[];
+  deleteStatus: TDeleteAccountStatus | null;
 }) => {
   return (
     <div>
@@ -58,6 +62,11 @@ const ProfileSettingsPage = ({
               label: "Change Password",
               value: "changePassword",
               content: <ChangePassword />,
+            },
+            {
+              label: "Delete Account",
+              value: "deleteAccount",
+              content: <DeleteAccountPage deleteStatus={deleteStatus} />,
             },
           ]}
         />

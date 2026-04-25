@@ -1,10 +1,9 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 import ChangePassword from "@/components/shared/ChangePassword";
 import EditProfile from "@/components/shared/EditProfile";
 import ReusableTabs from "@/components/ui/ReusableTabs";
-import React, { useState } from "react";
-import DeleteModal from "@/components/ui/Modal/DeleteModal";
+import React from "react";
+import DeleteAccountPage, { TDeleteAccountStatus } from "./DeleteAccountPage";
 import { IProfile } from "@/types";
 import { ITown } from "@/app/(Auth)/sign-up/professional/legal-invoice/page";
 
@@ -12,19 +11,13 @@ const MyAccountProfile = ({
   activeTab,
   myData,
   townData,
+  deleteStatus,
 }: {
-  activeTab: "profile" | "changePassword";
+  activeTab: "profile" | "changePassword" | "deleteAccount";
   myData: IProfile;
   townData: ITown[];
+  deleteStatus: TDeleteAccountStatus | null;
 }) => {
-  const [isDeleteModalVisible, setIsDeleteModalVisible] = useState(false);
-  const [currentRecord, setCurrentRecord] = useState<any>(null);
-
-  const handleCancel = () => {
-    setIsDeleteModalVisible(false);
-    setCurrentRecord(null);
-  };
-
   return (
     <div>
       <div className="mt-10">
@@ -42,15 +35,12 @@ const MyAccountProfile = ({
               value: "changePassword",
               content: <ChangePassword />,
             },
+            {
+              label: "Delete Account",
+              value: "deleteAccount",
+              content: <DeleteAccountPage deleteStatus={deleteStatus} />,
+            },
           ]}
-        />
-        <DeleteModal
-          handleDelete={() => {
-            console.log("Delete action for:", currentRecord);
-          }}
-          currentRecord={currentRecord}
-          isDeleteModalVisible={isDeleteModalVisible}
-          handleCancel={handleCancel}
         />
       </div>
     </div>
