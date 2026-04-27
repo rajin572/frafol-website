@@ -4,10 +4,9 @@ import PricingCard, { IPricingPlan } from './PricingCard';
 import { ISubscription, ISubscriptionData } from '@/app/(withDashboardLayout)/dashboard/professional/frafol-choice/page';
 import { FaRegCircleCheck } from 'react-icons/fa6';
 import Image from 'next/image';
+import { IProfile } from '@/types';
 
-
-
-const FrafolChoiceSection = ({ subscriptionData, allPacks }: { subscriptionData: ISubscriptionData, allPacks: ISubscription[] }) => {
+const FrafolChoiceSection = ({ subscriptionData, allPacks, myData }: { subscriptionData: ISubscriptionData, allPacks: ISubscription[], myData: IProfile }) => {
     const features = [
         {
             text: <span
@@ -120,7 +119,7 @@ const FrafolChoiceSection = ({ subscriptionData, allPacks }: { subscriptionData:
             </ul>
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 mt-16 items-baseline">
                 {pricingPlans.map((plan, i) => (
-                    <PricingCard key={plan?.id} plan={plan} subscriptionData={subscriptionData} pack={allPacks[i]} />
+                    <PricingCard key={plan?.id} plan={plan} subscriptionData={subscriptionData} pack={allPacks[i]} myData={myData} />
                 ))}
             </div>
         </div>

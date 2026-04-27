@@ -1,8 +1,7 @@
 import FrafolChoiceSection from '@/components/Dashboard/Professional/FrafolChoice/FrafolChoiceSection';
 import TagTypes from '@/helpers/config/TagTypes';
 import { fetchWithAuth } from '@/lib/fetchWraper';
-import React from 'react';
-
+import { IProfile } from '@/types';
 
 export interface ISubscriptionData {
     hasActiveSubscription: boolean,
@@ -16,37 +15,24 @@ export interface ISubscription {
     duration: number;
     price: number;
     isActive: boolean;
-    createdAt: string; // or Date if you parse it
-    updatedAt: string; // or Date if you parse it
+    createdAt: string;
+    updatedAt: string;
 }
 
 const page = async () => {
+    const [subRes, packRes, profileRes] = await Promise.all([
+        fetchWithAuth(`/users/me/subscription`, { next: { tags: [TagTypes.subscriptionOrder] } }),
+        fetchWithAuth(`/subscription`, { next: { tags: [TagTypes.subscriptionOrder] } }),
+        fetchWithAuth(`/users/my-profile`, { next: { tags: [TagTypes.profile] } }),
+    ]);
 
-    const res = await fetchWithAuth(`/users/me/subscription`, {
-        next: {
-            tags: [TagTypes.subscriptionOrder],
-        },
-    });
-
-    const data = await res.json();
-
-    const subscriptionData = data?.data
-
-
-    const packRes = await fetchWithAuth(`/subscription`, {
-        next: {
-            tags: [TagTypes.subscriptionOrder],
-        },
-    });
-
-    const packData = await packRes.json();
-
-    const allPacks = packData?.data
-    console.log(allPacks)
+    const subscriptionData: ISubscriptionData = (await subRes.json())?.data;
+    const allPacks: ISubscription[] = (await packRes.json())?.data;
+    const myData: IProfile = (await profileRes.json())?.data;
 
     return (
         <div>
-            <FrafolChoiceSection subscriptionData={subscriptionData} allPacks={allPacks} />
+            <FrafolChoiceSection subscriptionData={subscriptionData} allPacks={allPacks} myData={myData} />
         </div>
     );
 };
