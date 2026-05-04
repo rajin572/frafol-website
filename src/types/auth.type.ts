@@ -6,6 +6,9 @@ interface ISignInUser {
   profileImage: string;
   email: string;
   role: string;
+  switchRole: string;
+  hasActiveSubscription: boolean;
+  subscriptionDays: number;
   iat: number; // issued at (UNIX timestamp)
   exp: number; // expiration time (UNIX timestamp)
 }

@@ -21,8 +21,6 @@ export const fetchWithAuth = async (url: string, options: RequestInit = {}) => {
       headers,
     });
 
-    console.log()
-
     // Check if the access token expired (401 Unauthorized)
     // if (response.status === 401) {
     //   // Attempt to refresh the token

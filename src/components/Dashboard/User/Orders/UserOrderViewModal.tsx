@@ -14,6 +14,7 @@ import InvoiceDocumentFromClientSide from "@/utils/InvoiceDocumentFromClientSide
 import { saveAs } from "file-saver";
 import { pdf } from "@react-pdf/renderer"; // Import pdf function from @react-pdf/renderer
 import { toast } from "sonner";
+import Link from "next/link";
 
 interface UserOrderViewModalProps {
   isViewModalVisible: boolean;
@@ -88,8 +89,10 @@ const UserOrderViewModal: React.FC<UserOrderViewModalProps> = ({
           <p className="text-sm sm:text-base lg:text-kg xl:text-xl font-medium">
             {currentRecord?.serviceType === "both" ? "Photography & Videography" : currentRecord?.serviceType}
           </p>
-          <p className="text-sm sm:text-sm lg:text-base xl:text-lg font-medium mt-2">
-            By {currentRecord?.serviceProviderId?.name}
+          <p className="text-sm sm:text-sm lg:text-base xl:text-lg font-medium mt-2">By{" "}
+            <Link href={`/professionals/${currentRecord?.serviceProviderId?._id}`} className=" text-secondary-color!">
+              {currentRecord?.serviceProviderId?.companyName || currentRecord?.serviceProviderId?.name}
+            </Link>
           </p>
           <p className="text-sm lg:text-sm text-gray-500 mt-1 flex items-center gap-2">
             <FaCalendarAlt className="shrink-0" /> {formatDate(currentRecord?.date)}
@@ -156,29 +159,31 @@ const UserOrderViewModal: React.FC<UserOrderViewModalProps> = ({
           </div>
         </div>
 
-        {/* Photographer Info */}
+        {/* Professional Info */}
         <div className="mb-4">
           <h4 className="text-base sm:text-lg lg:text-xl xl:text-2xl text-secondary-color font-bold">
-            Photographer Information
+            Professional Information
           </h4>
-          <div className="flex items-center gap-1 mt-2">
-            <Image
-              src={
-                currentRecord?.serviceProviderId?.profileImage
-                  ? serverUrl + currentRecord?.serviceProviderId?.profileImage
-                  : AllImages.dummyProfile
-              }
-              alt="photographer"
-              width={50}
-              height={50}
-              className="rounded-full h-7 w-7 object-cover border border-secondary-color"
-            />
-            <div>
-              <p className="font-bold text-base">
-                {currentRecord?.serviceProviderId?.name}
-              </p>
+          <Link href={`/professionals/${currentRecord?.serviceProviderId?._id}`} className=" text-secondary-color!">
+            <div className="flex items-center gap-1 mt-2">
+              <Image
+                src={
+                  currentRecord?.serviceProviderId?.profileImage
+                    ? serverUrl + currentRecord?.serviceProviderId?.profileImage
+                    : AllImages.dummyProfile
+                }
+                alt="photographer"
+                width={50}
+                height={50}
+                className="rounded-full h-7 w-7 object-cover border border-secondary-color"
+              />
+              <div>
+                <p className="font-bold text-base">
+                  {currentRecord?.serviceProviderId?.name}
+                </p>
+              </div>
             </div>
-          </div>
+          </Link>
         </div>
 
         {/* Billing Info */}

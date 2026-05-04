@@ -360,6 +360,7 @@ const Navbar = ({ notifications }: { notifications: INotification[] }) => {
                 <Dropdown
                   menu={{ items }}
                   trigger={["hover"]}
+                  rootClassName="min-w-[200px]! lg:min-w-fit!"
                   // onOpenChange={(open: boolean) => {
                   //   setOpen(open);
                   // }}
@@ -448,6 +449,7 @@ const Navbar = ({ notifications }: { notifications: INotification[] }) => {
                 <Dropdown
                   menu={{ items }}
                   trigger={["hover"]}
+                  rootClassName="min-w-[200px]! lg:min-w-fit!"
                   // onOpenChange={(open: boolean) => {
                   //   setOpen(open);
                   // }}

@@ -18,6 +18,7 @@ import { saveAs } from "file-saver";
 import { toast } from "sonner";
 import InvoiceDocumentFromAdminSide from "@/utils/InvoiceDocumentFromAdminSide";
 import { useGetUserData } from "@/context/useGetUserData";
+import Link from "next/link";
 
 interface ProfessionalEventViewModalProps {
   showCreateOrderModal: ({ record }: { record: IEventOrder | null }) => void;
@@ -145,7 +146,7 @@ const ProfessionalEventViewModal: React.FC<ProfessionalEventViewModalProps> = ({
             {currentRecord?.serviceType === "both" ? "Photography & Videography" : currentRecord?.serviceType}
           </p>
           <p className="text-sm sm:text-sm lg:text-base xl:text-lg font-medium mt-2">
-            By {currentRecord?.serviceProviderId?.name}
+            By <Link className="text-secondary-color!" href={`/professionals/${currentRecord?.serviceProviderId?._id}`}>{currentRecord?.serviceProviderId?.companyName || currentRecord?.serviceProviderId?.name}</Link>
           </p>
           {(() => {
             const desc = currentRecord?.description || currentRecord?.packageId?.description;
@@ -199,7 +200,7 @@ const ProfessionalEventViewModal: React.FC<ProfessionalEventViewModalProps> = ({
               {/* <p className="text-sm text-gray-600">Wedding Photographer</p> */}
             </div>
           </div>
-          {currentRecord?.userId?.email ? (
+          {/* {currentRecord?.userId?.email ? (
             <p className="text-sm font-semibold">
               Email :{" "}
               <span className="text-secondary-color">{currentRecord?.userId?.email}</span>
@@ -248,7 +249,7 @@ const ProfessionalEventViewModal: React.FC<ProfessionalEventViewModalProps> = ({
               DIC :{" "}
               <span className="text-secondary-color">{currentRecord?.DIC}</span>
             </p>
-          ) : null}
+          ) : null} */}
         </div>
 
         {/* Order Info */}

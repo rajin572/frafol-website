@@ -111,20 +111,22 @@ const UserOrderCard = ({
         <h4 className="text-sm sm:text-sm lg:text-base xl:text-lg font-bold mb-1 capitalize">
           {data?.serviceType === "both" ? "Photography & Videography" : data?.serviceType}
         </h4>
-        <div className="text-sm sm:text-base lg:text-lg text-gray-700 flex items-center my-3 gap-1">
-          <Image
-            src={
-              data?.serviceProviderId?.profileImage
-                ? serverUrl + data?.serviceProviderId?.profileImage
-                : AllImages.dummyProfile
-            }
-            width={1000}
-            height={1000}
-            className="w-6 h-6 rounded-full object-cover border border-secondary-color"
-            alt="user"
-          />
-          <p>{data?.serviceProviderId?.name}</p>
-        </div>
+        <Link href={`/professionals/${data?.serviceProviderId?._id}`} className="w-fit! inline-block  my-3">
+          <div className="text-sm sm:text-base lg:text-lg text-gray-700 flex items-center gap-1">
+            <Image
+              src={
+                data?.serviceProviderId?.profileImage
+                  ? serverUrl + data?.serviceProviderId?.profileImage
+                  : AllImages.dummyProfile
+              }
+              width={1000}
+              height={1000}
+              className="w-6 h-6 rounded-full object-cover border border-secondary-color"
+              alt="user"
+            />
+            <p className="font-medium text-secondary-color">{data?.serviceProviderId?.companyName || data?.serviceProviderId?.name}</p>
+          </div>
+        </Link>
 
         <div className="flex items-center gap-5">
           <div className="text-sm sm:text-sm text-[#5D5D5D] flex items-center gap-1 mt-1">
