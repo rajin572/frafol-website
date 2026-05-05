@@ -124,7 +124,7 @@ const ProfessionalEventViewModal: React.FC<ProfessionalEventViewModalProps> = ({
       centered
       className="lg:!w-[600px]"
     >
-      <div className="p-5 text-[#1a1a1a]">
+      <div className="p-2 text-[#1a1a1a] max-h-[85vh] overflow-y-auto my-10">
         <h3 className="text-lg sm:text-xl lg:text-2xl xl:text-3xl font-bold mb-1">
           Order Details
         </h3>
@@ -328,13 +328,13 @@ const ProfessionalEventViewModal: React.FC<ProfessionalEventViewModalProps> = ({
                   <span className="font-semibold">
                     Amount Without Service Fee:
                   </span>{" "}
-                  {Number(currentRecord?.totalPrice?.toFixed(2)) - Number(serviceFeeAmount?.toFixed(2))}
+                  {Number(currentRecord?.totalPrice?.toFixed(2)) - Number(serviceFeeAmount?.toFixed(2))}€
                 </p>
                 <p className="text-sm sm:text-sm lg:text-base xl:text-lg mt-2">
                   <span className="font-semibold">
                     Service Fee Amount:
                   </span>{" "}
-                  {serviceFeeAmount?.toFixed(2)}
+                  {serviceFeeAmount?.toFixed(2)}€
                 </p>
               </>
             )
@@ -342,7 +342,7 @@ const ProfessionalEventViewModal: React.FC<ProfessionalEventViewModalProps> = ({
           {currentRecord?.vatAmount ? (
             <p className="text-sm sm:text-sm lg:text-base xl:text-lg mt-2">
               <span className="font-semibold">VAT Amount :</span>{" "}
-              {currentRecord?.vatAmount?.toFixed(2)}
+              {currentRecord?.vatAmount?.toFixed(2)}€
             </p>
           ) : null}
           <p className="text-sm sm:text-sm lg:text-base xl:text-lg mt-2">
@@ -351,7 +351,7 @@ const ProfessionalEventViewModal: React.FC<ProfessionalEventViewModalProps> = ({
             </span>{" "}
             {currentRecord?.totalPrice?.toFixed(2) ||
               budgetLabels[currentRecord?.budget_range as string] ||
-              currentRecord?.budget_range}
+              currentRecord?.budget_range}€
           </p>
           {currentRecord?.paymentStatus ? (
             <p className="text-sm sm:text-sm lg:text-base xl:text-lg mt-2">

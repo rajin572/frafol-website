@@ -59,9 +59,18 @@ const ForumDetailsPage = ({
               alt="user"
               className="w-10 h-10 object-cover rounded-full "
             />
-            <p className="text-sm sm:text-sm lg:text-base font-bold">
-              {communityPosts?.authorId?.name}
-            </p>
+            {
+              communityPosts?.authorId?.role === "both" || communityPosts?.authorId?.role === "photographer" || communityPosts?.authorId?.role === "videographer" ? (
+                <Link href={`/professionals/${communityPosts?.authorId?._id}`} className="text-secondary-color text-sm sm:text-sm lg:text-base font-bold cursor-pointer">
+                  {communityPosts?.authorId?.name}
+                </Link>
+              ) : (
+                <p className="text-base-color text-sm sm:text-sm lg:text-base font-bold">
+                  {communityPosts?.authorId?.name}
+                </p>
+              )
+            }
+
           </div>
           <div className="p-5 lg:border-l lg:border-background-color">
             <Image

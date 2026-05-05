@@ -18,7 +18,7 @@ import { LuClock } from "react-icons/lu";
 import { BsCurrencyDollar } from "react-icons/bs";
 import { AllImages } from "../../../../../public/assets/AllImages";
 import { getServerUrl } from "@/helpers/config/envConfig";
-import Link from "next/link";
+// import Link from "next/link";
 
 
 
@@ -265,7 +265,7 @@ const ProfessionalServiceBookingModal: React.FC<
                   disabled={input.disabled}
                 />
               ))}
-            <Form.Item
+            {/* <Form.Item
               name="acceptTerms"
               valuePropName="checked"
               rules={[
@@ -345,7 +345,7 @@ const ProfessionalServiceBookingModal: React.FC<
 
                 </div>
               </Checkbox>
-            </Form.Item>
+            </Form.Item> */}
 
             <ReuseButton htmlType="submit" variant="secondary" className="mt-2">
               Send Booking Request

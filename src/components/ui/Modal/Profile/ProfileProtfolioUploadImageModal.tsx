@@ -109,7 +109,7 @@ const ProfileProtfolioUploadImageModal: React.FC<
         <ReusableForm form={form} handleFinish={onSubmit}>
           <ReuseUpload
             name="image"
-            buttonText={type === "video" ? "Upload Video (Max 25mb)" : "Upload Image"}
+            buttonText={type === "video" ? "Upload Video (Max 100mb)" : "Upload Image Max 10 Images"}
             label={type === "video" ? "Video" : "Image"}
             labelClassName="!font-semibold"
             maxCount={type === "video" ? 1 : 10}

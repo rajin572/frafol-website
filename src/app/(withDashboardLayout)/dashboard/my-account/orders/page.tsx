@@ -45,6 +45,8 @@ const page = async ({
   const totalData = eventData?.data?.meta?.total;
 
 
+  console.log(myEventData)
+
   const stateRes = await fetchWithAuth(`/event-order/user/stats`, {
     next: {
       tags: [TagTypes.eventOrder],

@@ -164,6 +164,7 @@ const PortfolioGalleryImage = ({ myData }: { myData: IProfile }) => {
                                                         src={serverUrl + item || AllImages?.dummyCover?.src}
                                                         alt={`gallery image ${index + 1}`}
                                                         className="w-full h-full object-cover rounded-lg"
+                                                        fetchPriority='high'
                                                     />
                                                     <div className="hidden group-hover:flex items-center justify-end gap-2 absolute top-2 w-full px-2">
                                                         <div

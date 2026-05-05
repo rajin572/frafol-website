@@ -53,9 +53,27 @@ const ProfessionalEventOrderTable: React.FC<
       render: (_: unknown, record: IEventOrder) => (
         <div>
           {record?.orderType === "custom" ? (
-            <p className="capitalize">{record?.title}</p>
+            <div className="flex items-center gap-2">
+              <p className="capitalize">{record?.title}</p>
+              {
+                record?.extensionRequests?.[record?.extensionRequests?.length > 0 ? record?.extensionRequests?.length - 1 : 0]?.status === "pending" && (
+                  <p className="px-1 py-0.5 rounded-full bg-yellow-600 text-primary-color w-fit capitalize text-xs">
+                    Extension Pending
+                  </p>
+                )
+              }
+            </div>
           ) : (
-            <p className="capitalize">{record?.packageId?.title}</p>
+            <div className="flex items-center gap-2">
+              <p className="capitalize">{record?.packageId?.title}</p>
+              {
+                record?.extensionRequests?.[record?.extensionRequests?.length > 0 ? record?.extensionRequests?.length - 1 : 0]?.status === "pending" && (
+                  <p className="px-1 py-0.5 rounded-full bg-yellow-600 text-primary-color w-fit capitalize text-xs">
+                    Extension Pending
+                  </p>
+                )
+              }
+            </div>
           )}
         </div>
       ),

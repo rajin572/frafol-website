@@ -71,7 +71,7 @@ const ReviewDetailsAndSubmit = () => {
     {
       label: "Hourly Rate",
       value: parseData.minHourlyRate && parseData.maxHourlyRate
-        ? `$${parseData.minHourlyRate} - $${parseData.maxHourlyRate}`
+        ? `${parseData.minHourlyRate}€ - ${parseData.maxHourlyRate}€`
         : "N/A",
     },
     {

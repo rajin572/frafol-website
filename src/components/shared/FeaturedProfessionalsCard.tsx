@@ -42,7 +42,7 @@ const FeaturedProfessionalsCard: React.FC<FeaturedProfessionalsCardProps> = ({
                 : "Videographer"}
           </p>
           <p className="flex items-center gap-1 text-base-color text-sm lg:text-sm font-medium mt-1 line-clamp-1">
-            <IoLocationSharp className="flex-shrink-0" /> {item?.address}
+            <IoLocationSharp className="flex-shrink-0" /> {item?.town}
           </p>
           <p className="text-base-color text-sm lg:text-sm font-medium mt-1">
             {item?.minHourlyRate}€ - {item?.maxHourlyRate}€

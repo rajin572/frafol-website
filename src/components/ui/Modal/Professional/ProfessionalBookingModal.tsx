@@ -12,7 +12,7 @@ import ReuseSelect from "../../Form/ReuseSelect";
 import { ICreateEventOrder, IProfessionalUser, IProfile } from "@/types";
 import tryCatchWrapper from "@/utils/tryCatchWrapper";
 import { createEventOrder } from "@/services/EventOrderService/EventOrderServiceApi";
-import Link from "next/link";
+// import Link from "next/link";
 
 export const userInputStructure = [
   {
@@ -258,7 +258,7 @@ const ProfessionalBookingModal: React.FC<ProfessionalBookingModalProps> = ({
     >
       <div className="p-5 text-base-color">
         <h1 className="text-lg sm:text-xl lg:text-2xl font-bold mb-2">
-          Contact Zuzana Králiková
+          Contact {professionalUser?.name} for Booking
         </h1>
         <p className="text-sm sm:text-sm lg:text-base xl:text-lg mb-5 font-medium">
           Fill out the form below to request a quote and book your session.
@@ -426,7 +426,7 @@ const ProfessionalBookingModal: React.FC<ProfessionalBookingModalProps> = ({
                 disabled={input.disabled}
               />
             ))}
-          <Form.Item
+          {/* <Form.Item
             name="acceptTerms"
             valuePropName="checked"
             rules={[
@@ -506,7 +506,7 @@ const ProfessionalBookingModal: React.FC<ProfessionalBookingModalProps> = ({
 
               </div>
             </Checkbox>
-          </Form.Item>
+          </Form.Item> */}
           <ReuseButton htmlType="submit" variant="secondary" className="mt-2">
             Send Booking Request
           </ReuseButton>

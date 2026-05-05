@@ -59,7 +59,7 @@ const ForumReplyCard = ({ item }: { item: ICommunityComment }) => {
         </div>
       </div>
       <div className=" h-full mt-2 w-full">
-        <p className="text-sm sm:text-base lg:text-lg text-base-color/70">{item?.text}</p>
+        <p className="text-sm sm:text-base lg:text-lg text-base-color/70 break-words">{item?.text}</p>
         <p className="text-sm sm:text-sm text-secondary-color cursor-pointer font-bold w-fit ml-auto underline" onClick={() => handleReply(item)}>Reply</p>
 
       </div>
@@ -94,7 +94,7 @@ const ForumReplyCard = ({ item }: { item: ICommunityComment }) => {
                 </div>
               </div>
               <div className=" h-full mt-2 w-full">
-                <p className=" sm:text-sm lg:text-base text-base-color/70">{reply?.text}</p>
+                <p className=" sm:text-sm lg:text-base text-base-color/70 break-words">{reply?.text}</p>
               </div>
             </div>
           ))

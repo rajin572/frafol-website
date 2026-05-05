@@ -32,6 +32,7 @@ const page = async ({
   const totalData = data?.data?.meta?.total;
 
   const communityPosts: ICommunityPost[] = data?.data?.result || [];
+  console.log(communityPosts)
 
   return (
     <main className="pb-20">

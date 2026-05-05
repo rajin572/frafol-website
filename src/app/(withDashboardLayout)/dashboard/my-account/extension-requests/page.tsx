@@ -14,6 +14,8 @@ const page = async () => {
 
   const myEventData = eventData?.data?.length > 0 ? eventData?.data : [];
 
+  console.log(myEventData)
+
   return <ExtensionRequest myEventData={myEventData} />;
 };
 

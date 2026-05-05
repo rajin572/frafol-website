@@ -106,6 +106,13 @@ const UserOrderCard = ({
                       : data?.status}
               </p>
             )}
+            {
+              data?.extensionRequests?.[extensionLength - 1]?.status === "pending" && (
+                <p className="px-2 py-0.5 rounded-full bg-blue-500 text-primary-color w-fit capitalize">
+                  Extension Requested
+                </p>
+              )
+            }
           </div>
         </div>
         <h4 className="text-sm sm:text-sm lg:text-base xl:text-lg font-bold mb-1 capitalize">

@@ -59,9 +59,18 @@ const ForumCard = ({
             className="w-10 h-10 object-cover rounded-full "
           />
           <div>
-            <p className="text-base-color text-sm sm:text-sm lg:text-base font-medium cursor-pointer">
-              {item?.authorId?.name}
-            </p>
+            {
+              item?.authorId?.role === "both" || item?.authorId?.role === "photographer" || item?.authorId?.role === "videographer" ? (
+                <Link href={`/professionals/${item?.authorId?._id}`} className="text-secondary-color text-sm sm:text-sm lg:text-base font-medium cursor-pointer">
+                  {item?.authorId?.name}
+                </Link>
+              ) : (
+                <p className="text-base-color text-sm sm:text-sm lg:text-base font-medium">
+                  {item?.authorId?.name}
+                </p>
+              )
+            }
+
             <p className="text-base-color text-sm sm:text-sm lg:text-base font-medium  cursor-pointer">
               {formatDateTime(item?.createdAt)}
             </p>

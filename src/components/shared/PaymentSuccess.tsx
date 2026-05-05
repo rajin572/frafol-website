@@ -150,15 +150,6 @@ const PaymentSuccess = () => {
             Payment Successful!
           </motion.h1>
 
-          <motion.p
-            className="text-[#262621] mt-2 text-center"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.6, duration: 0.5 }}
-          >
-            Thank you for your payment. Your subscription has been activated.
-          </motion.p>
-
           {/* Payment Details */}
           {/* <motion.div
             className="w-full mt-8 p-6 bg-secondary-color/5 rounded-xl"

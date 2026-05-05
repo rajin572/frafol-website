@@ -39,7 +39,7 @@ const ProfessionalPageDetailsMyWork = ({
       <SectionHeader title="My Work" className="mb-3" />
       {(galleryImages?.length > 0 || galleryVideos?.length > 0) ? (
         <div>
-          <div className="mt-5">
+          <div className="my-10">
             <ImageGallery<string>
               data={galleryImages}
               showOnlyImage={true}

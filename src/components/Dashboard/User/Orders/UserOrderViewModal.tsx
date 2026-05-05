@@ -67,9 +67,9 @@ const UserOrderViewModal: React.FC<UserOrderViewModalProps> = ({
       footer={null}
       centered
       closeIcon={<MdClose className="text-secondary-color text-xl" />}
-      className="lg:!w-[600px]"
+      className="lg:!w-[600px] "
     >
-      <div className="p-5 text-[#1a1a1a]">
+      <div className="p-2 text-[#1a1a1a] max-h-[85vh] overflow-y-auto my-10">
         <h3 className="text-lg sm:text-xl lg:text-2xl xl:text-3xl font-bold mb-1">
           Order Details
         </h3>
@@ -190,7 +190,7 @@ const UserOrderViewModal: React.FC<UserOrderViewModalProps> = ({
         {(currentRecord?.streetAddress || currentRecord?.town || currentRecord?.zipCode || currentRecord?.country) && (
           <div className="mb-4">
             <h4 className="text-base sm:text-lg lg:text-xl xl:text-2xl text-secondary-color font-bold">
-              Billing Information
+              Event Information
             </h4>
             <div className="mt-2 flex flex-col gap-1">
 
@@ -268,7 +268,7 @@ const UserOrderViewModal: React.FC<UserOrderViewModalProps> = ({
           {currentRecord?.vatAmount ? (
             <p className="text-sm sm:text-sm lg:text-base xl:text-lg mt-2">
               <span className="font-semibold">VAT Amount :</span>{" "}
-              {currentRecord?.vatAmount}
+              {currentRecord?.vatAmount}€
             </p>
           ) : null}
           <p className="text-sm sm:text-sm lg:text-base xl:text-lg mt-2">
@@ -277,7 +277,7 @@ const UserOrderViewModal: React.FC<UserOrderViewModalProps> = ({
             </span>{" "}
             {currentRecord?.totalPrice?.toFixed(2) ||
               budgetLabels[currentRecord?.budget_range as string] ||
-              currentRecord?.budget_range}
+              currentRecord?.budget_range}€
           </p>
           {currentRecord?.paymentStatus && (
             <p className="text-sm sm:text-sm lg:text-base xl:text-lg mt-2">
