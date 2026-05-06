@@ -166,7 +166,7 @@ const PortfolioGalleryImage = ({ myData }: { myData: IProfile }) => {
                                                         className="w-full h-full object-cover rounded-lg"
                                                         fetchPriority='high'
                                                     />
-                                                    <div className="hidden group-hover:flex items-center justify-end gap-2 absolute top-2 w-full px-2">
+                                                    <div className="flex items-center justify-end gap-2 absolute top-2 w-full px-2">
                                                         <div
                                                             onClick={() => showDeleteModal(item)}
                                                             className="flex items-center p-1 bg-secondary-color rounded-full cursor-pointer"
@@ -225,7 +225,7 @@ const PortfolioGalleryImage = ({ myData }: { myData: IProfile }) => {
                                             >
                                                 Your browser does not support the video tag.
                                             </video>
-                                            <div className="hidden group-hover:flex items-center justify-end gap-2 absolute top-2 w-full px-2">
+                                            <div className="flex items-center justify-end gap-2 absolute top-2 w-full px-2">
                                                 <div
                                                     onClick={() => showDeleteModal(item)}
                                                     className="flex items-center p-1 bg-secondary-color rounded-full cursor-pointer"
