@@ -137,7 +137,7 @@ export const companyInputStructure = [
     rules: [{ required: true, message: "Country is required" }],
   },
   {
-    name: "ICO",
+    name: "ico",
     type: "text",
     inputType: "normal",
     label: "IČO",
@@ -146,7 +146,7 @@ export const companyInputStructure = [
     rules: [{ required: true, message: "IČO is required" }],
   },
   {
-    name: "DIC",
+    name: "dic",
     type: "text",
     inputType: "normal",
     label: "DIČ",
@@ -155,7 +155,7 @@ export const companyInputStructure = [
     rules: [{ required: true, message: "DIČ is required" }],
   },
   {
-    name: "IC_DPH",
+    name: "ic_dph",
     type: "text",
     inputType: "normal",
     label: "IČ DPH (Optional)",
@@ -195,13 +195,13 @@ const ProfessionalBookingModal: React.FC<ProfessionalBookingModalProps> = ({
       town: myData?.town,
       zipCode: myData?.zipCode,
       country: myData?.country,
-      ICO: myData?.ico,
-      DIC: myData?.dic,
-      IC_DPH: myData?.ic_dph,
+      ico: myData?.ico,
+      dic: myData?.dic,
+      ic_dph: myData?.ic_dph,
     });
-  }, [form, myData]);
+  }, [form, myData, type]);
 
-  const onSubmit = async (values: ICreateEventOrder) => {
+  const onSubmit = async (values: any) => {
     const data = {
       title: values.title,
       orderType: "custom",
@@ -225,9 +225,9 @@ const ProfessionalBookingModal: React.FC<ProfessionalBookingModalProps> = ({
 
       companyName: values.companyName,
 
-      ICO: values.ICO,
-      DIC: values.DIC,
-      IC_DPH: values.IC_DPH || "",
+      ICO: values.ico,
+      DIC: values.dic,
+      IC_DPH: values.ic_dph || "",
     };
 
     const res = await tryCatchWrapper(

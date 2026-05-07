@@ -224,8 +224,8 @@ const InvoiceGearFromAdminSide = ({
               Servisný poplatok platformy / Platform Service Fee
             </Text>
             <Text style={styles.tableCellDark}>1 ks/pc</Text>
-            <Text style={styles.tableCellDark}>€{platformCommission.toFixed(2)}</Text>
-            <Text style={styles.tableCellDark}>€{platformCommission.toFixed(2)}</Text>
+            <Text style={styles.tableCellDark}>{platformCommission.toFixed(2)}€</Text>
+            <Text style={styles.tableCellDark}>{platformCommission.toFixed(2)}€</Text>
           </View>
         </View>
 
@@ -245,7 +245,7 @@ const InvoiceGearFromAdminSide = ({
             }}
           >
             <Text>SPOLU / TOTAL: </Text>
-            <Text>€{platformCommission.toFixed(2)}</Text>
+            <Text>{platformCommission.toFixed(2)}€</Text>
           </Text>
         </View>
 

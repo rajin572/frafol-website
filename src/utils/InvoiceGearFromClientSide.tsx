@@ -156,10 +156,14 @@ const InvoiceGearFromClientSide = ({
               <Text style={styles.textBold}>DIČ / Tax ID (if company):</Text>{" "}
               {currentRecord?.sellerId?.dic || "__________"}
             </Text>
-            <Text style={styles.text}>
-              <Text style={styles.textBold}>IČ DPH / VAT ID (if VAT payer):</Text>{" "}
-              {currentRecord?.sellerId?.ic_dph || "__________"}
-            </Text>
+            {
+              currentRecord?.sellerId?.ic_dph && (
+                <Text style={styles.text}>
+                  <Text style={styles.textBold}>IČ DPH / VAT ID (if VAT payer):</Text>{" "}
+                  {currentRecord?.sellerId?.ic_dph || "__________"}
+                </Text>
+              )
+            }
           </View>
 
           {/* Client Information (Buyer) */}

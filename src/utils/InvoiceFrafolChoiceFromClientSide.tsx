@@ -196,8 +196,8 @@ const InvoiceFrafolChoiceFromClientSide = ({
               {pack.title || "Frafol Choice"} / Subscription ({pack.duration} days)
             </Text>
             <Text style={styles.tableCellDark}>1 ks/pc</Text>
-            <Text style={styles.tableCellDark}>€{pack.price.toFixed(2)}</Text>
-            <Text style={styles.tableCellDark}>€{pack.price.toFixed(2)}</Text>
+            <Text style={styles.tableCellDark}>{pack.price.toFixed(2)}€</Text>
+            <Text style={styles.tableCellDark}>{pack.price.toFixed(2)}€</Text>
           </View>
         </View>
 
@@ -206,12 +206,12 @@ const InvoiceFrafolChoiceFromClientSide = ({
           <Text style={{ ...styles.text, marginBottom: 5 }}>
             <Text style={{ fontWeight: "bold", color: "#000000" }}>MEDZISÚČET / </Text>
             <Text style={{ fontWeight: "bold", color: "#ad2b08" }}>SUBTOTAL: </Text>
-            <Text style={{ fontWeight: "bold", color: "#ad2b08" }}>€{pack.price.toFixed(2)}</Text>
+            <Text style={{ fontWeight: "bold", color: "#ad2b08" }}>{pack.price.toFixed(2)}€</Text>
           </Text>
           <Text style={{ ...styles.text, marginBottom: 5 }}>
             <Text style={{ fontWeight: "bold", color: "#000000" }}>DPH (0%) / </Text>
             <Text style={{ fontWeight: "bold", color: "#ad2b08" }}>VAT (0%): </Text>
-            <Text style={{ fontWeight: "bold", color: "#ad2b08" }}>€0.00</Text>
+            <Text style={{ fontWeight: "bold", color: "#ad2b08" }}>0.00€</Text>
           </Text>
           <Text
             style={{
@@ -227,7 +227,7 @@ const InvoiceFrafolChoiceFromClientSide = ({
             }}
           >
             <Text>SPOLU / TOTAL: </Text>
-            <Text>€{pack.price.toFixed(2)}</Text>
+            <Text>{pack.price.toFixed(2)}€</Text>
           </Text>
         </View>
 

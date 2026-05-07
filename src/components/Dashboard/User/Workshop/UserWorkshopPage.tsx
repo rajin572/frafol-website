@@ -1,5 +1,7 @@
+"use client";
+
 import Image from "next/image";
-import React from "react";
+import { useState } from "react";
 import { AllImages } from "../../../../../public/assets/AllImages";
 import { IoCalendarOutline } from "react-icons/io5";
 import { LuClock } from "react-icons/lu";
@@ -9,6 +11,8 @@ import { getServerUrl } from "@/helpers/config/envConfig";
 import { formatDate, formetTime } from "@/utils/dateFormet";
 import Link from "next/link";
 import PaginationSection from "@/components/shared/PaginationSection";
+
+const DESCRIPTION_LIMIT = 100;
 
 const UserWorkshopPage = ({
   workshops,
@@ -22,12 +26,25 @@ const UserWorkshopPage = ({
   limit: number;
 }) => {
   const serverUrl = getServerUrl();
+  const [expandedIds, setExpandedIds] = useState<Set<string>>(new Set());
+
+  const toggleDescription = (id: string) => {
+    setExpandedIds((prev) => {
+      const next = new Set(prev);
+      if (next.has(id)) {
+        next.delete(id);
+      } else {
+        next.add(id);
+      }
+      return next;
+    });
+  };
   return (
     <div>
       <h1 className="text-xl sm:text-2xl lg:text-3xl xl:text-4xl  font-bold mb-10">
         My Workshop
       </h1>
-      <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
+      <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 items-start gap-5">
         {workshops?.map((workshop, index) => (
           <div
             key={workshop._id || index}
@@ -48,6 +65,23 @@ const UserWorkshopPage = ({
               <p className="text-sm sm:text-base lg:text-lg xl:text-xl font-bold mt-3">
                 {workshop?.workshop?.title}
               </p>
+              {workshop?.workshop?.description && (
+                <div className="mt-2">
+                  <p className="text-sm text-gray-600">
+                    {expandedIds.has(workshop._id)
+                      ? workshop.workshop.description
+                      : workshop.workshop.description.slice(0, DESCRIPTION_LIMIT)}
+                    {workshop.workshop.description.length > DESCRIPTION_LIMIT && (
+                      <button
+                        onClick={() => toggleDescription(workshop._id)}
+                        className="ml-1 text-secondary-color font-semibold text-xs"
+                      >
+                        {expandedIds.has(workshop._id) ? "Show less" : "...Show more"}
+                      </button>
+                    )}
+                  </p>
+                </div>
+              )}
               <div className="flex items-center gap-2 mt-3">
                 <Image
                   width={1000}

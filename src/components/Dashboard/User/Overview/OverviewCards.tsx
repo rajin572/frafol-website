@@ -25,7 +25,7 @@ const OverviewCard = ({ overview }: { overview: IDashboardStats }) => {
       background: "#ffffff",
       name: "Total Spent",
       icon: <RiMoneyEuroCircleFill className="size-6 text-secondary-color" />,
-      count: `$${overview.totalSpent}`,
+      count: `${overview.totalSpent}€`,
     },
     {
       id: 4,

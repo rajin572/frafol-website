@@ -47,6 +47,8 @@ const RegisterWrokshopModal: React.FC<RegisterWrokshopModalProps<any>> = ({
     const serverUrl = getServerUrl();
     const userData = useGetUserData();
 
+    console.log(myData?.ic_dph)
+
     useEffect(() => {
         form.setFieldsValue({
             name: myData?.name,
@@ -56,6 +58,7 @@ const RegisterWrokshopModal: React.FC<RegisterWrokshopModalProps<any>> = ({
             streetAddress: myData?.address,
             town: myData?.town,
             country: myData?.country,
+            zipCode: myData?.zipCode,
             ico: myData?.ico,
             dic: myData?.dic,
             ic_dph: myData?.ic_dph,

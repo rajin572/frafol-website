@@ -14,6 +14,8 @@ const ReviewCard = ({
   data: IPendingReview;
   openModal?: (data: IPendingReview) => void;
 }) => {
+
+  console.log(data)
   return (
     <div className="p-4 rounded-md border border-[#E1E1E1] shadow-xs hover:shadow-md transition-all duration-200">
       <div>
@@ -24,7 +26,7 @@ const ReviewCard = ({
               <h3 className="text-sm sm:text-base lg:text-lg xl:text-xl font-bold text-secondary-color mb-1">
                 {data?.eventOrderId?.packageId?.title
                   ? data?.eventOrderId?.packageId?.title
-                  : "Custom Order"}{" "}
+                  : data?.title ? data?.title : "Custom Order"}{" "}
               </h3>{" "}
               <p className="px-2 py-0.5 rounded-full bg-secondary-color text-primary-color w-fit capitalize text-sm">
                 {data?.eventOrderId?.orderType}

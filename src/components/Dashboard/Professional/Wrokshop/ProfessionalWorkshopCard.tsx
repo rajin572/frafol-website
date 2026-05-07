@@ -1,5 +1,5 @@
 import Image from "next/image";
-import React from "react";
+import { useState } from "react";
 import { AllImages } from "../../../../../public/assets/AllImages";
 import { IoCalendarOutline } from "react-icons/io5";
 import { LuClock, LuUsers } from "react-icons/lu";
@@ -10,6 +10,8 @@ import { IWorkshop } from "@/types";
 import { getServerUrl } from "@/helpers/config/envConfig";
 import { formatDate, formetTime } from "@/utils/dateFormet";
 import Link from "next/link";
+
+const DESCRIPTION_LIMIT = 100;
 
 const ProfessionalWorkshopCard = ({
   workshop,
@@ -23,7 +25,8 @@ const ProfessionalWorkshopCard = ({
   showViewParticipantModal: (record: IWorkshop) => void;
 }) => {
   const serverUrl = getServerUrl();
-  console.log(workshop)
+  const [expanded, setExpanded] = useState(false);
+
   return (
     <div className="p-1.5 rounded-xl border border-background-color">
       <div className="relative">
@@ -65,6 +68,23 @@ const ProfessionalWorkshopCard = ({
         <p className="text-sm sm:text-base lg:text-lg xl:text-xl font-bold mt-3">
           {workshop?.title}
         </p>
+        {workshop?.description && (
+          <div className="mt-2">
+            <p className="text-sm text-gray-600">
+              {expanded
+                ? workshop.description
+                : workshop.description.slice(0, DESCRIPTION_LIMIT)}
+              {workshop.description.length > DESCRIPTION_LIMIT && (
+                <button
+                  onClick={() => setExpanded((prev) => !prev)}
+                  className="ml-1 text-secondary-color font-semibold text-xs"
+                >
+                  {expanded ? "Show less" : "...Show more"}
+                </button>
+              )}
+            </p>
+          </div>
+        )}
         <div className="flex items-center gap-2 mt-3">
           <Image
             width={1000}

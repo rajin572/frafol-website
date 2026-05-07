@@ -203,8 +203,8 @@ const InvoiceDocumentFromAdminSide = ({
             <Text style={styles.tableCellDark}>
               1 ks / <Text style={{ color: "#ad2b08" }}>pc</Text>
             </Text>
-            <Text style={styles.tableCellDark}>€{serviceFee.toFixed(2)}</Text>
-            <Text style={styles.tableCellDark}>€{serviceFee.toFixed(2)}</Text>
+            <Text style={styles.tableCellDark}>{serviceFee.toFixed(2)}€</Text>
+            <Text style={styles.tableCellDark}>{serviceFee.toFixed(2)}€</Text>
           </View>
         </View>
 
@@ -214,7 +214,7 @@ const InvoiceDocumentFromAdminSide = ({
             <Text style={{ fontWeight: "bold", color: "#000000" }}>MEDZISÚČET / </Text>
             <Text style={{ fontWeight: "bold", color: "#ad2b08" }}>SUBTOTAL: </Text>
             <Text style={{ fontWeight: "bold", color: "#ad2b08" }}>
-              €{serviceFee.toFixed(2)}
+              {serviceFee.toFixed(2)}€
             </Text>
           </Text>
           <Text
@@ -231,7 +231,7 @@ const InvoiceDocumentFromAdminSide = ({
             }}
           >
             <Text>SPOLU / TOTAL: </Text>
-            <Text>€{serviceFee.toFixed(2)}</Text>
+            <Text>{serviceFee.toFixed(2)}€</Text>
           </Text>
         </View>
 

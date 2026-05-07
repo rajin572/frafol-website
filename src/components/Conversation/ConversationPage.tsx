@@ -34,6 +34,8 @@ const ConversationPage = ({
   const pathName = usePathname();
   const dispatch = useAppDispatch();
 
+  console.log(userData)
+
   // Clear room and page params on mount (page reload)
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);

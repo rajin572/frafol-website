@@ -3,6 +3,7 @@ import React from "react";
 import OverviewCard from "./OverviewCards";
 import RecentNotification from "./RecentNotification";
 import ActionRequired from "./ActionRequired";
+import { getCurrentUser } from "@/services/AuthService";
 
 export interface IDashboardStats {
   user: string;
@@ -25,14 +26,14 @@ export interface NotificationItem {
   // If you later add fields, put them here.
 }
 
-const Overview = ({ overview }: { overview: IDashboardStats }) => {
+const Overview = async ({ overview }: { overview: IDashboardStats }) => {
+  const user = await getCurrentUser();
 
-  console.log(overview)
   return (
     <div>
       <div className="mb-10">
         <h1 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl  font-bold mb-5 ">
-          Welcome back, {overview?.user}!
+          Welcome back, {user?.companyName || overview?.user}!
         </h1>
         <h3 className="text-lg sm:text-xl lg:text-2xl xl:text-34xl font-semibold mb-5">
           Here&apos;s what&apos;s happening with your orders.

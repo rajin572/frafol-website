@@ -45,7 +45,7 @@ const UserGearOrderCard = ({
           <IoCalendarOutline />
           <span>{formatDate(data?.createdAt) || "Unknown Date"}</span>
         </div>
-        <div className="flex items-center justify-between">
+        <div className="flex flex-col lg:flex-row lg:items-center gap-5 justify-between">
           <p className="text-sm sm:text-base lg:text-lg xl:text-xl font-bold text-secondary-color mt-1">
             {(
               Number(data?.gearMarketplaceId?.mainPrice) +
@@ -72,7 +72,7 @@ const UserGearOrderCard = ({
               </button>
             </div>
           ) : activeTab === "orderOffer" ? (
-            <div className="flex items-center gap-2">
+            <div className="flex flex-wrap items-center gap-2">
               <button
                 // onClick={() => openModal()}
                 className="flex items-center gap-1 px-3 py-1 border border-[#00C566] text-primary-color rounded bg-[#00C566] text-sm transition cursor-pointer"
@@ -89,7 +89,7 @@ const UserGearOrderCard = ({
               </button>
             </div>
           ) : (
-            <div className="flex items-center gap-2">
+            <div className="flex flex-wrap items-center gap-2">
               <button
                 onClick={() => openModal(data)}
                 className="flex items-center gap-1 px-3 py-1 border border-gray-300 rounded hover:bg-gray-100 text-sm transition cursor-pointer"

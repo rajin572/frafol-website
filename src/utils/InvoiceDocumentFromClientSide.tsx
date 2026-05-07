@@ -103,8 +103,6 @@ const InvoiceDocumentFromClientSide = ({
   const vatAmount = currentRecord.vatAmount || 0;
   const vatPercentage = subtotal > 0 ? Math.round((vatAmount / subtotal) * 100) : 0;
 
-  const clientIsCompany = currentRecord.isRegisterAsCompany;
-
   return (
     <Document language="sk">
       <Page size="A4" style={styles.page}>
@@ -153,10 +151,14 @@ const InvoiceDocumentFromClientSide = ({
               <Text style={styles.textBold}>DIČ / Tax ID (if company):</Text>{" "}
               {currentRecord.serviceProviderId.dic || "__________"}
             </Text>
-            <Text style={styles.text}>
-              <Text style={styles.textBold}>IČ DPH / VAT ID (if VAT payer):</Text>{" "}
-              {currentRecord.serviceProviderId.ic_dph || "____"}
-            </Text>
+            {
+              currentRecord.serviceProviderId.ic_dph && (
+                <Text style={styles.text}>
+                  <Text style={styles.textBold}>IČ DPH / VAT ID (if VAT payer):</Text>{" "}
+                  {currentRecord.serviceProviderId.ic_dph || "____"}
+                </Text>
+              )
+            }
           </View>
 
           {/* Client Information (Buyer) */}
@@ -169,18 +171,20 @@ const InvoiceDocumentFromClientSide = ({
             <Text style={styles.text}>
               <Text style={styles.textBold}>Adresa / Address:</Text> {currentRecord.userId.address || "__________"}
             </Text>
-            {clientIsCompany && (
-              <>
-                <Text style={styles.text}>
-                  <Text style={styles.textBold}>IČO / Company ID:</Text> {currentRecord.userId.ico || "__"}
-                </Text>
-                <Text style={styles.text}>
-                  <Text style={styles.textBold}>DIČ / Tax ID:</Text> {currentRecord.userId.dic || "____"}
-                </Text>
-                <Text style={styles.text}>
-                  <Text style={styles.textBold}>IČ DPH / VAT ID:</Text> {currentRecord.userId.ic_dph || "____"}
-                </Text>
-              </>
+            {currentRecord.userId.ico && (
+              <Text style={styles.text}>
+                <Text style={styles.textBold}>IČO / Company ID:</Text> {currentRecord.userId.ico}
+              </Text>
+            )}
+            {currentRecord.userId.dic && (
+              <Text style={styles.text}>
+                <Text style={styles.textBold}>DIČ / Tax ID:</Text> {currentRecord.userId.dic}
+              </Text>
+            )}
+            {currentRecord.userId.ic_dph && (
+              <Text style={styles.text}>
+                <Text style={styles.textBold}>IČ DPH / VAT ID:</Text> {currentRecord.userId.ic_dph}
+              </Text>
             )}
           </View>
         </View>
@@ -209,8 +213,8 @@ const InvoiceDocumentFromClientSide = ({
                 : "Wedding photography"}
             </Text>
             <Text style={styles.tableCellDark}>1 ks/pc</Text>
-            <Text style={styles.tableCellDark}>€{subtotal.toFixed(2)}</Text>
-            <Text style={styles.tableCellDark}>€{subtotal.toFixed(2)}</Text>
+            <Text style={styles.tableCellDark}>{subtotal.toFixed(2)}€</Text>
+            <Text style={styles.tableCellDark}>{subtotal.toFixed(2)}€</Text>
           </View>
 
           {/* Service Fee */}
@@ -220,8 +224,8 @@ const InvoiceDocumentFromClientSide = ({
                 Servisný poplatok / Service fee
               </Text>
               <Text style={styles.tableCellDark}>1 ks / pc</Text>
-              <Text style={styles.tableCellDark}>€{serviceFee.toFixed(2)}</Text>
-              <Text style={styles.tableCellDark}>€{serviceFee.toFixed(2)}</Text>
+              <Text style={styles.tableCellDark}>{serviceFee.toFixed(2)}€</Text>
+              <Text style={styles.tableCellDark}>{serviceFee.toFixed(2)}€</Text>
             </View>
           )}
         </View>
@@ -232,14 +236,14 @@ const InvoiceDocumentFromClientSide = ({
             <Text style={{ fontWeight: "bold", color: "#000000" }}>MEDZISÚČET / </Text>
             <Text style={{ fontWeight: "bold", color: "#ad2b08" }}>SUBTOTAL: </Text>
             <Text style={{ fontWeight: "bold", color: "#ad2b08" }}>
-              €{(currentRecord.priceWithServiceFee || subtotal).toFixed(2)}
+              {(currentRecord.priceWithServiceFee || subtotal).toFixed(2)}€
             </Text>
           </Text>
           <Text style={{ ...styles.text, marginBottom: 5 }}>
             <Text style={{ fontWeight: "bold", color: "#000000" }}>DPH ({vatPercentage}%) / </Text>
             <Text style={{ fontWeight: "bold", color: "#ad2b08" }}>VAT ({vatPercentage}%): </Text>
             <Text style={{ fontWeight: "bold", color: "#ad2b08" }}>
-              €{vatAmount.toFixed(2)}
+              {vatAmount.toFixed(2)}€
             </Text>
           </Text>
           <Text style={{
@@ -254,7 +258,7 @@ const InvoiceDocumentFromClientSide = ({
             fontSize: 12
           }}>
             <Text>SPOLU / TOTAL: </Text>
-            <Text>€{(currentRecord.totalPrice as number).toFixed(2)}</Text>
+            <Text>{(currentRecord.totalPrice as number).toFixed(2)}€</Text>
           </Text>
         </View>
 

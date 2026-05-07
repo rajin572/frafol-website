@@ -18,6 +18,7 @@ interface IReview {
 }
 
 interface IPendingReview {
+  title?: string;
   isAnonymous: boolean;
   _id: string;
   userId: {
