@@ -33,6 +33,7 @@ type OrderStatus =
   | "deliveryRequest"
   | "delivered"
   | "cancelRequest"
+  | "deliveryRequestDeclined"
   | "cancelled";
 
 interface IExtensionRequest {

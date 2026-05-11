@@ -104,8 +104,8 @@ const ProfessionalEditWorkshop = ({
       updateWrokshop,
       { body: formData, params: currentRecord?._id },
       {
-        toastLoadingMessage: "Adding new package...",
-        toastSuccessMessage: "Package added successfully!",
+        toastLoadingMessage: "Updating workshop...",
+        toastSuccessMessage: "Workshop updated successfully!",
         toastErrorMessage: "Something went wrong! Please try again.",
       }
     );

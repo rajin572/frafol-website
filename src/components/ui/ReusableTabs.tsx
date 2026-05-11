@@ -108,7 +108,7 @@ const ReusableTabs = <T extends string>({
     if (text) {
       params.set(tabName, text);
       if (resetPage) {
-        params.set("page", "1");
+        params.delete("page");
         params.delete("search");
       }
     } else {

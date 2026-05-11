@@ -101,13 +101,15 @@ const UserOrderCard = ({
                   ? "Payment Required"
                   : data?.status === "inProgress"
                     ? "In Progress"
-                    : data?.status === "cancelRequest"
-                      ? "Cancel Requested"
-                      : data?.status}
+                    : data?.status === "deliveryRequestDeclined"
+                      ? "In Progress"
+                      : data?.status === "cancelRequest"
+                        ? "Cancel Requested"
+                        : data?.status}
               </p>
             )}
             {
-              data?.extensionRequests?.[extensionLength - 1]?.status === "pending" && (
+              (data?.status !== "deliveryRequest" && data?.extensionRequests?.[extensionLength - 1]?.status === "pending") && (
                 <p className="px-2 py-0.5 rounded-full bg-blue-500 text-primary-color w-fit capitalize">
                   Extension Requested
                 </p>

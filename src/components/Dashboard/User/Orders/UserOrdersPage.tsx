@@ -154,6 +154,7 @@ const UserOrdersPage = ({
               ),
             },
           ]}
+          resetPage={true}
         />
       </div>
     </div>

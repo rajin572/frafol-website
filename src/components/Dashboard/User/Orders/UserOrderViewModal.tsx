@@ -279,14 +279,14 @@ const UserOrderViewModal: React.FC<UserOrderViewModalProps> = ({
               budgetLabels[currentRecord?.budget_range as string] ||
               currentRecord?.budget_range}€
           </p>
-          {currentRecord?.paymentStatus && (
+          {/* {currentRecord?.paymentStatus && (
             <p className="text-sm sm:text-sm lg:text-base xl:text-lg mt-2">
               <span className="font-semibold">Payment Status :</span>{" "}
               <span className="capitalize font-semibold text-secondary-color">
                 {currentRecord?.paymentStatus}
               </span>
             </p>
-          )}
+          )} */}
         </div>
 
         {activeModal === "cancelled" && (

@@ -91,8 +91,8 @@ const ProfessionalWorkshopPage = ({
         deleteWrokshop,
         { params: record?._id },
         {
-          toastLoadingMessage: "Deleting Package...",
-          toastSuccessMessage: "Package deleted successfully!",
+          toastLoadingMessage: "Deleting workshop...",
+          toastSuccessMessage: "workshop deleted successfully!",
           toastErrorMessage: "Something went wrong! Please try again.",
         }
       );

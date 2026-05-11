@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 
 import { Checkbox, Form, Modal, Radio, Typography } from "antd";
@@ -9,7 +10,7 @@ import ReuseButton from "../../Button/ReuseButton";
 import ReuseDatePicker from "../../Form/ReuseDatePicker";
 import ReuseTimePicker from "../../Form/ReuseTimePicker";
 import ReuseSelect from "../../Form/ReuseSelect";
-import { ICreateEventOrder, IProfessionalUser, IProfile } from "@/types";
+import { IProfessionalUser, IProfile } from "@/types";
 import tryCatchWrapper from "@/utils/tryCatchWrapper";
 import { createEventOrder } from "@/services/EventOrderService/EventOrderServiceApi";
 // import Link from "next/link";

@@ -353,14 +353,14 @@ const ProfessionalEventViewModal: React.FC<ProfessionalEventViewModalProps> = ({
               budgetLabels[currentRecord?.budget_range as string] ||
               currentRecord?.budget_range}€
           </p>
-          {currentRecord?.paymentStatus ? (
+          {/* {currentRecord?.paymentStatus ? (
             <p className="text-sm sm:text-sm lg:text-base xl:text-lg mt-2">
               <span className="font-semibold">Payment Status :</span>{" "}
               <span className="capitalize font-semibold text-secondary-color">
                 {currentRecord?.paymentStatus}
               </span>
             </p>
-          ) : null}
+          ) : null} */}
         </div>
 
         {(activeTab === "cancelled" || activeTab === "cancelRequest") && (
@@ -390,7 +390,7 @@ const ProfessionalEventViewModal: React.FC<ProfessionalEventViewModalProps> = ({
           currentRecord?.deliveryRequestDeclinedReason && (
             <div className="mb-4">
               <h4 className="text-base sm:text-lg lg:text-xl xl:text-2xl text-secondary-color font-bold">
-                Decline Reason
+                Delivery Decline Reason
               </h4>
               <div className="mt-2">
                 {" "}

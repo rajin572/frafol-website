@@ -334,6 +334,7 @@ const EventOrdersPage = ({
                 ),
               },
             ]}
+            resetPage={true}
           />
         </div>
         <ProfessionalEventViewModal
