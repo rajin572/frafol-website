@@ -31,6 +31,7 @@ const page = async ({
 
   const allReviews = allReviewData?.data?.reviews || [];
   const total = allReviewData?.data?.meta?.total;
+  console.log(allReviews)
 
   return (
     <ReviewPage

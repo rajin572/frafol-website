@@ -11,6 +11,11 @@ import { getServerUrl } from "@/helpers/config/envConfig";
 import { formatDate, formetTime } from "@/utils/dateFormet";
 import Link from "next/link";
 import PaginationSection from "@/components/shared/PaginationSection";
+import { pdf } from "@react-pdf/renderer";
+import { saveAs } from "file-saver";
+import { toast } from "sonner";
+import InvoiceWorkshopFromClientSide from "@/utils/InvoiceWorkshopFromClientSide";
+import React from "react";
 
 const DESCRIPTION_LIMIT = 100;
 
@@ -25,8 +30,26 @@ const UserWorkshopPage = ({
   page: number;
   limit: number;
 }) => {
+  console.log(workshops)
   const serverUrl = getServerUrl();
   const [expandedIds, setExpandedIds] = useState<Set<string>>(new Set());
+
+  const handleDownloadInvoice = async (workshop: IMyRegisteredWorkshop) => {
+    const toastId = toast.loading("Downloading...", { duration: 3000 });
+    try {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      const record = { ...workshop, workshopId: (workshop as any).workshopId };
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      const professional = (workshop as any).workshopId?.authorId || (workshop as any).workshop?.authorId;
+      const blob = await pdf(
+        <InvoiceWorkshopFromClientSide record={record} professional={professional} />
+      ).toBlob();
+      saveAs(blob, `${workshop.orderId}-client-invoice.pdf`);
+      toast.success("Downloaded successfully!", { id: toastId });
+    } catch {
+      toast.error("Download failed", { id: toastId });
+    }
+  };
 
   const toggleDescription = (id: string) => {
     setExpandedIds((prev) => {
@@ -142,6 +165,12 @@ const UserWorkshopPage = ({
                   {workshop?.workshop?.mainPrice?.toFixed(2)}
                 </p>
               </div>
+              <button
+                onClick={() => handleDownloadInvoice(workshop)}
+                className="mt-4 w-full py-2 text-sm font-semibold text-white bg-secondary-color rounded-lg hover:opacity-90 transition"
+              >
+                Download Invoice
+              </button>
             </div>
           </div>
         ))}

@@ -8,6 +8,7 @@ interface Author {
 
 interface IWorkshop {
   vatAmount: number;
+  vatPercent: number;
   _id: string;
   authorId: Author;
   title: string;
@@ -41,12 +42,33 @@ interface WorkshopPayment {
   paidAt: string | null;
 }
 
+interface WorkshopParticipantInstructor {
+  _id: string;
+  name: string;
+  email: string;
+  profileImage: string;
+  ico?: string;
+  dic?: string;
+  ic_dph?: string;
+  companyName?: string;
+}
+
+interface WorkshopParticipantWorkshop {
+  _id: string;
+  title: string;
+  date: string;
+  time: string;
+  vatAmount: number;
+  price: number;
+  mainPrice: number;
+}
+
 interface IWorkshopParticipants {
   _id: string;
   orderId: string;
   clientId: Client;
-  instructorId: string;
-  workshopId: string;
+  instructorId: WorkshopParticipantInstructor;
+  workshopId: WorkshopParticipantWorkshop;
   paymentStatus: "pending" | "completed";
   streetAddress: string;
   town: string;

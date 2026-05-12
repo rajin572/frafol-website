@@ -2,48 +2,95 @@
 "use client";
 import { useState } from "react";
 import SearchInput from "@/components/ui/Form/ReuseSearchInput";
-import TransactionTable from "@/components/ui/Table/TransactionTable";
-import TransactionViewModal from "./TransactionViewModal";
+import ReusableTabs from "@/components/ui/ReusableTabs";
+import EventEarningTable from "./EventEarningTable";
+import GearEarningTable from "./GearEarningTable";
+import WorkshopEarningTable from "./WorkshopEarningTable";
+import EarningViewModal from "./EarningViewModal";
 
-const EarningsPage = ({ earning, totalData }: any) => {
-  const limit = 12;
+type EarningType = "event" | "gear" | "workshop";
 
-  const [isViewModalVisible, setIsViewModalVisible] = useState(false);
-  const [currentRecord, setCurrentRecord] = useState(null);
+interface EarningsPageProps {
+  data: any[];
+  totalData: number;
+  activeTab: EarningType;
+  page: number;
+  limit: number;
+}
 
-  const showViewUserModal = (record: any) => {
-    setCurrentRecord(record);
-    setIsViewModalVisible(true);
+const EarningsPage = ({ data, totalData, activeTab, page, limit }: EarningsPageProps) => {
+  const [selectedRecord, setSelectedRecord] = useState<any>(null);
+  const [modalType, setModalType] = useState<EarningType>("event");
+
+  const handleView = (record: any, type: EarningType) => {
+    setModalType(type);
+    setSelectedRecord(record);
   };
 
-  const handleCancel = () => {
-    setIsViewModalVisible(false);
-    setCurrentRecord(null);
-  };
+  const tabs = [
+    {
+      label: "Event",
+      value: "event" as EarningType,
+      content: (
+        <EventEarningTable
+          data={activeTab === "event" ? data : []}
+          total={activeTab === "event" ? totalData : 0}
+          page={page}
+          limit={limit}
+          onView={(r) => handleView(r, "event")}
+        />
+      ),
+    },
+    {
+      label: "Gear",
+      value: "gear" as EarningType,
+      content: (
+        <GearEarningTable
+          data={activeTab === "gear" ? data : []}
+          total={activeTab === "gear" ? totalData : 0}
+          page={page}
+          limit={limit}
+          onView={(r) => handleView(r, "gear")}
+        />
+      ),
+    },
+    {
+      label: "Workshop",
+      value: "workshop" as EarningType,
+      content: (
+        <WorkshopEarningTable
+          data={activeTab === "workshop" ? data : []}
+          total={activeTab === "workshop" ? totalData : 0}
+          page={page}
+          limit={limit}
+          onView={(r) => handleView(r, "workshop")}
+        />
+      ),
+    },
+  ];
 
   return (
-    <div className=" bg-primary-color rounded-xl p-4 min-h-[90vh]">
+    <div className="bg-primary-color rounded-xl p-4 min-h-[90vh]">
       <div className="flex justify-between items-center mx-3 py-2 mb-5">
-        <h1 className="text-xl sm:text-2xl lg:text-3xl xl:text-4xl  font-bold mb-10">
-          Earning
-        </h1>
+        <h1 className="text-xl sm:text-2xl lg:text-3xl xl:text-4xl font-bold">Earning</h1>
         <div className="h-fit">
           <SearchInput placeholder="Search ..." />
         </div>
       </div>
 
-      <TransactionTable
-        data={earning}
-        loading={false}
-        showViewModal={showViewUserModal}
-        page={1}
-        total={totalData}
-        limit={limit}
+      <ReusableTabs
+        tabs={tabs}
+        activeTab={activeTab}
+        align="left"
+        tabName="type"
+        resetPage
       />
-      <TransactionViewModal
-        isViewModalVisible={isViewModalVisible}
-        handleCancel={handleCancel}
-        currentRecord={currentRecord}
+
+      <EarningViewModal
+        isVisible={!!selectedRecord}
+        onClose={() => setSelectedRecord(null)}
+        record={selectedRecord}
+        type={modalType}
       />
     </div>
   );

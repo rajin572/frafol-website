@@ -40,6 +40,7 @@ const ProfessionalWorkshopPage = ({
   const router = useRouter();
   const { replace } = router;
 
+
   const [isViewParticipantModalVisible, setIsViewParticipantModalVisible] =
     useState(false);
   const [isAddModalVisible, setIsAddModalVisible] = useState(false);

@@ -1,8 +1,8 @@
 /* eslint-disable jsx-a11y/alt-text */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React from "react";
 import { Document, Page, Text, View, StyleSheet, Image, Font } from "@react-pdf/renderer";
 import { formatDate } from "@/utils/dateFormet";
-import { IGearOrder } from "@/types";
 import { AllImages } from "../../public/assets/AllImages";
 
 Font.register({
@@ -27,18 +27,24 @@ const styles = StyleSheet.create({
   image: { width: 200, height: "auto", objectFit: "cover" },
 });
 
-const InvoiceGearFromClientSide = ({ currentRecord }: { currentRecord: IGearOrder }) => {
-  const gear = currentRecord.gearMarketplaceId;
-  const seller = currentRecord.sellerId;
-  const client = currentRecord.clientId;
+const serviceTypeLabel = (type: string) => {
+  if (type === "photography") return "Photographer";
+  if (type === "videography") return "Videographer";
+  return "Both";
+};
 
-  const gearPrice = gear.price || 0;
-  const shippingPrice = gear.shippingCompany?.price || 0;
-  const totalVatAmount = gear.totalVatAmount || 0;
-  const platformCommission = gear.platformCommission || 0;
-  const mainPrice = gear.mainPrice || 0;
-  const vatPercent = gear.vatAmount || 0;
-  const total = mainPrice + shippingPrice;
+const InvoiceEarningEventClientSide = ({ record }: { record: any }) => {
+  const eventOrder = record.eventOrderId;
+  const provider = record.serviceProviderId;
+  const client = record.userId;
+
+  const price = eventOrder?.price || 0;
+  const priceWithServiceFee = eventOrder?.priceWithServiceFee || 0;
+  const serviceFee = priceWithServiceFee - price;
+  const vatAmount = eventOrder?.vatAmount || 0;
+  const totalPrice = eventOrder?.totalPrice || record.amount || 0;
+  const vatPercent = price > 0 ? Math.round((vatAmount / price) * 100) : 0;
+  const couponDiscount = record.couponDiscount || 0;
 
   return (
     <Document language="sk">
@@ -49,87 +55,71 @@ const InvoiceGearFromClientSide = ({ currentRecord }: { currentRecord: IGearOrde
           <Image src={AllImages.logo.src} style={styles.image} />
           <View style={styles.section}>
             <Text style={styles.text}>
-              <Text style={styles.textBold}>Číslo faktúry / Invoice number:</Text> [{currentRecord.orderId}]
+              <Text style={styles.textBold}>Číslo faktúry / Invoice number:</Text> {record._id}
             </Text>
             <Text style={styles.text}>
-              <Text style={styles.textBold}>Dátum vystavenia / Issue date:</Text> {formatDate(currentRecord.createdAt)}
+              <Text style={styles.textBold}>Dátum vystavenia / Issue date:</Text> {formatDate(record.createdAt)}
             </Text>
             <Text style={styles.text}>
-              <Text style={styles.textBold}>Dátum dodania / Date of service delivery:</Text>{" "}
-              {currentRecord.statusTimestamps?.deliveredAt
-                ? formatDate(currentRecord.statusTimestamps.deliveredAt)
-                : "[dd.mm.yyyy]"}
+              <Text style={styles.textBold}>Dátum dodania / Date of service delivery:</Text> {formatDate(eventOrder?.date)}
             </Text>
           </View>
         </View>
 
         <View style={{ ...styles.headerSection, flexDirection: "column" }}>
-          {/* Supplier — Seller */}
+          {/* Supplier — Professional */}
           <View style={styles.section}>
-            <Text style={styles.subHeader}>DODÁVATEĽ / SUPPLIER (Photographer / Videographer)</Text>
-            <Text style={styles.text}>
-              <Text style={styles.textBold}>Meno / Name:</Text> {seller?.name || "____"}
+            <Text style={styles.subHeader}>
+              DODÁVATEĽ / SUPPLIER ({serviceTypeLabel(eventOrder?.serviceType)})
             </Text>
             <Text style={styles.text}>
-              <Text style={styles.textBold}>Názov firmy / Company name:</Text> {seller?.companyName || "____"}
+              <Text style={styles.textBold}>Meno / Name:</Text> {provider?.name || "____"}
             </Text>
             <Text style={styles.text}>
-              <Text style={styles.textBold}>Adresa sídla / Company address:</Text> {seller?.address || "____"}
+              <Text style={styles.textBold}>Názov firmy / Company name:</Text> {provider?.companyName || "____"}
             </Text>
             <Text style={styles.text}>
-              <Text style={styles.textBold}>IČO / Company ID:</Text> {seller?.ico || "__________"}
+              <Text style={styles.textBold}>Adresa sídla / Company address:</Text> {provider?.address || "____"}
             </Text>
             <Text style={styles.text}>
-              <Text style={styles.textBold}>DIČ / Tax ID (if company):</Text> {seller?.dic || "__________"}
+              <Text style={styles.textBold}>IČO / Company ID:</Text> {provider?.ico || "__________"}
             </Text>
-            {seller?.ic_dph && (
+            <Text style={styles.text}>
+              <Text style={styles.textBold}>DIČ / Tax ID (if company):</Text> {provider?.dic || "__________"}
+            </Text>
+            {provider?.ic_dph && (
               <Text style={styles.text}>
-                <Text style={styles.textBold}>IČ DPH / VAT ID (if VAT payer):</Text> {seller.ic_dph}
+                <Text style={styles.textBold}>IČ DPH / VAT ID (if VAT payer):</Text> {provider.ic_dph}
               </Text>
             )}
           </View>
 
-          {/* Client — Buyer */}
+          {/* Client */}
           <View style={styles.section}>
             <Text style={styles.subHeader}>ODBERATEĽ / CLIENT</Text>
             <Text style={styles.text}>
               <Text style={styles.textBold}>Meno / Name or company name:</Text>{" "}
-              {client?.companyName || client?.name || currentRecord.name || "____"}
+              {client?.companyName || client?.name || "____"}
             </Text>
             <Text style={styles.text}>
-              <Text style={styles.textBold}>Adresa / Address:</Text>{" "}
-              {currentRecord.shippingAddress || "__________"}
+              <Text style={styles.textBold}>Adresa / Address:</Text> {client?.address || "__________"}
             </Text>
-            {currentRecord.loginAsCompany && (
-              <>
-                {currentRecord.ico && (
-                  <Text style={styles.text}>
-                    <Text style={styles.textBold}>IČO / Company ID:</Text> {currentRecord.ico}
-                  </Text>
-                )}
-                {currentRecord.dic && (
-                  <Text style={styles.text}>
-                    <Text style={styles.textBold}>DIČ / Tax ID:</Text> {currentRecord.dic}
-                  </Text>
-                )}
-                {currentRecord.ic_dph && (
-                  <Text style={styles.text}>
-                    <Text style={styles.textBold}>IČ DPH / VAT ID:</Text> {currentRecord.ic_dph}
-                  </Text>
-                )}
-              </>
+            {client?.ico && (
+              <Text style={styles.text}>
+                <Text style={styles.textBold}>IČO / Company ID:</Text> {client.ico}
+              </Text>
+            )}
+            {client?.dic && (
+              <Text style={styles.text}>
+                <Text style={styles.textBold}>DIČ / Tax ID:</Text> {client.dic}
+              </Text>
+            )}
+            {client?.ic_dph && (
+              <Text style={styles.text}>
+                <Text style={styles.textBold}>IČ DPH / VAT ID:</Text> {client.ic_dph}
+              </Text>
             )}
           </View>
-        </View>
-
-        {/* Delivery address */}
-        <View style={{ ...styles.section, marginBottom: 20 }}>
-          <Text style={styles.text}>
-            <Text style={styles.textBold}>Dodacia adresa / Delivery address:</Text>
-          </Text>
-          <Text style={styles.text}>
-            {currentRecord.shippingAddress}, {currentRecord.town}, {currentRecord.postCode}
-          </Text>
         </View>
 
         {/* Table */}
@@ -142,29 +132,31 @@ const InvoiceGearFromClientSide = ({ currentRecord }: { currentRecord: IGearOrde
           </View>
 
           <View style={styles.tableRow}>
-            <Text style={styles.tableCellDark}>{gear.name} / Gear Product</Text>
+            <Text style={styles.tableCellDark}>
+              {serviceTypeLabel(eventOrder?.serviceType)} / Event Service
+            </Text>
             <Text style={styles.tableCellDark}>1 ks/pc</Text>
-            <Text style={styles.tableCellDark}>{gearPrice.toFixed(2)}€</Text>
-            <Text style={styles.tableCellDark}>{gearPrice.toFixed(2)}€</Text>
+            <Text style={styles.tableCellDark}>{price.toFixed(2)}€</Text>
+            <Text style={styles.tableCellDark}>{price.toFixed(2)}€</Text>
           </View>
 
-          {shippingPrice > 0 && (
+          {serviceFee > 0 && (
             <View style={styles.tableRow}>
-              <Text style={styles.tableCellDark}>
-                Doručenie / Shipping ({gear.shippingCompany?.name})
-              </Text>
-              <Text style={styles.tableCellDark}>1 ks / pc</Text>
-              <Text style={styles.tableCellDark}>{shippingPrice.toFixed(2)}€</Text>
-              <Text style={styles.tableCellDark}>{shippingPrice.toFixed(2)}€</Text>
+              <Text style={styles.tableCellDark}>Servisný poplatok / Service fee</Text>
+              <Text style={styles.tableCellDark}>1 ks/pc</Text>
+              <Text style={styles.tableCellDark}>{serviceFee.toFixed(2)}€</Text>
+              <Text style={styles.tableCellDark}>{serviceFee.toFixed(2)}€</Text>
             </View>
           )}
 
-          {platformCommission > 0 && (
+          {couponDiscount > 0 && (
             <View style={styles.tableRow}>
-              <Text style={styles.tableCellDark}>Servisný poplatok / Service fee</Text>
-              <Text style={styles.tableCellDark}>1 ks / pc</Text>
-              <Text style={styles.tableCellDark}>{platformCommission.toFixed(2)}€</Text>
-              <Text style={styles.tableCellDark}>{platformCommission.toFixed(2)}€</Text>
+              <Text style={styles.tableCellDark}>
+                Zľava / Coupon discount{record.couponCode ? ` (${record.couponCode})` : ""}
+              </Text>
+              <Text style={styles.tableCellDark}>1 ks/pc</Text>
+              <Text style={styles.tableCellDark}>- {couponDiscount.toFixed(2)}€</Text>
+              <Text style={styles.tableCellDark}>- {couponDiscount.toFixed(2)}€</Text>
             </View>
           )}
         </View>
@@ -174,18 +166,18 @@ const InvoiceGearFromClientSide = ({ currentRecord }: { currentRecord: IGearOrde
           <Text style={{ ...styles.text, marginBottom: 5 }}>
             <Text style={{ fontWeight: "bold", color: "#000000" }}>MEDZISÚČET / </Text>
             <Text style={{ fontWeight: "bold", color: "#ad2b08" }}>SUBTOTAL: </Text>
-            <Text style={{ fontWeight: "bold", color: "#ad2b08" }}>{mainPrice.toFixed(2)}€</Text>
+            <Text style={{ fontWeight: "bold", color: "#ad2b08" }}>{priceWithServiceFee.toFixed(2)}€</Text>
           </Text>
-          {totalVatAmount > 0 && (
+          {vatAmount > 0 && (
             <Text style={{ ...styles.text, marginBottom: 5 }}>
               <Text style={{ fontWeight: "bold", color: "#000000" }}>DPH ({vatPercent}%) / </Text>
               <Text style={{ fontWeight: "bold", color: "#ad2b08" }}>VAT ({vatPercent}%): </Text>
-              <Text style={{ fontWeight: "bold", color: "#ad2b08" }}>{totalVatAmount.toFixed(2)}€</Text>
+              <Text style={{ fontWeight: "bold", color: "#ad2b08" }}>{vatAmount.toFixed(2)}€</Text>
             </Text>
           )}
           <Text style={{ ...styles.text, backgroundColor: "#ad2b08", color: "white", padding: 8, paddingLeft: 15, paddingRight: 15, marginTop: 5, fontWeight: "bold", fontSize: 12 }}>
             <Text>SPOLU / TOTAL: </Text>
-            <Text>{total.toFixed(2)}€</Text>
+            <Text>{totalPrice.toFixed(2)}€</Text>
           </Text>
         </View>
 
@@ -198,4 +190,4 @@ const InvoiceGearFromClientSide = ({ currentRecord }: { currentRecord: IGearOrde
   );
 };
 
-export default InvoiceGearFromClientSide;
+export default InvoiceEarningEventClientSide;

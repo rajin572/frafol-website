@@ -35,6 +35,7 @@ interface IPendingReview {
     profileImage: string;
   };
   eventOrderId: {
+    title?: string;
     _id: string;
     orderId: string;
     orderType: string;

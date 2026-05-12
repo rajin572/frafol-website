@@ -8,7 +8,7 @@ import { addNewGear } from "@/services/GearService/GearServiceApi";
 import { ICategory } from "@/types";
 import tryCatchWrapper from "@/utils/tryCatchWrapper";
 import { Form, Modal } from "antd";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 
 const GearMarketPlaceAddNewGear = ({
   isAddModalVisible,
@@ -24,6 +24,7 @@ const GearMarketPlaceAddNewGear = ({
   minServiceCharge: number
 }) => {
   const [form] = Form.useForm();
+  const [totalServiceCharge, setTotalServiceCharge] = useState(0);
   const priceValue = Form.useWatch("price", form) || 0;
   const vatAmountValue = Form.useWatch("VATAmount", form) || 0;
 
@@ -34,6 +35,7 @@ const GearMarketPlaceAddNewGear = ({
     const serviceChargeAmmount = Number(priceValue) * serviceChagePercentage;
 
     const totalServiceCharge = serviceChargeAmmount > minServiceCharge ? serviceChargeAmmount : minServiceCharge;
+    setTotalServiceCharge(totalServiceCharge);
     const totalVatAmount = Number(priceValue) * vatAmountPercentage;
 
     const mainPriceValue =
@@ -57,7 +59,10 @@ const GearMarketPlaceAddNewGear = ({
       },
       vatAmount: values.VATAmount || 0,
       extraInformation: values.extraInformation || "",
+      totalVatAmount: Number(values.price) * (values.VATAmount / 100),
+      platformCommission: totalServiceCharge,
     };
+
 
     formData.append("data", JSON.stringify(data));
 

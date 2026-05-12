@@ -4,6 +4,7 @@ import Link from "next/link";
 import { IGear } from "@/types";
 import { getServerUrl } from "@/helpers/config/envConfig";
 import AddToCardButton from "../ui/AddToCardButton";
+import { AllImages } from "../../../public/assets/AllImages";
 
 interface ProductCardProps {
   product: IGear;
@@ -20,7 +21,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
               width={200}
               height={200}
               className="w-full h-72 object-cover hover:scale-105 transform-3d transition-transform duration-300 ease-in-out"
-              src={serverUrl + product?.gallery[0]}
+              src={product?.gallery[0]?.length > 0 ? serverUrl + product?.gallery[0] : AllImages.dummyCover}
               alt="product"
             />
           </div>

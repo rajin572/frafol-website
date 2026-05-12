@@ -26,6 +26,8 @@ const page = async ({
   const totalData = data?.data?.meta?.total;
 
   const workshops: IMyRegisteredWorkshop[] = data?.data?.result || [];
+
+  console.log(workshops)
   return (
     <div>
       <UserWorkshopPage

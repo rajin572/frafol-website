@@ -27,6 +27,8 @@ const ProfessionalWorkshopCard = ({
   const serverUrl = getServerUrl();
   const [expanded, setExpanded] = useState(false);
 
+  console.log(workshop)
+
   return (
     <div className="p-1.5 rounded-xl border border-background-color">
       <div className="relative">

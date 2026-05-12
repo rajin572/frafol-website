@@ -39,6 +39,7 @@ const ProfessionalEditWorkshop = ({
 
   useEffect(() => {
     if (currentRecord) {
+      console.log(currentRecord)
       // Ensure both date and time are properly converted to Dayjs
       const date = currentRecord?.date ? dayjs(currentRecord?.date) : null;
       const time = currentRecord?.time ? dayjs(currentRecord?.time) : null;
@@ -55,7 +56,7 @@ const ProfessionalEditWorkshop = ({
         price: currentRecord?.price,
         mainPrice: currentRecord?.mainPrice,
         description: currentRecord?.description,
-        vatAmount: currentRecord?.vatAmount,
+        vatAmount: currentRecord?.vatPercent,
       });
 
       setSelectedLocation(currentRecord?.locationType);

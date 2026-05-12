@@ -1,8 +1,8 @@
 /* eslint-disable jsx-a11y/alt-text */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React from "react";
 import { Document, Page, Text, View, StyleSheet, Image, Font } from "@react-pdf/renderer";
 import { formatDate } from "@/utils/dateFormet";
-import { IGearOrder } from "@/types";
 import { AllImages } from "../../public/assets/AllImages";
 
 Font.register({
@@ -27,10 +27,12 @@ const styles = StyleSheet.create({
   image: { width: 200, height: "auto", objectFit: "cover" },
 });
 
-const InvoiceGearFromAdminSide = ({ currentRecord }: { currentRecord: IGearOrder }) => {
-  const gear = currentRecord.gearMarketplaceId;
-  const seller = currentRecord.sellerId;
-  const platformCommission = gear.platformCommission || 0;
+const InvoiceWorkshopFromAdminSide = ({ record, professional }: { record: any; professional: any }) => {
+  const workshop = record.workshopId;
+  const price = workshop?.price || 0;
+  const vatAmount = workshop?.vatAmount || 0;
+  const mainPrice = workshop?.mainPrice || 0;
+  const platformCommission = mainPrice - price - vatAmount;
 
   return (
     <Document language="sk">
@@ -41,16 +43,13 @@ const InvoiceGearFromAdminSide = ({ currentRecord }: { currentRecord: IGearOrder
           <Image src={AllImages.logo.src} style={styles.image} />
           <View style={styles.section}>
             <Text style={styles.text}>
-              <Text style={styles.textBold}>Číslo faktúry / Invoice number:</Text> [{currentRecord.orderId}]
+              <Text style={styles.textBold}>Číslo faktúry / Invoice number:</Text> {record.orderId}
             </Text>
             <Text style={styles.text}>
-              <Text style={styles.textBold}>Dátum vystavenia / Issue date:</Text> {formatDate(currentRecord.createdAt)}
+              <Text style={styles.textBold}>Dátum vystavenia / Issue date:</Text> {formatDate(record.createdAt)}
             </Text>
             <Text style={styles.text}>
-              <Text style={styles.textBold}>Dátum dodania / Date of service delivery:</Text>{" "}
-              {currentRecord.statusTimestamps?.deliveredAt
-                ? formatDate(currentRecord.statusTimestamps.deliveredAt)
-                : "[dd.mm.yyyy]"}
+              <Text style={styles.textBold}>Dátum dodania / Date of service delivery:</Text> {formatDate(workshop?.date)}
             </Text>
           </View>
         </View>
@@ -76,52 +75,42 @@ const InvoiceGearFromAdminSide = ({ currentRecord }: { currentRecord: IGearOrder
             </Text>
           </View>
 
-          {/* Client — Seller */}
+          {/* Client — Instructor */}
           <View style={styles.section}>
-            <Text style={styles.subHeader}>ODBERATEĽ / CLIENT (Seller)</Text>
+            <Text style={styles.subHeader}>ODBERATEĽ / CLIENT (Instructor)</Text>
             <Text style={styles.text}>
               <Text style={styles.textBold}>Názov firmy / Company name:</Text>{" "}
-              {seller?.companyName || seller?.name || "____"}
+              {professional?.companyName || professional?.name || "____"}
             </Text>
             <Text style={styles.text}>
-              <Text style={styles.textBold}>Adresa / Address:</Text> {seller?.address || "__________"}
+              <Text style={styles.textBold}>Adresa / Address:</Text> {professional?.address || "__________"}
             </Text>
-            {seller?.ico && (
+            {professional?.ico && (
               <Text style={styles.text}>
-                <Text style={styles.textBold}>IČO / Company ID:</Text> {seller.ico}
+                <Text style={styles.textBold}>IČO / Company ID:</Text> {professional.ico}
               </Text>
             )}
-            {seller?.dic && (
+            {professional?.dic && (
               <Text style={styles.text}>
-                <Text style={styles.textBold}>DIČ / Tax ID:</Text> {seller.dic}
+                <Text style={styles.textBold}>DIČ / Tax ID:</Text> {professional.dic}
               </Text>
             )}
-            {seller?.ic_dph && (
+            {professional?.ic_dph && (
               <Text style={styles.text}>
-                <Text style={styles.textBold}>IČ DPH / VAT ID (if VAT payer):</Text> {seller.ic_dph}
+                <Text style={styles.textBold}>IČ DPH / VAT ID (if VAT payer):</Text> {professional.ic_dph}
               </Text>
             )}
-            <Text style={styles.text}>
-              <Text style={styles.textBold}>Email:</Text> {seller?.email || "____"}
-            </Text>
           </View>
         </View>
 
-        {/* Order details */}
+        {/* Workshop details */}
         <View style={{ ...styles.section, marginBottom: 20 }}>
-          <Text style={styles.subHeader}>DETAILY OBJEDNÁVKY (ORDER DETAILS)</Text>
+          <Text style={styles.subHeader}>DETAILY WORKSHOPU (WORKSHOP DETAILS)</Text>
           <Text style={styles.text}>
-            <Text style={styles.textBold}>Produkt (Product):</Text> {gear.name}
+            <Text style={styles.textBold}>Workshop:</Text> {workshop?.title}
           </Text>
           <Text style={styles.text}>
-            <Text style={styles.textBold}>ID objednávky (Order ID):</Text> {currentRecord.orderId}
-          </Text>
-          <Text style={styles.text}>
-            <Text style={styles.textBold}>Kupujúci (Buyer):</Text> {currentRecord.clientId.name} ({currentRecord.clientId.email})
-          </Text>
-          <Text style={styles.text}>
-            <Text style={styles.textBold}>Dodacia adresa (Shipping Address):</Text>{" "}
-            {currentRecord.shippingAddress}, {currentRecord.town}, {currentRecord.postCode}
+            <Text style={styles.textBold}>Účastník / Participant:</Text> {record.clientId?.name} ({record.clientId?.email})
           </Text>
         </View>
 
@@ -164,4 +153,4 @@ const InvoiceGearFromAdminSide = ({ currentRecord }: { currentRecord: IGearOrder
   );
 };
 
-export default InvoiceGearFromAdminSide;
+export default InvoiceWorkshopFromAdminSide;
