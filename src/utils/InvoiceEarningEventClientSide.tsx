@@ -166,7 +166,7 @@ const InvoiceEarningEventClientSide = ({ record }: { record: any }) => {
           <Text style={{ ...styles.text, marginBottom: 5 }}>
             <Text style={{ fontWeight: "bold", color: "#000000" }}>MEDZISÚČET / </Text>
             <Text style={{ fontWeight: "bold", color: "#ad2b08" }}>SUBTOTAL: </Text>
-            <Text style={{ fontWeight: "bold", color: "#ad2b08" }}>{priceWithServiceFee.toFixed(2)}€</Text>
+            <Text style={{ fontWeight: "bold", color: "#ad2b08" }}>{couponDiscount ? (priceWithServiceFee - couponDiscount).toFixed(2) : priceWithServiceFee.toFixed(2)}€</Text>
           </Text>
           {vatAmount > 0 && (
             <Text style={{ ...styles.text, marginBottom: 5 }}>
@@ -177,7 +177,7 @@ const InvoiceEarningEventClientSide = ({ record }: { record: any }) => {
           )}
           <Text style={{ ...styles.text, backgroundColor: "#ad2b08", color: "white", padding: 8, paddingLeft: 15, paddingRight: 15, marginTop: 5, fontWeight: "bold", fontSize: 12 }}>
             <Text>SPOLU / TOTAL: </Text>
-            <Text>{totalPrice.toFixed(2)}€</Text>
+            <Text>{couponDiscount ? (totalPrice - couponDiscount).toFixed(2) : totalPrice.toFixed(2)}€</Text>
           </Text>
         </View>
 

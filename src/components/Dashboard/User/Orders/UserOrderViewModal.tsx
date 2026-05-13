@@ -34,6 +34,10 @@ const UserOrderViewModal: React.FC<UserOrderViewModalProps> = ({
   const serverUrl = getServerUrl();
   const [descriptionExpanded, setDescriptionExpanded] = useState(false);
 
+  const serviceFeeAmount: number = Number((currentRecord as any)?.priceWithServiceFee) - Number((currentRecord as any)?.price)
+  const couponDiscountAmount: number = (currentRecord as any)?.couponDiscount || 0
+  const effectiveTotalPrice: number = (currentRecord?.totalPrice || 0) - couponDiscountAmount
+
   console.log(currentRecord)
 
   const handleDownload = (currentRecord: IEventOrder) => {
@@ -53,7 +57,6 @@ const UserOrderViewModal: React.FC<UserOrderViewModalProps> = ({
         toast.success("Downloaded successfully!", { id: toastId });
 
       })
-      // eslint-disable-next-line @typescript-eslint/no-unused-vars
       .catch((error: any) => {
         toast.error("Download failed", { id: toastId });
         console.log(error)
@@ -265,18 +268,39 @@ const UserOrderViewModal: React.FC<UserOrderViewModalProps> = ({
           <h4 className="text-base sm:text-lg lg:text-xl xl:text-2xl text-secondary-color font-bold">
             Payment Details
           </h4>
-          {currentRecord?.vatAmount ? (
+          {currentRecord?.totalPrice && (
+            <>
+              <p className="text-sm sm:text-sm lg:text-base xl:text-lg mt-2">
+                <span className="font-semibold">Amount Without Service Fee:</span>{" "}
+                {(currentRecord.totalPrice - serviceFeeAmount).toFixed(2)}€
+              </p>
+              {/* <p className="text-sm sm:text-sm lg:text-base xl:text-lg mt-2">
+                <span className="font-semibold">Service Fee Amount:</span>{" "}
+                {serviceFeeAmount.toFixed(2)}€
+              </p>
+              {couponDiscountAmount > 0 && (
+                <p className="text-sm sm:text-sm lg:text-base xl:text-lg mt-2">
+                  <span className="font-semibold">
+                    Coupon Discount ({(currentRecord as any)?.couponCode} - {couponDiscountAmount}):
+                  </span>{" "}
+                  <span className="text-red-600">-{couponDiscountAmount.toFixed(2)}€</span>
+                </p>
+              )} */}
+            </>
+          )}
+          {/* {currentRecord?.vatAmount ? (
             <p className="text-sm sm:text-sm lg:text-base xl:text-lg mt-2">
               <span className="font-semibold">VAT Amount :</span>{" "}
-              {currentRecord?.vatAmount}€
+              {currentRecord?.vatAmount.toFixed(2)}€
             </p>
-          ) : null}
+          ) : null} */}
           <p className="text-sm sm:text-sm lg:text-base xl:text-lg mt-2">
             <span className="font-semibold">
               {currentRecord?.totalPrice ? "Total Amount" : "Budget Range"} :
             </span>{" "}
-            {currentRecord?.totalPrice?.toFixed(2) ||
-              budgetLabels[currentRecord?.budget_range as string] ||
+            {currentRecord?.totalPrice
+              ? effectiveTotalPrice.toFixed(2)
+              : budgetLabels[currentRecord?.budget_range as string] ||
               currentRecord?.budget_range}€
           </p>
           {/* {currentRecord?.paymentStatus && (

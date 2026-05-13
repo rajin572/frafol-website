@@ -107,7 +107,7 @@ const ProfessionalEventOrderTable: React.FC<
       render: (text: string, record: IEventOrder) => (
         <div>
           {text ? (
-            <p className="capitalize text-center">{text}€</p>
+            <p className="capitalize text-center">{record?.couponDiscount ? Number(text) - record?.couponDiscount : text}€</p>
           ) : (
             <p className="capitalize">
               {budgetLabels[record?.budget_range as string] ||

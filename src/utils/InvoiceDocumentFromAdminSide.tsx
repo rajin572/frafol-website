@@ -101,6 +101,8 @@ const InvoiceDocumentFromAdminSide = ({
 }) => {
   const subtotal = currentRecord.price || 0;
   const serviceFee = (currentRecord.priceWithServiceFee || 0) - subtotal;
+  const couponDiscountAmount = currentRecord.couponDiscount || 0;
+  const effectiveServiceFee = serviceFee - couponDiscountAmount;
 
   const clientIsCompany = !!(currentRecord.serviceProviderId?.ico);
 
@@ -206,6 +208,20 @@ const InvoiceDocumentFromAdminSide = ({
             <Text style={styles.tableCellDark}>{serviceFee.toFixed(2)}€</Text>
             <Text style={styles.tableCellDark}>{serviceFee.toFixed(2)}€</Text>
           </View>
+
+          {/* Coupon Discount Row */}
+          {couponDiscountAmount > 0 && (
+            <View style={styles.tableRow}>
+              <Text style={styles.tableCellDark}>
+                Zľavový kupón / Coupon discount ({currentRecord.couponCode} - {couponDiscountAmount})
+              </Text>
+              <Text style={styles.tableCellDark}>
+                1 ks / <Text style={{ color: "#ad2b08" }}>pc</Text>
+              </Text>
+              <Text style={{ ...styles.tableCellDark, color: "#16a34a" }}>-{couponDiscountAmount.toFixed(2)}€</Text>
+              <Text style={{ ...styles.tableCellDark, color: "#16a34a" }}>-{couponDiscountAmount.toFixed(2)}€</Text>
+            </View>
+          )}
         </View>
 
         {/* Subtotal and Total */}
@@ -214,7 +230,7 @@ const InvoiceDocumentFromAdminSide = ({
             <Text style={{ fontWeight: "bold", color: "#000000" }}>MEDZISÚČET / </Text>
             <Text style={{ fontWeight: "bold", color: "#ad2b08" }}>SUBTOTAL: </Text>
             <Text style={{ fontWeight: "bold", color: "#ad2b08" }}>
-              {serviceFee.toFixed(2)}€
+              {effectiveServiceFee.toFixed(2)}€
             </Text>
           </Text>
           <Text
@@ -231,7 +247,7 @@ const InvoiceDocumentFromAdminSide = ({
             }}
           >
             <Text>SPOLU / TOTAL: </Text>
-            <Text>{serviceFee.toFixed(2)}€</Text>
+            <Text>{effectiveServiceFee.toFixed(2)}€</Text>
           </Text>
         </View>
 

@@ -102,6 +102,8 @@ const InvoiceDocumentFromClientSide = ({
   const serviceFee = (currentRecord.priceWithServiceFee || 0) - subtotal;
   const vatAmount = currentRecord.vatAmount || 0;
   const vatPercentage = subtotal > 0 ? Math.round((vatAmount / subtotal) * 100) : 0;
+  const couponDiscountAmount = currentRecord.couponDiscount || 0;
+  const effectiveTotalPrice = (currentRecord.totalPrice as number || 0) - couponDiscountAmount;
 
   return (
     <Document language="sk">
@@ -228,6 +230,18 @@ const InvoiceDocumentFromClientSide = ({
               <Text style={styles.tableCellDark}>{serviceFee.toFixed(2)}€</Text>
             </View>
           )}
+
+          {/* Coupon Discount */}
+          {couponDiscountAmount > 0 && (
+            <View style={styles.tableRow}>
+              <Text style={styles.tableCellDark}>
+                Zľavový kupón / Coupon discount ({currentRecord.couponCode} - {couponDiscountAmount})
+              </Text>
+              <Text style={styles.tableCellDark}>1 ks / pc</Text>
+              <Text style={{ ...styles.tableCellDark, color: "#16a34a" }}>-{couponDiscountAmount.toFixed(2)}€</Text>
+              <Text style={{ ...styles.tableCellDark, color: "#16a34a" }}>-{couponDiscountAmount.toFixed(2)}€</Text>
+            </View>
+          )}
         </View>
 
         {/* Subtotal and Total */}
@@ -236,7 +250,7 @@ const InvoiceDocumentFromClientSide = ({
             <Text style={{ fontWeight: "bold", color: "#000000" }}>MEDZISÚČET / </Text>
             <Text style={{ fontWeight: "bold", color: "#ad2b08" }}>SUBTOTAL: </Text>
             <Text style={{ fontWeight: "bold", color: "#ad2b08" }}>
-              {(currentRecord.priceWithServiceFee || subtotal).toFixed(2)}€
+              {((currentRecord.priceWithServiceFee || subtotal) - couponDiscountAmount).toFixed(2)}€
             </Text>
           </Text>
           <Text style={{ ...styles.text, marginBottom: 5 }}>
@@ -258,7 +272,7 @@ const InvoiceDocumentFromClientSide = ({
             fontSize: 12
           }}>
             <Text>SPOLU / TOTAL: </Text>
-            <Text>{(currentRecord.totalPrice as number).toFixed(2)}€</Text>
+            <Text>{effectiveTotalPrice.toFixed(2)}€</Text>
           </Text>
         </View>
 

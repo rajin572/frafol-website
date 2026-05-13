@@ -195,7 +195,7 @@ const UserOrderCard = ({
               {data?.totalPrice ? (
                 <div className={`${couponStatus && "w-40 text-end"}`}>
                   <p className="text-base sm:text-lg lg:text-xl font-semibold">
-                    {data?.totalPrice?.toFixed(2)}€
+                    {data?.couponDiscount ? (data?.totalPrice - data?.couponDiscount)?.toFixed(2) : data?.totalPrice?.toFixed(2)}€
                   </p>
                   {
                     couponStatus &&

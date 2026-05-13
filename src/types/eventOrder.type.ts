@@ -130,6 +130,9 @@ interface IEventOrder {
   createdAt: string;
   updatedAt: string;
   cancelRequestedBy?: string;
+  couponDiscount?: number;
+  couponCode?: string;
+  paymentId?: string;
 }
 
 export type { ICreateEventOrder, IEventOrder };

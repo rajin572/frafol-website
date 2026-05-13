@@ -115,7 +115,8 @@ const ProfessionalEventViewModal: React.FC<ProfessionalEventViewModalProps> = ({
 
 
   const serviceFeeAmount: number = Number((currentRecord as any)?.priceWithServiceFee) - Number((currentRecord as any)?.price)
-  console.log(currentRecord?.priceWithServiceFee, currentRecord?.price, serviceFeeAmount)
+  const couponDiscountAmount: number = currentRecord?.couponDiscount || 0
+  const effectiveTotalPrice: number = (currentRecord?.totalPrice || 0) - couponDiscountAmount
   return (
     <Modal
       open={isViewModalVisible}
@@ -336,21 +337,30 @@ const ProfessionalEventViewModal: React.FC<ProfessionalEventViewModalProps> = ({
                   </span>{" "}
                   {serviceFeeAmount?.toFixed(2)}€
                 </p>
+                {couponDiscountAmount > 0 && (
+                  <p className="text-sm sm:text-sm lg:text-base xl:text-lg mt-2">
+                    <span className="font-semibold">
+                      Coupon Discount ({currentRecord?.couponCode} - {couponDiscountAmount}):
+                    </span>{" "}
+                    <span className="text-red-600">-{couponDiscountAmount.toFixed(2)}€</span>
+                  </p>
+                )}
               </>
             )
           }
-          {currentRecord?.vatAmount ? (
+          {/* {currentRecord?.vatAmount ? (
             <p className="text-sm sm:text-sm lg:text-base xl:text-lg mt-2">
               <span className="font-semibold">VAT Amount :</span>{" "}
               {currentRecord?.vatAmount?.toFixed(2)}€
             </p>
-          ) : null}
+          ) : null} */}
           <p className="text-sm sm:text-sm lg:text-base xl:text-lg mt-2">
             <span className="font-semibold">
               {currentRecord?.totalPrice ? "Total Amount" : "Budget Range"} :
             </span>{" "}
-            {currentRecord?.totalPrice?.toFixed(2) ||
-              budgetLabels[currentRecord?.budget_range as string] ||
+            {currentRecord?.totalPrice
+              ? effectiveTotalPrice.toFixed(2)
+              : budgetLabels[currentRecord?.budget_range as string] ||
               currentRecord?.budget_range}€
           </p>
           {/* {currentRecord?.paymentStatus ? (
