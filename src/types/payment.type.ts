@@ -56,6 +56,7 @@ interface Workshop {
 interface EventOrder {
   _id: string;
   orderId: string;
+  title: string;
   packageId: { title: string };
   orderType: "custom" | "normal" | string;
   serviceType: string;

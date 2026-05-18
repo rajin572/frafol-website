@@ -13,6 +13,7 @@ const PaymenViewModal: React.FC<PaymenViewModalProps> = ({
   handleCancel,
   currentRecord,
 }) => {
+  console.log(currentRecord)
   return (
     <Modal
       open={isViewModalVisible}

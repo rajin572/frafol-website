@@ -16,8 +16,8 @@ const PaymentsCard = ({
       <div>
         <h3 className="text-sm sm:text-base lg:text-lg xl:text-xl font-bold text-secondary-color mb-1">
           {data.paymentType === "event"
-            ? data.eventOrderId?.orderType === "custom"
-              ? "Custom Order"
+            ? data.eventOrderId?.title
+              ? data.eventOrderId?.title
               : data?.eventOrderId?.packageId?.title || "Event"
             : data.paymentType === "gear"
               ? data?.gearOrderIds?.map((gear) => gear?.gearMarketplaceId?.name)
