@@ -34,7 +34,7 @@ const ProfessionalServiceBookingModal: React.FC<
   ProfessionalServiceBookingModalProps
 > = ({ isModalVisible, handleCancel, packageData, myData, professionalUser }) => {
   const serverUrl = getServerUrl();
-  console.log(myData)
+  console.log("User Data:", myData);
   const [form] = Form.useForm();
   const [selectedDate, setSelectedDate] = useState<Dayjs | null>(null);
   const [type, setType] = useState<"user" | "company">("user");
@@ -49,9 +49,9 @@ const ProfessionalServiceBookingModal: React.FC<
       town: myData?.town,
       zipCode: myData?.zipCode,
       country: myData?.country,
-      ICO: myData?.ico,
-      DIC: myData?.dic,
-      IC_DPH: myData?.ic_dph,
+      ico: myData?.ico,
+      dic: myData?.dic,
+      ic_dph: myData?.ic_dph,
     });
   }, [form, myData]);
 
@@ -73,9 +73,9 @@ const ProfessionalServiceBookingModal: React.FC<
 
       companyName: values.companyName,
 
-      ICO: values.ICO,
-      DIC: values.DIC,
-      IC_DPH: values.IC_DPH || "",
+      ICO: values.ico,
+      DIC: values.dic,
+      IC_DPH: values.ic_dph || "",
     };
     const res = await tryCatchWrapper(
       createEventOrder,

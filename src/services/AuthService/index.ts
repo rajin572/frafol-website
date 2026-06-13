@@ -75,9 +75,9 @@ export const resendOtp = async (
     body: ResendOtpBody;
     params?: any;
   } = {
-    body: {},
-    params: {},
-  }
+      body: {},
+      params: {},
+    }
 ) => {
   try {
     const res = await fetch(

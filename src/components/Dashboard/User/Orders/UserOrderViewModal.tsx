@@ -221,7 +221,7 @@ const UserOrderViewModal: React.FC<UserOrderViewModalProps> = ({
                   <span className="text-secondary-color">{currentRecord?.country}</span>
                 </p>
               )}
-              {currentRecord?.ICO && (
+              {/* {currentRecord?.ICO && (
                 <p className="text-sm font-semibold">
                   ICO :{" "}
                   <span className="text-secondary-color">{currentRecord?.ICO}</span>
@@ -238,7 +238,7 @@ const UserOrderViewModal: React.FC<UserOrderViewModalProps> = ({
                   IC DPH :{" "}
                   <span className="text-secondary-color">{currentRecord?.IC_DPH}</span>
                 </p>
-              )}
+              )} */}
             </div>
           </div>
         )}

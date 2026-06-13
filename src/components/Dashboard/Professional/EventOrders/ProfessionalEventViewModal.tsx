@@ -206,7 +206,7 @@ const ProfessionalEventViewModal: React.FC<ProfessionalEventViewModalProps> = ({
               Email :{" "}
               <span className="text-secondary-color">{currentRecord?.userId?.email}</span>
             </p>
-          ) : null}
+          ) : null} */}
           {currentRecord?.streetAddress ? (
             <p className="text-sm font-semibold">
               Street Address :{" "}
@@ -231,7 +231,7 @@ const ProfessionalEventViewModal: React.FC<ProfessionalEventViewModalProps> = ({
               <span className="text-secondary-color">{currentRecord?.country}</span>
             </p>
           ) : null}
-          {currentRecord?.ICO ? (
+          {/* {currentRecord?.ICO ? (
             <p className="text-sm font-semibold">
               ICO :{" "}
               <span className="text-secondary-color">{currentRecord?.ICO}</span>

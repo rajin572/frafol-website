@@ -7,10 +7,10 @@ export const fetchWithAuth = async (url: string, options: RequestInit = {}) => {
   try {
     const accessToken = await getAuthToken();
 
-    // Add the Authorization header to the request
+    // Add the Authorization header only when a token exists
     const headers = {
       ...options.headers,
-      Authorization: `${accessToken}`,
+      ...(accessToken ? { Authorization: `${accessToken}` } : {}),
     };
 
 

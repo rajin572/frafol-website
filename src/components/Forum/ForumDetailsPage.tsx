@@ -84,9 +84,11 @@ const ForumDetailsPage = ({
               alt="user"
               className="w-full lg:w-1/2 mx-auto h-auto object-cover rounded-lg mb-10"
             />
-            <div
-              dangerouslySetInnerHTML={{ __html: communityPosts?.text }}
-            ></div>
+            {communityPosts?.text && (
+              <div
+                dangerouslySetInnerHTML={{ __html: communityPosts?.text }}
+              ></div>
+            )}
           </div>{" "}
         </div>
       </div>

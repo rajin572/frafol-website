@@ -19,9 +19,9 @@ interface ICreateEventOrder {
   price?: number; // Optional: Only for 'custom' orders, and needed if company is involved
   deliveryDate?: string; // Optional: Only for 'custom' orders with a company
   companyName?: string; // Optional: Only for 'custom' orders with a company
-  ICO?: string; // Optional: Only for 'custom' orders with a company
-  DIC?: string; // Optional: Only for 'custom' orders with a company
-  IC_DPH?: string; // Optional: Only for 'custom' orders with a company
+  ico?: string; // Optional: Only for 'custom' orders with a company
+  dic?: string; // Optional: Only for 'custom' orders with a company
+  ic_dph?: string; // Optional: Only for 'custom' orders with a company
   description?: string;
 }
 
