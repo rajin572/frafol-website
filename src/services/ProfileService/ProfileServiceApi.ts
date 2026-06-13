@@ -58,12 +58,16 @@ export const updateIntroVIdeo = async (
       method: "POST",
       body: req.body as any,
     });
+    if (!res.ok) {
+      const text = await res.text();
+      console.error(`Upload failed [${res.status}]:`, text.slice(0, 300));
+      return { success: false, message: `Upload failed with status ${res.status}` };
+    }
     const result = await res.json();
     updateTag(TagTypes.profile);
     return result;
   } catch (error: any) {
     console.log(error);
-
     return Error(error);
   }
 };

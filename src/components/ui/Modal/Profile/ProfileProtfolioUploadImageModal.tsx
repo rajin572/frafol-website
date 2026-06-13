@@ -53,7 +53,7 @@ const ProfileProtfolioUploadImageModal: React.FC<
         { body: formData },
         {
           toastLoadingMessage: "Uploading Intro Video...",
-          toastSuccessMessage: "Gallery updated successfully!",
+          toastSuccessMessage: "Intro Video updated successfully!",
           toastErrorMessage: "Something went wrong! Please try again.",
         }
       );
@@ -70,8 +70,8 @@ const ProfileProtfolioUploadImageModal: React.FC<
         updateBannerImage,
         { body: formData },
         {
-          toastLoadingMessage: "Uploading Intro Video...",
-          toastSuccessMessage: "Gallery updated successfully!",
+          toastLoadingMessage: "Uploading Image...",
+          toastSuccessMessage: "Banner updated successfully!",
           toastErrorMessage: "Something went wrong! Please try again.",
         }
       );
@@ -109,7 +109,7 @@ const ProfileProtfolioUploadImageModal: React.FC<
         <ReusableForm form={form} handleFinish={onSubmit}>
           <ReuseUpload
             name="image"
-            buttonText={type === "video" ? "Upload Video (Max 100mb)" : "Upload Image Max 10 Images"}
+            buttonText={type === "video" ? "Upload Video (Max 100mb)" : "Upload Max 10"}
             label={type === "video" ? "Video" : "Image"}
             labelClassName="!font-semibold"
             maxCount={type === "video" ? 1 : 10}
