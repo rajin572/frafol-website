@@ -131,7 +131,7 @@ const ReusableTabs = <T extends string>({
       <div className={`w-full flex ${justifyClass}`}>
         <div
           ref={tabRowRef}
-          className={`scrollbar-thin scrollbar-thumb-[#a13200] scrollbar-track-gray-200 hover:scrollbar-thumb-[#d14200] ${variant === "bordered" ? " p-1 rounded-xl flex gap-2 relative overflow-x-auto" : "bg-[#f3f3f3] p-1 rounded-xl flex gap-2 relative overflow-x-auto"}`}
+          className={`max-w-full scrollbar-thin scrollbar-thumb-[#a13200] scrollbar-track-gray-200 hover:scrollbar-thumb-[#d14200] ${variant === "bordered" ? " p-1 rounded-xl flex gap-2 relative overflow-x-auto" : "bg-[#f3f3f3] p-1 rounded-xl flex gap-2 relative overflow-x-auto"}`}
         >
           {tabs.map((tab) => (
             <button

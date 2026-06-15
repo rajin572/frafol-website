@@ -2,7 +2,7 @@
 import React from "react";
 import FeaturedProfessionalsCard from "../shared/FeaturedProfessionalsCard";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { EffectFade, Autoplay, Pagination } from "swiper/modules";
+import { EffectFade, Pagination } from "swiper/modules";
 
 // Import Swiper styles
 import "swiper/css";
@@ -16,11 +16,6 @@ const FeaturedProfessionalSlider = ({ data }: { data: IProfessional[] }) => {
       slidesPerView={1}
       spaceBetween={20}
       loop={true}
-      autoplay={{
-        delay: 2500,
-        disableOnInteraction: false,
-        pauseOnMouseEnter: true,
-      }}
       pagination={{ clickable: true }}
       breakpoints={{
         540: {
@@ -40,7 +35,7 @@ const FeaturedProfessionalSlider = ({ data }: { data: IProfessional[] }) => {
           spaceBetween: 20,
         },
       }}
-      modules={[EffectFade, Pagination, Autoplay]}
+      modules={[EffectFade, Pagination]}
       className="mySwiper pb-10!"
     >
       {data?.map((item, index) => (

@@ -98,8 +98,13 @@ const FeaturedProfessionalsCardSlider = ({ item }: { item: IProfessional }) => {
     const hasMultipleItems = displayGallery.length > 1;
     const isCurrentMediaVideo = currentMedia.type === "video";
 
-
-    console.log(currentMedia)
+    // Poster shown instantly while the (heavy) video defers downloading until hover/play
+    const posterCandidate =
+        displayGallery.find((m) => m.type === "image")?.src ?? item?.profileImage;
+    const posterSrc =
+        typeof posterCandidate === "string"
+            ? (getImageSrc(posterCandidate) as string)
+            : undefined;
 
     const handleNext = (e: React.MouseEvent) => {
         e.preventDefault();
@@ -204,8 +209,8 @@ const FeaturedProfessionalsCardSlider = ({ item }: { item: IProfessional }) => {
                     src={getImageSrc(currentMedia.src)}
                     alt={currentMedia.alt}
                     sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                    priority={false}
-                    loading="lazy"
+                    fetchPriority="high"
+                    preload={true}
                     className="w-full !max-h-[250px] sm:!max-h-[250px] lg:!max-h-[300px] aspect-video object-cover rounded-tl-lg rounded-tr-lg "
                 />
             ) : (
@@ -215,6 +220,8 @@ const FeaturedProfessionalsCardSlider = ({ item }: { item: IProfessional }) => {
                     muted={isVideoMuted}
                     loop
                     playsInline
+                    preload="none"
+                    poster={posterSrc}
                     onPlay={() => setIsVideoPlaying(true)}
                     onPause={() => setIsVideoPlaying(false)}
                     onError={() => {

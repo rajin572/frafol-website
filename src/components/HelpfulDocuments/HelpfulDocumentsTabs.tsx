@@ -55,13 +55,13 @@ const HelpfulDocumentsTabs = () => {
   >("creativeDocuments");
   return (
     <div>
-      <div className="bg-background-color p-1.5 rounded-lg w-fit mx-auto">
-        <div className="flex justify-center items-center gap-2 font-semibold text-sm sm:text-sm lg:text-base xl:text-lg">
+      <div className="bg-background-color p-1.5 rounded-lg w-fit max-w-full mx-auto overflow-x-auto scrollbar-thin scrollbar-thumb-[#a13200] scrollbar-track-gray-200 hover:scrollbar-thumb-[#d14200]">
+        <div className="flex items-center gap-2 w-max font-semibold text-sm sm:text-sm lg:text-base xl:text-lg">
           <button
             className={`${activeTab === "creativeDocuments"
                 ? "bg-secondary-color text-white"
                 : "bg-transparent text-secondary-color"
-              } px-3 py-1 cursor-pointer rounded-lg transition-all duration-500 relative group min-w-[200px]`}
+              } px-3 py-1 cursor-pointer rounded-lg transition-all duration-500 relative group min-w-[200px] shrink-0`}
             onClick={() => setActiveTab("creativeDocuments")}
           >
             Creative Documents
@@ -70,7 +70,7 @@ const HelpfulDocumentsTabs = () => {
             className={`${activeTab === "legalDocument"
                 ? "bg-secondary-color text-white"
                 : "bg-transparent text-secondary-color"
-              } px-3 py-1 cursor-pointer rounded-lg transition-all duration-500 relative group min-w-[200px]`}
+              } px-3 py-1 cursor-pointer rounded-lg transition-all duration-500 relative group min-w-[200px] shrink-0`}
             onClick={() => setActiveTab("legalDocument")}
           >
             Legal Document
