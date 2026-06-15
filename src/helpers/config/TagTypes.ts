@@ -19,6 +19,7 @@ const TagTypes = {
   insurange: "INSURANGE",
   subscriptionOrder: "SUBSCRIPTION_ORDER",
   town: "TOWN",
+  notification: "NOTIFICATION",
 };
 
 export default TagTypes;

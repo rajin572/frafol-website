@@ -5,6 +5,7 @@ import { AllImages } from "../../../../../public/assets/AllImages";
 import { IGearOrder } from "@/types";
 import { getServerUrl } from "@/helpers/config/envConfig";
 import { formatDate } from "@/utils/dateFormet";
+import Link from "next/link";
 
 const UserGearOrderCard = ({
   activeTab,
@@ -36,7 +37,13 @@ const UserGearOrderCard = ({
           {data?.gearMarketplaceId?.name || "Product Name"}
         </h3>
         <h4 className="text-sm sm:text-sm lg:text-base xl:text-lg font-bold mb-1">
-          Seller: {data?.sellerId?.name || "Unknown Seller"}
+          Seller:{" "}
+          <Link
+            href={`/professionals/${data?.sellerId?._id}`}
+            className="text-secondary-color text-sm sm:text-sm lg:text-base font-bold cursor-pointer"
+          >
+            {data?.sellerId?.name || "Unknown Seller"}
+          </Link>
         </h4>
         <p className="text-sm sm:text-sm lg:text-base text-gray-700 capitalize">
           Condition : {data?.gearMarketplaceId?.condition || "N/A"}

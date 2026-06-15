@@ -27,6 +27,7 @@ interface IUser {
   name: string;
   sureName: string;
   profileImage: string;
+  role: string;
 }
 
 export interface IReply {

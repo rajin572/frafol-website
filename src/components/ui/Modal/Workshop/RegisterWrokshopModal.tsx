@@ -151,9 +151,18 @@ const RegisterWrokshopModal: React.FC<RegisterWrokshopModalProps<any>> = ({
                                 alt={currentRecord?.authorId?.name || "Profile Image"}
                                 className="w-8 h-8 object-cover rounded-full "
                             />
-                            <p className="text-sm sm:text-sm lg:text-base font-bold">
-                                {currentRecord?.authorId?.name}
-                            </p>
+                            {
+                                currentRecord?.authorId?.role === "photographer" || currentRecord?.authorId?.role === "both" || currentRecord?.authorId?.role === "videographer" ? (
+                                    <Link href={`/professionals/${currentRecord?.authorId?._id}`} className="!text-secondary-color text-sm sm:text-sm lg:text-base font-bold cursor-pointer">
+
+                                        <p className="text-sm sm:text-sm lg:text-base font-bold">
+                                            {currentRecord?.authorId?.name}
+                                        </p>
+                                    </Link>
+                                ) : <p className="text-sm sm:text-sm lg:text-base font-bold">
+                                    {currentRecord?.authorId?.name}
+                                </p>
+                            }
                         </div>
                         <div className="flex items-center gap-2 mt-2">
                             <IoCalendarOutline className="text-secondary-color text-sm sm:text-base lg:text-lg" />

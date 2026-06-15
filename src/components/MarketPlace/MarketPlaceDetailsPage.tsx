@@ -3,6 +3,7 @@ import ProductDetailAccordion from "../ui/ProductDetailAccordion";
 import MarketPlaceImageTab from "./MarketPlaceImageTab";
 import { IGear } from "@/types";
 import AddToCardButton from "../ui/AddToCardButton";
+import Link from "next/link";
 
 const MarketPlaceDetailsPage = ({ data }: { data: IGear }) => {
   const generalData = [
@@ -39,7 +40,14 @@ const MarketPlaceDetailsPage = ({ data }: { data: IGear }) => {
           {data?.description}
         </p>
         <p className="text-sm sm:text-sm md:text-base lg:text-lg xl:text-xl font-semibold mt-4">
-          Seller: <span className="font-bold"> {data?.authorId?.name}</span>
+          Seller:{" "}
+          <Link
+            href={`/professionals/${data?.authorId?._id}`}
+            className="text-secondary-color text-sm sm:text-sm lg:text-base font-bold cursor-pointer"
+          >
+            {" "}
+            {data?.authorId?.name}
+          </Link>
         </p>
         <p className="text-sm sm:text-sm md:text-base lg:text-lg xl:text-xl font-semibold mt-4">
           Condition:{" "}

@@ -23,6 +23,7 @@ import { toast } from "sonner";
 import ApplyCouponOption from "@/components/shared/ApplyCouponOption";
 import { useState } from "react";
 import { useGetUserData } from "@/context/useGetUserData";
+import { TbBubbleText } from "react-icons/tb";
 
 const UserOrderCard = ({
   activeTab,
@@ -81,7 +82,7 @@ const UserOrderCard = ({
   };
 
   const extensionLength = data?.extensionRequests?.length;
-
+  console.log(data)
   return (
     <div
       className={`p-4 rounded-md border border-[#E1E1E1] shadow-xs hover:shadow-md transition-all duration-200`}
@@ -156,20 +157,30 @@ const UserOrderCard = ({
         {activeTab === "extension" && (
           <div className="my-5">
             {" "}
-            <p className="text-sm sm:text-sm lg:text-base font-bold text-secondary-color flex items-start gap-2 my-1">
-              <div className="flex items-center text-nowrap gap-1">
+            <div className="text-sm sm:text-sm lg:text-base font-bold text-secondary-color flex items-start gap-2 my-1">
+              <p className="flex items-center text-nowrap gap-1">
                 <FaClock /> <span>Delivery Date : </span>
-              </div>
+              </p>
               {formatDate(data?.deliveryDate)}
-            </p>
-            <p className="text-sm sm:text-sm lg:text-base font-bold text-green-800 flex items-start gap-2 my-1">
-              <div className="flex items-center text-nowrap gap-1">
+            </div>
+            <div className="text-sm sm:text-sm lg:text-base font-bold text-green-800 flex items-start gap-2 my-1">
+              <p className="flex items-center text-nowrap gap-1">
                 <FaClock /> <span>Extended Date : </span>
-              </div>
+              </p>
               {formatDate(
                 data?.extensionRequests?.[extensionLength - 1]?.newDeliveryDate
               )}
-            </p>
+            </div>
+            <div className=" mt-5 bg-secondary-color/10 p-2 rounded text-sm sm:text-sm lg:text-base gap-2 my-1">
+              <p className="flex items-center text-nowrap gap-1 font-bold">
+                <TbBubbleText /> <span>Extension Reason : </span>
+              </p>
+              <p className="mt-1 px-4 text-base-color/80">
+
+                {data?.extensionRequests?.find((req) => req.status === "pending")?.reason}
+
+              </p>
+            </div>
           </div>
         )}
         {activeTab === "cancelRequest" && (

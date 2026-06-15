@@ -21,7 +21,11 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
               width={200}
               height={200}
               className="w-full h-72 object-cover hover:scale-105 transform-3d transition-transform duration-300 ease-in-out"
-              src={product?.gallery[0]?.length > 0 ? serverUrl + product?.gallery[0] : AllImages.dummyCover}
+              src={
+                product?.gallery[0]?.length > 0
+                  ? serverUrl + product?.gallery[0]
+                  : AllImages.dummyCover
+              }
               alt="product"
             />
           </div>
@@ -49,7 +53,12 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
             </p>
             <p className=" mb-2">
               Seller:{" "}
-              <span className="font-medium">{product?.authorId?.name}</span>
+              <Link
+                href={`/professionals/${product?.authorId?._id}`}
+                className="text-secondary-color text-sm sm:text-sm lg:text-base font-bold cursor-pointer"
+              >
+                {product?.authorId?.name}
+              </Link>
             </p>
             <p className=" mb-2">
               Condition:{" "}

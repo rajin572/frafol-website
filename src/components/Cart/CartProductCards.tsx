@@ -51,9 +51,11 @@ const CartCard = ({ product }: { product: IGear }) => {
             <p className="text-sm sm:text-sm lg:text-base font-semibold">
               Seller:
             </p>
-            <p className="text-sm sm:text-sm lg:text-base">
-              {product?.authorId?.name}
-            </p>
+            <Link href={`/professionals/${product?.authorId?._id}`} className="text-secondary-color text-sm sm:text-sm lg:text-base font-bold cursor-pointer">
+              <p className="text-sm sm:text-sm lg:text-base">
+                {product?.authorId?.name}
+              </p>
+            </Link>
           </div>
           <h2 className="text-sm sm:text-sm lg:text-base mb-2">
             Price: <span className="font-semibold">{product?.mainPrice?.toFixed(2)}€</span>

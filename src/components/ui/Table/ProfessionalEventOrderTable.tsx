@@ -40,7 +40,6 @@ const ProfessionalEventOrderTable: React.FC<
       key: "userId",
       render: (_: unknown, record: IEventOrder) =>
         record?.companyName || record?.name || record?.userId?.name,
-      fixed: "left",
     },
     {
       title: "Service Type",

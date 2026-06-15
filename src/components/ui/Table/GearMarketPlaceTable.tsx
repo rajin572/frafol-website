@@ -38,7 +38,6 @@ const GearMarketPlaceTable: React.FC<GearMarketPlaceTableProps> = ({
       key: "_id",
       render: (_: unknown, __: unknown, index: number) =>
         page * limit - limit + index + 1,
-      fixed: "left",
     },
     {
       title: "Item Image",
@@ -53,13 +52,11 @@ const GearMarketPlaceTable: React.FC<GearMarketPlaceTableProps> = ({
           className="rounded w-10 h-10 object-cover"
         />
       ),
-      fixed: "left",
     },
     {
       title: "Item Name",
       dataIndex: "name",
       key: "name",
-      fixed: "left",
     },
     {
       title: "Item Category",
@@ -121,19 +118,18 @@ const GearMarketPlaceTable: React.FC<GearMarketPlaceTableProps> = ({
       key: "approvalStatus",
       render: (status: string) => (
         <span
-          className={`text-sm font-semibold capitalize ${
-            status === "approved"
+          className={`text-sm font-semibold capitalize ${status === "approved"
               ? "text-green-600"
               : status === "cancelled"
-              ? "text-red-500"
-              : "text-yellow-500"
-          }`}
+                ? "text-red-500"
+                : "text-yellow-500"
+            }`}
         >
           {status === "approved"
             ? "Approved"
             : status === "cancelled"
-            ? "Rejected"
-            : "Pending"}
+              ? "Rejected"
+              : "Pending"}
         </span>
       ),
     },

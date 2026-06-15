@@ -29,7 +29,6 @@ const GearOrderTable: React.FC<GearOrderTableProps> = ({
       title: "Order ID",
       dataIndex: "orderId",
       key: "orderId",
-      fixed: "left",
     },
     {
       title: "Client Name",

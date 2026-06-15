@@ -20,6 +20,11 @@ export const formatDate = (date: string | Date | undefined): string => {
 
   return messageDate.format("DD / MM / YYYY"); // Fixed: used "DD / MM / YYYY"
 };
+export const formatDateByYearMonthDate = (date: string | Date | undefined): string => {
+  const messageDate = dayjs(date);
+
+  return messageDate.format("YYYY-MM-DD"); // Fixed: used "DD / MM / YYYY"
+};
 
 export const formetDateAndTime = (date: string | Date | undefined): string => {
   const messageDate = dayjs(date);

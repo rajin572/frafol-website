@@ -12,6 +12,9 @@ import TagTypes from "@/helpers/config/TagTypes";
 import { ICategory, IGear } from "@/types";
 import PaginationSection from "../shared/PaginationSection";
 import NoResultFound from "../shared/NoResultFound";
+import ReuseButton from "../ui/Button/ReuseButton";
+import { PlusIcon } from "lucide-react";
+import { getCurrentUser } from "@/services/AuthService";
 
 // Let's generate 12 dummy entries (mock data like a boss 😎)
 
@@ -48,6 +51,11 @@ const MarketPlace = async ({ searchParams }: { searchParams: any }) => {
   const categoryData = await categoryRes.json();
 
   const categories: ICategory[] = categoryData?.data || [];
+
+
+  const userData = await getCurrentUser();
+
+  console.log(userData)
   return (
     <main className="pb-20">
       <SectionBanner
@@ -61,6 +69,21 @@ const MarketPlace = async ({ searchParams }: { searchParams: any }) => {
             title="Market Place"
             description="Browse and buy equipment from professionals in the industry."
           />
+          {
+            (userData?.role === "both" || userData?.role === "photographer" || userData?.role === "videographer") && (
+              <div className="mt-10 flex justify-end">
+                <ReuseButton
+                  variant="secondary"
+                  url="/marketplace"
+                  className="w-fit  mt-5 !text-sm sm:!text-base lg:!text-lg !py-4.5"
+                >
+                  <PlusIcon className="mr-2" />
+                  Add New Gear
+                </ReuseButton>
+              </div>
+            )
+          }
+
           <div className="mt-16">
             <MarketPlaceTab categories={categories} />
           </div>

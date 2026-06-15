@@ -48,7 +48,8 @@ const ProfessionalEventViewModal: React.FC<ProfessionalEventViewModalProps> = ({
   const user = useGetUserData();
   const [descriptionExpanded, setDescriptionExpanded] = useState(false);
 
-  console.log(currentRecord)
+  console.log(currentRecord?.date)
+  console.log(formatDate(currentRecord?.date))
 
   const extensionLength = currentRecord?.extensionRequests?.length || 0;
 
@@ -117,6 +118,8 @@ const ProfessionalEventViewModal: React.FC<ProfessionalEventViewModalProps> = ({
   const serviceFeeAmount: number = Number((currentRecord as any)?.priceWithServiceFee) - Number((currentRecord as any)?.price)
   const couponDiscountAmount: number = currentRecord?.couponDiscount || 0
   const effectiveTotalPrice: number = (currentRecord?.totalPrice || 0) - couponDiscountAmount
+
+  console.log(currentRecord)
   return (
     <Modal
       open={isViewModalVisible}
@@ -207,7 +210,7 @@ const ProfessionalEventViewModal: React.FC<ProfessionalEventViewModalProps> = ({
               <span className="text-secondary-color">{currentRecord?.userId?.email}</span>
             </p>
           ) : null} */}
-          {currentRecord?.streetAddress ? (
+          {/* {currentRecord?.streetAddress ? (
             <p className="text-sm font-semibold">
               Street Address :{" "}
               <span className="text-secondary-color">{currentRecord?.streetAddress}</span>
@@ -230,7 +233,7 @@ const ProfessionalEventViewModal: React.FC<ProfessionalEventViewModalProps> = ({
               Country :{" "}
               <span className="text-secondary-color">{currentRecord?.country}</span>
             </p>
-          ) : null}
+          ) : null} */}
           {/* {currentRecord?.ICO ? (
             <p className="text-sm font-semibold">
               ICO :{" "}

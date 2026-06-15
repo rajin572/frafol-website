@@ -1,6 +1,6 @@
 "use client";
 
-import { formetTime } from "@/utils/dateFormet";
+import { formatDateByYearMonthDate, formetTime } from "@/utils/dateFormet";
 import { Calendar, Badge } from "antd";
 import type { Dayjs } from "dayjs";
 
@@ -37,11 +37,10 @@ const statusMap: Record<string, Event["type"]> = {
 
 export default function AppCalendar({ calander }: AppCalendarProps) {
 
-  console.log(calander)
   // Transform API data into a lookup object
   const events: Record<string, Event[]> = {};
   calander?.forEach((day) => {
-    events[day?.date] = day?.events?.map((e) => ({
+    events[formatDateByYearMonthDate(day?.events?.[0]?.eventDate)] = day?.events?.map((e) => ({
       type: statusMap[e?.status] || "default",
       content: e?.title || e?.eventName,
       time: formetTime(e?.eventTime),

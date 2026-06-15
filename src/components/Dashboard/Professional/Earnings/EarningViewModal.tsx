@@ -75,6 +75,7 @@ const EarningViewModal: React.FC<Props> = ({ isVisible, onClose, record, type })
     const eventOrder = record.eventOrderId;
     return (
       <>
+        <Row label="Event Name" value={eventOrder?.title} />
         <Row label="Transaction ID" value={<span className="text-xs break-all">{record.transactionId}</span>} />
         <Row label="Payment Method" value={capitalize(record.paymentMethod)} />
         <Row
@@ -233,7 +234,6 @@ const EarningViewModal: React.FC<Props> = ({ isVisible, onClose, record, type })
           />
           <div>
             <p className="font-semibold">{client?.name}</p>
-            <p className="text-sm text-gray-500">{client?.email}</p>
             {client?.companyName && <p className="text-sm text-gray-400">{client.companyName}</p>}
           </div>
         </div>

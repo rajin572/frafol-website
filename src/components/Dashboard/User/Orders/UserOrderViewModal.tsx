@@ -190,7 +190,7 @@ const UserOrderViewModal: React.FC<UserOrderViewModalProps> = ({
         </div>
 
         {/* Billing Info */}
-        {(currentRecord?.streetAddress || currentRecord?.town || currentRecord?.zipCode || currentRecord?.country) && (
+        {/* {(currentRecord?.streetAddress || currentRecord?.town || currentRecord?.zipCode || currentRecord?.country) && (
           <div className="mb-4">
             <h4 className="text-base sm:text-lg lg:text-xl xl:text-2xl text-secondary-color font-bold">
               Event Information
@@ -221,7 +221,7 @@ const UserOrderViewModal: React.FC<UserOrderViewModalProps> = ({
                   <span className="text-secondary-color">{currentRecord?.country}</span>
                 </p>
               )}
-              {/* {currentRecord?.ICO && (
+              {currentRecord?.ICO && (
                 <p className="text-sm font-semibold">
                   ICO :{" "}
                   <span className="text-secondary-color">{currentRecord?.ICO}</span>
@@ -238,10 +238,10 @@ const UserOrderViewModal: React.FC<UserOrderViewModalProps> = ({
                   IC DPH :{" "}
                   <span className="text-secondary-color">{currentRecord?.IC_DPH}</span>
                 </p>
-              )} */}
+              )}
             </div>
           </div>
-        )}
+        )} */}
 
         {/* Event Details */}
         <div className="mb-4">

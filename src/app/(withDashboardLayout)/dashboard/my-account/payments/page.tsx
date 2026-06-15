@@ -30,7 +30,6 @@ const page = async ({
     totalOrders: 0,
   };
 
-  console.log(myPaymnetData)
   return (
     <UserPaymentPage
       myPaymnetData={myPaymnetData}

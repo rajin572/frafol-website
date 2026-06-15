@@ -110,7 +110,7 @@ export default function Error({
                 onMouseLeave={(e) => (e.currentTarget.style.color = "#ad2b08")}
               >
                 <Mail className="w-4 h-4" />
-                Contact Support
+                cvak@frafol.sk
               </button>
             </div>
           </div>

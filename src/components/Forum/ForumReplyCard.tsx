@@ -6,6 +6,7 @@ import { ICommunityComment, IReply } from "@/types";
 import { getServerUrl } from "@/helpers/config/envConfig";
 import { formatDateTime } from "@/utils/dateFormet";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import Link from "next/link";
 
 const ForumReplyCard = ({ item }: { item: ICommunityComment }) => {
   const serverUrl = getServerUrl();
@@ -32,9 +33,6 @@ const ForumReplyCard = ({ item }: { item: ICommunityComment }) => {
     replace(`${pathName}?${params.toString()}`, { scroll: false });
   };
 
-
-
-
   return (
     <div className="border-b-2 border-background-color pb-5 mt-5 w-full">
       <div className="text-sm sm:text-sm lg:text-base flex items-center gap-2 h-full">
@@ -50,9 +48,21 @@ const ForumReplyCard = ({ item }: { item: ICommunityComment }) => {
           className="w-12 h-12 object-cover rounded-full "
         />
         <div>
-          <p className="text-sm sm:text-sm lg:text-base font-bold">
-            {item?.user?.name}
-          </p>
+          {
+            item?.user?.role === "photographer" || item?.user?.role === "both" || item?.user?.role === "videographer" ? (
+              <Link href={`/professionals/${item?.user?._id}`} className="text-secondary-color text-sm sm:text-sm lg:text-base font-bold cursor-pointer">
+
+                <p className="text-sm sm:text-sm lg:text-base font-bold">
+                  {item?.user?.name}
+                </p>
+              </Link>
+            ) :
+
+              <p className="text-sm sm:text-sm lg:text-base font-bold">
+                {item?.user?.name}
+              </p>
+          }
+
           <p className=" lg:text-sm text-base-color/50">
             {formatDateTime(item?.createdAt)}
           </p>
@@ -85,9 +95,18 @@ const ForumReplyCard = ({ item }: { item: ICommunityComment }) => {
                   className="w-9 h-9 object-cover rounded-full "
                 />
                 <div>
-                  <p className="text-sm lg:text-sm font-bold">
-                    {reply?.user?.name}
-                  </p>
+                  {
+                    item?.user?.role === "photographer" || item?.user?.role === "both" || item?.user?.role === "videographer" ? (
+                      <Link href={`/professionals/${item?.user?._id}`} className="text-secondary-color text-sm sm:text-sm lg:text-base font-bold cursor-pointer">
+                        <p className="text-sm lg:text-sm font-bold">
+                          {reply?.user?.name}
+                        </p>
+                      </Link>
+                    ) :
+                      (<p className="text-sm lg:text-sm font-bold">
+                        {reply?.user?.name}
+                      </p>)
+                  }
                   <p className=" lg:text-sm text-base-color/50">
                     {formatDateTime(reply?.createdAt)}
                   </p>

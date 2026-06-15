@@ -12,6 +12,7 @@ import { IWorkshop } from "@/types";
 import { getServerUrl } from "@/helpers/config/envConfig";
 import { formatDate, formetTime } from "@/utils/dateFormet";
 import { useGetUserData } from "@/context/useGetUserData";
+import Link from "next/link";
 
 const WorkShopsCards = ({ data, handleModalOpen }: { data: IWorkshop, handleModalOpen: any }) => {
 
@@ -56,9 +57,19 @@ const WorkShopsCards = ({ data, handleModalOpen }: { data: IWorkshop, handleModa
               alt={data?.authorId?.name || "Profile Image"}
               className="w-8 h-8 object-cover rounded-full "
             />
-            <p className="text-sm sm:text-sm lg:text-base font-bold">
-              {data?.authorId?.name}
-            </p>
+            {
+              data?.authorId?.role === "photographer" || data?.authorId?.role === "both" || data?.authorId?.role === "videographer" ? (
+                <Link href={`/professionals/${data?.authorId?._id}`} className="text-secondary-color text-sm sm:text-sm lg:text-base font-bold cursor-pointer">
+
+                  <p className="text-sm sm:text-sm lg:text-base font-bold">
+                    {data?.authorId?.name}
+                  </p>
+                </Link>
+              ) : <p className="text-sm sm:text-sm lg:text-base font-bold">
+                {data?.authorId?.name}
+              </p>
+            }
+
           </div>
           <div className="flex items-center gap-2 mt-2">
             <IoCalendarOutline className="text-secondary-color text-sm sm:text-base lg:text-lg" />
@@ -110,7 +121,7 @@ const WorkShopsCards = ({ data, handleModalOpen }: { data: IWorkshop, handleModa
           </ReuseButton>
         )}
       </div>
-    </div>
+    </div >
   );
 };
 

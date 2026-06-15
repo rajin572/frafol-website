@@ -1,5 +1,6 @@
 import { IPayment } from "@/types";
 import { formatDate } from "@/utils/dateFormet";
+import Link from "next/link";
 import React from "react";
 import { BsEye } from "react-icons/bs";
 import { IoCalendarOutline } from "react-icons/io5";
@@ -44,7 +45,13 @@ const PaymentsCard = ({
                   - ${gear.gearMarketplaceId.price?.toFixed(2)}
                 </p>
                 <p className="text-gray-500 text-sm">
-                  Seller: {gear.sellerId.name}
+                  Seller:{" "}
+                  <Link
+                    href={`/professionals/${gear?.sellerId?._id}`}
+                    className="text-secondary-color text-sm sm:text-sm lg:text-base font-bold cursor-pointer"
+                  >
+                    {gear?.sellerId?.name}
+                  </Link>
                 </p>
               </div>
             ))}
