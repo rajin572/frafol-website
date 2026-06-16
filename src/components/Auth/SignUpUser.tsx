@@ -436,7 +436,7 @@ const SignUpUser = ({ townData }: { townData: ITown[] }) => {
 
       <div className="flex justify-center items-center gap-2.5 !py-10">
         <p>Already have an account?</p>
-        <Link href="/" className="text-secondary-color font-bold">
+        <Link href="/sign-in" className="text-secondary-color font-bold">
           Sign In
         </Link>
       </div>

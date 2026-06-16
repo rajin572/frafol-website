@@ -32,6 +32,7 @@ body {
   font-family: var(--font-nunito);
   scroll-behavior: smooth;
   background-color: #ffffff !important;
+  word-break: break-all !important;
 }
 
 ::-webkit-scrollbar {
