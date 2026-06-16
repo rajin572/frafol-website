@@ -24,6 +24,7 @@ const GearOrderTable: React.FC<GearOrderTableProps> = ({
   total,
   limit,
 }) => {
+  console.log("data", data)
   const columns = [
     {
       title: "Order ID",
@@ -34,6 +35,11 @@ const GearOrderTable: React.FC<GearOrderTableProps> = ({
       title: "Client Name",
       dataIndex: "name",
       key: "name",
+      render: (text: string, record: any) => {
+        return (
+          <span>{record?.loginAsCompany ? record?.companyName : text}</span>
+        );
+      }
     },
     {
       title: "Mobile Number",

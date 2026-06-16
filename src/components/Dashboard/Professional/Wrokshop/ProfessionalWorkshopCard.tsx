@@ -44,7 +44,7 @@ const ProfessionalWorkshopCard = ({
         <div className="flex items-center justify-between gap-2 absolute top-2  w-full px-2">
           {workshop?.vatAmount > 0 ? (
             <span className="text-sm sm:text-sm bg-secondary-color text-primary-color py-0.5 px-1.5 rounded-full ">
-              VAT Included: {workshop?.vatAmount}%
+              VAT Included: {workshop?.vatPercent}%
             </span>
           ) : (
             <span></span>

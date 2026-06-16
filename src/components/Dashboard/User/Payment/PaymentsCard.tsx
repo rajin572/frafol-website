@@ -71,7 +71,7 @@ const PaymentsCard = ({
 
         <div className="flex items-center justify-between">
           <p className="text-sm sm:text-base lg:text-lg xl:text-xl font-bold text-secondary-color mt-1">
-            {data.amount}€
+            {data.amount?.toFixed(2)}€
           </p>
 
           <button

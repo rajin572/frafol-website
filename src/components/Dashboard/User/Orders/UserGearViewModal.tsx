@@ -103,7 +103,7 @@ const UserGearViewModal: React.FC<UserGearViewModalProps> = ({
                 </span>
               </div>
               <div className="border-t pt-2 flex justify-between font-semibold text-black">
-                <span>Total (USD) :</span>
+                <span>Total :</span>
                 {(
                   (currentRecord?.gearMarketplaceId?.mainPrice || 0) +
                   (currentRecord?.gearMarketplaceId?.shippingCompany?.price ||
