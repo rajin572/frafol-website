@@ -94,17 +94,15 @@ const ReportModal: React.FC<ReportModalProps> = ({
             placeholder="Enter Full Name"
             rules={[{ required: true, message: "Full Name is required" }]}
           />
-          {user && (
-            <ReuseInput
-              inputType=""
-              name="email"
-              type="email"
-              label="Email"
-              disabled
-              placeholder="Enter Email"
-              rules={[{ required: true, message: "Email is required" }]}
-            />
-          )}
+          <ReuseInput
+            inputType=""
+            name="email"
+            type="email"
+            label="Email"
+            disabled={user ? true : false}
+            placeholder="Enter Email"
+            rules={[{ required: true, message: "Email is required" }]}
+          />
         </div>
         <ReuseInput
           name="url"
