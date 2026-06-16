@@ -39,7 +39,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
             )}
           </div>
           <div className="mt-4 p-1">
-            <p className="text-sm sm:text-base lg:text-lg xl:text-xl font-bold text-secondary-color  mb-2">
+            <p className="text-base sm:text-lg xl:text-xl font-bold text-secondary-color  mb-2">
               {product?.name}
             </p>
 

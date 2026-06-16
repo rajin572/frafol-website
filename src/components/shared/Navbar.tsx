@@ -23,11 +23,12 @@ import { INotification, ISignInUser } from "@/types";
 import { decodedToken } from "@/utils/jwt";
 import { logout } from "@/services/AuthService";
 import { getServerUrl } from "@/helpers/config/envConfig";
-import { useAppSelector } from "@/redux/hooks";
+import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import { RootState } from "@/redux/store";
 import { formatDateTime } from "@/utils/dateFormet";
 import { useSocket } from "@/context/socket-context";
 import { toast } from "sonner";
+import { clearCart } from "@/redux/features/cart/cartSlice";
 
 const NavItems = [
   { id: "1", name: "Photography", route: "/photography" },
@@ -55,6 +56,8 @@ const Navbar = ({ notifications }: { notifications: INotification[] }) => {
   const navbarRef = useRef<HTMLDivElement>(null);
   const navbarWrapperRef = useRef<HTMLDivElement>(null);
   const { scrollY } = useScroll();
+  const dispatch = useAppDispatch();
+
 
   useOutsideClick(navbarWrapperRef, () => setMobileMenuOpen(false));
 
@@ -156,7 +159,8 @@ const Navbar = ({ notifications }: { notifications: INotification[] }) => {
     logout();
     setTimeout(() => {
       router.push("/");
-    })
+    });
+    dispatch(clearCart());
     // setIsLoading(true);
     // if (protectedRoutes.some((route) => pathname.match(route))) {
     //   router.push("/");

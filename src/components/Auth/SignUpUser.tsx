@@ -118,6 +118,7 @@ const companyInputStructure = [
     label: "Phone number",
     placeholder: "Enter Phone number Name",
     labelClassName: "!font-semibold !text-secondary-color",
+    rules: [{ required: true, message: "Phone number is required" }],
   },
   {
     name: "ico",
@@ -314,7 +315,7 @@ const SignUpUser = ({ townData }: { townData: ITown[] }) => {
           label="Town"
           placeholder="Select your town"
           labelClassName="!text-secondary-color !font-semibold"
-          rules={[{ required: true, message: "Please select your role" }]}
+          rules={[{ required: true, message: "Please select your town" }]}
           options={
             townData?.map((town) => ({
               value: town.name,

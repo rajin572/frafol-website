@@ -232,7 +232,7 @@ const CartDeliveryOption = ({
             </div>
           </Checkbox>
         </Form.Item>
-        <Form.Item
+        {/* <Form.Item
           name="výslovneSúhlasím"
           valuePropName="checked"
           rules={[
@@ -281,7 +281,7 @@ const CartDeliveryOption = ({
 
             </div>
           </Checkbox>
-        </Form.Item>
+        </Form.Item> */}
         <div className="flex justify-end">
           <ReuseButton
             htmlType="submit"

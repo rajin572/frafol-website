@@ -29,6 +29,8 @@ const BusinessInputStructure = [
     label: "Phone number",
     placeholder: "Enter Phone number Name",
     labelClassName: "!font-semibold !text-secondary-color",
+    rules: [{ required: true, message: "Phone number is required" }],
+
   },
   {
     name: "ico",
@@ -115,7 +117,7 @@ const LegalInvoiceDetails = ({ townData }: { townData: ITown[] }) => {
       dateOfBirth: dayjs(parseData.dateOfBirth),
       travelTowns: parseData.travelTowns ?? [],
     });
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handleTravelTownsChange = (values: string[]) => {

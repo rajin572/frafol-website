@@ -56,7 +56,7 @@ const ForgotPassword = () => {
                 Forgot Password
               </h1>
               <p className=" sm:text-lg mb-2 text-[#667085] text-center">
-                Provide your account&apos;s phone number for which you want to
+                Provide your account&apos;s email for which you want to
                 reset your password
               </p>
             </div>

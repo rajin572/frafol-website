@@ -601,7 +601,7 @@ const EditProfile = ({ myData, categories, towns }: { myData: IProfile, categori
               label="Town"
               placeholder="Select your town"
               labelClassName="!text-secondary-color !font-semibold"
-              rules={[{ required: true, message: "Please select your role" }]}
+              rules={[{ required: true, message: "Please select your town" }]}
               options={
                 towns?.map((town) => ({
                   value: town.name,

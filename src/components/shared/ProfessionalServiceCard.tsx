@@ -2,11 +2,11 @@ import Image from "next/image";
 import React from "react";
 import { AllImages } from "../../../public/assets/AllImages";
 import { IoCalendarOutline } from "react-icons/io5";
-import { BsCurrencyDollar } from "react-icons/bs";
 import ServiceCardBookNow from "../Professional/ServiceCardBookNow";
 import { IPackage, IProfessionalUser, IProfile } from "@/types";
 import { getServerUrl } from "@/helpers/config/envConfig";
 import { LuClock } from "react-icons/lu";
+import { FaEuroSign } from "react-icons/fa6";
 
 const ProfessionalServiceCard = ({
   data,
@@ -56,7 +56,7 @@ const ProfessionalServiceCard = ({
           <div className="flex flex-col gap-1 mt-3">
             <div className="flex items-center gap-3">
               <div className="flex items-center gap-2">
-                <BsCurrencyDollar className="text-secondary-color text-sm sm:text-base lg:text-lg" />
+                <FaEuroSign className="text-secondary-color text-sm sm:text-base lg:text-lg" />
                 <p className="text-sm sm:text-sm lg:text-base font-semibold">
                   Price:
                 </p>
