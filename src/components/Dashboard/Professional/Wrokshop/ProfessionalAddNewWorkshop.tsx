@@ -224,6 +224,7 @@ const ProfessionalAddNewWorkshop = ({
             accept="image/png, image/jpeg"
             maxCount={1}
             labelClassName="!font-semibold"
+            rules={[{ required: true, message: "Workshop Image is required" }]}
           />
 
           <ReuseButton htmlType="submit" variant="secondary" className="mt-2">

@@ -198,6 +198,7 @@ const GearMarketPlaceAddNewGear = ({
               accept="image/png, image/jpeg"
               maxCount={5}
               labelClassName="!font-semibold"
+              rules={[{ required: true, message: "Product Image is required" }]}
             />
             {/* <ReuseInput
               inputType="textarea"

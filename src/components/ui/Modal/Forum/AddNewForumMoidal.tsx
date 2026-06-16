@@ -100,6 +100,7 @@ const AddNewForumMoidal: React.FC<AddNewForumMoidalProps> = ({
             accept="image/png, image/jpeg"
             maxCount={1}
             labelClassName="!font-semibold"
+            rules={[{ required: false, message: "Image is required" }]}
           />
 
           <ReuseButton htmlType="submit" variant="secondary" className="mt-2">
