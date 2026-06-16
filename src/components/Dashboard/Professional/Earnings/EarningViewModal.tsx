@@ -89,15 +89,15 @@ const EarningViewModal: React.FC<Props> = ({ isVisible, onClose, record, type })
         />
         <Row label="Event Date" value={formatDate(eventOrder?.date)} />
         <Row label="Created At" value={formatDate(record.createdAt)} />
-        <Row label="Total Amount" value={<span>€{record.amount?.toFixed(2)}</span>} />
-        <Row label="Commission" value={<span className="text-red-500">- €{record.commission?.toFixed(2)}</span>} />
+        <Row label="Total Amount" value={<span>{record.amount?.toFixed(2)} €</span>} />
+        <Row label="Commission" value={<span className="text-red-500">- {record.commission?.toFixed(2)} €</span>} />
         {record.couponDiscount > 0 && (
-          <Row label="Coupon Discount" value={<span className="text-orange-500">- €{record.couponDiscount?.toFixed(2)}</span>} />
+          <Row label="Coupon Discount" value={<span className="text-orange-500">- {record.couponDiscount?.toFixed(2)} €</span>} />
         )}
         {record.couponCode && <Row label="Coupon Code" value={record.couponCode} />}
         <Row
           label="Net Earning"
-          value={<span className="text-green-600 font-bold text-base">€{record.netAmount?.toFixed(2)}</span>}
+          value={<span className="text-green-600 font-bold text-base">{record.netAmount?.toFixed(2)} €</span>}
         />
         <Row
           label="Provider Paid"
@@ -139,22 +139,21 @@ const EarningViewModal: React.FC<Props> = ({ isVisible, onClose, record, type })
             </Tag>
           }
         />
-        <Row label="Selling Price" value={<span>€{gear?.price?.toFixed(2)}</span>} />
         {gear?.vatAmount > 0 && (
           <Row label="VAT %" value={`${gear.vatAmount}%`} />
         )}
+        <Row label="Selling Price" value={<span>{gear?.price?.toFixed(2)} €</span>} />
         {gear?.totalVatAmount > 0 && (
-          <Row label="VAT Amount" value={<span>€{gear.totalVatAmount?.toFixed(2)}</span>} />
+          <Row label="VAT Amount" value={<span>{gear.totalVatAmount?.toFixed(2)} €</span>} />
         )}
-        <Row label="Platform Commission" value={<span className="text-red-500">- €{gear?.platformCommission?.toFixed(2)}</span>} />
-        <Row label="Total Price (incl. VAT)" value={<span>€{gear?.mainPrice?.toFixed(2)}</span>} />
+        <Row label="Platform Commission" value={<span className="text-red-500">- {gear?.platformCommission?.toFixed(2)} €</span>} />
+        {gear?.shippingCompany?.name && (
+          <Row label="Shipping Company" value={`${gear.shippingCompany.name} — ${gear.shippingCompany.price?.toFixed(2)} €`} />
+        )}
         <Row
           label="Net Earning"
-          value={<span className="text-green-600 font-bold text-base">€{netEarning?.toFixed(2)}</span>}
+          value={<span className="text-green-600 font-bold text-base">{netEarning?.toFixed(2)} €</span>}
         />
-        {gear?.shippingCompany?.name && (
-          <Row label="Shipping Company" value={`${gear.shippingCompany.name} — €${gear.shippingCompany.price?.toFixed(2)}`} />
-        )}
         <Row label="Shipping Address" value={record.shippingAddress} />
         <Row label="Town" value={record.town} />
         <Row label="Post Code" value={record.postCode} />
@@ -181,11 +180,16 @@ const EarningViewModal: React.FC<Props> = ({ isVisible, onClose, record, type })
         <Row label="Order ID" value={record.orderId} />
         <Row label="Workshop Title" value={workshop?.title} />
         <Row label="Workshop Date" value={formatDate(workshop?.date)} />
-        <Row label="Workshop Price" value={<span>€{workshop?.price?.toFixed(2)}</span>} />
+        <Row label="Workshop Price" value={<span>{workshop?.price?.toFixed(2)} €</span>} />
         {workshop?.vatAmount > 0 && (
-          <Row label="VAT" value={<span>€{workshop?.vatAmount?.toFixed(2)}</span>} />
+          <Row label="VAT" value={<span>{workshop?.vatAmount?.toFixed(2)} €</span>} />
         )}
-        <Row label="Total (with VAT)" value={<span>€{workshop?.mainPrice?.toFixed(2)}</span>} />
+        <Row label="Total (with VAT)" value={<span>{workshop?.mainPrice?.toFixed(2)} €</span>} />
+        <Row label="Commission" value={<span className="text-error">{(record.netAmount - workshop?.mainPrice)?.toFixed(2)} €</span>} />
+        <Row
+          label="Net Earning"
+          value={<span className="text-green-600 font-bold text-base">{record.netAmount?.toFixed(2)} €</span>}
+        />
         <Row
           label="Payment Status"
           value={<Tag color={record.paymentStatus === "completed" ? "green" : "orange"}>{capitalize(record.paymentStatus)}</Tag>}
@@ -197,10 +201,6 @@ const EarningViewModal: React.FC<Props> = ({ isVisible, onClose, record, type })
               {capitalize(record.instructorPayment?.status || "pending")}
             </Tag>
           }
-        />
-        <Row
-          label="Net Earning"
-          value={<span className="text-green-600 font-bold text-base">€{record.netAmount?.toFixed(2)}</span>}
         />
         <Row label="Joined At" value={formatDate(record.joinedAt)} />
         <Row

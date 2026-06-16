@@ -222,7 +222,7 @@ const GearMarketPlaceEditNewGear = ({
               name="image"
               buttonText="Upload Image"
               accept="image/png, image/jpeg"
-              maxCount={5}
+              maxCount={1}
               labelClassName="!font-semibold"
               rules={[
                 {

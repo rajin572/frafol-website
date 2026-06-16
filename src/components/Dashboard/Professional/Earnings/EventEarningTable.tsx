@@ -16,6 +16,8 @@ const EventEarningTable = ({
   limit: number;
   onView: (record: any) => void;
 }) => {
+
+  console.log(data)
   const formatDate = (dateStr: string) =>
     dateStr
       ? new Date(dateStr).toLocaleDateString("en-GB", { day: "2-digit", month: "short", year: "numeric" })
@@ -52,7 +54,12 @@ const EventEarningTable = ({
     {
       title: "Amount",
       key: "amount",
-      render: (_: any, record: any) => <span>€{record.amount?.toFixed(2)}</span>,
+      render: (_: any, record: any) => <span>€{record?.eventOrderId?.price?.toFixed(2)}</span>,
+    },
+    {
+      title: "Amount",
+      key: "amount",
+      render: (_: any, record: any) => <span>€{record?.eventOrderId?.vatAmount?.toFixed(2)}</span>,
     },
     {
       title: "Commission",

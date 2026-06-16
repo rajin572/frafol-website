@@ -2,6 +2,7 @@
 import { Rate, Space, Tooltip } from "antd";
 import { GoEye } from "react-icons/go";
 import ReuseTable from "@/utils/ReuseTable";
+import { formatDate } from "@/utils/dateFormet";
 const ProfessionalReviewTable = ({
   data,
   loading,
@@ -10,7 +11,7 @@ const ProfessionalReviewTable = ({
   total,
   limit,
 }: // showFilters = true,
-any) => {
+  any) => {
   const columns = [
     {
       title: "#UID",
@@ -55,7 +56,7 @@ any) => {
       title: "Date",
       dataIndex: "createdAt",
       key: "createdAt",
-      render: (date: string) => <p>{new Date(date).toLocaleDateString()}</p>,
+      render: (date: string) => <p>{formatDate(date)}</p>,
     },
     {
       title: "Action",

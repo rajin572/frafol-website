@@ -30,10 +30,10 @@ const WorkShopsCards = ({ data, handleModalOpen }: { data: IWorkshop, handleModa
           className="w-full h-80 sm:h-60 lg:h-72 xl:h-80 object-cover rounded-lg "
         />
         <div className="px-1 flex flex-col justify-between">
-          <p className="text-sm sm:text-base lg:text-lg xl:text-xl font-bold mt-3">
+          <p className="text-sm sm:text-base lg:text-lg xl:text-xl font-bold mt-3 break-all">
             {data?.title}
           </p>
-          <p className="text-sm sm:text-sm lg:text-base mt-1">
+          <p className="text-sm sm:text-sm lg:text-base mt-1 break-all">
             {data?.description?.length > 100
               ? (
                 <>

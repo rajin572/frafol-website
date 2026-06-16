@@ -35,6 +35,7 @@ const RegisterWrokshopModal: React.FC<RegisterWrokshopModalProps<any>> = ({
     currentRecord,
     myData,
 }) => {
+    console.log(currentRecord)
     const [form] = Form.useForm();
     const [couponStatus, setCouponStatus] = useState<any>(null);
     const [type, setType] = useState<"user" | "company">("user");
@@ -98,6 +99,7 @@ const RegisterWrokshopModal: React.FC<RegisterWrokshopModalProps<any>> = ({
                     toastErrorMessage: "Something went wrong! Please try again.",
                 }
             );
+            console.log(res)
             if (res?.success) {
                 window.location.replace(res?.data?.checkoutUrl);
             }

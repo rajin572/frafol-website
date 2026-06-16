@@ -67,12 +67,12 @@ const ProfessionalWorkshopCard = ({
       </div>
 
       <div className="px-1">
-        <p className="text-sm sm:text-base lg:text-lg xl:text-xl font-bold mt-3">
+        <p className="text-sm sm:text-base lg:text-lg xl:text-xl font-bold mt-3 break-all">
           {workshop?.title}
         </p>
         {workshop?.description && (
           <div className="mt-2">
-            <p className="text-sm text-gray-600">
+            <p className="text-sm text-gray-600  break-all">
               {expanded
                 ? workshop.description
                 : workshop.description.slice(0, DESCRIPTION_LIMIT)}
@@ -99,7 +99,7 @@ const ProfessionalWorkshopCard = ({
             alt="user"
             className="w-8 h-8 object-cover rounded-full "
           />
-          <p className="text-sm sm:text-sm lg:text-base font-bold">
+          <p className="text-sm sm:text-sm lg:text-base font-bold  break-all">
             {workshop?.authorId?.name}
           </p>
         </div>
@@ -121,7 +121,7 @@ const ProfessionalWorkshopCard = ({
             <Link
               href={workshop?.workshopLink}
               target="_blank"
-              className="text-sm sm:text-sm lg:text-base font-semibold !text-secondary-color"
+              className="text-sm sm:text-sm lg:text-base font-semibold !text-secondary-color  break-all"
             >
               {workshop?.workshopLink}
             </Link>

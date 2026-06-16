@@ -3,6 +3,7 @@ import { AllImages } from "../../../../../public/assets/AllImages";
 import Image from "next/image";
 import { IProfessionalReview } from "@/types";
 import { getServerUrl } from "@/helpers/config/envConfig";
+import { formatDate } from "@/utils/dateFormet";
 
 const ReportViewModal = ({
   isViewModalVisible,
@@ -83,7 +84,7 @@ const ReportViewModal = ({
 
             <div className="flex items-start gap-2 mb-2">
               <span className="font-medium text-nowrap">Date:</span>
-              <span>{new Date(createdAt).toLocaleString()}</span>
+              <span>{formatDate(createdAt)}</span>
             </div>
           </div>
         </div>

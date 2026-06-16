@@ -16,6 +16,9 @@ const WorkshopEarningTable = ({
   limit: number;
   onView: (record: any) => void;
 }) => {
+
+  console.log(data)
+
   const formatDate = (dateStr: string) =>
     dateStr
       ? new Date(dateStr).toLocaleDateString("en-GB", { day: "2-digit", month: "short", year: "numeric" })
@@ -43,13 +46,25 @@ const WorkshopEarningTable = ({
     {
       title: "Price",
       key: "price",
-      render: (_: any, record: any) => <span>€{record.workshopId?.price?.toFixed(2)}</span>,
+      render: (_: any, record: any) => <span>{record.workshopId?.price?.toFixed(2)}€</span>,
+    },
+    {
+      title: "VAT Amount",
+      key: "price",
+      render: (_: any, record: any) => <span>{record.workshopId?.vatAmount?.toFixed(2)}€</span>,
+    },
+    {
+      title: "Commission",
+      key: "mainPrice",
+      render: (_: any, record: any) => (
+        <span className="text-error font-semibold">{(Number(record?.workshopId?.mainPrice) - Number(record?.netAmount))?.toFixed(2)}€</span>
+      ),
     },
     {
       title: "Net Earning",
       key: "netAmount",
       render: (_: any, record: any) => (
-        <span className="text-green-600 font-semibold">€{record.netAmount?.toFixed(2)}</span>
+        <span className="text-green-600 font-semibold">{record.netAmount?.toFixed(2)}€</span>
       ),
     },
     {

@@ -33,7 +33,7 @@ const ProfessionalAddNewWorkshop = ({
   useEffect(() => {
     const serviceChagePercentage = serviceCharge / 100;
     const vatAmountPercentage = vatAmountValue / 100;
-    console.log(serviceChagePercentage)
+    console.log(vatAmountPercentage)
     const serviceChargeAmmount = Number(priceValue) * serviceChagePercentage;
 
     const totalServiceCharge = Number(priceValue) > 0 ? serviceChargeAmmount > minServiceCharge ? serviceChargeAmmount : minServiceCharge : 0;
@@ -79,6 +79,8 @@ const ProfessionalAddNewWorkshop = ({
         toastErrorMessage: "Something went wrong! Please try again.",
       }
     );
+
+    console.log(res)
     if (res?.success) {
       form.resetFields();
       handleCancel();

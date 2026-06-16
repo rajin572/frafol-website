@@ -48,7 +48,14 @@ const GearEarningTable = ({
       title: "Selling Price",
       key: "price",
       render: (_: any, record: any) => (
-        <span>€{record.gearMarketplaceId?.price?.toFixed(2)}</span>
+        <span>{record.gearMarketplaceId?.price?.toFixed(2)}€</span>
+      ),
+    },
+    {
+      title: "Shipping Price",
+      key: "price",
+      render: (_: any, record: any) => (
+        <span>{record?.gearMarketplaceId?.shippingCompany?.price?.toFixed(2)}€</span>
       ),
     },
     {
@@ -56,7 +63,7 @@ const GearEarningTable = ({
       key: "commission",
       render: (_: any, record: any) => (
         <span className="text-red-500">
-          - €{record.gearMarketplaceId?.platformCommission?.toFixed(2)}
+          - {record.gearMarketplaceId?.platformCommission?.toFixed(2)}€
         </span>
       ),
     },
