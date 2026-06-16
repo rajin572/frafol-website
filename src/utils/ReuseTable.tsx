@@ -51,17 +51,18 @@ const ReuseTable: React.FC<ReuseTableProps<any>> = ({
       columns={columns}
       dataSource={data}
       onChange={onChange}
+      bordered
       pagination={
         total > 0
           ? {
-              current: page,
-              onChange: (page) => {
-                handlePageChange(page);
-              },
-              showSizeChanger: false,
-              total,
-              pageSize: limit,
-            }
+            current: page,
+            onChange: (page) => {
+              handlePageChange(page);
+            },
+            showSizeChanger: false,
+            total,
+            pageSize: limit,
+          }
           : false
       }
       scroll={scroll}

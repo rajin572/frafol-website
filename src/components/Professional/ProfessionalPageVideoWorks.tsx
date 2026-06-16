@@ -17,9 +17,9 @@ const ProfessionalPageVideoWorks = ({ galleryVideos }: { galleryVideos: string[]
     }, []);
 
     return (
-        <div className="flex flex-wrap gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {galleryVideos?.slice(0, 3)?.map((item, index) => (
-                <div key={index} className="relative group aspect-video h-64 bg-gray-200 rounded-lg overflow-hidden">
+                <div key={index} className="relative group aspect-video bg-gray-200 rounded-lg overflow-hidden">
                     <video
                         ref={(el) => {
                             videoRefs.current[index] = el;

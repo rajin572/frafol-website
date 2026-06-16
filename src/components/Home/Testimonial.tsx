@@ -16,6 +16,10 @@ const Testimonial = async () => {
   const data = await res.json();
   const testimonials: ITestimonial[] = data?.data?.result || [];
 
+  if (!testimonials || testimonials.length === 0) {
+    return null;
+  }
+
   return (
     <section className="pb-28">
       <Container>

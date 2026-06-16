@@ -73,7 +73,7 @@ const ForumDetailsPage = ({
 
           </div>
           <div className="p-5 lg:border-l lg:border-background-color">
-            <Image
+            {communityPosts?.images?.[0] && <Image
               width={1000}
               height={1000}
               src={
@@ -84,6 +84,7 @@ const ForumDetailsPage = ({
               alt="user"
               className="w-full lg:w-1/2 mx-auto h-auto object-cover rounded-lg mb-10"
             />
+            }
             {communityPosts?.text && (
               <div
                 dangerouslySetInnerHTML={{ __html: communityPosts?.text }}
