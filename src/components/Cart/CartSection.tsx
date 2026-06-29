@@ -29,7 +29,8 @@ const CartSection = ({ myData }: { myData: IProfile }) => {
           <div className="p-4 rounded-lg  bg-highlight-color">
             <div className="flex items-center gap-2 mb-4">
               <h2 className="text-lg sm:text-xl lg:text-2xl font-semibold mb-1">
-                Order Summary
+                {/* Order Summary */}
+                Zhrnutie objednávky
               </h2>
 
               <div className="w-fit py-1 px-2 rounded-full bg-secondary-color text-primary-color font-semibold">
@@ -45,7 +46,8 @@ const CartSection = ({ myData }: { myData: IProfile }) => {
         </section>
         <section className="lg:col-span-2 bg-highlight-color outline-1 outline-offset-[-1px] outline-gray-200 rounded-xl p-4">
           <h2 className="text-lg sm:text-xl lg:text-2xl font-semibold mb-5">
-            Pricing Information
+            {/* Pricing Information */}
+            Informácie o cene
           </h2>
           <div className=" py-5 w-full space-y-4 border-y border-base-color/30 mb-5">
             <div className="flex justify-between">
@@ -69,7 +71,8 @@ const CartSection = ({ myData }: { myData: IProfile }) => {
           </div>
           <div className="mt-10">
             <h2 className="text-lg sm:text-xl lg:text-2xl font-semibold mb-5">
-              Delivery Information
+              {/* Delivery Information */}
+              Dodacie informácie
             </h2>
             <CartDeliveryOption cartProducts={cartProducts} myData={myData} />
           </div>

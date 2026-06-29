@@ -22,7 +22,7 @@ const ForumAllComents = async ({ id, page }: { id: string; page: number }) => {
     allComments?.slice((page - 1) * limit, page * limit) || [];
   return (
     <div className="rounded-xl border border-background-color flex flex-col gap-2 p-5 items-start mt-16">
-      <p className="text-base sm:text-lg lg:text-xl font-bold">Replies</p>
+      <p className="text-base sm:text-lg lg:text-xl font-bold">{/* Replies */} Odpovede</p>
 
       {paginatedData?.map((item, index) => (
         <ForumReplyCard item={item} key={index} />

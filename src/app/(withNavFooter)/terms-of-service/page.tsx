@@ -9,7 +9,8 @@ const TermsOfService = async () => {
   return (
     <Container>
       <div className=" py-10 text-gray-800 min-h-[100vh]">
-        <SectionHeader title="Terms of Service Conceptural" />
+        {/* title="Terms of Service Conceptural" */}
+        <SectionHeader title="Všeobecné obchodné podmienky Zmluvné vzťahy" />
 
         <div dangerouslySetInnerHTML={{ __html: data?.data?.content }}></div>
       </div>

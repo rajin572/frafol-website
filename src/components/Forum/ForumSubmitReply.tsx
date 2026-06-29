@@ -59,7 +59,7 @@ const ForumSubmitReply = ({ id }: { id: string }) => {
       {
         replyName && (
           <div className="flex items-center gap-2 mb-3">
-            <p className="text-sm font-semibold">Replying to:</p>
+            <p className="text-sm font-semibold">{/* Replying to: */} Odpovedáte:</p>
             <div className="bg-secondary-color text-primary-color py-1 px-2 rounded-2xl flex items-center gap-1">
               <p className="text-sm font-semibold">{replyName}</p>
               <TiDelete onClick={handleRemoveReply} className="size-5 font-semibold cursor-pointer" />
@@ -71,12 +71,14 @@ const ForumSubmitReply = ({ id }: { id: string }) => {
         name="text"
         inputType="textarea"
         rows={4}
-        placeholder="Write your reply here..."
+        /* placeholder="Write your reply here..." */
+        placeholder="Napíšte svoju odpoveď tu..."
       />
 
       <div className="flex justify-end">
         <ReuseButton htmlType="submit" variant="secondary" className="w-fit">
-          Post Comment
+          {/* Post Comment */}
+          Odoslať komentár
         </ReuseButton>
       </div>
     </ReusableForm>

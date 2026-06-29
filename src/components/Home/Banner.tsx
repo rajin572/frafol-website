@@ -13,28 +13,34 @@ export default function Banner() {
         <Container>
           <div className="w-full grid grid-cols-1 lg:grid-cols-5 relative">
             <div className="hidden lg:flex flex-col items-center">
+              {/* alt="Photographer" */}
               <Image
                 src={AllImages.girl}
-                alt="Photographer"
+                alt="Fotograf"
                 className="w-fit"
               />
               <Link href="/photography">
                 <button className="mt-2 bg-secondary-color text-white text-sm sm:text-sm px-3 py-1 rounded-md cursor-pointer">
-                  Photographers
+                  {/* Photographers */}
+                  Fotografi
                 </button>
               </Link>
             </div>
             <div className="text-center flex flex-col items-center justify-center col-span-3">
               <Revel>
                 <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold mb-6 w-[90%] sm:w-[80%] md:w-[70%] mx-auto leading-8 lg:leading-12 xl:leading-14 text-secondary-color">
-                  Capture Your Moments with the Best in the Industry
+                  {/* Capture Your Moments with the Best in the Industry */}
+                  Zachyťte svoje výnimočné momenty s tými najlepšími
                 </h1>
               </Revel>
 
               <Revel delay={0.5}>
                 <p className="text-sm sm:text-base md:text-lg lg:text-xl font-semibold mb-8 text-base-color">
-                  Find skilled photographers and videographers, check their
-                  portfolios, and book your next shoot easily
+                  {/* Find skilled photographers and videographers, check their */}
+                  {/* portfolios, and book your next shoot easily */}
+                  Nájdite skúsených fotografov a videografov,
+                  pozrite si ich portfóliá,
+                  a jednoducho si objednajte svoje ďalšie fotenie alebo natáčanie
                 </p>
               </Revel>
 
@@ -43,14 +49,16 @@ export default function Banner() {
               </Revel>
             </div>
             <div className="hidden lg:flex flex-col items-center">
+              {/* alt="Videographer" */}
               <Image
                 src={AllImages.male}
-                alt="Videographer"
+                alt="Kameraman"
                 className="w-fit"
               />
               <Link href="/videography">
                 <button className="mt-2 bg-secondary-color text-white text-sm sm:text-sm px-3 py-1 rounded-md cursor-pointer">
-                  Videographers
+                  {/* Videographers */}
+                  Kameramani
                 </button>
               </Link>
             </div>
@@ -63,9 +71,10 @@ export default function Banner() {
           width: "100%",
         }}
       >
+        {/* alt="Hero Image" */}
         <Image
           src={AllImages.herobanner}
-          alt="Hero Image"
+          alt="Hlavný obrázok"
           layout="fill"
           objectFit="cover"
           objectPosition="center"
@@ -76,14 +85,18 @@ export default function Banner() {
           <div className="text-center flex flex-col items-center justify-center">
             <Revel>
               <h1 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold mb-6 w-[90%] sm:w-[80%] md:w-[70%] mx-auto leading-8 lg:leading-12 xl:leading-14 text-secondary-color">
-                Capture Your Moments with the Best in the Industry
+                {/* Capture Your Moments with the Best in the Industry */}
+                Zachyťte svoje výnimočné momenty s tými najlepšími
               </h1>
             </Revel>
 
             <Revel delay={0.5}>
               <p className="text-base sm:text-lg lg:text-xl font-semibold mb-8 text-primary-color">
-                Find skilled photographers and videographers, check their
-                portfolios, and book your next shoot easily
+                {/* Find skilled photographers and videographers, check their */}
+                {/* portfolios, and book your next shoot easily */}
+                Nájdite skúsených fotografov a videografov,
+                pozrite si ich portfóliá,
+                a jednoducho si objednajte svoje ďalšie fotenie alebo natáčanie
               </p>
             </Revel>
 

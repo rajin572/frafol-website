@@ -65,10 +65,9 @@ const AllProfessionals = async ({ searchParams }: { searchParams: any }) => {
   return (
     <section className="py-16">
       <Container>
-        <SectionHeader
-          title="Our Professionals"
-          description="Discover our top-rated Professionals"
-        />
+        {/* title="Our Professionals" */}
+        {/* description="Discover our top-rated Professionals" */}
+        <SectionHeader title="Naši tvorcovia" description="Objavte našich najlepšie hodnotených tvorcov" />
         <div className="mt-16 flex flex-col md:flex-row gap-y-5 md:gap-y-0 justify-between mb-10">
           {
             role === "videographer" ? (
@@ -78,7 +77,8 @@ const AllProfessionals = async ({ searchParams }: { searchParams: any }) => {
                 className="w-fit !text-sm sm:!text-base lg:!text-xl  !flex !items-center gap-2"
               >
                 <FaArrowLeftLong className="!mt-1" />
-                Back To Categories
+                {/* Back To Categories */}
+                Späť na kategórie
               </ReuseButton>
             ) : role === "photographer" ? (
               <ReuseButton
@@ -87,7 +87,8 @@ const AllProfessionals = async ({ searchParams }: { searchParams: any }) => {
                 className="w-fit !text-sm sm:!text-base lg:!text-xl  !flex !items-center gap-2"
               >
                 <FaArrowLeftLong className="!mt-1" />
-                Back To Categories
+                {/* Back To Categories */}
+                Späť na kategórie
               </ReuseButton>
             ) : <div></div>
           }

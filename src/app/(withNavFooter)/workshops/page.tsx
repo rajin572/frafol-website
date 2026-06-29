@@ -8,7 +8,7 @@ import { IProfile, IWorkshop } from "@/types";
 import { fetchWithAuth } from "@/lib/fetchWraper";
 
 export const metadata = {
-  title: "Frafol - Workshops",
+  title: "Frafol – Kurzy",
 };
 
 const page = async ({
@@ -48,7 +48,7 @@ const page = async ({
 
   return (
     <main>
-      <SectionBanner image={AllImages.workspaceBanner?.src} title="Workshops" />
+      <SectionBanner image={AllImages.workspaceBanner?.src} title="Kurzy" />
       <Container>
         <WorkshopsPage
           workshops={workshops}

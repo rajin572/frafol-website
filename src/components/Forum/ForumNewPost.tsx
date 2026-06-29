@@ -21,7 +21,8 @@ const ForumNewPost = () => {
               className="w-fit !text-sm sm:!text-base lg:!text-lg !py-4.5"
             >
               <FaPlus className="mt-1" />
-              New Post
+              { /* New Post */}
+              Nový príspevok
             </ReuseButton>
           </div>
         )

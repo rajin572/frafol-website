@@ -19,8 +19,10 @@ const Marketplace = async () => {
     <section className="pb-28">
       <Container>
         <SectionHeader
-          title="Marketplace"
-          description="Browse and buy equipment from professionals in the industry."
+          /* title="Marketplace" */
+          title="Bazár"
+          /* description="Browse and buy equipment from professionals in the industry." */
+          description="Prezrite si ponuku príslušenstva a nakúpte od fotografov a kameramanov"
         />
         <div className="mt-16">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
@@ -34,7 +36,8 @@ const Marketplace = async () => {
               className="w-fit  mt-5 !text-sm sm:!text-base lg:!text-lg !py-4.5"
               variant="secondary"
             >
-              View All
+              {/* View All */}
+              Zobraziť všetko
             </ReuseButton>
           </div>
         </div>

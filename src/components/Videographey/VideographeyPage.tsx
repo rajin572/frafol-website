@@ -29,10 +29,9 @@ const VideographeyPage = async ({ searchParams }: { searchParams: any }) => {
   return (
     <div className="">
       <Container>
-        <SectionHeader
-          title="Browse All Videography Categories"
-          description="Explore our complete range of specialized videography services to match your specific project needs."
-        />
+        {/* title="Browse All Videography Categories" */}
+        {/* description="Explore our complete range of specialized videography services to match your specific project needs." */}
+        <SectionHeader title="Prezrite si všetky video kategórie" description="Prezrite si našu ponuku video služieb a nájdite kameramana podľa toho, čo práve potrebujete." />
         <div className="mt-16">
           <div className="flex justify-end mb-3">
             <PhotographyPageSearch />
@@ -62,7 +61,8 @@ const VideographeyPage = async ({ searchParams }: { searchParams: any }) => {
             className="mt-10 w-fit mx-auto !text-sm sm:!text-base lg:!text-lg !py-4.5"
             variant="secondary"
           >
-            See All Videographers
+            {/* See All Videographers */}
+            Zobraziť všetkých kameramanov
           </ReuseButton>
         </div>
       </Container>

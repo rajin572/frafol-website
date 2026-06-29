@@ -9,7 +9,8 @@ const HowItWorks = async () => {
   return (
     <Container>
       <div className=" py-10 text-gray-800 min-h-[100vh]">
-        <SectionHeader title="How It Works " />
+        {/* title="How It Works" */}
+        <SectionHeader title="Ako to funguje" />
         <div dangerouslySetInnerHTML={{ __html: data?.data?.content }}></div>
       </div>
     </Container>

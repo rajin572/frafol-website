@@ -29,10 +29,9 @@ const PhotographyPage = async ({ searchParams }: { searchParams: any }) => {
   return (
     <div className="">
       <Container>
-        <SectionHeader
-          title="Browse All Photography Categories"
-          description="Explore our complete range of specialized photography services to match your specific project needs."
-        />
+        {/* title="Browse All Photography Categories" */}
+        {/* description="Explore our complete range of specialized photography services to match your specific project needs." */}
+        <SectionHeader title="Prezrite si všetky foto kategórie" description="Prezrite si našu ponuku fotografických služieb a nájdite fotografa podľa toho, čo práve potrebujete." />
         <div className="mt-16">
           <PhotographyPageSearch />
           {filteredCategories?.length > 0 ? (
@@ -58,7 +57,8 @@ const PhotographyPage = async ({ searchParams }: { searchParams: any }) => {
             className="mt-10 w-fit mx-auto !text-sm sm:!text-base lg:!text-lg !py-4.5"
             variant="secondary"
           >
-            See All Photographers
+            {/* See All Photographers */}
+            Zobraziť všetkých fotografov
           </ReuseButton>
         </div>
       </Container>

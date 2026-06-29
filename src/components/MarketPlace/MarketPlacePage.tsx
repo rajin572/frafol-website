@@ -58,17 +58,17 @@ const MarketPlace = async ({ searchParams }: { searchParams: any }) => {
   console.log(userData)
   return (
     <main className="pb-20">
+      {/* title="Market Place" */}
       <SectionBanner
         image={AllImages?.marketBanner?.src}
-        title="Market Place"
+        title="Bazár"
       />
 
       <Container>
         <div className="mt-20">
-          <SectionHeader
-            title="Market Place"
-            description="Browse and buy equipment from professionals in the industry."
-          />
+          {/* title="Market Place" */}
+          {/* description="Browse and buy equipment from professionals in the industry." */}
+          <SectionHeader title="Bazár" description="Prezrite si ponuku techniky a nakúpte od fotografov a kameramanov." />
           {
             (userData?.role === "both" || userData?.role === "photographer" || userData?.role === "videographer") && (
               <div className="mt-10 flex justify-end">
@@ -78,7 +78,8 @@ const MarketPlace = async ({ searchParams }: { searchParams: any }) => {
                   className="w-fit  mt-5 !text-sm sm:!text-base lg:!text-lg !py-4.5"
                 >
                   <PlusIcon className="mr-2" />
-                  Add New Gear
+                  {/* Add New Gear */}
+                  Pridať nové príslušenstvo
                 </ReuseButton>
               </div>
             )

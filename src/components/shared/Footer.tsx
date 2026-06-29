@@ -43,9 +43,9 @@ export default function Footer() {
       subscribe,
       { body: { email: values.email } },
       {
-        toastLoadingMessage: "wait a moment...",
-        toastSuccessMessage: "Subscribed successfully!",
-        toastErrorMessage: "Something went wrong! Please try again.",
+        toastLoadingMessage: "Chvíľu počkajte...",
+        toastSuccessMessage: "Úspešne ste sa prihlásili na odber!",
+        toastErrorMessage: "Niečo sa pokazilo! Skúste to znova.",
       }
     );
 
@@ -73,7 +73,7 @@ export default function Footer() {
                 </div>
                 <div>
                   <h4 className="font-bold mb-2 text-lg sm:text-xl lg:text-2xl xl:text-2xl">
-                    Join our
+                    Prihláste sa na odber noviniek
                   </h4>
                   <ReusableForm form={form} handleFinish={submit} className="">
                     <div className="flex gap-2 items-center">
@@ -82,14 +82,14 @@ export default function Footer() {
                         inputClassName=""
                         type="email"
                         name="email"
-                        placeholder="Enter your email"
+                        placeholder="Zadajte svoj e-mail"
                       />
                       <ReuseButton
                         disabled={!isChecked}
                         htmlType="submit"
                         className="!text-sm sm:!text-base lg:!text-lg !bg-third-color !text-secondary-color !w-fit !border-none !px-3 !py-5 !-mt-1 !font-bold"
                       >
-                        Subscribe
+                        Prihlásiť sa na odber
                       </ReuseButton>
                     </div>
                     <Form.Item
@@ -98,22 +98,9 @@ export default function Footer() {
                       valuePropName="checked"
                     >
                       <Checkbox className="!text-primary-color">
-                        I hereby consent to receiving a free newsletter to the
-                        email address provided
+                        Týmto súhlasím so zasielaním bezplatného odberu noviniek na poskytnutú e-mailovú adresu
                       </Checkbox>
                     </Form.Item>
-                    {/* <div className="flex items-center gap-2 mt-2 text-primary-color ">
-                      <input
-                        type="checkbox"
-                        name="newsletter"
-                        id="newsletter"
-                        className="w-4 h-4 accent-yellow-400 rounded-full"
-                      />
-                      <label htmlFor="newsletter" className="cursor-pointer">
-                        I hereby consent to receiving a free newsletter to the
-                        email address provided
-                      </label>
-                    </div>{" "} */}
                   </ReusableForm>
                 </div>
               </div>
@@ -124,17 +111,21 @@ export default function Footer() {
                 {/* Privacy & Terms */}
                 <div>
                   <h4 className="font-bold mb-2 text-lg sm:text-xl lg:text-2xl">
-                    Privacy & Terms
+                    Ochrana súkromia a podmienky
                   </h4>
                   <ul className="space-y-3 lg:space-y-2">
                     <li className="focus:underline underline-offset-2">
-                      <Link href="/terms-of-service-marketplace">Terms of Service Marketplace</Link>
+                      <Link href="/terms-of-service-marketplace">
+                        Všeobecné obchodné podmienky Online trh
+                      </Link>
                     </li>
                     <li className="focus:underline underline-offset-2">
                       <Link href="/data-protection">GDPR</Link>
                     </li>
                     <li className="focus:underline underline-offset-2">
-                      <Link href="/terms-of-service">Terms of Service Conceptural</Link>
+                      <Link href="/terms-of-service">
+                        Všeobecné obchodné podmienky Zmluvné vzťahy
+                      </Link>
                     </li>
                     <li className="focus:underline underline-offset-2">
                       <Link href="/website-functionality-compatibility">
@@ -152,11 +143,13 @@ export default function Footer() {
                 {/* For Clients */}
                 <div>
                   <h4 className="font-bold mb-2 text-lg sm:text-xl lg:text-2xl">
-                    For Clients
+                    Pre klientov
                   </h4>
                   <ul className="space-y-3 lg:space-y-2">
                     <li className="focus:underline underline-offset-2">
-                      <Link href="/how-ordering-works">How Ordering Works</Link>
+                      <Link href="/how-ordering-works">
+                        Ako funguje objednávanie
+                      </Link>
                     </li>
                   </ul>
                 </div>
@@ -164,20 +157,23 @@ export default function Footer() {
                 {/* Company */}
                 <div>
                   <h4 className="font-bold mb-2 text-lg sm:text-xl lg:text-2xl">
-                    Company
+                    Spoločnosť
                   </h4>
                   <ul className="space-y-3 lg:space-y-2">
                     <li className="focus:underline underline-offset-2">
-                      <Link href="/about-us">About Us</Link>
-                    </li>
-                    {/* <li className="focus:underline underline-offset-2">
-                      <Link href="/helpful-documents">Helpful Documents</Link>
-                    </li> */}
-                    <li className="focus:underline underline-offset-2">
-                      <Link href="/photography">Explore Photography</Link>
+                      <Link href="/about-us">
+                        O nás
+                      </Link>
                     </li>
                     <li className="focus:underline underline-offset-2">
-                      <Link href="/videography">Explore Videography</Link>
+                      <Link href="/photography">
+                        Preskúmať fotografiu
+                      </Link>
+                    </li>
+                    <li className="focus:underline underline-offset-2">
+                      <Link href="/videography">
+                        Preskúmať video
+                      </Link>
                     </li>
                   </ul>
                 </div>
@@ -185,11 +181,13 @@ export default function Footer() {
                 {/* For Creators */}
                 <div>
                   <h4 className="font-bold mb-2 text-lg sm:text-xl lg:text-2xl">
-                    For Creators
+                    Pre tvorcov
                   </h4>
                   <ul className="space-y-3 lg:space-y-2">
                     <li className="focus:underline underline-offset-2">
-                      <Link href="/how-it-works">How It Works</Link>
+                      <Link href="/how-it-works">
+                        Ako to funguje
+                      </Link>
                     </li>
                   </ul>
                 </div>
@@ -197,18 +195,20 @@ export default function Footer() {
                 {/* Support & Info */}
                 <div>
                   <h4 className="font-bold mb-2 text-lg sm:text-xl lg:text-2xl">
-                    Support & Info
+                    Podpora a informácie
                   </h4>
                   <ul className="space-y-3 lg:space-y-2">
                     <li className="focus:underline underline-offset-2">
-                      <Link href="/contact-us">Contact Us</Link>
+                      <Link href="/contact-us">
+                        Kontaktujte nás
+                      </Link>
                     </li>
                     <li className="focus:underline underline-offset-2">
                       <p
                         className="cursor-pointer"
                         onClick={() => showReportModal()}
                       >
-                        Report for a illegal content
+                        Nahlásiť nezákonný obsah
                       </p>
                     </li>
                     {
@@ -220,7 +220,7 @@ export default function Footer() {
                               showFeedbackModal()
                             }
                           >
-                            Give Feedback
+                            Poslať spätnú väzbu
                           </p>
                         </li>
                       )
@@ -233,7 +233,7 @@ export default function Footer() {
             {/* Bottom Footer */}
             <div className="flex flex-col md:flex-row justify-between items-center mt-6 text-sm gap-4">
               <p className="text-sm sm:text-sm lg:text-base  text-primary-color ">
-                © {currentYear} FRAFOL. All rights reserved.
+                © {currentYear} FRAFOL. Všetky práva vyhradené.
               </p>
               <div className="flex gap-4 text-lg">
                 <Link

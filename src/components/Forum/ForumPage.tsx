@@ -19,10 +19,9 @@ const ForumPage = ({
 }) => {
   return (
     <div className="mt-20">
-      <SectionHeader
-        title="Community Forum"
-        description="Connect with other photographers and videographers to discuss gear, techniques, and more."
-      />
+      {/* title="Community Forum" */}
+      {/* description="Connect with other photographers and videographers to discuss gear, techniques, and more." */}
+      <SectionHeader title="Komunitná diskusia" description="Prepojte sa s inými fotografmi a kameramanmi na diskusiu o príslušenství, technikách a ďalších témach." />
 
       <div className="flex justify-center mb-3 mt-5">
         <PhotographyPageSearch />

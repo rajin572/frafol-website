@@ -36,10 +36,10 @@ const FeaturedProfessionalsCard: React.FC<FeaturedProfessionalsCardProps> = ({
           </div>
           <p className="text-base-color text-sm lg:text-sm font-medium mt-1">
             {item?.role === "both"
-              ? "Videographer & Photographer"
+              ? "Fotograf a Kameraman"
               : item?.role === "photographer"
-                ? "Photographer"
-                : "Videographer"}
+                ? "Fotograf"
+                : "Kameraman"}
           </p>
           <p className="flex items-center gap-1 text-base-color text-sm lg:text-sm font-medium mt-1 line-clamp-1">
             <IoLocationSharp className="flex-shrink-0" /> {item?.town}

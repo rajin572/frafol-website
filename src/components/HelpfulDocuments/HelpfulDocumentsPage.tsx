@@ -7,10 +7,9 @@ const HelpfulDocumentsPage = () => {
   return (
     <section>
       <Container>
-        <SectionHeader
-          title="Helpful Documents"
-          description="Download useful templates and legal documents for your photography and videography projects"
-        />
+        {/* title="Helpful Documents" */}
+        {/* description="Download useful templates and legal documents for your photography and videography projects" */}
+        <SectionHeader title="Užitočné dokumenty" description="Stiahnite si užitočné šablóny a právne dokumenty pre vaše fotografické a video projekty" />
         <HelpfulDocumentsTabs />
       </Container>
     </section>

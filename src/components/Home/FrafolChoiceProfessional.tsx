@@ -26,8 +26,8 @@ const FrafolChoiceProfessional = async () => {
         <section className="">
             <Container>
                 <SectionHeader
-                    title="Frafol Choice Professionals"
-                    description="Discover our verified photographers and videographers"
+                    title="Odporúča Frafol"
+                    description="Objavte našich overených fotografov a videografov"
                 />
 
                 <FeaturedProfessionalSlider data={professionals} />
@@ -38,7 +38,8 @@ const FrafolChoiceProfessional = async () => {
                         className="mt-10 w-fit mx-auto !text-sm sm:!text-base lg:!text-lg !py-4.5"
                         variant="secondary"
                     >
-                        See More
+                        {/* See More */}
+                        Zobraziť viac
                     </ReuseButton>
                 </div>
             </Container>

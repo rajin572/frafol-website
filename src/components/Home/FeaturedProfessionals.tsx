@@ -22,9 +22,11 @@ const FeaturedProfessionals = async () => {
   return (
     <section className="pb-28">
       <Container>
+        {/* title="Featured Professionals" */}
+        {/* description="Discover our top-rated photographers and videographers" */}
         <SectionHeader
-          title="Featured Professionals"
-          description="Discover our top-rated photographers and videographers"
+          title="Odporúčaní fotografi a kameramani"
+          description="Objavte našich najlepšie hodnotených fotografov a kameramanov"
         />
 
         <div className="mt-16">
@@ -37,7 +39,8 @@ const FeaturedProfessionals = async () => {
             className="mt-10 w-fit mx-auto !text-sm sm:!text-base lg:!text-lg !py-4.5"
             variant="secondary"
           >
-            See All Professionals
+            {/* See All Professionals */}
+            Zobraziť všetkých fotografov a kameramanov
           </ReuseButton>
         </div>
       </Container>

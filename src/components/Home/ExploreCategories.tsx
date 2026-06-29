@@ -34,8 +34,8 @@ const ExploreCategories = async ({
     <section className="py-28">
       <Container>
         <SectionHeader
-          title="Explore Categories"
-          description="Frafol makes it easy to find and hire the perfect photographer or videographer for your project."
+          title="Preskúmajte kategórie"
+          description="Frafol vám uľahčí nájsť a objednať si ideálneho fotografa alebo videografa pre váš projekt."
         />
         <div className="mt-16">
           <Suspense
@@ -44,12 +44,13 @@ const ExploreCategories = async ({
                 <FadeLoader color="#ad2b08" />
               </div>
             }
-          ><ReusableTabs<"photoGraphy" | "videoGraphy">
+          >
+            <ReusableTabs<"photoGraphy" | "videoGraphy">
               align="center"
               activeTab={activeTab}
               tabs={[
                 {
-                  label: "Photography",
+                  label: "Fotografia",
                   value: "photoGraphy",
                   content: (
                     <Suspense
@@ -65,7 +66,7 @@ const ExploreCategories = async ({
                 },
 
                 {
-                  label: "Videography",
+                  label: "Video",
                   value: "videoGraphy",
                   content: (
                     <Suspense
@@ -81,7 +82,8 @@ const ExploreCategories = async ({
                 },
               ]}
               tabContentStyle="mt-5"
-            /></Suspense>
+            />
+          </Suspense>
           {/* <ExploreCategoryTab /> */}
         </div>
       </Container>

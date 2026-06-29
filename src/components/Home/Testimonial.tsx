@@ -24,8 +24,10 @@ const Testimonial = async () => {
     <section className="pb-28">
       <Container>
         <SectionHeader
-          title="Their Experience, In Their Words"
-          description="Hear from clients who found their perfect visual professional through our platform"
+          /* title="Their Experience, In Their Words" */
+          title="Ich skúsenosť, Ich slovami"
+          /* description="Hear from clients who found their perfect visual professional through our platform" */
+          description="Prečítajte si skúsenosti klientov, ktorí si cez našu platformu našli ideálneho fotografa alebo kameramana"
         />
         <div className="mt-16 relative">
           <TestimonialSlider data={testimonials} />

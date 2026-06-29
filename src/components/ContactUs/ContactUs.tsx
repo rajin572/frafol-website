@@ -12,11 +12,13 @@ const ContactUs = () => {
         <div className="w-full h-full mb-10 lg:mb-0">
           <div className="mb-5">
             <h1 className="text-2xl sm:text-3xl lg:text-4xl xl:text-[45px] font-bold text-secondary-color mb-2">
-              Contact us
+              {/* Contact us */}
+              Kontaktujte nás
             </h1>
           </div>
           <p className="text-lg sm:text-xl lg:text-2xl text-base-color mb-5">
-            Our expert will reach out to discuss your needs.
+            {/* Our expert will reach out to discuss your needs. */}
+            Náš tím sa vám ozve a dohodne s vami ďalší postup.
           </p>
           <div className="space-y-3">
             <div className="flex items-center gap-3">

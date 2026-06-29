@@ -2,7 +2,7 @@ import PhotographyPage from "@/components/Photography/PhotographyPage";
 import React from "react";
 
 export const metadata = {
-  title: "Frafol - Photography",
+  title: "Frafol – Fotografia",
 };
 
 const page = ({

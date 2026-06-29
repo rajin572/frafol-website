@@ -15,9 +15,9 @@ const ContactUsForm = () => {
       contactUs,
       { body: values },
       {
-        toastLoadingMessage: "Wait a moment...",
-        toastSuccessMessage: "Message sent successfully!",
-        toastErrorMessage: "Something went wrong! Please try again.",
+        toastLoadingMessage: "Počkajte chvíľu...",
+        toastSuccessMessage: "Správa bola úspešne odoslaná!",
+        toastErrorMessage: "Niečo sa pokazilo! Skúste to, prosím, znova.",
       }
     );
 
@@ -30,7 +30,8 @@ const ContactUsForm = () => {
       {/* Full Name Input */}
       <div>
         <Typography.Title level={5} style={{ color: "#222222" }}>
-          Name
+          {/* Name */}
+          Meno
         </Typography.Title>
         <Form.Item
           name="name"
@@ -38,12 +39,12 @@ const ContactUsForm = () => {
           rules={[
             {
               required: true,
-              message: "Full Name is Required",
+              message: "Celé meno je povinné.",
             },
           ]}
         >
           <Input
-            placeholder="Enter your full name"
+            placeholder="Zadajte svoje celé meno"
             className="!py-2 !px-3 !text-base !bg-[#EFEFEF] border !border-[#EFEFEF] outline-none !ring-0 !text-base-color rounded-lg "
           />
         </Form.Item>
@@ -51,7 +52,8 @@ const ContactUsForm = () => {
       {/* Email Input */}
       <div>
         <Typography.Title level={5} style={{ color: "#222222" }}>
-          Email
+          {/* Email */}
+          E-mail
         </Typography.Title>
         <Form.Item
           name="email"
@@ -59,12 +61,12 @@ const ContactUsForm = () => {
           rules={[
             {
               required: true,
-              message: "Email is Required",
+              message: "E-mail je povinný.",
             },
           ]}
         >
           <Input
-            placeholder="Enter your email"
+            placeholder="Zadajte svoj e-mail"
             className="!py-2 !px-3 !text-base !bg-[#EFEFEF] border !border-[#EFEFEF] outline-none !ring-0 !text-base-color rounded-lg "
           />
         </Form.Item>
@@ -72,7 +74,8 @@ const ContactUsForm = () => {
       {/* Message Input */}
       <div>
         <Typography.Title level={5} style={{ color: "#222222" }}>
-          Message
+          {/* Message */}
+          Správa
         </Typography.Title>
         <Form.Item
           name="message"
@@ -80,12 +83,12 @@ const ContactUsForm = () => {
           rules={[
             {
               required: true,
-              message: "Message is Required",
+              message: "Správa je povinná.",
             },
           ]}
         >
           <TextArea
-            placeholder="Enter your Message"
+            placeholder="Zadajte svoju správu"
             rows={4}
             className="!py-2 !px-3 !text-base !bg-[#EFEFEF] border !border-[#EFEFEF] outline-none !ring-0 !text-base-color rounded-lg "
           />
@@ -94,7 +97,7 @@ const ContactUsForm = () => {
 
       <Form.Item className="lg:col-span-2">
         <ReuseButton htmlType="submit" variant="secondary">
-          <span className="text-white">Send Message</span>
+          <span className="text-white">{/* Send Message */}Odoslať správu</span>
         </ReuseButton>
       </Form.Item>
     </Form>

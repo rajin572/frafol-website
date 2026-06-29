@@ -24,7 +24,8 @@ const ExplorePhotographyCategory = ({
           className="w-fit  mt-5 !text-sm sm:!text-base lg:!text-lg !py-4.5"
           variant="secondary"
         >
-          See All Categories
+          {/* See All Categories */}
+          Zobraziť všetky kategórie
         </ReuseButton>
       </div>
     </div>

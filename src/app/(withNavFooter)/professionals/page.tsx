@@ -2,7 +2,7 @@ import AllProfessionals from "@/components/Professional/AllProfessionalPage";
 import React from "react";
 
 export const metadata = {
-  title: "Frafol - Professionals",
+  title: "Frafol – Tvorcovia",
 };
 
 const page = ({

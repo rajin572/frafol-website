@@ -2,7 +2,7 @@ import VideographeyPage from "@/components/Videographey/VideographeyPage";
 import React from "react";
 
 export const metadata = {
-  title: "Frafol - Videography",
+  title: "Frafol – Video",
 };
 
 const page = ({

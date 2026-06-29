@@ -2,7 +2,7 @@ import MarketPlace from "@/components/MarketPlace/MarketPlacePage";
 import React from "react";
 
 export const metadata = {
-  title: "Frafol - Photography",
+  title: "Frafol – Bazár",
 };
 
 const MarketPlacePage = ({

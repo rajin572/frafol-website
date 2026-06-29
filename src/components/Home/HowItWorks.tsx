@@ -8,27 +8,31 @@ import { ImDownload2 } from "react-icons/im";
 
 const data = [
   {
-    name: "Search",
-    description:
-      "Browse through our collection of photographers and videographers or use our search to find the perfect match.",
+    /* name: "Search" */
+    name: "Hľadať",
+    /* description: "Browse through our collection of photographers and videographers or use our search to find the perfect match." */
+    description: "Prezrite si ponuku fotografov a kameramanov alebo si jednoducho vyhľadajte toho pravého",
     icon: <FiSearch className="size-7 text-secondary-color" />,
   },
   {
-    name: "Book",
-    description:
-      "Schedule a meeting, discuss your project details and confirm your booking with your chosen professional.",
+    /* name: "Book" */
+    name: "Rezervujte",
+    /* description: "Schedule a meeting, discuss your project details and confirm your booking with your chosen professional." */
+    description: "Dohodnite si stretnutie, preberte detaily projektu a potvrďte objednávku s vybraným profesionálom",
     icon: <IoCalendar className="size-7 text-secondary-color" />,
   },
   {
-    name: "Shoot",
-    description:
-      "Meet with your professional and let them capture amazing images or videos for your project.",
+    /* name: "Shoot" */
+    name: "Fotenie/natáčanie",
+    /* description: "Meet with your professional and let them capture amazing images or videos for your project." */
+    description: "Stretnite sa s vybraným fotografom alebo kameramanom a nechajte si vytvoriť fotografie či videá pre svoj projekt",
     icon: <ImCamera className="size-7 text-secondary-color" />,
   },
   {
-    name: "Receive",
-    description:
-      "Get your edited photos or videos and provide feedback on your experience with the professional.",
+    /* name: "Receive" */
+    name: "Prevziať",
+    /* description: "Get your edited photos or videos and provide feedback on your experience with the professional." */
+    description: "Získajte upravené fotografie alebo videá a ohodnoťte svoju skúsenosť",
     icon: <ImDownload2 className="size-7 text-secondary-color" />,
   },
 ];
@@ -38,8 +42,10 @@ const HowItWorks = () => {
     <section className="pb-28">
       <Container>
         <SectionHeader
-          title="How It Works"
-          description="Frafol makes it easy to find and hire the perfect photographer or videographer for your project."
+          /* title="How It Works" */
+          title="Ako to funguje"
+          /* description="Frafol makes it easy to find and hire the perfect photographer or videographer for your project." */
+          description="Frafol vám uľahčí nájsť a objednať si ideálneho fotografa alebo videografa pre váš projekt"
         />
 
         <div className="mt-16">

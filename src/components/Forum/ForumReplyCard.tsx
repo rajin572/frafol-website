@@ -70,12 +70,12 @@ const ForumReplyCard = ({ item }: { item: ICommunityComment }) => {
       </div>
       <div className=" h-full mt-2 w-full">
         <p className="text-sm sm:text-base lg:text-lg text-base-color/70 break-words">{item?.text}</p>
-        <p className="text-sm sm:text-sm text-secondary-color cursor-pointer font-bold w-fit ml-auto underline" onClick={() => handleReply(item)}>Reply</p>
+        <p className="text-sm sm:text-sm text-secondary-color cursor-pointer font-bold w-fit ml-auto underline" onClick={() => handleReply(item)}>{/* Reply */} Odpovedať</p>
 
       </div>
       {
         item?.replies?.length > 0 && (
-          <p className="text-sm sm:text-sm text-secondary-color cursor-pointer font-bold w-fit select-none" onClick={() => setIsReplyVisible((prev) => !prev)}>{isReplyVisible ? "Hide Replies" : `View Replies (${item?.replies?.length})`}</p>
+          <p className="text-sm sm:text-sm text-secondary-color cursor-pointer font-bold w-fit select-none" onClick={() => setIsReplyVisible((prev) => !prev)}>{isReplyVisible ? /* Hide Replies */ "Skryť odpovede" : `Zobraziť odpovede (${item?.replies?.length})`}</p>
         )
       }
       <div className={`mt-2 w-[97%] bg-base-color/5 rounded-2xl  space-y-6 p-5 ml-auto ${isReplyVisible ? "block" : "hidden"}`}>

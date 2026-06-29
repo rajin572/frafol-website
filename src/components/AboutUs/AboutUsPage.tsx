@@ -6,41 +6,48 @@ import AboutUsCard from "./AboutUsCard";
 const data = [
   {
     image: AllImages.aboutUs1,
-    title: "Why do we do this?",
-    description:
-      "Because we believe in quality, honest work, and a human approach. Because we know not everyone has the time or patience to browse hundreds of websites or write dozens of emails. Our platform connects those who want to create timeless memories together.",
+    /* title: "Why do we do this?" */
+    title: "Prečo to robíme?",
+    /* description: "Because we believe in quality, honest work, and a human approach..." */
+    description: "Pretože veríme v kvalitu, poctivú prácu a ľudský prístup. Pretože vieme, že nie každý má čas alebo trpezlivosť prehľadávať stovky webov alebo písať desiatky e-mailov. Naša platforma spája tých, ktorí chcú vytvárať nadčasové spomienky.",
     reverse: true,
     buttonText: null,
   },
   {
     image: AllImages.aboutUs2,
-    title: "Our Vision",
-    description:
-      "We aim to build the largest community of photographers and videographers in Slovakia, so clients can easily find the perfect creator for their needs. We help as many people as possible find a reliable and talented photographer or videographer. Our goal is to foster trust between creators and clients through transparent and personal communication.",
+    /* title: "Our Vision" */
+    title: "Naša vízia",
+    /* description: "We aim to build the largest community of photographers and videographers in Slovakia..." */
+    description: "Naším cieľom je vybudovať najväčšiu komunitu fotografov a videografov na Slovensku, aby si klienti mohli jednoducho nájsť ideálneho tvorcu pre svoje potreby. Pomáhame čo najväčšiemu počtu ľudí nájsť spoľahlivého a talentovaného fotografa alebo kameramana. Naším cieľom je podporovať dôveru medzi tvorcami a klientmi prostredníctvom transparentnej a osobnej komunikácie.",
     buttonText: null,
   },
   {
     image: AllImages.aboutUs3,
-    title: "For Photographers and Videographers",
-    description:
-      "This is not just a platform but a community that connects creators, including through a forum for discussions on various topics. We don’t take any commission from your earnings — you receive the full agreed amount Your own professional portfolio Clients who know what they are looking for",
-    buttonText: "Join As a Photographer/Videographer",
+    /* title: "For Photographers and Videographers" */
+    title: "Pre fotografov a videografov",
+    /* description: "This is not just a platform but a community that connects creators..." */
+    description: "Toto nie je len platforma, ale komunita, ktorá spája tvorcov, vrátane fóra na diskusiu o rôznych témach. Neberieme žiadnu províziu z vašich výdelení — dostanete celú dohodnutú sumu. Vlastné profesionálne portfólio. Klienti, ktorí vedia, čo hľadajú.",
+    /* buttonText: "Join As a Photographer/Videographer" */
+    buttonText: "Pridajte sa ako fotograf/videograf",
     reverse: true,
     redirectUrl: "/join",
   },
   {
     image: AllImages.aboutUs4,
-    title: "For Clients",
-    description:
-      "Looking for a photographer or videographer for a wedding, baptism, corporate event, or prom? You’re in the right place. Because: Every profile is verified You communicate directly with the creator You get exactly what you agreed on before ordering",
-    buttonText: "Find a Photographer/Videographer",
+    /* title: "For Clients" */
+    title: "Pre klientov",
+    /* description: "Looking for a photographer or videographer for a wedding, baptism, corporate event, or prom?..." */
+    description: "Hľadáte fotografa alebo videografa na svadbu, krst, firemnú akciu alebo maturity? Ste na správnom mieste. Pretože: Každý profil je overený. Komunikujete priamo s tvorcom. Získate presne to, na čo ste sa dohodli pred objednávkou.",
+    /* buttonText: "Find a Photographer/Videographer" */
+    buttonText: "Nájsť fotografa/videografa",
     redirectUrl: "/photography",
   },
   {
     image: AllImages.aboutUs5,
-    title: "What now?",
-    description:
-      "If you’re a photographer or videographer, join us. If you’re looking for a professional, choose from verified creators.",
+    /* title: "What now?" */
+    title: "Čo ďalej?",
+    /* description: "If you're a photographer or videographer, join us..." */
+    description: "Ak ste fotograf alebo videograf, pridajte sa k nám. Ak hľadáte profesionála, vyberte si z overených tvorcov.",
     reverse: true,
     buttonText: null,
   },
@@ -50,8 +57,10 @@ const AboutUsPage = () => {
   return (
     <div>
       <SectionHeader
-        title="About Us"
-        description="We are not just another ordinary listing website. We are a community and platform where talent meets demand. Photographers and videographers who love their craft — and clients who want to capture what matters most."
+        /* title="About Us" */
+        title="O nás"
+        /* description="We are not just another ordinary listing website..." */
+        description="Nie sme len ďalší obyčajný katalógový web. Sme komunita a platforma, kde sa talent stretáva s dopytom. Spájame fotografov a videografov, ktorí milujú tvoriť, s klientmi, ktorí chcú zachytiť to, na čom im najviac záleží."
       />
       <section className="mt-10 space-y-10">
         {data.map((item, index) => (

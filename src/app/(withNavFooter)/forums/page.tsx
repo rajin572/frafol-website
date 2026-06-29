@@ -36,7 +36,8 @@ const page = async ({
 
   return (
     <main className="pb-20">
-      <SectionBanner image={AllImages?.forum?.src} title="Forum" />
+      {/* title="Forum" */}
+      <SectionBanner image={AllImages?.forum?.src} title="Diskusie" />
       <Container>
         <ForumPage
           communityPosts={communityPosts}

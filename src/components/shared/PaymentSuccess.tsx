@@ -147,7 +147,8 @@ const PaymentSuccess = () => {
             animate={{ opacity: 1 }}
             transition={{ delay: 0.5, duration: 0.5 }}
           >
-            Payment Successful!
+            {/* Payment Successful! */}
+            Platba bola úspešná!
           </motion.h1>
 
           {/* Payment Details */}
@@ -199,7 +200,7 @@ const PaymentSuccess = () => {
               whileHover="hover"
               whileTap="tap"
             >
-              <span>Continue</span>
+              <span>{/* Continue */} Pokračovať</span>
               <FaArrowRight size={18} />
             </motion.button>
           </div>
@@ -214,7 +215,7 @@ const PaymentSuccess = () => {
         transition={{ delay: 1.2, duration: 0.5 }}
       >
         <p>
-          Need help? Contact{" "}
+          {/* Need help? Contact */} Potrebujete pomoc? Kontaktujte{" "}
           <span className="font-semibold text-secondary-color">
             cvak@frafol.sk
           </span>
