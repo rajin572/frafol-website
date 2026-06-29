@@ -2,8 +2,10 @@ import { BiSearchAlt } from "react-icons/bi";
 import { IoCloseCircleOutline } from "react-icons/io5";
 
 const NoResultFound = ({
-  title = "  No result found",
-  description = "We can't find any item matching your search",
+  /* title = "  No result found" */
+  title = "  Nenašiel sa žiadny výsledok",
+  /* description = "We can't find any item matching your search" */
+  description = "Nenašli sme žiadnu položku zodpovedajúcu vášmu vyhľadávaniu.",
 }) => {
   return (
     <div className=" flex items-center justify-center p-4">

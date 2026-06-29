@@ -32,13 +32,13 @@ const ForumCard = ({
           onClick={() => showEditModal && showEditModal(item)}
           className="text-primary-color bg-base-color py-1 px-2 rounded-lg cursor-pointer w-full text-center"
         >
-          Edit
+          {/* Edit */} Upraviť
         </div>
         <div
           onClick={() => showDeleteModal && showDeleteModal(item)}
           className="text-primary-color bg-secondary-color py-1 px-2 rounded-lg cursor-pointer w-full text-center"
         >
-          Delete
+          {/* Delete */} Zmazať
         </div>
       </div>
     );

@@ -24,7 +24,7 @@ const ForumDetailsPage = ({
       <Link href="/forums">
         <div className="flex items-center gap-2 text-secondary-color cursor-pointer text-sm sm:text-base lg:text-lg font-bold">
           <GoArrowLeft className="text-lg sm:text-xl lg:text-2xl font-bold" />
-          <p>Back To Topics</p>
+          <p>{/* Back To Topics */} Späť na diskusie</p>
         </div>
       </Link>
       {/* Main Post  */}
@@ -36,10 +36,10 @@ const ForumDetailsPage = ({
             </h1>
             <div className="flex items-center gap-5">
               <p className="text-sm sm:text-sm lg:text-base  mt-4">
-                Posted {formatDateTime(communityPosts?.createdAt)}
+                {/* Posted */} Publikované {formatDateTime(communityPosts?.createdAt)}
               </p>
               <p className="text-sm sm:text-sm lg:text-base  mt-4">
-                {communityPosts?.totalViewers} views
+                {communityPosts?.totalViewers} {/* views */} zhltnutí
               </p>
             </div>
           </div>

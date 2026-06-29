@@ -53,12 +53,13 @@ const PhotographyPageSearch = () => {
   return (
     <div className="flex justify-end mb-3">
       <Form form={form}>
+        {/* placeholder="Search" */}
         <ReuseInput
           prefix={<FiSearch className="text-base-color size-4.5" />}
           name="search"
           onChange={handleSearch}
           inputClassName="!bg-background-color !rounded-lg !text-base-color !border-none !shadow-none text-lg font-semibold w-80! sm:w-96! !py-2.5"
-          placeholder="Search"
+          placeholder="Hľadať"
           type="text"
         />
       </Form>
