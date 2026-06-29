@@ -22,21 +22,27 @@ const inputStructure = [
     name: "email",
     type: "email",
     inputType: "normal",
-    label: "Email",
-    placeholder: "Enter Email Name",
+    // label: "Email"
+    label: "E-mail",
+    // placeholder: "Enter Email Name"
+    placeholder: "Zadajte e-mail",
     labelClassName: "!font-semibold !text-secondary-color",
     prefix: <IoMdMail className="mr-1 !text-secondary-color" />,
-    rules: [{ required: true, message: "Email is required" }],
+    // rules: [{ required: true, message: "Email is required" }]
+    rules: [{ required: true, message: "E-mail je povinný" }],
   },
   {
     name: "password",
     type: "password",
     inputType: "password",
-    label: "Password",
-    placeholder: "Enter your password",
+    // label: "Password"
+    label: "Heslo",
+    // placeholder: "Enter your password"
+    placeholder: "Zadajte svoje heslo",
     prefix: <RiLockPasswordFill className="mr-1 !text-secondary-color" />,
     labelClassName: "!font-semibold !text-secondary-color",
-    rules: [{ required: true, message: "Password is required" }],
+    // rules: [{ required: true, message: "Password is required" }]
+    rules: [{ required: true, message: "Heslo je povinné" }],
   },
 ];
 
@@ -63,8 +69,10 @@ const SignIn = () => {
       loginUser,
       { body: values },
       {
-        toastLoadingMessage: "Signing in...",
-        toastSuccessMessage: "Signed in successfully!",
+        // toastLoadingMessage: "Signing in..."
+        toastLoadingMessage: "Prebieha prihlasovanie...",
+        // toastSuccessMessage: "Signed in successfully!"
+        toastSuccessMessage: "Úspešne ste sa prihlásili!",
       }
     );
     if (res?.success) {
@@ -87,10 +95,12 @@ const SignIn = () => {
             <div className="flex flex-col justify-center items-center">
               <div className="text-center mt-5 mb-8">
                 <h1 className="text-3xl sm:text-4xl font-bold mb-4 text-secondary-color">
-                  Sign In
+                  {/* Sign In */}
+                  Prihlásenie
                 </h1>
                 <p className="text-lg sm:text-xl mb-2 text-[#667085]">
-                  Welcome back! Please enter your details.
+                  {/* Welcome back! Please enter your details. */}
+                  Vitajte späť! Zadajte svoje údaje.
                 </p>
               </div>
             </div>
@@ -117,12 +127,13 @@ const SignIn = () => {
               ))}
 
               <div className="flex justify-between items-center mt-10">
-                <Checkbox className="">Remember me</Checkbox>
+                <Checkbox className="">{/* Remember me */}Zapamätať si ma</Checkbox>
                 <Link
                   href="/forgot-password"
                   className="!text-secondary-color !underline font-bold"
                 >
-                  Forgot Password?
+                  {/* Forgot Password? */}
+                  Zabudli ste heslo?
                 </Link>
               </div>
 
@@ -132,19 +143,22 @@ const SignIn = () => {
                   variant="secondary"
                   className="mt-5"
                 >
-                  Sign In
+                  {/* Sign In */}
+                  Prihlásiť sa
                 </ReuseButton>
               </Form.Item>
             </Form>
 
             <p className="text-center text-ellipsis mt-10">
-              Don’t have an account?
+              {/* Don’t have an account? */}
+              Nemáte účet?
               <span>
                 <Link
                   href="/join"
                   className="text-secondary-color font-semibold underline ml-2"
                 >
-                  Sign Up
+                  {/* Sign Up */}
+                  Vytvoriť účet
                 </Link>
               </span>{" "}
             </p>

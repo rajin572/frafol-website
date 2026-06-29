@@ -12,28 +12,37 @@ const inputStructure = [
     name: "about",
     type: "text",
     inputType: "textarea",
-    label: "About You / Biography",
-    placeholder: "Enter About You / Biography",
+    // label: "About Yourself/Bio"
+    label: "O sebe",
+    // placeholder: "Write a short bio about yourself and your work"
+    placeholder: "Napíšte krátke bio o sebe a svojej práci",
     labelClassName: "!font-semibold !text-secondary-color",
-    rules: [{ required: true, type: "string", min: 100, max: 2000 }],
+    // rules: [{ required: true, type: "string", min: 100, max: 2000 }]
+    rules: [{ required: true, type: "string", min: 100, max: 2000, message: "Popis je povinný" }],
   },
   {
     name: "minHourlyRate",
     type: "number",
     inputType: "number",
-    label: "Min Rate",
-    placeholder: "Enter Min Rate",
+    // label: "Min Rate"
+    label: "Minimálna sadzba",
+    // placeholder: "Enter Min Rate"
+    placeholder: "Zadajte minimálnu sadzbu",
     labelClassName: "!font-semibold !text-secondary-color",
-    rules: [{ required: true, message: "Min Rate is required" }],
+    // rules: [{ required: true, message: "Min Rate is required" }]
+    rules: [{ required: true, message: "Minimálna sadzba je povinná" }],
   },
   {
     name: "maxHourlyRate",
     type: "number",
     inputType: "number",
-    label: "Max Rate",
-    placeholder: "Enter Max Rate",
+    // label: "Max Rate"
+    label: "Maximálna sadzba",
+    // placeholder: "Enter Max Rate"
+    placeholder: "Zadajte maximálnu sadzbu",
     labelClassName: "!font-semibold !text-secondary-color",
-    rules: [{ required: true, message: "Max Rate is required" }],
+    // rules: [{ required: true, message: "Max Rate is required" }]
+    rules: [{ required: true, message: "Maximálna sadzba je povinná" }],
   },
 ];
 
@@ -74,10 +83,12 @@ const AdditionalInformation = () => {
     <div className=" flex flex-col justify-center gap-3 h-full w-full sm:w-3/4 mx-auto">
       <div className="mb-3">
         <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-secondary-color mb-5">
-          Additional Information
+          {/* Additional Information */}
+          Ďalšie informácie
         </h2>
         <p className="text-base sm:text-lg lg:text-xl text-base-color">
-          Complete your professional profile
+          {/* Provide more details about your services */}
+          Uveďte ďalšie informácie o svojich službách
         </p>
       </div>
       <ReusableForm handleFinish={onFinish} form={form}>
@@ -101,7 +112,8 @@ const AdditionalInformation = () => {
             variant="secondary"
             className="!w-fit  sm:!text-sm lg:!text-sm !px-5 !py-2.5"
           >
-            Continue
+            {/* Continue */}
+            Pokračovať
           </ReuseButton>
         </div>
       </ReusableForm>

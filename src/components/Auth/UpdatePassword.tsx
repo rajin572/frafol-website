@@ -19,26 +19,33 @@ const inputStructure = [
     name: "newPassword",
     type: "password",
     inputType: "password",
-    label: "Password",
-    placeholder: "Enter your password",
+    // label: "Password"
+    label: "Heslo",
+    // placeholder: "Enter your password"
+    placeholder: "Zadajte svoje heslo",
     prefix: <RiLockPasswordFill className="mr-1 !text-secondary-color" />,
     labelClassName: "!font-semibold !text-secondary-color",
-    rules: [{ required: true, message: "Password is required" }, { min: 8, message: "Password must be at least 8 characters" },
+    // rules: [{ required: true, message: "Password is required" }, { min: 8, message: "Password must be at least 8 characters" },
+    rules: [{ required: true, message: "Heslo je povinné" }, { min: 8, message: "Heslo musí mať aspoň 8 znakov" },
     {
       pattern: /^(?=.*[A-Z])(?=.*[!@#$%^&*(),.?":{}|<>])/,
-      message: "Password must include at least one uppercase letter and one special character",
+      // message: "Password must include at least one uppercase letter and one special character"
+      message: "Heslo musí obsahovať aspoň jedno veľké písmeno a jeden špeciálny znak",
     },],
   },
   {
     name: "confirmPassword",
     type: "password",
     inputType: "password",
-    label: "Confirm Password",
-    placeholder: "Confirm your password",
+    // label: "Confirm Password"
+    label: "Potvrďte heslo",
+    // placeholder: "Confirm your password"
+    placeholder: "Potvrďte svoje heslo",
     prefix: <RiLockPasswordFill className="mr-1 !text-secondary-color" />,
     labelClassName: "!font-semibold !text-secondary-color",
     rules: [
-      { required: true, message: "Confirm Password is required" },
+      // { required: true, message: "Confirm Password is required" }
+      { required: true, message: "Potvrdenie hesla je povinné" },
       ({
         getFieldValue,
       }: {
@@ -48,7 +55,8 @@ const inputStructure = [
           if (!value || getFieldValue("newPassword") === value) {
             return Promise.resolve();
           }
-          return Promise.reject(new Error("Password does not match!"));
+          // return Promise.reject(new Error("Password does not match!"));
+          return Promise.reject(new Error("Heslá sa nezhodujú!"));
         },
       }),
     ],
@@ -63,8 +71,10 @@ const UpdatePassword = () => {
       changePassword,
       { body: values },
       {
-        toastLoadingMessage: "wait a moment...",
-        toastSuccessMessage: "Password changed successfully!",
+        // toastLoadingMessage: "wait a moment..."
+        toastLoadingMessage: "Chvíľu počkajte...",
+        // toastSuccessMessage: "Password changed successfully!"
+        toastSuccessMessage: "Heslo bolo úspešne zmenené!",
       }
     );
     if (res?.success) {
@@ -83,7 +93,8 @@ const UpdatePassword = () => {
               <div className="text-center mt-5 mb-5">
                 <IoMdUnlock className="size-10 mb-4 text-secondary-color mx-auto" />
                 <h1 className="text-3xl sm:text-4xl font-semibold text-secondary-color mb-5">
-                  Reset Your Password
+                  {/* Reset Your Password */}
+                  Obnovte si heslo
                 </h1>
               </div>
             </div>
@@ -116,7 +127,8 @@ const UpdatePassword = () => {
                   variant="secondary"
                   className="mt-5"
                 >
-                  Reset Password
+                  {/* Reset Password */}
+                  Obnoviť heslo
                 </ReuseButton>
               </Form.Item>
             </Form>

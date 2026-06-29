@@ -170,15 +170,30 @@ For each file:
 - Success page component
 - Terms of Service pages
 
+### Part 3 - Authentication Pages & Components (Auth)
+
+| CSV Section                       | Component File                  | Status |
+| --------------------------------- | ------------------------------- | ------ |
+| Auth - Forgot Password            | FotgotPassword.tsx              | ✓      |
+| Auth - Sign In                    | SignIn.tsx                      | ✓      |
+| Auth - Join Frafol                | JoinFrafol.tsx                  | ✓      |
+| Auth - Update Password            | UpdatePassword.tsx              | ✓      |
+| Auth - Choose Role                | ChooseRole.tsx                  | ✓      |
+| Auth - Choose Specialization      | ChooseSpecialization.tsx        | ✓      |
+| Auth - Personal Information       | PersonalInformation.tsx         | ✓      |
+| Auth - Additional Information     | AdditionalInformation.tsx       | ✓      |
+| Auth - Legal Invoice              | LegalInvoiceDetails.tsx         | ✓      |
+| Auth - Professional OTP Verify    | SignUpProfessionalOTPVerify.tsx | ✓      |
+| Auth - Review Details             | ReviewDetailsAndSubmit.tsx      | ✓      |
+| Auth - Sign Up User               | SignUpUser.tsx                  | ✓      |
+| Auth - Sign Up User OTP Verify    | SignUpUserOTPVerify.tsx         | ✓      |
+| Auth - Forgot Password OTP Verify | ForgetPasswordOTPVerify.tsx     | ✓      |
+
 ### Not in Scope
 
 - Notification page (empty page - no content to translate)
 - Dashboard pages
-- Authentication pages
 - Modal components (except those directly related to translated pages)
-- Dashboard pages (not in scope)
-- Authentication pages (not in scope)
-- Modal components (not in scope)
 
 ## File Structure
 
@@ -201,6 +216,21 @@ src/
 │       ├── success/page.tsx ✓
 │       └── terms-of-service/page.tsx ✓
 └── components/
+    ├── Auth/
+    │   ├── FotgotPassword.tsx ✓
+    │   ├── SignIn.tsx ✓
+    │   ├── JoinFrafol.tsx ✓
+    │   ├── UpdatePassword.tsx ✓
+    │   ├── ChooseRole.tsx ✓
+    │   ├── ChooseSpecialization.tsx ✓
+    │   ├── PersonalInformation.tsx ✓
+    │   ├── AdditionalInformation.tsx ✓
+    │   ├── LegalInvoiceDetails.tsx ✓
+    │   ├── ReviewDetailsAndSubmit.tsx ✓
+    │   ├── SignUpUser.tsx ✓
+    │   ├── SignUpUserOTPVerify.tsx ✓
+    │   ├── SignUpProfessionalOTPVerify.tsx ✓
+    │   └── ForgetPasswordOTPVerify.tsx ✓
     ├── Photography/PhotographyPage.tsx ✓
     ├── Videographey/VideographeyPage.tsx ✓
     ├── Professional/AllProfessionalPage.tsx ✓
@@ -218,7 +248,7 @@ src/
 
 ## Verification Checklist
 
-- [x] All English texts commented out with `{/* */}` format
+- [x] All English texts commented out with `{/* */}` or `// ` format
 - [x] Slovak translations added
 - [x] No design/CSS changes made
 - [x] All functionality preserved
@@ -227,7 +257,26 @@ src/
 
 ## CSV Reference
 
-File: `Frafol Drive Issues - Translation Website Part 1.csv`
+### File: `Frafol Drive Issues - Translation Website Part 1.csv`
 
 - Lines 1-356 translated
-- Covers: All pages and components mentioned in the task
+- Covers: All pages and components mentioned in Part 1 & Part 2 tasks
+
+### File: `Frafol Drive Issues - Translation Website Auth.csv`
+
+- Lines 1-182 translated
+- Covers: All Auth pages and components (Forgot Password, Sign In, Join Frafol, Update Password, Choose Role, Choose Specialization, Personal Information, Additional Information, Legal Invoice, Professional OTP Verify, Review Details, Sign Up User, Sign Up User OTP Verify, Forgot Password OTP Verify)
+- Lines 2-9: Forgot Password page
+- Lines 14-29: Sign In page
+- Lines 33-41: Join Frafol page
+- Lines 45-57: Update Password page
+- Lines 59-68: Choose Role page
+- Lines 70-71: Choose Specialization page
+- Lines 73-85: Personal Information page
+- Lines 87-96: Additional Information page
+- Lines 98-118: Legal Invoice page
+- Lines 120-130: Professional OTP Verify page
+- Lines 132-138: Review Details page
+- Lines 140-162: Sign Up User page
+- Lines 164-171: Sign Up User OTP Verify page
+- Lines 173-182: Forgot Password OTP Verify page
