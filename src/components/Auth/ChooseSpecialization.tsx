@@ -105,10 +105,12 @@ const ChooseSpecialization = ({ categories }: { categories: ICategory[] }) => {
     <div className="flex flex-col justify-center gap-3 h-full w-full sm:w-3/4 mx-auto">
       <div className="mb-3">
         <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-secondary-color mb-5">
-          Your Specializations
+          {/* Your Specializations */}
+          Kategórie služieb
         </h2>
         <p className="text-base sm:text-lg lg:text-xl text-base-color">
-          Select the services you specialize in
+          {/* Select the services you specialize in */}
+          Vyberte kategórie, v ktorých chcete prezentovať svoju prácu
         </p>
       </div>
       <div>
@@ -117,7 +119,8 @@ const ChooseSpecialization = ({ categories }: { categories: ICategory[] }) => {
           activeTab={activeTab}
           tabs={[
             {
-              label: "Photography",
+              // label: "Photography"
+              label: "Fotografia",
               value: "photography",
               disabled: isPhotographyDisabled,
               content: (
@@ -140,7 +143,8 @@ const ChooseSpecialization = ({ categories }: { categories: ICategory[] }) => {
               ),
             },
             {
-              label: "Videography",
+              // label: "Videography"
+              label: "Videografia",
               value: "videography",
               disabled: isVideographyDisabled,
               content: (
@@ -176,7 +180,8 @@ const ChooseSpecialization = ({ categories }: { categories: ICategory[] }) => {
           }
           onClick={handleSubmit}
         >
-          Continue
+          {/* Continue */}
+          Pokračovať
         </ReuseButton>
       </div>
     </div>

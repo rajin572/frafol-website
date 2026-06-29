@@ -26,58 +26,75 @@ const userInputStructure = [
     name: "name",
     type: "text",
     inputType: "normal",
-    label: " Name",
-    placeholder: "Enter Full Name",
+    // label: "Full Name"
+    label: "Celé meno",
+    // placeholder: "Enter your full name"
+    placeholder: "Zadajte svoje celé meno",
     labelClassName: "!font-semibold !text-secondary-color",
     prefix: <FaUser className="mr-1 !text-secondary-color" />,
-    rules: [{ required: true, message: "Name is required" }],
+    // rules: [{ required: true, message: "Name is required" }]
+    rules: [{ required: true, message: "Celé meno je povinné" }],
   },
   {
     name: "email",
     type: "email",
     inputType: "normal",
-    label: "Email",
-    placeholder: "Enter Email Name",
+    // label: "Email"
+    label: "E-mail",
+    // placeholder: "Enter Email Name"
+    placeholder: "Zadajte svoj e-mail",
     labelClassName: "!font-bold !text-secondary-color",
     prefix: <IoMdMail className="mr-1 !text-secondary-color" />,
-    rules: [{ required: true, message: "Email is required" }],
+    // rules: [{ required: true, message: "Email is required" }]
+    rules: [{ required: true, message: "E-mail je povinný" }],
   },
   {
     name: "phone",
     type: "number",
     inputType: "normal",
-    label: "Phone number",
-    placeholder: "Enter Phone number Name",
+    // label: "Phone Number"
+    label: "Telefónne číslo",
+    // placeholder: "Enter your phone number"
+    placeholder: "Zadajte svoje telefónne číslo",
     labelClassName: "!font-semibold !text-secondary-color",
   },
   {
     name: "address",
     type: "text",
     inputType: "normal",
-    label: "Street Address",
-    placeholder: "Enter Street Address",
+    // label: "Street Address"
+    label: "Ulica a číslo",
+    // placeholder: "Enter Street Address"
+    placeholder: "Zadajte ulicu a číslo",
     labelClassName: "!font-semibold !text-secondary-color",
     prefix: <HiLocationMarker className="mr-1 !text-secondary-color" />,
-    rules: [{ required: true, message: "Street Address is required" }],
+    // rules: [{ required: true, message: "Street Address is required" }]
+    rules: [{ required: true, message: "Ulica a číslo sú povinné" }],
   },
   {
     name: "country",
     type: "text",
     inputType: "normal",
-    label: "Country",
-    placeholder: "Enter Country Name",
+    // label: "Country"
+    label: "Krajina",
+    // placeholder: "Enter Country Name"
+    placeholder: "Zadajte krajinu",
     labelClassName: "!font-bold !text-secondary-color",
     prefix: <HiLocationMarker className="mr-1 !text-secondary-color" />,
-    rules: [{ required: true, message: "Country is required" }],
+    // rules: [{ required: true, message: "Country is required" }]
+    rules: [{ required: true, message: "Krajina je povinná" }],
   },
   {
     name: "zipCode",
     type: "text",
     inputType: "normal",
-    label: "Zip Code",
-    placeholder: "Enter Zip Code Name",
+    // label: "Zip Code"
+    label: "PSČ",
+    // placeholder: "Enter Zip Code"
+    placeholder: "Zadajte PSČ",
     labelClassName: "!font-semibold !text-secondary-color",
-    rules: [{ required: true, message: "Zip Code is required" }],
+    // rules: [{ required: true, message: "Zip Code is required" }]
+    rules: [{ required: true, message: "PSČ je povinné" }],
   },
 ];
 const companyInputStructure = [
@@ -85,99 +102,126 @@ const companyInputStructure = [
     name: "name",
     type: "text",
     inputType: "normal",
-    label: " Name",
-    placeholder: "Enter Full Name",
+    // label: "Full Name"
+    label: "Celé meno",
+    // placeholder: "Enter your full name"
+    placeholder: "Zadajte svoje celé meno",
     labelClassName: "!font-semibold !text-secondary-color",
     prefix: <FaUser className="mr-1 !text-secondary-color" />,
-    rules: [{ required: true, message: "Name is required" }],
+    // rules: [{ required: true, message: "Name is required" }]
+    rules: [{ required: true, message: "Celé meno je povinné" }],
   },
   {
     name: "companyName",
     type: "text",
     inputType: "normal",
-    label: " Company Name",
-    placeholder: "Enter Full Company Name",
+    // label: "Company Name"
+    label: "Obchodné meno",
+    // placeholder: "Enter Company Name"
+    placeholder: "Zadajte obchodné meno",
     labelClassName: "!font-semibold !text-secondary-color",
     prefix: <FaUser className="mr-1 !text-secondary-color" />,
-    rules: [{ required: true, message: "Company Name is required" }],
+    // rules: [{ required: true, message: "Company Name is required" }]
+    rules: [{ required: true, message: "Obchodné meno je povinné" }],
   },
   {
     name: "email",
     type: "email",
     inputType: "normal",
-    label: "Email",
-    placeholder: "Enter Email Name",
+    // label: "Email"
+    label: "E-mail",
+    // placeholder: "Enter Email Name"
+    placeholder: "Zadajte svoj e-mail",
     labelClassName: "!font-semibold !text-secondary-color",
     prefix: <IoMdMail className="mr-1 !text-secondary-color" />,
-    rules: [{ required: true, message: "Email is required" }],
+    // rules: [{ required: true, message: "Email is required" }]
+    rules: [{ required: true, message: "E-mail je povinný" }],
   },
   {
     name: "phone",
     type: "number",
     inputType: "normal",
-    label: "Phone number",
-    placeholder: "Enter Phone number Name",
+    // label: "Phone Number"
+    label: "Telefónne číslo",
+    // placeholder: "Enter your phone number"
+    placeholder: "Zadajte svoje telefónne číslo",
     labelClassName: "!font-semibold !text-secondary-color",
-    rules: [{ required: true, message: "Phone number is required" }],
+    // rules: [{ required: true, message: "Phone number is required" }]
+    rules: [{ required: true, message: "Telefónne číslo je povinné" }],
   },
   {
     name: "ico",
     type: "text",
     inputType: "normal",
     label: "IČO",
-    placeholder: "Enter IČO",
+    // placeholder: "Enter IČO"
+    placeholder: "Zadajte IČO",
     labelClassName: "!font-semibold !text-secondary-color",
     prefix: <FaAddressCard className="mr-1 !text-secondary-color" />,
-    rules: [{ required: true, message: "IČO is required" }],
+    // rules: [{ required: true, message: "IČO is required" }]
+    rules: [{ required: true, message: "IČO je povinné" }],
   },
   {
     name: "dic",
     type: "text",
     inputType: "normal",
     label: "DIČ",
-    placeholder: "Enter DIČ",
+    // placeholder: "Enter DIČ"
+    placeholder: "Zadajte DIČ",
     labelClassName: "!font-semibold !text-secondary-color",
     prefix: <FaAddressCard className="mr-1 !text-secondary-color" />,
-    rules: [{ required: true, message: "DIČ is required" }],
+    // rules: [{ required: true, message: "DIČ is required" }]
+    rules: [{ required: true, message: "DIČ je povinné" }],
   },
   {
     name: "ic_dph",
     type: "text",
     inputType: "normal",
-    label: "IČ DPH (Optional)",
-    placeholder: "Enter IČ DPH",
+    // label: "IČ DPH (Optional)"
+    label: "IČ DPH (Nepovinné)",
+    // placeholder: "Enter IČ DPH"
+    placeholder: "Zadajte IČ DPH",
     labelClassName: "!font-semibold !text-secondary-color",
     prefix: <FaAddressCard className="mr-1 !text-secondary-color" />,
-    rules: [{ required: false, message: "IČ DPH is required" }],
+    rules: [{ required: false, message: "IČ DPH je povinné" }],
   },
   {
     name: "address",
     type: "text",
     inputType: "normal",
-    label: "Street Address",
-    placeholder: "Enter Street Address",
+    // label: "Street Address"
+    label: "Ulica a číslo",
+    // placeholder: "Enter Street Address"
+    placeholder: "Zadajte ulicu a číslo",
     labelClassName: "!font-semibold !text-secondary-color",
     prefix: <HiLocationMarker className="mr-1 !text-secondary-color" />,
-    rules: [{ required: true, message: "Street Address is required" }],
+    // rules: [{ required: true, message: "Street Address is required" }]
+    rules: [{ required: true, message: "Ulica a číslo sú povinné" }],
   },
   {
     name: "country",
     type: "text",
     inputType: "normal",
-    label: "Country",
-    placeholder: "Enter Country Name",
+    // label: "Country"
+    label: "Krajina",
+    // placeholder: "Enter Country Name"
+    placeholder: "Zadajte krajinu",
     labelClassName: "!font-semibold !text-secondary-color",
     prefix: <HiLocationMarker className="mr-1 !text-secondary-color" />,
-    rules: [{ required: true, message: "Country is required" }],
+    // rules: [{ required: true, message: "Country is required" }]
+    rules: [{ required: true, message: "Krajina je povinná" }],
   },
   {
     name: "zipCode",
     type: "text",
     inputType: "normal",
-    label: "Zip Code",
-    placeholder: "Enter Zip Code Name",
+    // label: "Zip Code"
+    label: "PSČ",
+    // placeholder: "Enter Zip Code"
+    placeholder: "Zadajte PSČ",
     labelClassName: "!font-semibold !text-secondary-color",
-    rules: [{ required: true, message: "Zip Code is required" }],
+    // rules: [{ required: true, message: "Zip Code is required" }]
+    rules: [{ required: true, message: "PSČ je povinné" }],
   },
 ];
 const passwordInputStructure = [
@@ -185,26 +229,33 @@ const passwordInputStructure = [
     name: "password",
     type: "password",
     inputType: "password",
-    label: "Password",
-    placeholder: "Enter your password",
+    // label: "Password"
+    label: "Heslo",
+    // placeholder: "Enter your password"
+    placeholder: "Zadajte svoje heslo",
     prefix: <RiLockPasswordFill className="mr-1 !text-secondary-color" />,
     labelClassName: "!font-semibold !text-secondary-color",
-    rules: [{ required: true, message: "Password is required" }, { min: 8, message: "Password must be at least 8 characters" },
+    // rules: [{ required: true, message: "Password is required" }, { min: 8, message: "Password must be at least 8 characters" },
+    rules: [{ required: true, message: "Heslo je povinné" }, { min: 8, message: "Heslo musí mať aspoň 8 znakov" },
     {
       pattern: /^(?=.*[A-Z])(?=.*[!@#$%^&*(),.?":{}|<>])/,
-      message: "Password must include at least one uppercase letter and one special character",
+      // message: "Password must include at least one uppercase letter and one special character"
+      message: "Heslo musí obsahovať aspoň jedno veľké písmeno a jeden špeciálny znak",
     },],
   },
   {
     name: "confirmPassword",
     type: "password",
     inputType: "password",
-    label: "Confirm Password",
-    placeholder: "Confirm your password",
+    // label: "Confirm Password"
+    label: "Potvrdenie hesla",
+    // placeholder: "Confirm your password"
+    placeholder: "Potvrďte svoje heslo",
     prefix: <RiLockPasswordFill className="mr-1 !text-secondary-color" />,
     labelClassName: "!font-semibold !text-secondary-color",
     rules: [
-      { required: true, message: "Confirm Password is required" },
+      // { required: true, message: "Confirm Password is required" }
+      { required: true, message: "Potvrdenie hesla je povinné" },
       ({
         getFieldValue,
       }: {
@@ -214,7 +265,8 @@ const passwordInputStructure = [
           if (!value || getFieldValue("password") === value) {
             return Promise.resolve();
           }
-          return Promise.reject(new Error("Password does not match!"));
+          // return Promise.reject(new Error("Password does not match!"));
+          return Promise.reject(new Error("Heslá sa nezhodujú!"));
         },
       }),
     ],
@@ -239,8 +291,10 @@ const SignUpUser = ({ townData }: { townData: ITown[] }) => {
       registerUser,
       { body: data },
       {
-        toastLoadingMessage: "Creating account...",
-        toastSuccessMessage: "OTP sent To your email!",
+        // toastLoadingMessage: "Creating account..."
+        toastLoadingMessage: "Čakajte, prosím...",
+        // toastSuccessMessage: "OTP sent To your email!"
+        toastSuccessMessage: "Účet bol úspešne vytvorený!",
       }
     );
     if (res?.success) {
@@ -255,10 +309,12 @@ const SignUpUser = ({ townData }: { townData: ITown[] }) => {
     <div className=" flex flex-col gap-3 h-full w-full sm:w-3/4 mx-auto">
       <div className="mb-3">
         <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-secondary-color mb-5">
-          Sign Up
+          {/* Sign Up */}
+          Vytvoriť účet
         </h2>
         <p className="text-base sm:text-lg lg:text-xl text-base-color">
-          Tell us about yourself
+          {/* Tell us about yourself */}
+          Zaregistrujte sa ako používateľ a nájdite fotografov a kameramanov
         </p>
       </div>
       <ReusableForm handleFinish={onFinish} form={form}  >
@@ -275,7 +331,8 @@ const SignUpUser = ({ townData }: { townData: ITown[] }) => {
               }
             }}
           >
-            Register as a company
+            {/* Register as a company */}
+            Registrovať ako spoločnosť
           </Checkbox>
         </div>
         {type !== "company"
@@ -312,10 +369,13 @@ const SignUpUser = ({ townData }: { townData: ITown[] }) => {
         <ReuseSelect
           showSearch={true}
           name="town"
-          label="Town"
-          placeholder="Select your town"
+          // label: "Town/City"
+          label="Mesto"
+          // placeholder: "Select your town"
+          placeholder="Vyberte svoje mesto"
           labelClassName="!text-secondary-color !font-semibold"
-          rules={[{ required: true, message: "Please select your town" }]}
+          // rules: [{ required: true, message: "Please select your town" }]
+          rules={[{ required: true, message: "Vyberte, prosím, mesto" }]}
           options={
             townData?.map((town) => ({
               value: town.name,
@@ -326,8 +386,10 @@ const SignUpUser = ({ townData }: { townData: ITown[] }) => {
 
         <ReuseDatePicker
           name="dateOfBirth"
-          label="Date of Birth"
-          rules={[{ required: true, message: "Date of Birth is required" }]}
+          // label: "Date of Birth"
+          label="Dátum narodenia"
+          // rules: [{ required: true, message: "Date of Birth is required" }]
+          rules={[{ required: true, message: "Dátum narodenia je povinný" }]}
           labelClassName="!font-semibold !text-secondary-color"
           shouldDisableDate={false}
         />
@@ -367,16 +429,21 @@ const SignUpUser = ({ townData }: { townData: ITown[] }) => {
           >
             <div>
               <p className="text-sm sm:text-base lg:text-lg font-semibold">
-                Agree to terms and conditions
+                {/* Agree to terms and conditions */}
+                Súhlasím s obchodnými podmienkami
               </p>
               <p className="text-sm sm:text-sm lg:text-base">
-                By creating an account, you agree to our{" "}
+                {/* By creating an account, you agree to our */}
+                Vytvorením účtu súhlasíte s našimi{" "}
                 <Link href="/terms-of-service" target="_blank" className="text-secondary-color! underline">
-                  Terms of Service Conceptural
+                  {/* Terms of Service Conceptural */}
+                  Všeobecné obchodné podmienky Zmluvné vzťahy
                 </Link>{" "}
-                and{" "}
+                {/* and */}
+                a{" "}
                 <Link href="/terms-of-service-marketplace" target="_blank" className="text-secondary-color! underline">
-                  Terms of Service Marketplace.
+                  {/* Terms of Service Marketplace. */}
+                  Obchodné podmienky Marketplace.
                 </Link>
               </p>
             </div>
@@ -403,11 +470,14 @@ const SignUpUser = ({ townData }: { townData: ITown[] }) => {
           >
             <div>
               <p className="text-sm sm:text-base lg:text-lg font-semibold">
-                Agree to{" "}
+                {/* Agree to */}
+                Súhlasím so{" "}
                 <Link href="/data-protection" target="_blank" className="text-secondary-color! underline">
+                  {/* GDPR */}
                   GDPR
                 </Link>{" "}
-                contract
+                {/* contract */}
+                zmluvou
               </p>
             </div>
           </Checkbox>
@@ -418,7 +488,8 @@ const SignUpUser = ({ townData }: { townData: ITown[] }) => {
           <Checkbox>
             <div>
               <p className="text-sm sm:text-base lg:text-lg font-semibold">
-                Subscribe to newsletter (optional)
+                {/* Subscribe to newsletter (optional) */}
+                Prihlásiť sa na odber noviniek (voliteľné)
               </p>
             </div>
           </Checkbox>
@@ -429,15 +500,17 @@ const SignUpUser = ({ townData }: { townData: ITown[] }) => {
             variant="secondary"
             className="!w-fit  sm:!text-sm lg:!text-sm !px-5 !py-2.5"
           >
-            Create account
+            {/* Create account */}
+            Zaregistrovať sa
           </ReuseButton>
         </div>
       </ReusableForm>
 
       <div className="flex justify-center items-center gap-2.5 !py-10">
-        <p>Already have an account?</p>
+        <p>{/* Already have an account? */}Už máte účet?</p>
         <Link href="/sign-in" className="text-secondary-color font-bold">
-          Sign In
+          {/* Sign In */}
+          Prihlásiť sa
         </Link>
       </div>
     </div>

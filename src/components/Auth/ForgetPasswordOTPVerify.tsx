@@ -18,8 +18,10 @@ const ForgetPasswordOTPVerify = () => {
       forgetPasswordOtp,
       { body: { otp } },
       {
-        toastLoadingMessage: "Verifying...",
-        toastSuccessMessage: "Verified successfully!",
+        // toastLoadingMessage: "Verifying..."
+        toastLoadingMessage: "Čakajte, prosím...",
+        // toastSuccessMessage: "Verified successfully!"
+        toastSuccessMessage: "Overovací kód bol úspešne overený!",
       }
     );
     if (res?.success) {
@@ -32,8 +34,10 @@ const ForgetPasswordOTPVerify = () => {
       resendOtp,
       { body: { purpose: "forget-password" } },
       {
-        toastLoadingMessage: "wait a moment...",
-        toastSuccessMessage: "OTP sent successfully!",
+        // toastLoadingMessage: "wait a moment..."
+        toastLoadingMessage: "Čakajte, prosím...",
+        // toastSuccessMessage: "OTP sent successfully!"
+        toastSuccessMessage: "Overovací kód bol úspešne odoslaný!",
       }
     );
   };
@@ -47,10 +51,12 @@ const ForgetPasswordOTPVerify = () => {
                 <IoMdMail className="size-10 text-secondary-color font-bold mx-auto" />
               </div>
               <h1 className="text-2xl sm:text-3xl font-semibold text-base-color mb-5">
-                Verify Your Email
+                {/* Verify OTP */}
+                Overiť overovací kód
               </h1>
               <p className="text-lg sm:text-xl mb-2 text-base-color">
-                We sent a verification link to your <span> </span> email
+                {/* Enter the OTP sent to your email */}
+                Zadajte overovací kód odoslaný na váš e-mail
               </p>
             </div>
 
@@ -73,16 +79,18 @@ const ForgetPasswordOTPVerify = () => {
                 variant="secondary"
                 onClick={handleOTPSubmit}
               >
-                Verify OTP
+                {/* Verify OTP */}
+                Overiť overovací kód
               </ReuseButton>
             </Form>
             <div className="flex justify-center gap-2 py-1 mt-5">
-              <p>Didn’t receive code?</p>
+              <p>{/* If you don't receive the code? */}Nedostali ste overovací kód?</p>
               <p
                 onClick={handleResendOtp}
                 className="!text-secondary-color !underline font-semibold cursor-pointer"
               >
-                Click to resend
+                {/* Click to resend */}
+                Odoslať overovací kód znova
               </p>
             </div>
           </div>

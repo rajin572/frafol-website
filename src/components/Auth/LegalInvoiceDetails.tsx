@@ -17,48 +17,58 @@ const BusinessInputStructure = [
     name: "companyName",
     type: "text",
     inputType: "normal",
-    label: "Company Name",
-    placeholder: "Enter Company Name Name",
+    // label: "Company Name"
+    label: "Obchodné meno",
+    // placeholder: "Enter Company Name"
+    placeholder: "Zadajte obchodné meno",
     labelClassName: "!font-semibold !text-secondary-color",
-    rules: [{ required: true, message: "Company Name is required" }],
+    // rules: [{ required: true, message: "Company Name is required" }]
+    rules: [{ required: true, message: "Obchodné meno je povinné" }],
   },
   {
     name: "phone",
     type: "number",
     inputType: "normal",
-    label: "Phone number",
-    placeholder: "Enter Phone number Name",
+    // label: "Phone Number"
+    label: "Telefónne číslo",
+    // placeholder: "Enter your phone number"
+    placeholder: "Zadajte svoje telefónne číslo",
     labelClassName: "!font-semibold !text-secondary-color",
-    rules: [{ required: true, message: "Phone number is required" }],
-
+    // rules: [{ required: true, message: "Phone Number is required" }]
+    rules: [{ required: true, message: "Telefónne číslo je povinné" }],
   },
   {
     name: "ico",
     type: "text",
     inputType: "normal",
     label: "IČO",
-    placeholder: "Enter IČO Name",
+    // placeholder: "Enter IČO"
+    placeholder: "Zadajte IČO",
     labelClassName: "!font-semibold !text-secondary-color",
-    rules: [{ required: true, message: "IČO is required" }],
-
+    // rules: [{ required: true, message: "IČO is required" }]
+    rules: [{ required: true, message: "IČO je povinné" }],
   },
   {
     name: "dic",
     type: "text",
     inputType: "normal",
     label: "DIČ",
-    placeholder: "Enter DIČ Name",
+    // placeholder: "Enter DIČ"
+    placeholder: "Zadajte DIČ",
     labelClassName: "!font-semibold !text-secondary-color",
-    rules: [{ required: true, message: "DIČ is required" }],
+    // rules: [{ required: true, message: "DIČ is required" }]
+    rules: [{ required: true, message: "DIČ je povinné" }],
   },
   {
     name: "ic_dph",
     type: "text",
     inputType: "normal",
-    label: "IČ DPH (Optional)",
-    placeholder: "Enter IČ DPH Name",
+    // label: "IČ DPH (Optional)"
+    label: "IČ DPH (Nepovinné)",
+    // placeholder: "Enter IČ DPH"
+    placeholder: "Zadajte IČ DPH",
     labelClassName: "!font-semibold !text-secondary-color",
-    rules: [{ required: false, message: "IČ DPH is required" }],
+    rules: [{ required: false, message: "IČ DPH je povinné" }],
   },
 ];
 const AddressInputStructure = [
@@ -66,28 +76,37 @@ const AddressInputStructure = [
     name: "address",
     type: "text",
     inputType: "normal",
-    label: "Street Address",
-    placeholder: "Enter Street Address Name",
+    // label: "Street Address"
+    label: "Ulica a číslo",
+    // placeholder: "Enter street address"
+    placeholder: "Zadajte ulicu a číslo",
     labelClassName: "!font-semibold !text-secondary-color",
-    rules: [{ required: true, message: "Street Address is required" }],
+    // rules: [{ required: true, message: "Street Address is required" }]
+    rules: [{ required: true, message: "Ulica a číslo sú povinné" }],
   },
   {
     name: "zipCode",
     type: "text",
     inputType: "normal",
-    label: "Zip Code",
-    placeholder: "Enter Zip Code Name",
+    // label: "Zip Code"
+    label: "PSČ",
+    // placeholder: "Enter zip code"
+    placeholder: "Zadajte PSČ",
     labelClassName: "!font-semibold !text-secondary-color",
-    rules: [{ required: true, message: "Zip Code is required" }],
+    // rules: [{ required: true, message: "Zip Code is required" }]
+    rules: [{ required: true, message: "PSČ je povinné" }],
   },
   {
     name: "country",
     type: "text",
     inputType: "normal",
-    label: "Country",
-    placeholder: "Enter Country Name",
+    // label: "Country"
+    label: "Krajina",
+    // placeholder: "Enter Country"
+    placeholder: "Zadajte krajinu",
     labelClassName: "!font-semibold !text-secondary-color",
-    rules: [{ required: true, message: "Country is required" }],
+    // rules: [{ required: true, message: "Country is required" }]
+    rules: [{ required: true, message: "Krajina je povinná" }],
   },
 ];
 
@@ -142,10 +161,12 @@ const LegalInvoiceDetails = ({ townData }: { townData: ITown[] }) => {
     <div className=" flex flex-col justify-center gap-3 h-full w-full sm:w-3/4 mx-auto">
       <div className="mb-3">
         <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-secondary-color mb-5">
-          Legal & Invoice Details
+          {/* Legal / Invoice Details */}
+          Fakturačné údaje
         </h2>
         <p className="text-base sm:text-lg lg:text-xl text-base-color">
-          Please provide your details for seamless invoicing.
+          {/* Enter your legal information for invoicing */}
+          Zadajte svoje údaje potrebné na fakturáciu
         </p>
       </div>
       <ReusableForm handleFinish={onFinish} form={form}>
@@ -153,7 +174,8 @@ const LegalInvoiceDetails = ({ townData }: { townData: ITown[] }) => {
           level={3}
           className="!text-secondary-color !font-semibold"
         >
-          Business Information
+          {/* Business Information */}
+          Obchodné údaje
         </Typography.Title>
         {BusinessInputStructure.map((input, index) => (
           <ReuseInput
@@ -171,8 +193,10 @@ const LegalInvoiceDetails = ({ townData }: { townData: ITown[] }) => {
         ))}
         <ReuseDatePicker
           name="dateOfBirth"
-          label="Date of Birth"
-          rules={[{ required: true, message: "Date of Birth is required" }]}
+          // label: "Date of Birth"
+          label="Dátum narodenia"
+          // rules: [{ required: true, message: "Date of Birth is required" }]
+          rules={[{ required: true, message: "Dátum narodenia je povinný" }]}
           labelClassName="!font-semibold !text-secondary-color"
           shouldDisableDate={false}
         />
@@ -180,7 +204,8 @@ const LegalInvoiceDetails = ({ townData }: { townData: ITown[] }) => {
           level={3}
           className="!text-secondary-color !font-semibold !mt-5"
         >
-          Address Information{" "}
+          {/* Address Information */}
+          Adresa
         </Typography.Title>
         {AddressInputStructure.map((input, index) => (
           <ReuseInput
@@ -199,10 +224,13 @@ const LegalInvoiceDetails = ({ townData }: { townData: ITown[] }) => {
         <ReuseSelect
           showSearch={true}
           name="town"
-          label="Town"
-          placeholder="Select your town"
+          // label: "Town/City"
+          label="Mesto"
+          // placeholder: "Select your town"
+          placeholder="Vyberte svoje mesto"
           labelClassName="!text-secondary-color !font-semibold"
-          rules={[{ required: true, message: "Please select your town" }]}
+          // rules: [{ required: true, message: "Please select a town" }]
+          rules={[{ required: true, message: "Vyberte mesto" }]}
           options={
             townData?.map((town) => ({
               value: town.name,
@@ -214,15 +242,21 @@ const LegalInvoiceDetails = ({ townData }: { townData: ITown[] }) => {
           showSearch={true}
           mode="multiple"
           name="travelTowns"
-          label="Towns I Can Travel To"
-          placeholder="Select towns you can travel to"
+          // label: "Towns I Can Travel To"
+          label="Mestá, do ktorých môžem cestovať"
+          // placeholder: "Select towns you can travel to"
+          placeholder="Vyberte mestá, do ktorých môžete cestovať"
           labelClassName="!text-secondary-color !font-semibold"
-          rules={[{ required: true, message: "Please select at least one travel town" }]}
+          // rules: [{ required: true, message: "Please select at least one travel town" }]
+          rules={[{ required: true, message: "Vyberte aspoň jedno mesto" }]}
           allowClear={true}
           onChange={handleTravelTownsChange}
           selectClassName="!h-auto !min-h-10"
           options={[
-            { value: "__all__", label: "Select All Towns" },
+            {
+              value: "__all__", // label: "Select All Towns"
+              label: "Vybrať všetky mestá"
+            },
             ...townData?.map((town) => ({
               value: town.name,
               label: town.name,
@@ -235,7 +269,8 @@ const LegalInvoiceDetails = ({ townData }: { townData: ITown[] }) => {
             variant="secondary"
             className="!w-fit  sm:!text-sm lg:!text-sm !px-5 !py-2.5"
           >
-            Continue
+            {/* Continue */}
+            Pokračovať
           </ReuseButton>
         </div>
       </ReusableForm>

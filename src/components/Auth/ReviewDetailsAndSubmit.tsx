@@ -21,61 +21,74 @@ const ReviewDetailsAndSubmit = () => {
 
   const details = [
     {
-      label: "Name",
+      // label: "Name"
+      label: "Celé meno",
       value: parseData.name || "N/A",
     },
     {
-      label: "Email",
+      // label: "Email"
+      label: "E-mail",
       value: parseData.email || "N/A",
     },
     {
-      label: "Role",
+      // label: "Role"
+      label: "Rola",
       value: parseData.role ? parseData.role.charAt(0).toUpperCase() + parseData.role.slice(1) : "N/A",
     },
     {
-      label: "Phone Number",
+      // label: "Phone Number"
+      label: "Telefónne číslo",
       value: parseData.phone || "N/A",
     },
     {
-      label: "Date of Birth",
+      // label: "Date of Birth"
+      label: "Dátum narodenia",
       value: formatDate(parseData.dateOfBirth) || "N/A",
     },
     {
-      label: "Address",
+      // label: "Address"
+      label: "Adresa",
       value: [parseData.address, parseData.town, parseData.country]
         .filter(Boolean)
         .join(", ") || "N/A",
     },
     {
-      label: "Zip Code",
+      // label: "Zip Code"
+      label: "PSČ",
       value: parseData.zipCode || "N/A",
     },
     {
-      label: "Town",
+      // label: "Town"
+      label: "Mesto",
       value: parseData.town || "N/A",
     },
     {
-      label: "Towns I Can Travel To",
+      // label: "Towns I Can Travel To"
+      label: "Mestá, do ktorých môžem cestovať",
       value: Array.isArray(parseData.travelTowns) && parseData.travelTowns.length > 0
         ? parseData.travelTowns.join(", ")
         : "N/A",
     },
     {
-      label: "Country",
+      // label: "Country"
+      label: "Krajina",
       value: parseData.country || "N/A",
     },
     {
-      label: "About",
+      // label: "About"
+      label: "O sebe",
       value: parseData.about || "N/A",
     },
     {
-      label: "Hourly Rate",
+      // label: "Hourly Rate"
+      label: "Hodinová sadzba",
       value: parseData.minHourlyRate && parseData.maxHourlyRate
         ? `${parseData.minHourlyRate}€ - ${parseData.maxHourlyRate}€`
         : "N/A",
     },
     {
-      label: "Specializations",
+      // label: "Specializations"
+      label: "Kategórie služieb",
       value: (() => {
         if (parseData?.role === "photographer") {
           return parseData.photographerSpecializations?.join(", ") || "N/A";
@@ -92,7 +105,8 @@ const ReviewDetailsAndSubmit = () => {
     },
     // Company-specific fields (conditionally included)
     ...(parseData.companyName ? [{
-      label: "Company Name",
+      // label: "Company Name"
+      label: "Obchodné meno",
       value: parseData.companyName,
     }] : []),
     ...(parseData.ico ? [{
@@ -104,6 +118,7 @@ const ReviewDetailsAndSubmit = () => {
       value: parseData.dic,
     }] : []),
     ...(parseData.ic_dph ? [{
+      // label: "IČ DPH"
       label: "IČ DPH",
       value: parseData.ic_dph,
     }] : []),
@@ -122,8 +137,10 @@ const ReviewDetailsAndSubmit = () => {
         registerUser,
         { body: data },
         {
-          toastLoadingMessage: "Creating account...",
-          toastSuccessMessage: "OTP sent To your email!",
+          // toastLoadingMessage: "Creating account..."
+          toastLoadingMessage: "Vytvára sa účet...",
+          // toastSuccessMessage: "OTP sent To your email!"
+          toastSuccessMessage: "Overovací kód bol odoslaný na váš e-mail!",
         }
       );
       if (res?.success) {
@@ -141,10 +158,12 @@ const ReviewDetailsAndSubmit = () => {
     <div className="flex flex-col justify-center gap-3 h-full w-full sm:w-3/4 mx-auto ">
       <div className="mb-3">
         <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-secondary-color mb-5">
-          Review & Submit
+          {/* Review Your Details */}
+          Skontrolujte svoje údaje
         </h2>
         <p className="text-base sm:text-lg lg:text-xl text-base-color">
-          Review your information before creating your account
+          {/* Please review your information before submitting */}
+          Pred odoslaním si skontrolujte svoje údaje
         </p>
       </div>
 
@@ -184,16 +203,21 @@ const ReviewDetailsAndSubmit = () => {
           >
             <div>
               <p className="text-sm sm:text-base lg:text-lg font-semibold">
-                Agree to terms and conditions
+                {/* Agree to terms and conditions */}
+                Súhlasím s obchodnými podmienkami
               </p>
               <p className="text-sm sm:text-sm lg:text-base">
-                By creating an account, you agree to our{" "}
+                {/* By creating an account, you agree to our */}
+                Vytvorením účtu súhlasíte s našimi{" "}
                 <Link href="/terms-of-service" target="_blank" className="text-secondary-color! underline">
-                  Terms of Service Conceptural
+                  {/* Terms of Service Conceptural */}
+                  Všeobecné obchodné podmienky Zmluvné vzťahy
                 </Link>{" "}
-                and{" "}
+                {/* and */}
+                a{" "}
                 <Link href="/terms-of-service-marketplace" target="_blank" className="text-secondary-color! underline">
-                  Terms of Service Marketplace.
+                  {/* Terms of Service Marketplace. */}
+                  Obchodné podmienky Marketplace.
                 </Link>
               </p>
             </div>
@@ -220,11 +244,14 @@ const ReviewDetailsAndSubmit = () => {
           >
             <div>
               <p className="text-sm sm:text-base lg:text-lg font-semibold">
-                Agree to{" "}
+                {/* Agree to */}
+                Súhlasím so{" "}
                 <Link href="/data-protection" target="_blank" className="text-secondary-color! underline">
+                  {/* GDPR */}
                   GDPR
                 </Link>{" "}
-                contract
+                {/* contract */}
+                zmluvou
               </p>
             </div>
           </Checkbox>
@@ -247,7 +274,8 @@ const ReviewDetailsAndSubmit = () => {
             className="!w-fit  sm:!text-sm lg:!text-sm !px-5 !py-2.5 mb-5!"
             htmlType="submit"
           >
-            Create Account
+            {/* Submit */}
+            Odoslať
           </ReuseButton>
         </div>
       </ReusableForm>

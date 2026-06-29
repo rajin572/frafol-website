@@ -20,11 +20,14 @@ const inputStructure = [
     name: "email",
     type: "email",
     inputType: "normal",
-    label: "Email",
-    placeholder: "Enter Email Name",
+    // label: "Email"
+    label: "E-mail",
+    // placeholder: "Enter Email Name"
+    placeholder: "Zadajte e-mail",
     labelClassName: "!font-semibold !text-secondary-color",
     prefix: <IoMdMail className="mr-1 !text-secondary-color" />,
-    rules: [{ required: true, message: "Email is required" }],
+    // rules: [{ required: true, message: "Email is required" }]
+    rules: [{ required: true, message: "E-mail je povinný" }],
   },
 ];
 
@@ -36,8 +39,10 @@ const ForgotPassword = () => {
       forgetPassword,
       { body: values },
       {
-        toastLoadingMessage: "wait a moment...",
-        toastSuccessMessage: "OTP sent To your email!",
+        // toastLoadingMessage: "wait a moment..."
+        toastLoadingMessage: "Chvíľu počkajte...",
+        // toastSuccessMessage: "OTP sent To your email!"
+        toastSuccessMessage: "Overovací kód bol odoslaný na váš e-mail!",
       }
     );
     if (res?.success) {
@@ -53,11 +58,12 @@ const ForgotPassword = () => {
             <div className="mb-8">
               <TbLockFilled className="size-10 mb-4 text-secondary-color mx-auto" />
               <h1 className="text-3xl sm:text-4xl font-semibold text-secondary-color mb-5 text-center">
-                Forgot Password
+                {/* Forgot Password */}
+                Zabudnuté heslo
               </h1>
               <p className=" sm:text-lg mb-2 text-[#667085] text-center">
-                Provide your account&apos;s email for which you want to
-                reset your password
+                {/* Provide your account's email for which you want to reset your password */}
+                Zadajte e-mail účtu, pre ktorý chcete obnoviť heslo
               </p>
             </div>
 
@@ -89,7 +95,8 @@ const ForgotPassword = () => {
                   variant="secondary"
                   className="mt-5"
                 >
-                  Send OTP
+                  {/* Send OTP */}
+                  Odoslať overovací kód
                 </ReuseButton>
               </Form.Item>
             </Form>
@@ -100,7 +107,7 @@ const ForgotPassword = () => {
                 className="flex justify-center items-center  gap-2 "
               >
                 <FaArrowLeftLong className="size-4 " />
-                <span>Back to log in</span>
+                <span>{/* Back to log in */}Späť na prihlásenie</span>
               </Link>
             </div>
           </div>
@@ -109,4 +116,5 @@ const ForgotPassword = () => {
     </div>
   );
 };
+
 export default ForgotPassword;

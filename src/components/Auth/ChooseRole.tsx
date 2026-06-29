@@ -36,34 +36,42 @@ const ChooseRole = () => {
     <div className="flex flex-col justify-center gap-5 h-full w-full md:w-[60%] mx-auto">
       <div>
         <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-secondary-color mb-3">
-          Choose Your Role
+          {/* Choose Your Role */}
+          Vyberte si svoju rolu
         </h2>
         <p className="text-base sm:text-lg lg:text-xl text-base-color">
-          Select your professional role to continue
+          {/* Select your professional role to continue */}
+          Pokračujte výberom svoj typ služby
         </p>
       </div>
 
       <ReusableForm handleFinish={onFinish} form={form}>
         <ReuseSelect
           name="role"
-          label="Professional Role"
-          placeholder="Select your role"
+          // label: "Professional Role"
+          label="Typ služby"
+          // placeholder: "Select your role"
+          placeholder="Vyberte svoju rolu"
           labelClassName="!text-secondary-color !font-semibold"
-          rules={[{ required: true, message: "Please select your role" }]}
+          // rules: [{ required: true, message: "Please select your role" }]
+          rules={[{ required: true, message: "Vyberte svoju rolu" }]}
           options={[
             {
               value: "photographer",
-              label: "Photographer",
+              // label: "Photographer"
+              label: "Fotograf",
               icon: <LuUser />,
             },
             {
               value: "videographer",
-              label: "Videographer",
+              // label: "Videographer"
+              label: "Videograf",
               icon: <IoCamera />,
             },
             {
               value: "both",
-              label: "Both",
+              // label: "Both"
+              label: "Fotograf aj Kameraman",
               icon: <IoCamera />,
             },
           ]}
@@ -74,7 +82,8 @@ const ChooseRole = () => {
             variant="secondary"
             className="!w-fit  sm:!text-sm lg:!text-sm !px-5 !py-2.5"
           >
-            Continue
+            {/* Continue */}
+            Pokračovať
           </ReuseButton>
         </div>
       </ReusableForm>

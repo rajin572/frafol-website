@@ -8,14 +8,18 @@ import ReuseButton from "../ui/Button/ReuseButton";
 const joinOptions = [
   {
     id: "photographer-videographer",
-    title: "Photographer/Videographer",
-    description: "Showcase your work and find new clients",
+    // title: "Photographer/Videographer"
+    title: "Fotograf/kameraman",
+    // description: "Showcase your work and find new clients"
+    description: "Prezentujte svoju prácu a nájdite nových klientov",
     icon: <IoCamera className="text-3xl text-primary-color" />,
   },
   {
     id: "regular-user",
-    title: "Regular User",
-    description: "Find skilled photographers/ videographers for your needs",
+    // title: "Regular User"
+    title: "Klient",
+    // description: "Find skilled photographers/ videographers for your needs"
+    description: "Nájdite skúsených fotografov/videografov podľa svojich potrieb",
     icon: <LuUser className="text-3xl text-primary-color" />,
   },
 ];
@@ -26,10 +30,12 @@ const JoinFrafol = () => {
   return (
     <div className=" flex flex-col items-center justify-center gap-3 py-10 h-full">
       <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-secondary-color">
-        Join Frafol
+        {/* Join Frafol */}
+        Pridajte sa k Frafolu
       </h2>
       <p className="text-base sm:text-lg lg:text-xl text-base-color">
-        Choose how you want to use our platform
+        {/* Choose how you want to use our platform */}
+        Vyberte si, ako chcete používať našu platformu
       </p>
 
       <div className="w-fit">
@@ -68,15 +74,17 @@ const JoinFrafol = () => {
                 : "/sign-up/user"
             }
           >
-            Continue
+            {/* Continue */}
+            Pokračovať
           </ReuseButton>
         </div>
       </div>
 
       <div className="flex justify-center items-center gap-2.5 mt-10">
-        <p>Already have an account?</p>
+        <p>{/* Already have an account? */}Už máte účet?</p>
         <Link href="/sign-in" className="text-secondary-color font-bold">
-          Sign In
+          {/* Sign In */}
+          Prihlásiť sa
         </Link>
       </div>
     </div>
