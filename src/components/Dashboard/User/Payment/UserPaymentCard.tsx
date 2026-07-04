@@ -11,14 +11,16 @@ const UserPaymentCard = ({
     {
       id: 3,
       background: "#ffffff",
-      name: "Total Spent",
+      /* name: "Total Spent", */
+      name: "Spolu zaplatené",
       icon: <RiMoneyEuroCircleFill className="size-6 text-secondary-color" />,
       count: `${myPaymnetStatesData?.totalSpent}€`,
     },
     {
       id: 2,
       background: "#ffffff",
-      name: "Total Orders",
+      /* name: "Total Orders", */
+      name: "Celkový počet objednávok",
       icon: <FaHourglassEnd className="size-5 text-secondary-color" />,
       count: myPaymnetStatesData?.totalOrders,
     },

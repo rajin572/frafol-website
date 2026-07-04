@@ -52,8 +52,11 @@ const UserReviewPage = async ({
 
   return (
     <div>
-      <h1 className="text-xl sm:text-2xl lg:text-3xl xl:text-4xl  font-bold mb-10">
+      {/* <h1 className="text-xl sm:text-2xl lg:text-3xl xl:text-4xl  font-bold mb-10">
         Reviews
+      </h1> */}
+      <h1 className="text-xl sm:text-2xl lg:text-3xl xl:text-4xl  font-bold mb-10">
+        Moje recenzie
       </h1>
       <UserReviewOverview />
       {/* <UserPaymentCard /> */}
@@ -63,7 +66,8 @@ const UserReviewPage = async ({
           align="left"
           tabs={[
             {
-              label: "All Reviews",
+              /* label: "All Reviews", */
+              label: "Všetky recenzie",
               value: "allReviews",
               content: (
                 <UserAllReviews
@@ -76,7 +80,8 @@ const UserReviewPage = async ({
               ),
             },
             {
-              label: "Pending Reviews",
+              /* label: "Pending Reviews", */
+              label: "Čakajúce recenzie",
               value: "pendingReviews",
               content: (
                 <UserAllPendingReview

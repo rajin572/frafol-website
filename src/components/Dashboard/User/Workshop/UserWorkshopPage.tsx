@@ -35,7 +35,7 @@ const UserWorkshopPage = ({
   const [expandedIds, setExpandedIds] = useState<Set<string>>(new Set());
 
   const handleDownloadInvoice = async (workshop: IMyRegisteredWorkshop) => {
-    const toastId = toast.loading("Downloading...", { duration: 3000 });
+    const toastId = toast.loading("Sťahuje sa...", { duration: 3000 });
     try {
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       const record = { ...workshop, workshopId: (workshop as any).workshopId };
@@ -45,9 +45,9 @@ const UserWorkshopPage = ({
         <InvoiceWorkshopFromClientSide record={record} professional={professional} />
       ).toBlob();
       saveAs(blob, `${workshop.orderId}-client-invoice.pdf`);
-      toast.success("Downloaded successfully!", { id: toastId });
+      toast.success("Úspešne stiahnuté!", { id: toastId });
     } catch {
-      toast.error("Download failed", { id: toastId });
+      toast.error("Sťahovanie zlyhalo", { id: toastId });
     }
   };
 
@@ -64,8 +64,11 @@ const UserWorkshopPage = ({
   };
   return (
     <div>
-      <h1 className="text-xl sm:text-2xl lg:text-3xl xl:text-4xl  font-bold mb-10">
+      {/* <h1 className="text-xl sm:text-2xl lg:text-3xl xl:text-4xl  font-bold mb-10">
         My Workshop
+      </h1> */}
+      <h1 className="text-xl sm:text-2xl lg:text-3xl xl:text-4xl  font-bold mb-10">
+        Prihlásené kurzy
       </h1>
       <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 items-start gap-5">
         {workshops?.map((workshop, index) => (
@@ -99,7 +102,7 @@ const UserWorkshopPage = ({
                         onClick={() => toggleDescription(workshop._id)}
                         className="ml-1 text-secondary-color font-semibold text-xs"
                       >
-                        {expandedIds.has(workshop._id) ? "Show less" : "...Show more"}
+                        {expandedIds.has(workshop._id) ? "Zobraziť menej" : "...Zobraziť viac"}
                       </button>
                     )}
                   </p>
@@ -169,7 +172,8 @@ const UserWorkshopPage = ({
                 onClick={() => handleDownloadInvoice(workshop)}
                 className="mt-4 w-full py-2 text-sm font-semibold text-white bg-secondary-color rounded-lg hover:opacity-90 transition"
               >
-                Download Invoice
+                {/* Download Invoice */}
+                Stiahnuť faktúru
               </button>
             </div>
           </div>

@@ -24,7 +24,8 @@ const UserGearOrderPage = ({
     <div>
       <div className="flex lg:flex-row flex-col justify-between items-center ">
         <h1 className="text-xl sm:text-2xl lg:text-3xl xl:text-4xl  font-bold mb-10">
-          Orders
+          {/* Orders */}
+          Objednávky
         </h1>
       </div>
       {/* <UserOrdersOverview /> */}
@@ -35,7 +36,8 @@ const UserGearOrderPage = ({
           align="left"
           tabs={[
             {
-              label: "Current Order",
+              /* label: "Current Order", */
+              label: "Aktuálna objednávka",
               value: "currentOrder",
               content: (
                 <UserCurrentGearOrder
@@ -48,7 +50,8 @@ const UserGearOrderPage = ({
               ),
             },
             {
-              label: "To Confirm",
+              /* label: "To Confirm", */
+              label: "Na potvrdenie",
               value: "toConfirm",
               content: (
                 <UserConfirmGearOrder
@@ -61,7 +64,8 @@ const UserGearOrderPage = ({
               ),
             },
             {
-              label: "Delivered",
+              /* label: "Delivered", */
+              label: "Doručené",
               value: "delivered",
               content: (
                 <UserDeliveriedGearOrder
@@ -74,7 +78,8 @@ const UserGearOrderPage = ({
               ),
             },
             {
-              label: "Cancelled",
+              /* label: "Cancelled", */
+              label: "Zrušené",
               value: "cancelled",
               content: (
                 <UserCancleGearOrder

@@ -44,7 +44,8 @@ const ProfessionalWorkshopCard = ({
         <div className="flex items-center justify-between gap-2 absolute top-2  w-full px-2">
           {workshop?.vatAmount > 0 ? (
             <span className="text-sm sm:text-sm bg-secondary-color text-primary-color py-0.5 px-1.5 rounded-full ">
-              VAT Included: {workshop?.vatPercent}%
+              {/* VAT Included: {workshop?.vatPercent}% */}
+              Vrátane DPH: {workshop?.vatPercent}%
             </span>
           ) : (
             <span></span>
@@ -81,7 +82,8 @@ const ProfessionalWorkshopCard = ({
                   onClick={() => setExpanded((prev) => !prev)}
                   className="ml-1 text-secondary-color font-semibold text-xs"
                 >
-                  {expanded ? "Show less" : "...Show more"}
+                  {/* {expanded ? "Show less" : "...Show more"} */}
+                  {expanded ? "Zobraziť menej" : "...Zobraziť viac"}
                 </button>
               )}
             </p>
@@ -149,7 +151,8 @@ const ProfessionalWorkshopCard = ({
             variant="secondary"
             className="!text-sm sm:!text-sm lg:!text-base w-fit !px-2 !py-1"
           >
-            View Participants
+            {/* View Participants */}
+            Zobraziť účastníkov
           </ReuseButton>
         </div>
       </div>

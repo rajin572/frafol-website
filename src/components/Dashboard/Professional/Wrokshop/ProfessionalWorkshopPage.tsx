@@ -92,8 +92,8 @@ const ProfessionalWorkshopPage = ({
         deleteWrokshop,
         { params: record?._id },
         {
-          toastLoadingMessage: "Deleting workshop...",
-          toastSuccessMessage: "workshop deleted successfully!",
+          toastLoadingMessage: "Odstraňuje sa kurz...",
+          toastSuccessMessage: "Kurz bol úspešne odstránený!",
           toastErrorMessage: "Something went wrong! Please try again.",
         }
       );
@@ -108,8 +108,11 @@ const ProfessionalWorkshopPage = ({
     <div>
       <div className=" w-full p-4   rounded-tl-xl rounded-tr-xl">
         <div className=" flex items-center justify-between">
-          <h1 className="text-xl sm:text-2xl lg:text-3xl xl:text-4xl font-bold mb-5">
+          {/* <h1 className="text-xl sm:text-2xl lg:text-3xl xl:text-4xl font-bold mb-5">
             Workshops
+          </h1> */}
+          <h1 className="text-xl sm:text-2xl lg:text-3xl xl:text-4xl font-bold mb-5">
+            Kurzy
           </h1>
           <SearchInput placeholder="Search ..." />
         </div>
@@ -120,7 +123,8 @@ const ProfessionalWorkshopPage = ({
           className="!w-fit"
           onClick={showAddModal}
         >
-          Add New Workshop
+          {/* Add New Workshop */}
+          Pridať nový kurz
         </ReuseButton>
       </div>
       <ReusableTabs
@@ -129,7 +133,7 @@ const ProfessionalWorkshopPage = ({
         align="left"
         tabs={[
           {
-            label: "Active",
+            label: "Aktívne",
             value: "approved",
             content: (
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
@@ -146,7 +150,7 @@ const ProfessionalWorkshopPage = ({
             ),
           },
           {
-            label: "Pending",
+            label: "Čakajúce",
             value: "pending",
             content: (
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">

@@ -33,12 +33,13 @@ const ReviewCard = ({
               </p>
               {activeTab !== "extension" && (
                 <p className="px-2 py-0.5 rounded-full bg-yellow-500 text-primary-color w-fit capitalize text-sm">
+                  {/* {data?.status === "accepted" ? "Payment Required" : data?.status === "inProgress" ? "In Progress" : data?.status === "cancelRequest" ? "Cancel Requested" : data?.status} */}
                   {data?.status === "accepted"
-                    ? "Payment Required"
+                    ? "Vyžaduje sa platba"
                     : data?.status === "inProgress"
-                      ? "In Progress"
+                      ? "Prebieha"
                       : data?.status === "cancelRequest"
-                        ? "Cancel Requested"
+                        ? "Žiadosť o zrušenie odoslaná"
                         : data?.status}
                 </p>
               )}
@@ -57,7 +58,7 @@ const ReviewCard = ({
             </div>
             <p className="text-sm sm:text-sm text-[#5D5D5D] flex items-start gap-2 my-2">
               <div className="flex items-center text-nowrap  gap-1">
-                <FaMapMarkerAlt /> <span>Location : </span>
+                <FaMapMarkerAlt /> <span>{/* Location : */}Miesto: </span>
               </div>
               {data?.eventOrderId?.location}
             </p>
@@ -81,7 +82,8 @@ const ReviewCard = ({
                 onClick={() => openModal(data)}
                 className="flex items-center gap-1 px-3 py-1 border border-secondary-color rounded bg-secondary-color text-white text-sm transition cursor-pointer"
               >
-                Edit
+                {/* Edit */}
+                Upraviť
               </button>
             ) : (
               <button

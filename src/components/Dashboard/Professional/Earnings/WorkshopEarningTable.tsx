@@ -29,7 +29,8 @@ const WorkshopEarningTable = ({
 
   const columns = [
     {
-      title: "Client",
+      /* title: "Client", */
+      title: "Meno klienta",
       key: "client",
       render: (_: any, record: any) => <span className="font-medium">{record.clientId?.name || "—"}</span>,
     },
@@ -44,7 +45,8 @@ const WorkshopEarningTable = ({
       render: (_: any, record: any) => formatDate(record.workshopId?.date),
     },
     {
-      title: "Price",
+      /* title: "Price", */
+      title: "Cena",
       key: "price",
       render: (_: any, record: any) => <span>{record.workshopId?.price?.toFixed(2)}€</span>,
     },
@@ -92,11 +94,12 @@ const WorkshopEarningTable = ({
       render: (_: any, record: any) => formatDate(record.joinedAt),
     },
     {
-      title: "Action",
+      /* title: "Action", */
+      title: "Akcia",
       key: "action",
       render: (_: any, record: any) => (
         <Space size="middle">
-          <Tooltip placement="right" title="View Details">
+          <Tooltip placement="right" /* title="View Details" */ title="Zobraziť detaily">
             <button
               className="!p-0 !bg-transparent !border-none !text-base-color cursor-pointer"
               onClick={() => onView(record)}

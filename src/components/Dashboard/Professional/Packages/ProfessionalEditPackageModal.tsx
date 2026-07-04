@@ -152,9 +152,11 @@ const ProfessionalEditPackageModal = ({
         </h3>
         <ReuseInput
           name="title"
-          label="Title"
+          /* label="Title" */
+          label="Názov balíka"
           placeholder="Enter Title"
-          rules={[{ required: true, message: "Title is required" }]}
+          /* rules={[{ required: true, message: "Title is required" }]} */
+          rules={[{ required: true, message: "Názov balíka je povinný" }]}
           labelClassName="!font-semibold"
         />
 
@@ -162,9 +164,11 @@ const ProfessionalEditPackageModal = ({
           inputType="textarea"
           rows={4}
           name="description"
-          label="Description"
+          /* label="Description" */
+          label="Popis"
           placeholder="Enter Description"
-          rules={[{ required: true, message: "Description is required" }]}
+          /* rules={[{ required: true, message: "Description is required" }]} */
+          rules={[{ required: true, message: "Popis je povinný" }]}
           labelClassName="!font-semibold mt-4"
         />
 
@@ -178,10 +182,12 @@ const ProfessionalEditPackageModal = ({
         />
         <ReuseInput
           name="price"
-          label="Package Price"
+          /* label="Package Price" */
+          label="Cena"
           placeholder="Enter Package Price"
           type="number"
-          rules={[{ required: true, message: "Package Price is required" }]}
+          /* rules={[{ required: true, message: "Package Price is required" }]} */
+          rules={[{ required: true, message: "Cena je povinná" }]}
           labelClassName="!font-semibold"
         />
         <ReuseInput
@@ -268,7 +274,8 @@ const ProfessionalEditPackageModal = ({
         </div>
 
         <ReuseButton htmlType="submit" variant="secondary" className="mt-2">
-          Update Package
+          {/* Update Package */}
+          Odoslať
         </ReuseButton>
       </ReusableForm>
     </Modal>

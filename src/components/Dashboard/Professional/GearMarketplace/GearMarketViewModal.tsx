@@ -33,7 +33,8 @@ const GearMarketViewModal: React.FC<GearMarketViewModalProps> = ({
 
               <div>
                 <h4 className="text-sm sm:text-sm lg:text-base font-medium mb-1">
-                  Product Name
+                  {/* Product Name */}
+                  Názov príslušenstva
                 </h4>
                 <p className="text-sm sm:text-sm lg:text-base bg-zinc-100 p-2 rounded mb-5">
                   {currentRecord?.name}
@@ -42,7 +43,8 @@ const GearMarketViewModal: React.FC<GearMarketViewModalProps> = ({
 
               <div>
                 <h4 className="text-sm sm:text-sm lg:text-base font-medium mb-1">
-                  Product Category
+                  {/* Product Category */}
+                  Kategória
                 </h4>
                 <p className="text-sm sm:text-sm lg:text-base bg-zinc-100 p-2 rounded mb-5">
                   {currentRecord?.categoryId?.title}
@@ -50,7 +52,8 @@ const GearMarketViewModal: React.FC<GearMarketViewModalProps> = ({
               </div>
               <div>
                 <h4 className="text-sm sm:text-sm lg:text-base font-medium mb-1">
-                  Product Price
+                  {/* Product Price */}
+                  Cena
                 </h4>
                 <p className="text-sm sm:text-sm lg:text-base bg-zinc-100 p-2 rounded mb-5">
                   {currentRecord?.price?.toFixed(2)}€
@@ -58,7 +61,8 @@ const GearMarketViewModal: React.FC<GearMarketViewModalProps> = ({
               </div>
               <div>
                 <h4 className="text-sm sm:text-sm lg:text-base font-medium mb-1">
-                  Condition
+                  {/* Condition */}
+                  Stav
                 </h4>
                 <p className="text-sm sm:text-sm lg:text-base bg-zinc-100 p-2 rounded mb-5">
                   {currentRecord?.condition}
@@ -75,7 +79,8 @@ const GearMarketViewModal: React.FC<GearMarketViewModalProps> = ({
               </div>
               <div>
                 <h4 className="text-sm sm:text-sm lg:text-base font-medium mb-1">
-                  Description
+                  {/* Description */}
+                  Popis
                 </h4>
                 <p className="text-sm sm:text-sm lg:text-base bg-zinc-100 p-2 rounded mb-5">
                   {currentRecord?.description}

@@ -21,8 +21,11 @@ const IncomeOverview = async ({ year }: { year: number }) => {
   return (
     <div className="w-full p-3 rounded-lg flex flex-col bg-primary-color">
       <div className="flex justify-between text-base-color mt-4">
-        <p className=" text-base-color text-lg sm:text-xl lg:text-2xl font-bold mb-5">
+        {/* <p className=" text-base-color text-lg sm:text-xl lg:text-2xl font-bold mb-5">
           Earning
+        </p> */}
+        <p className=" text-base-color text-lg sm:text-xl lg:text-2xl font-bold mb-5">
+          Zárobky
         </p>
         <div>
           <YearOption currentYear={currentYear} />

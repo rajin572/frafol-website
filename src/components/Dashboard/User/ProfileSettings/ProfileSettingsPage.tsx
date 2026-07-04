@@ -39,32 +39,38 @@ const ProfileSettingsPage = ({
           align="left"
           tabs={[
             {
-              label: "Edit Profile",
+              /* label: "Edit Profile", */
+              label: "Upraviť profil",
               value: "profile",
               content: <EditProfile myData={myData} categories={categories} towns={towns} />,
             },
             {
-              label: "Portfolio",
+              /* label: "Portfolio", */
+              label: "Portfólio",
               value: "portfolio",
               content: <PortfolioPage activeTab={portfolio} myData={myData} />, // Placeholder for portfolio content
             },
             {
-              label: "Account Credentials",
+              /* label: "Account Credentials", */
+              label: "Prihlasovacie údaje",
               value: "accountCredentials",
               content: <AccountCredentialPage myData={myData} />, // Placeholder for account credentials content
             },
             {
-              label: "Unavailability",
+              /* label: "Unavailability", */
+              label: "Nedostupnosť",
               value: "unavailability",
               content: <OtherInformationPage myData={myData} />, // Placeholder for other information content
             },
             {
-              label: "Change Password",
+              /* label: "Change Password", */
+              label: "Zmeniť heslo",
               value: "changePassword",
               content: <ChangePassword />,
             },
             {
-              label: "Delete Account",
+              /* label: "Delete Account", */
+              label: "Zmazať účet",
               value: "deleteAccount",
               content: <DeleteAccountPage deleteStatus={deleteStatus} />,
             },

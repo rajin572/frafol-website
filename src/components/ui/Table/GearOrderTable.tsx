@@ -33,7 +33,8 @@ const GearOrderTable: React.FC<GearOrderTableProps> = ({
       key: "orderId",
     },
     {
-      title: "Client Name",
+      /* title: "Client Name", */
+      title: "Meno klienta",
       dataIndex: "name",
       key: "name",
       render: (text: string, record: any) => {
@@ -48,18 +49,21 @@ const GearOrderTable: React.FC<GearOrderTableProps> = ({
       key: "mobileNumber",
     },
     {
-      title: "Item Name",
+      /* title: "Item Name", */
+      title: "Názov produktu",
       dataIndex: ["gearMarketplaceId", "name"],
       key: ["gearMarketplaceId", "name"],
     },
     {
-      title: "Date",
+      /* title: "Date", */
+      title: "Dátum",
       dataIndex: "createdAt",
       key: "createdAt",
       render: (text: string) => formatDate(text),
     },
     {
-      title: "Amount",
+      /* title: "Amount", */
+      title: "Suma",
       dataIndex: ["gearMarketplaceId", "mainPrice"],
       key: "amount",
       render: (text: number) => `${text?.toFixed(2)}`,
@@ -88,11 +92,12 @@ const GearOrderTable: React.FC<GearOrderTableProps> = ({
       },
     },
     {
-      title: "Action",
+      /* title: "Action", */
+      title: "Akcia",
       key: "action",
       render: (_: unknown, record: IGearOrder) => (
         <Space size="middle">
-          <Tooltip placement="right" title="View Details">
+          <Tooltip placement="right" /* title="View Details" */ title="Zobraziť detaily">
             <button
               className="!p-0 !bg-transparent !border-none !text-base-color cursor-pointer"
               onClick={() => showViewModal(record)}

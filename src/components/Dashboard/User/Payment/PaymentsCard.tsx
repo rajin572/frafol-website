@@ -19,18 +19,19 @@ const PaymentsCard = ({
           {data.paymentType === "event"
             ? data.eventOrderId?.title
               ? data.eventOrderId?.title
-              : data?.eventOrderId?.packageId?.title || "Event"
+              : data?.eventOrderId?.packageId?.title || "Podujatie"
             : data.paymentType === "gear"
               ? data?.gearOrderIds?.map((gear) => gear?.gearMarketplaceId?.name)
               : data.paymentType === "workshop"
-                ? data.workshopId?.title || "Workshop"
+                ? data.workshopId?.title || "Kurz"
                 : ""}
         </h3>
 
         {/* User or Seller Info */}
         {data.paymentType === "event" && data.userId && (
           <p className="text-sm sm:text-sm lg:text-base text-gray-700">
-            User: {data.userId.name}
+            {/* User: */}
+            Používateľ: {data.userId.name}
           </p>
         )}
 
@@ -45,7 +46,8 @@ const PaymentsCard = ({
                   - ${gear.gearMarketplaceId.price?.toFixed(2)}
                 </p>
                 <p className="text-gray-500 text-sm">
-                  Seller:{" "}
+                  {/* Seller: */}
+                  Predajca:{" "}
                   <Link
                     href={`/professionals/${gear?.sellerId?._id}`}
                     className="text-secondary-color text-sm sm:text-sm lg:text-base font-bold cursor-pointer"
@@ -60,7 +62,8 @@ const PaymentsCard = ({
 
         {data.paymentType === "workshop" && data.workshopId && (
           <p className="text-sm sm:text-sm lg:text-base text-gray-700">
-            Workshop: {data.workshopId.title}
+            {/* Workshop: */}
+            Kurz: {data.workshopId.title}
           </p>
         )}
 
@@ -79,7 +82,8 @@ const PaymentsCard = ({
             className="flex items-center gap-1 px-3 py-1 border border-gray-300 rounded hover:bg-gray-100 text-sm transition cursor-pointer"
           >
             <BsEye size={16} />
-            View Details
+            {/* View Details */}
+            Zobraziť detaily
           </button>
         </div>
       </div>

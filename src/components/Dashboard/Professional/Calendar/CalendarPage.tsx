@@ -76,8 +76,11 @@ export default function AppCalendar({ calander }: AppCalendarProps) {
 
   return (
     <div className="  p-4 min-h-[90vh]">
-      <h1 className="text-xl sm:text-2xl lg:text-3xl xl:text-4xl font-bold mb-10">
+      {/* <h1 className="text-xl sm:text-2xl lg:text-3xl xl:text-4xl font-bold mb-10">
         Calendar
+      </h1> */}
+      <h1 className="text-xl sm:text-2xl lg:text-3xl xl:text-4xl font-bold mb-10">
+        Kalendár
       </h1>
       <div className="bg-primary-color rounded-xl p-5">
         <Calendar dateCellRender={dateCellRender} mode="month" />

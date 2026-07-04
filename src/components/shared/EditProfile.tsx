@@ -25,18 +25,22 @@ const userInputStructure = [
     name: "name",
     type: "text",
     inputType: "text",
-    label: "Full name",
-    placeholder: "Enter your full name",
+    /* label: "Full name", */
+    label: "Celé meno",
+    /* placeholder: "Enter your full name", */
+    placeholder: "Zadajte svoje celé meno",
     labelClassName: "!font-medium  !text-secondary-color",
     inputClassName: "!py-2 !w-full",
-    rules: [{ required: true, message: "Full name is required" }],
+    /* rules: [{ required: true, message: "Full name is required" }], */
+    rules: [{ required: true, message: "Celé meno je povinné." }],
     disable: false,
   },
   {
     name: "email",
     type: "email",
     inputType: "email",
-    label: "Email",
+    /* label: "Email", */
+    label: "E-mail",
     placeholder: "Enter your email",
     labelClassName: "!font-medium  !text-secondary-color",
     inputClassName:
@@ -49,7 +53,8 @@ const userInputStructure = [
     name: "phone",
     type: "text",
     inputType: "tel",
-    label: "Phone number",
+    /* label: "Phone number", */
+    label: "Telefónne číslo",
     placeholder: "Enter your phone number",
     labelClassName: "!font-medium  !text-secondary-color",
     inputClassName: "!py-2 !w-full",
@@ -71,7 +76,8 @@ const userInputStructure = [
     name: "town",
     type: "text",
     inputType: "tel",
-    label: "Town",
+    /* label: "Town", */
+    label: "Mesto",
     placeholder: "Enter your Town",
     labelClassName: "!font-medium  !text-secondary-color",
     inputClassName: "!py-2 !w-full",
@@ -104,11 +110,14 @@ const companyInputStructure = [
     name: "name",
     type: "text",
     inputType: "text",
-    label: "Full name",
-    placeholder: "Enter your full name",
+    /* label: "Full name", */
+    label: "Celé meno",
+    /* placeholder: "Enter your full name", */
+    placeholder: "Zadajte svoje celé meno",
     labelClassName: "!font-medium  !text-secondary-color",
     inputClassName: "!py-2 !w-full",
-    rules: [{ required: true, message: "Full name is required" }],
+    /* rules: [{ required: true, message: "Full name is required" }], */
+    rules: [{ required: true, message: "Celé meno je povinné." }],
     disable: false,
   },
   {
@@ -127,7 +136,8 @@ const companyInputStructure = [
     name: "email",
     type: "email",
     inputType: "normal",
-    label: "Email",
+    /* label: "Email", */
+    label: "E-mail",
     placeholder: "Enter Email Name",
     labelClassName: "!font-semibold !text-secondary-color",
     inputClassName: "!py-2 !w-full",
@@ -139,7 +149,8 @@ const companyInputStructure = [
     name: "phone",
     type: "text",
     inputType: "tel",
-    label: "Phone number",
+    /* label: "Phone number", */
+    label: "Telefónne číslo",
     placeholder: "Enter your phone number",
     labelClassName: "!font-medium  !text-secondary-color",
     inputClassName: "!py-2 !w-full",
@@ -162,7 +173,8 @@ const companyInputStructure = [
     name: "town",
     type: "text",
     inputType: "normal",
-    label: "Town",
+    /* label: "Town", */
+    label: "Mesto",
     placeholder: "Enter Town Name",
     labelClassName: "!font-semibold !text-secondary-color",
     inputClassName: "!py-2 !w-full",
@@ -224,11 +236,14 @@ const professionalInputStructure = [
     name: "name",
     type: "text",
     inputType: "text",
-    label: "Full name",
-    placeholder: "Enter your full name",
+    /* label: "Full name", */
+    label: "Celé meno",
+    /* placeholder: "Enter your full name", */
+    placeholder: "Zadajte svoje celé meno",
     labelClassName: "!font-medium  !text-secondary-color",
     inputClassName: "!py-2 !w-full",
-    rules: [{ required: true, message: "Full name is required" }],
+    /* rules: [{ required: true, message: "Full name is required" }], */
+    rules: [{ required: true, message: "Celé meno je povinné." }],
     disable: false,
   },
   {
@@ -247,7 +262,8 @@ const professionalInputStructure = [
     name: "phone",
     type: "text",
     inputType: "tel",
-    label: "Phone number",
+    /* label: "Phone number", */
+    label: "Telefónne číslo",
     placeholder: "Enter your phone number",
     labelClassName: "!font-medium  !text-secondary-color",
     inputClassName: "!py-2 !w-full",
@@ -258,7 +274,8 @@ const professionalInputStructure = [
     name: "email",
     type: "email",
     inputType: "normal",
-    label: "Email",
+    /* label: "Email", */
+    label: "E-mail",
     placeholder: "Enter Email Name",
     labelClassName: "!font-semibold !text-secondary-color",
     inputClassName: "!py-2 !w-full",
@@ -270,7 +287,8 @@ const professionalInputStructure = [
     name: "about",
     type: "text",
     inputType: "textarea",
-    label: "About Me",
+    /* label: "About Me", */
+    label: "O mne",
     placeholder: "Enter About Yourself",
     labelClassName: "!font-semibold !text-secondary-color",
     inputClassName: "!py-2 !w-full",
@@ -506,8 +524,10 @@ const EditProfile = ({ myData, categories, towns }: { myData: IProfile, categori
       updateProfile,
       { body: formData },
       {
-        toastLoadingMessage: "Updating profile...",
-        toastSuccessMessage: "Profile updated successfully!",
+        /* toastLoadingMessage: "Updating profile...", */
+        toastLoadingMessage: "Čakajte, prosím...",
+        /* toastSuccessMessage: "Profile updated successfully!", */
+        toastSuccessMessage: "Profil bol úspešne aktualizovaný!",
         toastErrorMessage: "Something went wrong! Please try again.",
       }
     );
@@ -598,8 +618,10 @@ const EditProfile = ({ myData, categories, towns }: { myData: IProfile, categori
             <ReuseSelect
               showSearch={true}
               name="town"
-              label="Town"
-              placeholder="Select your town"
+              /* label="Town" */
+              label="Mesto"
+              /* placeholder="Select your town" */
+              placeholder="Vyberte svoje mesto"
               labelClassName="!text-secondary-color !font-semibold"
               rules={[{ required: true, message: "Please select your town" }]}
               options={
@@ -728,7 +750,8 @@ const EditProfile = ({ myData, categories, towns }: { myData: IProfile, categori
             variant="secondary"
             className="w-full mt-4"
           >
-            Submit
+            {/* Submit */}
+            Uložiť zmeny
           </ReuseButton>
         </ReusableForm>
       </div>

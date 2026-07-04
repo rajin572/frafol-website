@@ -33,8 +33,11 @@ const ReviewPage = ({
       <div className="mt-5 min-h-[80vh] rounded-xl px-4">
         <div className="bg-primary-color w-full p-4   rounded-tl-xl rounded-tr-xl">
           <div className=" flex items-center justify-between">
-            <h1 className="text-xl sm:text-2xl lg:text-3xl xl:text-4xl font-bold  my-5">
+            {/* <h1 className="text-xl sm:text-2xl lg:text-3xl xl:text-4xl font-bold  my-5">
               Review
+            </h1> */}
+            <h1 className="text-xl sm:text-2xl lg:text-3xl xl:text-4xl font-bold  my-5">
+              Recenzie
             </h1>
           </div>
         </div>

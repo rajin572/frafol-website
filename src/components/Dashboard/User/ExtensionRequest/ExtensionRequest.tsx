@@ -55,9 +55,9 @@ const ExtensionRequest = ({ myEventData }: { myEventData: IEventOrder[] }) => {
         params: record?._id,
       },
       {
-        toastLoadingMessage: "Accepting Extension Request...",
-        toastSuccessMessage: "Extension Request Accept Successfully!",
-        toastErrorMessage: "Something went wrong! Please try again.",
+        toastLoadingMessage: "Prijímanie žiadosti o predĺženie...",
+        toastSuccessMessage: "Žiadosť o predĺženie bola úspešne prijatá!",
+        toastErrorMessage: "Niečo sa pokazilo! Skúste to prosím znova.",
       }
     );
 
@@ -78,9 +78,9 @@ const ExtensionRequest = ({ myEventData }: { myEventData: IEventOrder[] }) => {
         params: record?._id,
       },
       {
-        toastLoadingMessage: "Rejecting Extension Request...",
-        toastSuccessMessage: "Extension Requested Successfully!",
-        toastErrorMessage: "Something went wrong! Please try again.",
+        toastLoadingMessage: "Odmietanie žiadosti o predĺženie...",
+        toastSuccessMessage: "Žiadosť o predĺženie bola úspešne odmietnutá!",
+        toastErrorMessage: "Niečo sa pokazilo! Skúste to prosím znova.",
       }
     );
 
@@ -91,8 +91,11 @@ const ExtensionRequest = ({ myEventData }: { myEventData: IEventOrder[] }) => {
 
   return (
     <div>
-      <h1 className="text-xl sm:text-2xl lg:text-3xl xl:text-4xl  font-bold mb-10">
+      {/* <h1 className="text-xl sm:text-2xl lg:text-3xl xl:text-4xl  font-bold mb-10">
         Extension Requests
+      </h1> */}
+      <h1 className="text-xl sm:text-2xl lg:text-3xl xl:text-4xl  font-bold mb-10">
+        Žiadosti o predĺženie
       </h1>
       <div className="flex flex-col gap-5">
         {myEventData?.map((item) => (
@@ -118,14 +121,14 @@ const ExtensionRequest = ({ myEventData }: { myEventData: IEventOrder[] }) => {
         handleCancel={handleCancel}
         currentRecord={currentRecord}
         handleConfirm={handleAcceptExtension}
-        description="Are you sure you want to accept the extension ? "
+        description="Ste si istí, že chcete prijať žiadosť o predĺženie ? "
       />
       <DeclineOrderRequestModal
         isDeclineOrderRequestModalVisible={isRejectModalVisible}
         handleCancel={handleCancel}
         currentRecord={currentRecord}
         handleDeclineOrder={handleRejectExtension}
-        description="Are you sure you reject the extension ? "
+        description="Ste si istí, že chcete odmietnuť žiadosť o predĺženie ? "
       />
     </div>
   );

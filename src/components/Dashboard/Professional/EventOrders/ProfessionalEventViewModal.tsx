@@ -72,7 +72,7 @@ const ProfessionalEventViewModal: React.FC<ProfessionalEventViewModalProps> = ({
   };
 
   const handleClientInvoiceDownload = (currentRecord: IEventOrder) => {
-    const toastId = toast.loading("Downloading...", {
+    const toastId = toast.loading(/* "Downloading..." */ "Sťahuje sa...", {
       duration: 2000,
     });
     // Generate the PDF using @react-pdf/renderer's pdf function
@@ -85,15 +85,15 @@ const ProfessionalEventViewModal: React.FC<ProfessionalEventViewModalProps> = ({
       .then((blob: any) => {
         // Use file-saver to trigger the download
         saveAs(blob, `${currentRecord.orderId}-invoice.pdf`);
-        toast.success("Downloaded successfully!", { id: toastId });
+        toast.success(/* "Downloaded successfully!" */ "Úspešne stiahnuté!", { id: toastId });
       })
       .catch((error: any) => {
         console.log(error)
-        toast.error("Download failed", { id: toastId });
+        toast.error(/* "Download failed" */ "Sťahovanie zlyhalo", { id: toastId });
       });
   };
   const handleProfessionalInvoiceDownload = (currentRecord: IEventOrder) => {
-    const toastId = toast.loading("Downloading...", {
+    const toastId = toast.loading(/* "Downloading..." */ "Sťahuje sa...", {
       duration: 2000,
     });
     // Generate the PDF using @react-pdf/renderer's pdf function
@@ -106,11 +106,11 @@ const ProfessionalEventViewModal: React.FC<ProfessionalEventViewModalProps> = ({
       .then((blob: any) => {
         // Use file-saver to trigger the download
         saveAs(blob, `${currentRecord.orderId}-invoice.pdf`);
-        toast.success("Downloaded successfully!", { id: toastId });
+        toast.success(/* "Downloaded successfully!" */ "Úspešne stiahnuté!", { id: toastId });
       })
       .catch((error: any) => {
         console.log(error)
-        toast.error("Download failed", { id: toastId });
+        toast.error(/* "Download failed" */ "Sťahovanie zlyhalo", { id: toastId });
       });
   };
 
@@ -130,7 +130,8 @@ const ProfessionalEventViewModal: React.FC<ProfessionalEventViewModalProps> = ({
     >
       <div className="p-2 text-[#1a1a1a] max-h-[85vh] overflow-y-auto my-10">
         <h3 className="text-lg sm:text-xl lg:text-2xl xl:text-3xl font-bold mb-1">
-          Order Details
+          {/* Order Details */}
+          Detaily objednávky
         </h3>
         <p className="text-base sm:text-lg lg:text-xl xl:text-2xl text-secondary-color font-bold mb-5">
           {currentRecord?.orderId}
@@ -142,12 +143,14 @@ const ProfessionalEventViewModal: React.FC<ProfessionalEventViewModalProps> = ({
               {currentRecord?.packageId?.title || currentRecord?.title}
             </p>
             <p className={`text-sm sm:text-sm font-bold border w-fit rounded-2xl py-0.5 px-2 mt-1 ${currentRecord?.orderType === "custom" ? "text-secondary-color" : "border-base-color text-base-color"}`}>
-              {currentRecord?.orderType === "custom" ? "Custom" : "Direct"}
+              {/* {currentRecord?.orderType === "custom" ? "Custom" : "Direct"} */}
+              {currentRecord?.orderType === "custom" ? "Formulár" : "Balík"}
             </p>
           </div>
 
           <p className="text-sm sm:text-base lg:text-kg xl:text-xl font-medium">
-            {currentRecord?.serviceType === "both" ? "Photography & Videography" : currentRecord?.serviceType}
+            {/* {currentRecord?.serviceType === "both" ? "Photography & Videography" : ...} */}
+            {currentRecord?.serviceType === "both" ? "Fotografia a video" : currentRecord?.serviceType}
           </p>
           <p className="text-sm sm:text-sm lg:text-base xl:text-lg font-medium mt-2">
             By <Link className="text-secondary-color!" href={`/professionals/${currentRecord?.serviceProviderId?._id}`}>{currentRecord?.serviceProviderId?.companyName || currentRecord?.serviceProviderId?.name}</Link>
@@ -166,7 +169,8 @@ const ProfessionalEventViewModal: React.FC<ProfessionalEventViewModalProps> = ({
                     onClick={() => setDescriptionExpanded((prev) => !prev)}
                     className="text-secondary-color text-sm font-semibold mt-1 hover:underline"
                   >
-                    {descriptionExpanded ? "Show less" : "Show more"}
+                    {/* {descriptionExpanded ? "Show less" : "Show more"} */}
+                    {descriptionExpanded ? "Zobraziť menej" : "Zobraziť viac"}
                   </button>
                 )}
               </div>
@@ -186,7 +190,7 @@ const ProfessionalEventViewModal: React.FC<ProfessionalEventViewModalProps> = ({
                   ? serverUrl + currentRecord?.userId?.profileImage
                   : AllImages.dummyProfile
               }
-              alt="photographer"
+              alt="fotograf" /* photographer */
               width={50}
               height={50}
               className="rounded-full object-cover size-7"
@@ -259,24 +263,25 @@ const ProfessionalEventViewModal: React.FC<ProfessionalEventViewModalProps> = ({
         {/* Order Info */}
         <div className="mb-4">
           <h4 className="text-base sm:text-lg lg:text-xl xl:text-2xl text-secondary-color font-bold">
-            Order Information
+            {/* Order Information */}
+            Informácie o objednávke
           </h4>
           <div className="mt-2">
             {" "}
             <p className="text-sm sm:text-sm lg:text-base">
-              <span className="font-semibold">Order Date :</span>{" "}
+              <span className="font-semibold">{/* Order Date : */}Dátum objednávky:</span>{" "}
               {`${formatDate(currentRecord?.createdAt)} - ${formetTime(
                 currentRecord?.createdAt
               )}`}
             </p>
             {currentRecord?.status !== "pending" && (
               <p className="text-sm sm:text-sm lg:text-base">
-                <span className="font-semibold">Delivery Date :</span>{" "}
+                <span className="font-semibold">{/* Delivery Date : */}Dátum doručenia:</span>{" "}
                 {`${formatDate(currentRecord?.deliveryDate)}`}
               </p>
             )}
             <p className="text-sm sm:text-sm lg:text-base mt-1">
-              <span className="font-semibold">Status :</span>{" "}
+              <span className="font-semibold">{/* Status : */}Stav:</span>{" "}
               <span className="capitalize font-semibold text-secondary-color">
                 {eventOrderStatus[currentRecord?.status as string] || currentRecord?.status}
               </span>
@@ -301,20 +306,21 @@ const ProfessionalEventViewModal: React.FC<ProfessionalEventViewModalProps> = ({
         {/* Event Details */}
         <div className="mb-4">
           <h4 className="text-base sm:text-lg lg:text-xl xl:text-2xl text-secondary-color font-bold mb-2">
-            Event Details
+            {/* Event Details */}
+            Detaily podujatia
           </h4>
           <p className="text-sm sm:text-sm lg:text-base mt-1 flex items-center gap-2 mb-2">
-            <FaCalendarAlt className="shrink-0" /> <span>Event Date : </span>
+            <FaCalendarAlt className="shrink-0" /> <span>{/* Event Date : */}Dátum podujatia: </span>
             {formatDate(currentRecord?.date)}
           </p>
           <p className="text-sm sm:text-sm lg:text-base flex items-start gap-2 mb-2">
             <div className="flex items-center gap-2 text-nowrap">
-              <FaMapMarkerAlt className="shrink-0" /> <span>Location : </span>
+              <FaMapMarkerAlt className="shrink-0" /> <span>{/* Location : */}Miesto: </span>
             </div>
             {currentRecord?.location}
           </p>
           <p className="text-sm sm:text-sm lg:text-base flex items-center gap-2 mb-2">
-            <FaClock className="shrink-0" /> <span>Time : </span>
+            <FaClock className="shrink-0" /> <span>{/* Time : */}Čas: </span>
             {formetTime(currentRecord?.time)}
           </p>
         </div>
@@ -322,7 +328,8 @@ const ProfessionalEventViewModal: React.FC<ProfessionalEventViewModalProps> = ({
         {/* Payment Details */}
         <div className="mb-4">
           <h4 className="text-base sm:text-lg lg:text-xl xl:text-2xl text-secondary-color font-bold">
-            Payment Details
+            {/* Payment Details */}
+            Detaily platby
           </h4>
 
           {
@@ -330,7 +337,8 @@ const ProfessionalEventViewModal: React.FC<ProfessionalEventViewModalProps> = ({
               <>
                 <p className="text-sm sm:text-sm lg:text-base xl:text-lg mt-2">
                   <span className="font-semibold">
-                    Amount Without Service Fee:
+                    {/* Amount Without Service Fee: */}
+                    Suma bez servisného poplatku:
                   </span>{" "}
                   {Number(currentRecord?.totalPrice?.toFixed(2)) - Number(serviceFeeAmount?.toFixed(2))}€
                 </p>
@@ -359,7 +367,8 @@ const ProfessionalEventViewModal: React.FC<ProfessionalEventViewModalProps> = ({
           ) : null} */}
           <p className="text-sm sm:text-sm lg:text-base xl:text-lg mt-2">
             <span className="font-semibold">
-              {currentRecord?.totalPrice ? "Total Amount" : "Budget Range"} :
+              {/* {currentRecord?.totalPrice ? "Total Amount" : "Budget Range"} : */}
+              {currentRecord?.totalPrice ? "Celková suma" : "Rozsah rozpočtu"} :
             </span>{" "}
             {currentRecord?.totalPrice
               ? effectiveTotalPrice.toFixed(2)
@@ -379,16 +388,17 @@ const ProfessionalEventViewModal: React.FC<ProfessionalEventViewModalProps> = ({
         {(activeTab === "cancelled" || activeTab === "cancelRequest") && (
           <div className="mb-4">
             <h4 className="text-base sm:text-lg lg:text-xl xl:text-2xl text-secondary-color font-bold">
-              Cancel Reason
+              {/* Cancel Reason */}
+              Dôvod zrušenia
             </h4>
             <div className="mt-2">
               <p className="text-sm sm:text-sm lg:text-base">
-                <span className="font-semibold">Reason :</span>{" "}
+                <span className="font-semibold">{/* Reason : */}Dôvod:</span>{" "}
                 {currentRecord?.cancelReason}
               </p>
               {activeTab === "cancelRequest" && (
                 <p className="text-sm sm:text-sm lg:text-base mt-1">
-                  <span className="font-semibold">Canceled By :</span>{" "}
+                  <span className="font-semibold">{/* Canceled By : */}Zrušil/a:</span>{" "}
                   <span className="capitalize font-semibold">
                     {currentRecord?.cancelRequestedBy === user?.userId
                       ? "Me"
@@ -408,7 +418,7 @@ const ProfessionalEventViewModal: React.FC<ProfessionalEventViewModalProps> = ({
               <div className="mt-2">
                 {" "}
                 <p className="text-sm sm:text-sm lg:text-base">
-                  <span className="font-semibold">Reason :</span>{" "}
+                  <span className="font-semibold">{/* Reason : */}Dôvod:</span>{" "}
                   {currentRecord?.deliveryRequestDeclinedReason}
                 </p>
               </div>
@@ -449,7 +459,8 @@ const ProfessionalEventViewModal: React.FC<ProfessionalEventViewModalProps> = ({
               variant="secondary"
               className="!text-white !bg-error !border-error !w-fit"
             >
-              Cancel Order
+              {/* Cancel Order */}
+              Zrušiť objednávku
             </ReuseButton>
             {extensionLength < 0 ||
               currentRecord?.extensionRequests?.[extensionLength - 1]?.status !==
@@ -474,7 +485,8 @@ const ProfessionalEventViewModal: React.FC<ProfessionalEventViewModalProps> = ({
               variant="secondary"
               className="!text-white !bg-error !border-error !w-fit"
             >
-              Cancel Order
+              {/* Cancel Order */}
+              Zrušiť objednávku
             </ReuseButton>
           </div>
         ) : activeTab === "pending" ? (
@@ -488,14 +500,16 @@ const ProfessionalEventViewModal: React.FC<ProfessionalEventViewModalProps> = ({
               variant="secondary"
               className="!text-white !bg-success !border-success !w-fit"
             >
-              Accept
+              {/* Accept */}
+              Prijať
             </ReuseButton>
             <ReuseButton
               onClick={() => showDeclineModal(currentRecord)}
               variant="secondary"
               className="!text-white !bg-error !border-error !w-fit"
             >
-              Reject
+              {/* Reject */}
+              Odmietnuť
             </ReuseButton>
           </div>
         ) : activeTab === "cancelRequest" &&
@@ -506,14 +520,16 @@ const ProfessionalEventViewModal: React.FC<ProfessionalEventViewModalProps> = ({
               variant="secondary"
               className="!text-white !bg-success !border-success !w-fit"
             >
-              Accept
+              {/* Accept */}
+              Prijať
             </ReuseButton>
             <ReuseButton
               onClick={() => showDeclineModal(currentRecord)}
               variant="secondary"
               className="!text-white !bg-error !border-error !w-fit"
             >
-              Reject
+              {/* Reject */}
+              Odmietnuť
             </ReuseButton>
           </div>
         ) : null}

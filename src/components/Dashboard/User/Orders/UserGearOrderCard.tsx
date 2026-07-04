@@ -34,10 +34,10 @@ const UserGearOrderCard = ({
       />
       <div className="w-full">
         <h3 className="text-sm sm:text-base lg:text-lg xl:text-xl font-bold text-secondary-color mb-1">
-          {data?.gearMarketplaceId?.name || "Product Name"}
+          {data?.gearMarketplaceId?.name || /* "Product Name" */ "Názov produktu"}
         </h3>
         <h4 className="text-sm sm:text-sm lg:text-base xl:text-lg font-bold mb-1">
-          Seller:{" "}
+          {/* Seller: */}Predajca:{" "}
           <Link
             href={`/professionals/${data?.sellerId?._id}`}
             className="text-secondary-color text-sm sm:text-sm lg:text-base font-bold cursor-pointer"
@@ -46,7 +46,7 @@ const UserGearOrderCard = ({
           </Link>
         </h4>
         <p className="text-sm sm:text-sm lg:text-base text-gray-700 capitalize">
-          Condition : {data?.gearMarketplaceId?.condition || "N/A"}
+          {/* Condition : */}Stav: {data?.gearMarketplaceId?.condition || "N/A"}
         </p>
         <div className="text-sm sm:text-sm text-[#5D5D5D] flex items-center gap-1 mt-1">
           <IoCalendarOutline />
@@ -75,7 +75,8 @@ const UserGearOrderCard = ({
                 className="flex items-center gap-1 px-3 py-1 border border-gray-300 rounded hover:bg-gray-100 text-sm transition cursor-pointer"
               >
                 <BsEye size={16} />
-                View Details
+                {/* View Details */}
+                Zobraziť detaily
               </button>
             </div>
           ) : activeTab === "orderOffer" ? (
@@ -85,14 +86,16 @@ const UserGearOrderCard = ({
                 className="flex items-center gap-1 px-3 py-1 border border-[#00C566] text-primary-color rounded bg-[#00C566] text-sm transition cursor-pointer"
               >
                 <IoCheckmarkSharp size={16} />
-                Accept Order
+                {/* Accept Order */}
+                Prijať objednávku
               </button>
               <button
                 onClick={() => openModal(data)}
                 className="flex items-center gap-1 px-3 py-1 border border-gray-300 rounded hover:bg-gray-100 text-sm transition cursor-pointer"
               >
                 <BsEye size={16} />
-                View Details
+                {/* View Details */}
+                Zobraziť detaily
               </button>
             </div>
           ) : (
@@ -102,7 +105,8 @@ const UserGearOrderCard = ({
                 className="flex items-center gap-1 px-3 py-1 border border-gray-300 rounded hover:bg-gray-100 text-sm transition cursor-pointer"
               >
                 <BsEye size={16} />
-                View Details
+                {/* View Details */}
+                Zobraziť detaily
               </button>
             </div>
           )}

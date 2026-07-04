@@ -79,15 +79,19 @@ const PackagesPage = ({
     <div>
       <div className=" w-full p-4   rounded-tl-xl rounded-tr-xl">
         <div className=" flex items-center justify-between">
-          <h1 className="text-xl sm:text-2xl lg:text-3xl xl:text-4xl font-bold mb-5">
+          {/* <h1 className="text-xl sm:text-2xl lg:text-3xl xl:text-4xl font-bold mb-5">
             Packages
+          </h1> */}
+          <h1 className="text-xl sm:text-2xl lg:text-3xl xl:text-4xl font-bold mb-5">
+            Balíky
           </h1>
           <ReuseButton
             variant="secondary"
             className="!w-fit"
             onClick={showAddModal}
           >
-            Add New Package
+            {/* Add New Package */}
+            Pridať nový balík
           </ReuseButton>
         </div>
       </div>
@@ -100,7 +104,7 @@ const PackagesPage = ({
         align="left"
         tabs={[
           {
-            label: "Active",
+            label: "Aktívne",
             value: "approved",
             content:
               packages?.length > 0 ? (
@@ -124,7 +128,7 @@ const PackagesPage = ({
               ),
           },
           {
-            label: "Pending",
+            label: "Čakajúce",
             value: "pending",
             content:
               packages?.length > 0 ? (

@@ -80,7 +80,8 @@ const UserReviewEditModal: React.FC<UserReviewEditModalProps> = ({
               className="!text-base-color !font-normal"
               level={5}
             >
-              Rating
+              {/* Rating */}
+              Hodnotenie
             </Typography.Title>
             <Form.Item name={"review"} rules={[{ required: true }]}>
               <Rate className="!text-3xl" allowHalf onChange={(value) => {
@@ -92,7 +93,8 @@ const UserReviewEditModal: React.FC<UserReviewEditModalProps> = ({
           <ReuseInput
             rows={4}
             inputType="textarea"
-            label="Review"
+            /* label="Review" */
+            label="Recenzia"
             name="message"
             type="text"
             placeholder="Enter Review"
@@ -101,7 +103,8 @@ const UserReviewEditModal: React.FC<UserReviewEditModalProps> = ({
             <Checkbox>Review Annonimously</Checkbox>
           </Form.Item>
           <ReuseButton variant="secondary" htmlType="submit">
-            Submit
+            {/* Submit */}
+            Odoslať
           </ReuseButton>
         </ReusableForm>
       </div>

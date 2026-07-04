@@ -34,7 +34,7 @@ export const useAdminPaths = () => {
       key: "overview",
       label: <Link
         onClick={handleToggleCollapse}
-        href="/dashboard/my-account/overview">Overview</Link>,
+        href="/dashboard/my-account/overview">{/* Overview */}Prehľad</Link>,
       icon: (
         <Image
           src={overview}
@@ -65,7 +65,7 @@ export const useAdminPaths = () => {
         />
       ),
       label: <Link onClick={handleToggleCollapse}
-        href="/dashboard/my-account/orders">Event Orders</Link>,
+        href="/dashboard/my-account/orders">{/* Event Orders */}Foto/video objednávky</Link>,
     },
     {
       key: "gear-order",
@@ -83,7 +83,7 @@ export const useAdminPaths = () => {
         />
       ),
       label: <Link onClick={handleToggleCollapse}
-        href="/dashboard/my-account/gear-order">Gear Orders</Link>,
+        href="/dashboard/my-account/gear-order">{/* Gear Orders */}Objednávky z bazáru</Link>,
     },
     {
       key: "extension-requests",
@@ -103,7 +103,8 @@ export const useAdminPaths = () => {
       label: (
         <Link onClick={handleToggleCollapse}
           href="/dashboard/my-account/extension-requests">
-          Extension Requests
+          {/* Extension Requests */}
+          Žiadosti o predĺženie
         </Link>
       ),
     },
@@ -123,7 +124,7 @@ export const useAdminPaths = () => {
         />
       ),
       label: <Link onClick={handleToggleCollapse}
-        href="/dashboard/my-account/payments">My Payments</Link>,
+        href="/dashboard/my-account/payments">{/* My Payments */}Moje platby</Link>,
     },
     {
       key: "my-workshop",
@@ -141,7 +142,7 @@ export const useAdminPaths = () => {
         />
       ),
       label: <Link onClick={handleToggleCollapse}
-        href="/dashboard/my-account/my-workshop">My Workshop</Link>,
+        href="/dashboard/my-account/my-workshop">{/* My Workshop */}Prihlásené kurzy</Link>,
     },
     {
       key: "reviews",
@@ -159,7 +160,7 @@ export const useAdminPaths = () => {
         />
       ),
       label: <Link onClick={handleToggleCollapse}
-        href="/dashboard/my-account/reviews">My Reviews</Link>,
+        href="/dashboard/my-account/reviews">{/* My Reviews */}Recenzie</Link>,
     },
     {
       key: "my-community-posts",
@@ -178,7 +179,8 @@ export const useAdminPaths = () => {
       ),
       label: (
         <Link href="/dashboard/my-account/my-community-posts">
-          My Community Posts
+          {/* My Community Posts */}
+          Príspevky vo fóre
         </Link>
       ),
     },
@@ -198,7 +200,7 @@ export const useAdminPaths = () => {
         />
       ),
       label: <Link onClick={handleToggleCollapse}
-        href="/dashboard/my-account/profile-settings">Profile</Link>,
+        href="/dashboard/my-account/profile-settings">{/* Profile */}Profil</Link>,
     },
   ];
 };
@@ -212,7 +214,7 @@ export const useProfessionalPaths = () => {
     {
       key: "overview",
       label: <Link onClick={handleToggleCollapse}
-        href="/dashboard/professional/overview">Overview</Link>,
+        href="/dashboard/professional/overview">{/* Overview */}Prehľad</Link>,
       icon: (
         <Image
           src={overview}
@@ -231,7 +233,7 @@ export const useProfessionalPaths = () => {
       key: "event-orders",
       label: (
         <Link onClick={handleToggleCollapse}
-          href="/dashboard/professional/event-orders">Event Orders</Link>
+          href="/dashboard/professional/event-orders">{/* Event Orders */}Foto/video objednávky</Link>
       ),
       icon: (
         <Image
@@ -250,7 +252,7 @@ export const useProfessionalPaths = () => {
     {
       key: "gear-order",
       label: <Link onClick={handleToggleCollapse}
-        href="/dashboard/professional/gear-order">Gear Order</Link>,
+        href="/dashboard/professional/gear-order">{/* Gear Order */}Objednávka z bazáru</Link>,
       icon: (
         <Image
           src={gearOrder}
@@ -270,7 +272,8 @@ export const useProfessionalPaths = () => {
       label: (
         <Link onClick={handleToggleCollapse}
           href="/dashboard/professional/gear-marketPlace">
-          MarketPlace
+          {/* MarketPlace */}
+          Bazár
         </Link>
       ),
       icon: (
@@ -290,7 +293,7 @@ export const useProfessionalPaths = () => {
     {
       key: "workshop",
       label: <Link onClick={handleToggleCollapse}
-        href="/dashboard/professional/workshop">Workshop</Link>,
+        href="/dashboard/professional/workshop">{/* Workshop */}Kurz</Link>,
       icon: (
         <Image
           src={workshop}
@@ -322,13 +325,13 @@ export const useProfessionalPaths = () => {
       ),
       label: (
         <Link onClick={handleToggleCollapse}
-          href="/dashboard/professional/my-workshop">My Workshop</Link>
+          href="/dashboard/professional/my-workshop">{/* My Workshop */}Prihlásené kurzy</Link>
       ),
     },
     {
       key: "packages",
       label: <Link onClick={handleToggleCollapse}
-        href="/dashboard/professional/packages">Packages</Link>,
+        href="/dashboard/professional/packages">{/* Packages */}Balíky</Link>,
       icon: (
         <Image
           src={packages}
@@ -346,7 +349,7 @@ export const useProfessionalPaths = () => {
     {
       key: "calendar",
       label: <Link onClick={handleToggleCollapse}
-        href="/dashboard/professional/calendar">Calendar</Link>,
+        href="/dashboard/professional/calendar">{/* Calendar */}Kalendár</Link>,
       icon: (
         <Image
           src={calendar}
@@ -364,7 +367,7 @@ export const useProfessionalPaths = () => {
     {
       key: "review",
       label: <Link onClick={handleToggleCollapse}
-        href="/dashboard/professional/review">Review</Link>,
+        href="/dashboard/professional/review">{/* Review */}Recenzie</Link>,
       icon: (
         <Image
           src={review}
@@ -396,14 +399,15 @@ export const useProfessionalPaths = () => {
       ),
       label: (
         <Link href="/dashboard/professional/my-community-posts">
-          My Community Posts
+          {/* My Community Posts */}
+          Príspevky vo fóre
         </Link>
       ),
     },
     {
       key: "frafol-choice",
       label: <Link onClick={handleToggleCollapse}
-        href="/dashboard/professional/frafol-choice">Frafol Choice</Link>,
+        href="/dashboard/professional/frafol-choice">{/* Frafol Choice */}Odporúča Frafol</Link>,
       icon: (
         <Image
           src={packages}
@@ -421,7 +425,7 @@ export const useProfessionalPaths = () => {
     {
       key: "earning",
       label: <Link onClick={handleToggleCollapse}
-        href="/dashboard/professional/earning">Earning</Link>,
+        href="/dashboard/professional/earning">{/* Earning */}Zárobky</Link>,
       icon: (
         <Image
           src={earning}
@@ -459,7 +463,7 @@ export const useProfessionalPaths = () => {
         />
       ),
       label: (
-        <Link href="/dashboard/professional/profile-settings">Profile</Link>
+        <Link href="/dashboard/professional/profile-settings">{/* Profile */}Profil</Link>
       ),
     },
   ];

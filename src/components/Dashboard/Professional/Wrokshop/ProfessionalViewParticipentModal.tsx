@@ -24,13 +24,13 @@ const ProfessionalViewParticipentModal = ({
     invoiceElement: React.ReactElement<any>,
     filename: string
   ) => {
-    const toastId = toast.loading("Downloading...", { duration: 3000 });
+    const toastId = toast.loading("Sťahuje sa...", { duration: 3000 });
     try {
       const blob = await pdf(invoiceElement).toBlob();
       saveAs(blob, filename);
-      toast.success("Downloaded successfully!", { id: toastId });
+      toast.success("Úspešne stiahnuté!", { id: toastId });
     } catch {
-      toast.error("Download failed", { id: toastId });
+      toast.error("Sťahovanie zlyhalo", { id: toastId });
     }
   };
 
@@ -38,37 +38,37 @@ const ProfessionalViewParticipentModal = ({
 
   const columns = [
     {
-      title: "Order ID",
+      title: "ID objednávky",
       dataIndex: "orderId",
       key: "orderId",
     },
     {
-      title: "Client Name",
+      title: "Meno klienta",
       dataIndex: "name",
       key: "name",
     },
     {
-      title: "Email",
+      title: "E-mail",
       dataIndex: ["clientId", "email"],
       key: "email",
     },
     {
-      title: "Street Address",
+      title: "Ulica",
       dataIndex: "streetAddress",
       key: "streetAddress",
     },
     {
-      title: "Town",
+      title: "Mesto",
       dataIndex: "town",
       key: "town",
     },
     {
-      title: "Country",
+      title: "Krajina",
       dataIndex: "country",
       key: "country",
     },
     {
-      title: "Invoice",
+      title: "Faktúra",
       key: "invoice",
       render: (record: IWorkshopParticipants) => (
         <div className="flex flex-col gap-1">
@@ -85,7 +85,8 @@ const ProfessionalViewParticipentModal = ({
               )
             }
           >
-            Client
+            {/* Client */}
+            Klient
           </ReuseButton>
           <ReuseButton
             variant="secondary"
@@ -100,6 +101,7 @@ const ProfessionalViewParticipentModal = ({
               )
             }
           >
+            {/* Admin */}
             Admin
           </ReuseButton>
         </div>
@@ -115,8 +117,11 @@ const ProfessionalViewParticipentModal = ({
       centered
       className="lg:!w-[1100px]"
     >
-      <h3 className="text-base sm:text-lg lg:text-xl xl:text-2xl font-bold mb-2">
+      {/* <h3 className="text-base sm:text-lg lg:text-xl xl:text-2xl font-bold mb-2">
         Participants
+      </h3> */}
+      <h3 className="text-base sm:text-lg lg:text-xl xl:text-2xl font-bold mb-2">
+        Účastníci
       </h3>
       <div className="mt-10">
         <ReuseTable

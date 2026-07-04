@@ -29,7 +29,7 @@ const EarningsPage = ({ data, totalData, activeTab, page, limit }: EarningsPageP
 
   const tabs = [
     {
-      label: "Event",
+      label: "Podujatia",
       value: "event" as EarningType,
       content: (
         <EventEarningTable
@@ -42,7 +42,7 @@ const EarningsPage = ({ data, totalData, activeTab, page, limit }: EarningsPageP
       ),
     },
     {
-      label: "Gear",
+      label: "Bazár",
       value: "gear" as EarningType,
       content: (
         <GearEarningTable
@@ -55,7 +55,7 @@ const EarningsPage = ({ data, totalData, activeTab, page, limit }: EarningsPageP
       ),
     },
     {
-      label: "Workshop",
+      label: "Kurzy",
       value: "workshop" as EarningType,
       content: (
         <WorkshopEarningTable
@@ -72,7 +72,8 @@ const EarningsPage = ({ data, totalData, activeTab, page, limit }: EarningsPageP
   return (
     <div className="bg-primary-color rounded-xl p-4 min-h-[90vh]">
       <div className="flex justify-between items-center mx-3 py-2 mb-5">
-        <h1 className="text-xl sm:text-2xl lg:text-3xl xl:text-4xl font-bold">Earning</h1>
+        {/* <h1 className="text-xl sm:text-2xl lg:text-3xl xl:text-4xl font-bold">Earning</h1> */}
+        <h1 className="text-xl sm:text-2xl lg:text-3xl xl:text-4xl font-bold">Zárobky</h1>
         <div className="h-fit">
           <SearchInput placeholder="Search ..." />
         </div>

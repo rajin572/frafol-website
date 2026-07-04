@@ -30,7 +30,8 @@ const TransactionTable: React.FC<TransactionTableProps> = ({
       key: "uid",
     },
     {
-      title: "Client Name",
+      /* title: "Client Name", */
+      title: "Meno klienta",
       dataIndex: "name",
       key: "name",
     },
@@ -41,30 +42,34 @@ const TransactionTable: React.FC<TransactionTableProps> = ({
       render: () => <span>Photography</span>,
     },
     {
-      title: "Transaction ID",
+      /* title: "Transaction ID", */
+      title: "ID transakcie",
       dataIndex: "transactionId",
       key: "transactionId",
       render: () => <span>56456632164594</span>,
     },
     {
-      title: "Amount",
+      /* title: "Amount", */
+      title: "Suma",
       dataIndex: "amount",
       key: "amount",
       render: () => <span>$500</span>,
     },
     {
-      title: "Date",
+      /* title: "Date", */
+      title: "Dátum",
       dataIndex: "date",
       key: "date",
       render: () => <span>May 23, 2023</span>,
     },
     {
-      title: "Action",
+      /* title: "Action", */
+      title: "Akcia",
       key: "action",
       render: (_: unknown, record: any) => (
         <Space size="middle">
           {/* View Details Tooltip */}
-          <Tooltip placement="right" title="View Details">
+          <Tooltip placement="right" /* title="View Details" */ title="Zobraziť detaily">
             <button
               className="!p-0 !bg-transparent !border-none !text-base-color cursor-pointer"
               onClick={() => showViewModal(record)}

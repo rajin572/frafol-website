@@ -94,7 +94,8 @@ const GearOrderViewModal: React.FC<GearOrderViewModalProps> = ({
             </div>
           </div>
           <div className="text-right">
-            <span className=" text-sm">Price</span>
+            {/* <span className=" text-sm">Price</span> */}
+            <span className=" text-sm">Cena</span>
             <p className="text-xl font-semibold">
               {currentRecord?.gearMarketplaceId?.mainPrice?.toFixed(2) || 0}€
             </p>
@@ -105,34 +106,39 @@ const GearOrderViewModal: React.FC<GearOrderViewModalProps> = ({
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {/* Order Summary */}
           <div className="bg-white rounded-lg border border-[#E1E1E1] p-4">
-            <h3 className="font-semibold mb-4">Order Summary</h3>
+            {/* <h3 className="font-semibold mb-4">Order Summary</h3> */}
+            <h3 className="font-semibold mb-4">Zhrnutie objednávky</h3>
             <div className="space-y-2 text-sm text-gray-600">
               <div className="flex justify-between">
-                <span>Price :</span>
+                {/* <span>Price :</span> */}
+                <span>Cena:</span>
                 <span className="text-black">
                   {currentRecord?.gearMarketplaceId?.price?.toFixed(2)}€
                 </span>
               </div>
               <div className="flex justify-between">
-                <span>VAT :</span>
+                <span>DPH :</span>
                 <span className="text-black">
                   {currentRecord?.gearMarketplaceId?.totalVatAmount?.toFixed(2)}€
                 </span>
               </div>
               <div className="flex justify-between">
-                <span>Service Charge :</span>
+                {/* <span>Service Charge :</span> */}
+                <span>Servisný poplatok:</span>
                 <span className="text-black">
                   {currentRecord?.gearMarketplaceId?.platformCommission?.toFixed(2)}€
                 </span>
               </div>
               <div className="border-t pt-2 flex justify-between">
-                <span>Sub Total :</span>
+                {/* <span>Sub Total :</span> */}
+                <span>Medzisúčet:</span>
                 <span className="text-black font-medium">
                   {currentRecord?.gearMarketplaceId?.mainPrice?.toFixed(2)}€
                 </span>
               </div>
               <div className="flex justify-between">
-                <span>Shipping Charge :</span>
+                {/* <span>Shipping Charge :</span> */}
+                <span>Poštovné:</span>
                 <span className="text-black font-medium">
                   {currentRecord?.gearMarketplaceId?.shippingCompany?.price?.toFixed(
                     2
@@ -141,7 +147,8 @@ const GearOrderViewModal: React.FC<GearOrderViewModalProps> = ({
                 </span>
               </div>
               <div className="border-t pt-2 flex justify-between font-semibold text-black">
-                <span>Total :</span>
+                {/* <span>Total :</span> */}
+                <span>Celková suma:</span>
                 {(
                   (currentRecord?.gearMarketplaceId?.mainPrice || 0) +
                   (currentRecord?.gearMarketplaceId?.shippingCompany?.price ||
@@ -154,14 +161,17 @@ const GearOrderViewModal: React.FC<GearOrderViewModalProps> = ({
 
           {/* Payment Details */}
           <div className="bg-white rounded-lg border border-[#E1E1E1] p-4">
-            <h3 className="font-semibold mb-4">Payment Details</h3>
+            {/* <h3 className="font-semibold mb-4">Payment Details</h3> */}
+            <h3 className="font-semibold mb-4">Detaily platby</h3>
             <div className="text-sm ">
               <p>
-                <span className="font-semibold">Transaction ID:</span>{" "}
+                {/* <span className="font-semibold">Transaction ID:</span> */}
+                <span className="font-semibold">ID transakcie:</span>{" "}
                 {currentRecord?.paymentId?.transactionId || "N/A"}
               </p>
               <p>
-                <span className="font-semibold">Payment Method:</span>{" "}
+                {/* <span className="font-semibold">Payment Method:</span> */}
+                <span className="font-semibold">Spôsob platby:</span>{" "}
                 {currentRecord?.paymentId?.paymentMethod || "N/A"}
                 Card
               </p>
@@ -171,7 +181,8 @@ const GearOrderViewModal: React.FC<GearOrderViewModalProps> = ({
 
         {/* Shipping Method */}
         <div className="bg-white rounded-lg border border-[#E1E1E1] p-4">
-          <h3 className="font-semibold mb-2">Preferred Shipping Method</h3>
+          {/* <h3 className="font-semibold mb-2">Preferred Shipping Method</h3> */}
+          <h3 className="font-semibold mb-2">Uprednostňovaná spôsob dopravy</h3>
           <p className="text-sm ">
             {currentRecord?.gearMarketplaceId?.shippingCompany?.name} -{" "}
             {currentRecord?.gearMarketplaceId?.shippingCompany?.price?.toFixed(2)}€
@@ -180,13 +191,15 @@ const GearOrderViewModal: React.FC<GearOrderViewModalProps> = ({
 
         {/* Shipping Address */}
         <div className="bg-white rounded-lg border border-[#E1E1E1] p-4">
-          <h3 className="font-semibold mb-2">Shipping Address</h3>
+          {/* <h3 className="font-semibold mb-2">Shipping Address</h3> */}
+          <h3 className="font-semibold mb-2">Doručovacia adresa</h3>
           <p className="text-sm ">{currentRecord?.shippingAddress}</p>
         </div>
 
         {/* Delivery Note */}
         <div className="bg-white rounded-lg border border-[#E1E1E1] p-4">
-          <h3 className="font-semibold mb-2">Delivery Note</h3>
+          {/* <h3 className="font-semibold mb-2">Delivery Note</h3> */}
+          <h3 className="font-semibold mb-2">Dodacia poznámka</h3>
           <p className="text-sm ">{currentRecord?.deliveryNote || "N/A"}</p>
         </div>
 
@@ -198,7 +211,8 @@ const GearOrderViewModal: React.FC<GearOrderViewModalProps> = ({
                 onClick={() => showDeliverModal?.(currentRecord!)}
                 className="!bg-success hover:!bg-success text-white px-4 py-2 rounded !cursor-pointer"
               >
-                Mark as Shipped
+                {/* Mark as Shipped */}
+                Označiť ako odoslané
               </button>
             )}
           {currentRecord?.orderStatus !== "delivered" && (
@@ -206,7 +220,8 @@ const GearOrderViewModal: React.FC<GearOrderViewModalProps> = ({
               onClick={() => showCancelModal?.(currentRecord!)}
               className="!bg-error hover:!bg-error text-white px-4 py-2 rounded !cursor-pointer"
             >
-              Cancel Order
+              {/* Cancel Order */}
+              Zrušiť objednávku
             </button>
           )}
         </div>
@@ -218,7 +233,8 @@ const GearOrderViewModal: React.FC<GearOrderViewModalProps> = ({
               }
               className="!bg-secondary-color hover:!bg-secondary-color text-white px-4 py-2 rounded !cursor-pointer"
             >
-              Download Invoice Client
+              {/* Download Invoice Client */}
+              Stiahnuť faktúru (klient)
             </button>
           )}
           {currentRecord?.orderStatus === "delivered" && (
@@ -228,7 +244,8 @@ const GearOrderViewModal: React.FC<GearOrderViewModalProps> = ({
               }
               className="!bg-secondary-color hover:!bg-secondary-color text-white px-4 py-2 rounded !cursor-pointer"
             >
-              Download Invoice Admin
+              {/* Download Invoice Admin */}
+              Stiahnuť faktúru (admin)
             </button>
           )}
         </div>

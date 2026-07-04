@@ -15,7 +15,8 @@ const EventOrdersOverview = ({
     {
       id: 1,
       background: "#ffffff",
-      name: "Events Completed",
+      /* name: "Events Completed", */
+      name: "Dokončené objednávky",
       icon: (
         <IoCheckmarkDoneCircleOutline className="size-5 text-secondary-color" />
       ),
@@ -24,21 +25,24 @@ const EventOrdersOverview = ({
     {
       id: 2,
       background: "#ffffff",
-      name: "Events In Progress",
+      /* name: "Events In Progress", */
+      name: "Prebiehajúce objednávky",
       icon: <FaHourglassEnd className="size-5 text-secondary-color" />,
       count: states.totalInProgressEvents,
     },
     {
       id: 3,
       background: "#ffffff",
-      name: "Upcoming Events",
+      /* name: "Upcoming Events", */
+      name: "Nadchádzajúce objednávky",
       icon: <IoCameraSharp className="size-6 text-secondary-color" />,
       count: `${states.totalUpcomingEvents}`,
     },
     {
       id: 4,
       background: "#ffffff",
-      name: "Pending Events",
+      /* name: "Pending Events", */
+      name: "Čakajúce objednávky",
       icon: <FaHourglassEnd className="size-6 text-secondary-color" />,
       count: states.totalPendingEvents,
     },

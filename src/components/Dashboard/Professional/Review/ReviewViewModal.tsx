@@ -60,12 +60,12 @@ const ReportViewModal = ({
             </div>
 
             <div className="flex items-center gap-2 mb-2">
-              <span className="font-medium">Email:</span>
+              <span className="font-medium">{/* Email: */}E-mail:</span>
               <span>{userEmail}</span>
             </div>
 
             <div className="flex items-center gap-2 mb-2">
-              <span className="font-medium">Rating:</span>
+              <span className="font-medium">{/* Rating: */}Hodnotenie:</span>
               <Rate
                 disabled
                 value={rating}
@@ -76,14 +76,14 @@ const ReportViewModal = ({
             </div>
 
             <div className="flex items-start gap-2 mb-2">
-              <span className="font-medium text-nowrap">Feedback:</span>
+              <span className="font-medium text-nowrap">{/* Feedback: */}Recenzia:</span>
               <span className="text-justify pt-0">
                 {message || "No feedback provided."}
               </span>
             </div>
 
             <div className="flex items-start gap-2 mb-2">
-              <span className="font-medium text-nowrap">Date:</span>
+              <span className="font-medium text-nowrap">{/* Date: */}Dátum:</span>
               <span>{formatDate(createdAt)}</span>
             </div>
           </div>

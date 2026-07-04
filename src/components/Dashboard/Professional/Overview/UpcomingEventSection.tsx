@@ -15,8 +15,11 @@ const UpcomingEventSection = async () => {
 
   return (
     <div>
-      <h2 className="text-center text-red-800 font-semibold mb-2 text-base sm:text-lg lg:text-xl xl:text-2xl ">
+      {/* <h2 className="text-center text-red-800 font-semibold mb-2 text-base sm:text-lg lg:text-xl xl:text-2xl ">
         Upcoming Events
+      </h2> */}
+      <h2 className="text-center text-red-800 font-semibold mb-2 text-base sm:text-lg lg:text-xl xl:text-2xl ">
+        Plánované objednávky
       </h2>
       <ProfessionalOverviewCalender upcomingEvents={upcomingEvents} />
     </div>

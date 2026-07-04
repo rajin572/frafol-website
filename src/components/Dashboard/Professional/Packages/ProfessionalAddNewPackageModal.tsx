@@ -119,7 +119,8 @@ const ProfessionalAddNewPackageModal = ({
       className="lg:!w-[1000px]"
     >
       <h3 className="text-base sm:text-lg lg:text-xl xl:text-2xl font-bold mb-2">
-        Add New Package
+        {/* Add New Package */}
+        Pridať nový balík
       </h3>
 
       <ReusableForm form={form} handleFinish={onSubmit}>
@@ -128,18 +129,22 @@ const ProfessionalAddNewPackageModal = ({
         </h3>
         <ReuseInput
           name="title"
-          label="Title"
+          /* label="Title" */
+          label="Názov balíka"
           placeholder="Enter Title"
-          rules={[{ required: true, message: "Title is required" }]}
+          /* rules={[{ required: true, message: "Title is required" }]} */
+          rules={[{ required: true, message: "Názov balíka je povinný" }]}
           labelClassName="!font-semibold"
         />
         <ReuseInput
           inputType="textarea"
           rows={4}
           name="description"
-          label="Description"
+          /* label="Description" */
+          label="Popis"
           placeholder="Enter Description"
-          rules={[{ required: true, message: "Description is required" }]}
+          /* rules={[{ required: true, message: "Description is required" }]} */
+          rules={[{ required: true, message: "Popis je povinný" }]}
           labelClassName="!font-semibold mt-4"
         />
         <ReuseSelect
@@ -152,10 +157,12 @@ const ProfessionalAddNewPackageModal = ({
         />
         <ReuseInput
           name="price"
-          label="Package Price"
+          /* label="Package Price" */
+          label="Cena"
           placeholder="Enter Package Price"
           type="number"
-          rules={[{ required: true, message: "Package Price is required" }]}
+          /* rules={[{ required: true, message: "Package Price is required" }]} */
+          rules={[{ required: true, message: "Cena je povinná" }]}
           labelClassName="!font-semibold"
         />
         <ReuseInput
@@ -224,7 +231,8 @@ const ProfessionalAddNewPackageModal = ({
 
         />
         <ReuseButton htmlType="submit" variant="secondary" className="mt-2">
-          Add Package
+          {/* Add Package */}
+          Odoslať
         </ReuseButton>
       </ReusableForm>
     </Modal>

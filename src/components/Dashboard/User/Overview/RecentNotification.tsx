@@ -14,7 +14,8 @@ const RecentNotification = ({
       style={{ boxShadow: "0px 0px 5px 1px #0000000D" }}
     >
       <div className="flex justify-between items-center sticky top-0  px-5 pt-5 bg-white z-10 ">
-        <h1 className="text-xl font-semibold">Recent Activity</h1>
+        {/* <h1 className="text-xl font-semibold">Recent Activity</h1> */}
+        <h1 className="text-xl font-semibold">Nedávna aktivita</h1>
       </div>
 
       <div className="flex flex-col gap-5 p-5 bg-primary-color">

@@ -77,7 +77,8 @@ const GearMarketPlaceAddNewGear = ({
       { body: formData },
       {
         toastLoadingMessage: "Adding new gear...",
-        toastSuccessMessage: "New gear added successfully!",
+        /* toastSuccessMessage: "New gear added successfully!", */
+        toastSuccessMessage: "Inzerát na príslušenstvo bol vytvorený a čaká na schválenie.",
         toastErrorMessage: "Something went wrong! Please try again.",
       }
     );
@@ -99,7 +100,8 @@ const GearMarketPlaceAddNewGear = ({
       className="lg:!w-[1000px]"
     >
       <h3 className="text-base sm:text-lg lg:text-xl xl:text-2xl font-bold mb-2">
-        Add New Gear
+        {/* Add New Gear */}
+        Pridať nové príslušenstvo
       </h3>
 
       <ReusableForm form={form} handleFinish={onSubmit}>
@@ -110,16 +112,20 @@ const GearMarketPlaceAddNewGear = ({
             </h3>
             <ReuseInput
               name="name"
-              label="Product Name"
+              /* label="Product Name" */
+              label="Názov príslušenstva"
               placeholder="Enter Product Name"
-              rules={[{ required: true, message: "Product Name is required" }]}
+              /* rules={[{ required: true, message: "Product Name is required" }]} */
+              rules={[{ required: true, message: "Názov príslušenstva je povinný" }]}
               labelClassName="!font-semibold"
             />
             <ReuseSelect
               name="categoryId"
-              label="Product Category"
+              /* label="Product Category" */
+              label="Kategória"
               placeholder="Select Category"
-              rules={[{ required: true, message: "Category is required" }]}
+              /* rules={[{ required: true, message: "Category is required" }]} */
+              rules={[{ required: true, message: "Kategória je povinná" }]}
               labelClassName="!font-semibold"
               options={categories?.map((category) => ({
                 label: category?.title,
@@ -128,10 +134,12 @@ const GearMarketPlaceAddNewGear = ({
             />
             <ReuseInput
               name="price"
-              label="Item Price"
+              /* label="Item Price" */
+              label="Cena"
               placeholder="Enter Item Price"
               type="number"
-              rules={[{ required: true, message: "Item Price is required" }]}
+              /* rules={[{ required: true, message: "Item Price is required" }]} */
+              rules={[{ required: true, message: "Cena je povinná" }]}
               labelClassName="!font-semibold"
             />
             <ReuseInput
@@ -154,20 +162,24 @@ const GearMarketPlaceAddNewGear = ({
               inputType="textarea"
               rows={4}
               name="description"
-              label="Product Description"
+              /* label="Product Description" */
+              label="Popis"
               placeholder="Enter Description"
-              rules={[{ required: true, message: "Description is required" }]}
+              /* rules={[{ required: true, message: "Description is required" }]} */
+              rules={[{ required: true, message: "Popis je povinný" }]}
               labelClassName="!font-semibold mt-4"
             />
             <ReuseSelect
               name="condition"
-              label="Condition"
+              /* label="Condition" */
+              label="Stav"
               placeholder="Select Condition"
-              rules={[{ required: true, message: "Condition is required" }]}
+              /* rules={[{ required: true, message: "Condition is required" }]} */
+              rules={[{ required: true, message: "Vyberte stav" }]}
               labelClassName="!font-semibold"
               options={[
-                { label: "New", value: "new" },
-                { label: "Used", value: "used" },
+                { /* label: "New", */ label: "Nové", value: "new" },
+                { /* label: "Used", */ label: "Použité", value: "used" },
               ]}
             />
             <ReuseInput
@@ -192,13 +204,15 @@ const GearMarketPlaceAddNewGear = ({
           </div>
           <div className="p-2 rounded border border-[#E1E1E1]">
             <ReuseUpload
-              label="Upload Image"
+              /* label="Upload Image" */
+              label="Obrázok"
               name="image"
               buttonText="Upload Image"
               accept="image/png, image/jpeg"
               maxCount={1}
               labelClassName="!font-semibold"
-              rules={[{ required: true, message: "Product Image is required" }]}
+              /* rules={[{ required: true, message: "Product Image is required" }]} */
+              rules={[{ required: true, message: "Obrázok je povinný" }]}
             />
             {/* <ReuseInput
               inputType="textarea"
@@ -212,7 +226,8 @@ const GearMarketPlaceAddNewGear = ({
         </div>
 
         <ReuseButton htmlType="submit" variant="secondary" className="mt-2">
-          Add Gear
+          {/* Add Gear */}
+          Odoslať
         </ReuseButton>
       </ReusableForm>
     </Modal>

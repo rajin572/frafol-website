@@ -12,7 +12,7 @@ import { budgetLabels } from "@/utils/budgetLabels";
 import { getServerUrl } from "@/helpers/config/envConfig";
 import InvoiceDocumentFromClientSide from "@/utils/InvoiceDocumentFromClientSide";
 import { saveAs } from "file-saver";
-import { pdf } from "@react-pdf/renderer"; // Import pdf function from @react-pdf/renderer
+import { pdf } from "@react-pdf/renderer";
 import { toast } from "sonner";
 import Link from "next/link";
 
@@ -38,13 +38,10 @@ const UserOrderViewModal: React.FC<UserOrderViewModalProps> = ({
   const couponDiscountAmount: number = (currentRecord as any)?.couponDiscount || 0
   const effectiveTotalPrice: number = (currentRecord?.totalPrice || 0) - couponDiscountAmount
 
-  console.log(currentRecord)
-
   const handleDownload = (currentRecord: IEventOrder) => {
-    const toastId = toast.loading("Downloading...", {
+    const toastId = toast.loading("Sťahuje sa...", {
       duration: 2000,
     });
-    // Generate the PDF using @react-pdf/renderer's pdf function
     pdf(
       <InvoiceDocumentFromClientSide
         currentRecord={currentRecord as IEventOrder}
@@ -52,13 +49,11 @@ const UserOrderViewModal: React.FC<UserOrderViewModalProps> = ({
     )
       .toBlob()
       .then((blob: any) => {
-        // Use file-saver to trigger the download
         saveAs(blob, `${currentRecord.orderId}-invoice.pdf`);
-        toast.success("Downloaded successfully!", { id: toastId });
-
+        toast.success("Úspešne stiahnuté!", { id: toastId });
       })
       .catch((error: any) => {
-        toast.error("Download failed", { id: toastId });
+        toast.error("Sťahovanie zlyhalo", { id: toastId });
         console.log(error)
       });
   };
@@ -74,7 +69,8 @@ const UserOrderViewModal: React.FC<UserOrderViewModalProps> = ({
     >
       <div className="p-2 text-[#1a1a1a] max-h-[85vh] overflow-y-auto my-10">
         <h3 className="text-lg sm:text-xl lg:text-2xl xl:text-3xl font-bold mb-1">
-          Order Details
+          {/* Order Details */}
+          Detaily objednávky
         </h3>
         <p className="text-base sm:text-lg lg:text-xl xl:text-2xl text-secondary-color font-bold mb-5">
           {currentRecord?.orderId}
@@ -86,13 +82,17 @@ const UserOrderViewModal: React.FC<UserOrderViewModalProps> = ({
               {currentRecord?.packageId?.title || currentRecord?.title}
             </p>
             <p className={`text-sm sm:text-sm font-bold border w-fit rounded-2xl py-0.5 px-2 mt-1 ${currentRecord?.orderType === "custom" ? "text-secondary-color" : "border-base-color text-base-color"}`}>
-              {currentRecord?.orderType === "custom" ? "Custom" : "Direct"}
+              {/* {currentRecord?.orderType === "custom" ? "Custom" : "Direct"} */}
+              {currentRecord?.orderType === "custom" ? "Formulár" : "Balík"}
             </p>
           </div>
           <p className="text-sm sm:text-base lg:text-kg xl:text-xl font-medium">
-            {currentRecord?.serviceType === "both" ? "Photography & Videography" : currentRecord?.serviceType}
+            {/* {currentRecord?.serviceType === "both" ? "Photography & Videography" : currentRecord?.serviceType} */}
+            {currentRecord?.serviceType === "both" ? "Fotografia a Video" : currentRecord?.serviceType}
           </p>
-          <p className="text-sm sm:text-sm lg:text-base xl:text-lg font-medium mt-2">By{" "}
+          <p className="text-sm sm:text-sm lg:text-base xl:text-lg font-medium mt-2">
+            {/* By */}
+            Od{" "}
             <Link href={`/professionals/${currentRecord?.serviceProviderId?._id}`} className=" text-secondary-color!">
               {currentRecord?.serviceProviderId?.companyName || currentRecord?.serviceProviderId?.name}
             </Link>
@@ -117,7 +117,8 @@ const UserOrderViewModal: React.FC<UserOrderViewModalProps> = ({
                     onClick={() => setDescriptionExpanded((prev) => !prev)}
                     className="text-secondary-color text-sm font-semibold mt-1 hover:underline"
                   >
-                    {descriptionExpanded ? "Show less" : "Show more"}
+                    {/* {descriptionExpanded ? "Show less" : "Show more"} */}
+                    {descriptionExpanded ? "Zobraziť menej" : "Zobraziť viac"}
                   </button>
                 )}
               </div>
@@ -128,33 +129,39 @@ const UserOrderViewModal: React.FC<UserOrderViewModalProps> = ({
         {/* Order Info */}
         <div className="mb-4">
           <h4 className="text-base sm:text-lg lg:text-xl xl:text-2xl text-secondary-color font-bold">
-            Order Information
+            {/* Order Information */}
+            Informácie o objednávke
           </h4>
           <div className="mt-2">
             <p className="text-sm sm:text-sm lg:text-base">
-              <span className="font-semibold">Order Date :</span>{" "}
+              {/* <span className="font-semibold">Order Date :</span> */}
+              <span className="font-semibold">Dátum objednávky:</span>{" "}
               {formatDate(currentRecord?.statusTimestamps?.createdAt)} -{" "}
               {formetTime(currentRecord?.statusTimestamps?.createdAt)}
             </p>
             <p className="text-sm sm:text-sm lg:text-base">
-              <span className="font-semibold">Event Date :</span>{" "}
+              {/* <span className="font-semibold">Event Date :</span> */}
+              <span className="font-semibold">Dátum podujatia:</span>{" "}
               {formatDate(currentRecord?.date)}
             </p>
             {currentRecord?.status !== "cancelled" && (
               <p className="text-sm sm:text-sm lg:text-base">
-                <span className="font-semibold">Expected Delivery Date :</span>{" "}
+                {/* <span className="font-semibold">Expected Delivery Date :</span> */}
+                <span className="font-semibold">Očakávaný dátum doručenia:</span>{" "}
                 {formatDate(currentRecord?.deliveryDate)}
               </p>
             )}
 
             {currentRecord?.duration && (
               <p className="text-sm sm:text-sm lg:text-base mt-1">
-                <span className="font-semibold">Duration :</span>{" "}
+                {/* <span className="font-semibold">Duration :</span> */}
+                <span className="font-semibold">Trvanie:</span>{" "}
                 <span className="capitalize">{currentRecord?.duration}</span>
               </p>
             )}
             <p className="text-sm sm:text-sm lg:text-base mt-1">
-              <span className="font-semibold">Status :</span>{" "}
+              {/* <span className="font-semibold">Status :</span> */}
+              <span className="font-semibold">Stav:</span>{" "}
               <span className="capitalize font-semibold text-secondary-color">
                 {currentRecord?.status}
               </span>
@@ -165,7 +172,8 @@ const UserOrderViewModal: React.FC<UserOrderViewModalProps> = ({
         {/* Professional Info */}
         <div className="mb-4">
           <h4 className="text-base sm:text-lg lg:text-xl xl:text-2xl text-secondary-color font-bold">
-            Professional Information
+            {/* Professional Information */}
+            Informácie o tvorcovi
           </h4>
           <Link href={`/professionals/${currentRecord?.serviceProviderId?._id}`} className=" text-secondary-color!">
             <div className="flex items-center gap-1 mt-2">
@@ -175,7 +183,8 @@ const UserOrderViewModal: React.FC<UserOrderViewModalProps> = ({
                     ? serverUrl + currentRecord?.serviceProviderId?.profileImage
                     : AllImages.dummyProfile
                 }
-                alt="photographer"
+                // {/* alt="photographer" */}
+                alt="fotograf"
                 width={50}
                 height={50}
                 className="rounded-full h-7 w-7 object-cover border border-secondary-color"
@@ -189,76 +198,30 @@ const UserOrderViewModal: React.FC<UserOrderViewModalProps> = ({
           </Link>
         </div>
 
-        {/* Billing Info */}
-        {/* {(currentRecord?.streetAddress || currentRecord?.town || currentRecord?.zipCode || currentRecord?.country) && (
-          <div className="mb-4">
-            <h4 className="text-base sm:text-lg lg:text-xl xl:text-2xl text-secondary-color font-bold">
-              Event Information
-            </h4>
-            <div className="mt-2 flex flex-col gap-1">
-
-              {currentRecord?.streetAddress && (
-                <p className="text-sm font-semibold">
-                  Street Address :{" "}
-                  <span className="text-secondary-color">{currentRecord?.streetAddress}</span>
-                </p>
-              )}
-              {currentRecord?.town && (
-                <p className="text-sm font-semibold">
-                  Town :{" "}
-                  <span className="text-secondary-color">{currentRecord?.town}</span>
-                </p>
-              )}
-              {currentRecord?.zipCode && (
-                <p className="text-sm font-semibold">
-                  ZIP Code :{" "}
-                  <span className="text-secondary-color">{currentRecord?.zipCode}</span>
-                </p>
-              )}
-              {currentRecord?.country && (
-                <p className="text-sm font-semibold">
-                  Country :{" "}
-                  <span className="text-secondary-color">{currentRecord?.country}</span>
-                </p>
-              )}
-              {currentRecord?.ICO && (
-                <p className="text-sm font-semibold">
-                  ICO :{" "}
-                  <span className="text-secondary-color">{currentRecord?.ICO}</span>
-                </p>
-              )}
-              {currentRecord?.DIC && (
-                <p className="text-sm font-semibold">
-                  DIC :{" "}
-                  <span className="text-secondary-color">{currentRecord?.DIC}</span>
-                </p>
-              )}
-              {currentRecord?.IC_DPH && (
-                <p className="text-sm font-semibold">
-                  IC DPH :{" "}
-                  <span className="text-secondary-color">{currentRecord?.IC_DPH}</span>
-                </p>
-              )}
-            </div>
-          </div>
-        )} */}
-
         {/* Event Details */}
         <div className="mb-4">
           <h4 className="text-base sm:text-lg lg:text-xl xl:text-2xl text-secondary-color font-bold mb-2">
-            Event Details
+            {/* Event Details */}
+            Detaily podujatia
           </h4>
           <p className="text-sm sm:text-sm lg:text-base flex items-start gap-2 mb-2">
             <div className="flex items-center gap-2 text-nowrap">
-              <FaMapMarkerAlt className="shrink-0" /> <span>Location : </span>
+              <FaMapMarkerAlt className="shrink-0" />
+              {/* <span>Location : </span> */}
+              <span>Lokalita: </span>
             </div>
             {currentRecord?.location}
           </p>
           <p className="text-sm sm:text-sm lg:text-base flex items-center gap-2 mb-2">
-            <FaCalendarAlt className="shrink-0" /> <span>Date : </span> {formatDate(currentRecord?.date)}
+            <FaCalendarAlt className="shrink-0" />
+            {/* <span>Date : </span> */}
+            <span>Dátum: </span>
+            {formatDate(currentRecord?.date)}
           </p>
           <p className="text-sm sm:text-sm lg:text-base flex items-center gap-2 mb-2">
-            <FaClock className="shrink-0" /> <span>Time : </span>
+            <FaClock className="shrink-0" />
+            {/* <span>Time : </span> */}
+            <span>Čas: </span>
             {formetTime(currentRecord?.time)}
           </p>
         </div>
@@ -266,61 +229,42 @@ const UserOrderViewModal: React.FC<UserOrderViewModalProps> = ({
         {/* Payment Details */}
         <div className="mb-4">
           <h4 className="text-base sm:text-lg lg:text-xl xl:text-2xl text-secondary-color font-bold">
-            Payment Details
+            {/* Payment Details */}
+            Detaily platby
           </h4>
           {currentRecord?.totalPrice && (
             <>
               <p className="text-sm sm:text-sm lg:text-base xl:text-lg mt-2">
-                <span className="font-semibold">Amount Without Service Fee:</span>{" "}
+                {/* <span className="font-semibold">Amount Without Service Fee:</span> */}
+                <span className="font-semibold">Suma bez servisného poplatku:</span>{" "}
                 {(currentRecord.totalPrice - serviceFeeAmount).toFixed(2)}€
               </p>
-              {/* <p className="text-sm sm:text-sm lg:text-base xl:text-lg mt-2">
-                <span className="font-semibold">Service Fee Amount:</span>{" "}
-                {serviceFeeAmount.toFixed(2)}€
-              </p>
-              {couponDiscountAmount > 0 && (
-                <p className="text-sm sm:text-sm lg:text-base xl:text-lg mt-2">
-                  <span className="font-semibold">
-                    Coupon Discount ({(currentRecord as any)?.couponCode} - {couponDiscountAmount}):
-                  </span>{" "}
-                  <span className="text-red-600">-{couponDiscountAmount.toFixed(2)}€</span>
-                </p>
-              )} */}
             </>
           )}
-          {/* {currentRecord?.vatAmount ? (
-            <p className="text-sm sm:text-sm lg:text-base xl:text-lg mt-2">
-              <span className="font-semibold">VAT Amount :</span>{" "}
-              {currentRecord?.vatAmount.toFixed(2)}€
-            </p>
-          ) : null} */}
           <p className="text-sm sm:text-sm lg:text-base xl:text-lg mt-2">
             <span className="font-semibold">
-              {currentRecord?.totalPrice ? "Total Amount" : "Budget Range"} :
-            </span>{" "}
+              {/* {currentRecord?.totalPrice ? "Total Amount" : "Budget Range"}: */}
+              {/* {currentRecord?.totalPrice ? "Celková suma" : "Rozsah rozpočtu"}: */}
+              {currentRecord?.totalPrice ? "Celková suma" : "Rozsah rozpočtu"}
+            </span>
+            :{" "}
             {currentRecord?.totalPrice
               ? effectiveTotalPrice.toFixed(2)
               : budgetLabels[currentRecord?.budget_range as string] ||
               currentRecord?.budget_range}€
           </p>
-          {/* {currentRecord?.paymentStatus && (
-            <p className="text-sm sm:text-sm lg:text-base xl:text-lg mt-2">
-              <span className="font-semibold">Payment Status :</span>{" "}
-              <span className="capitalize font-semibold text-secondary-color">
-                {currentRecord?.paymentStatus}
-              </span>
-            </p>
-          )} */}
         </div>
 
         {activeModal === "cancelled" && (
           <div className="mb-4">
             <h4 className="text-base sm:text-lg lg:text-xl xl:text-2xl text-secondary-color font-bold">
-              Cancel Reason
+              {/* Cancel Reason */}
+              Dôvod zrušenia
             </h4>
             <div className="mt-2">
               <p className="text-sm sm:text-sm lg:text-base">
-                <span className="font-semibold">Reason :</span>{" "}
+                {/* <span className="font-semibold">Reason :</span> */}
+                <span className="font-semibold">Dôvod:</span>{" "}
                 {currentRecord?.cancelReason}
               </p>
             </div>
@@ -333,35 +277,40 @@ const UserOrderViewModal: React.FC<UserOrderViewModalProps> = ({
               onClick={() => showCancelModal(currentRecord)}
               variant="secondary"
             >
-              Cancle Order
+              {/* Cancle Order */}
+              Zrušiť objednávku
             </ReuseButton>
           ) : activeModal === "toConfirm" ? (
             <ReuseButton
               onClick={() => showCancelModal(currentRecord)}
               variant="secondary"
             >
-              Decline Delivery Request
+              {/* Decline Delivery Request */}
+              Zamietnuť žiadosť o doručenie
             </ReuseButton>
           ) : activeModal === "accepted" ? (
             <ReuseButton
               onClick={() => showCancelModal(currentRecord)}
               variant="secondary"
             >
-              Cancle Order
+              {/* Cancle Order */}
+              Zrušiť objednávku
             </ReuseButton>
           ) : activeModal === "orderOffer" ? (
             <ReuseButton
               variant="secondary"
               onClick={() => showCancelModal(currentRecord)}
             >
-              Cancle Order
+              {/* Cancle Order */}
+              Zrušiť objednávku
             </ReuseButton>
           ) : activeModal === "delivered" ? (
             <ReuseButton
               variant="secondary"
               onClick={() => handleDownload(currentRecord as IEventOrder)}
             >
-              Download Invoice
+              {/* Download Invoice */}
+              Stiahnuť faktúru
             </ReuseButton>
           ) : null}
         </div>

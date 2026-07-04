@@ -38,8 +38,11 @@ const UserOrdersPage = ({
   return (
     <div>
       <div className="flex lg:flex-row flex-col justify-between items-center ">
-        <h1 className="text-xl sm:text-2xl lg:text-3xl xl:text-4xl  font-bold mb-10">
+        {/* <h1 className="text-xl sm:text-2xl lg:text-3xl xl:text-4xl  font-bold mb-10">
           Orders
+        </h1> */}
+        <h1 className="text-xl sm:text-2xl lg:text-3xl xl:text-4xl  font-bold mb-10">
+          Objednávky
         </h1>
       </div>
       <UserOrdersOverview states={states} />
@@ -50,7 +53,8 @@ const UserOrdersPage = ({
           align="left"
           tabs={[
             {
-              label: "Current Order",
+              /* label: "Current Order", */
+              label: "Aktuálna objednávka",
               value: "currentOrder",
               content: (
                 <UserCurrentOrder
@@ -63,7 +67,8 @@ const UserOrdersPage = ({
               ),
             },
             {
-              label: "Confirm Delivery",
+              /* label: "Confirm Delivery", */
+              label: "Potvrdiť doručenie",
               value: "toConfirm",
               content: (
                 <UserConfirmOrder
@@ -76,7 +81,8 @@ const UserOrdersPage = ({
               ),
             },
             {
-              label: "Delivered",
+              /* label: "Delivered", */
+              label: "Doručené",
               value: "delivered",
               content: (
                 <UserDeliveriedOrder
@@ -89,7 +95,8 @@ const UserOrdersPage = ({
               ),
             },
             {
-              label: "My Request",
+              /* label: "My Request", */
+              label: "Odoslaný formulár",
               value: "pending",
               content: (
                 <UserPendingOrder
@@ -102,7 +109,8 @@ const UserOrdersPage = ({
               ),
             },
             {
-              label: "Order Offer",
+              /* label: "Order Offer", */
+              label: "Návrh objednávky",
               value: "orderOffer",
               content: (
                 <UserOrderOffer
@@ -115,7 +123,8 @@ const UserOrdersPage = ({
               ),
             },
             {
-              label: "Pending Payment",
+              /* label: "Pending Payment", */
+              label: "Čaká sa na platbu",
               value: "accepted",
               content: (
                 <PendingPayment
@@ -128,7 +137,8 @@ const UserOrdersPage = ({
               ),
             },
             {
-              label: "Cancel Confirmation",
+              /* label: "Cancel Confirmation", */
+              label: "Potvrdenie zrušenia",
               value: "cancelRequest",
               content: (
                 <UserCancleOrder
@@ -141,7 +151,8 @@ const UserOrdersPage = ({
               ),
             },
             {
-              label: "Cancelled",
+              /* label: "Cancelled", */
+              label: "Zrušené",
               value: "cancelled",
               content: (
                 <UserCancleOrder

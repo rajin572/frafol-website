@@ -95,8 +95,11 @@ const ProfessionalAddNewWorkshop = ({
       className="lg:!w-[1000px]"
     >
       <div className="p-5 text-base-color">
-        <h1 className="text-lg sm:text-xl lg:text-2xl font-bold mb-5">
+        {/* <h1 className="text-lg sm:text-xl lg:text-2xl font-bold mb-5">
           Add New Workshop
+        </h1> */}
+        <h1 className="text-lg sm:text-xl lg:text-2xl font-bold mb-5">
+          Pridať nový kurz
         </h1>
 
         <ReusableForm
@@ -111,45 +114,45 @@ const ProfessionalAddNewWorkshop = ({
         >
           <ReuseInput
             name="title"
-            label="Title"
-            placeholder="Enter Title"
-            rules={[{ required: true, message: "Title is required" }]}
+            label="Názov kurzu"
+            placeholder="Zadajte názov kurzu"
+            rules={[{ required: true, message: "Názov kurzu je povinný" }]}
             labelClassName="!font-semibold"
           />
           <ReuseDatePicker
             name="date"
-            label="Event Date"
+            label="Dátum kurzu"
             labelClassName="!font-semibold"
-            rules={[{ required: true, message: "Date is required" }]}
-            placeholder="Select Date"
+            rules={[{ required: true, message: "Dátum je povinný" }]}
+            placeholder="Vyberte dátum"
             format="MM-DD-YYYY"
           />
 
           <ReuseTimePicker
             name="time"
             date={selectedDate ? selectedDate.toISOString() : null}
-            label="Event Time"
+            label="Čas kurzu"
             labelClassName="!font-semibold"
-            rules={[{ required: true, message: "Time is required" }]}
-            placeholder="Select Time"
+            rules={[{ required: true, message: "Čas je povinný" }]}
+            placeholder="Vyberte čas"
             disabled={!selectedDate}
           />
 
           <ReuseInput
             name="maxParticipant"
-            label="Max Participant"
-            placeholder="Enter Max Participant"
+            label="Maximálny počet účastníkov"
+            placeholder="Zadajte maximálny počet účastníkov"
             type="number"
-            rules={[{ required: true, message: "Max Participant is required" }]}
+            rules={[{ required: true, message: "Maximálny počet účastníkov je povinný" }]}
             labelClassName="!font-semibold"
           />
 
 
           <ReuseSelect
             name="locationType"
-            label="Select Location"
-            placeholder="Select Location"
-            rules={[{ required: true, message: "Location is required" }]}
+            label="Vyberte miesto"
+            placeholder="Vyberte miesto"
+            rules={[{ required: true, message: "Miesto je povinné" }]}
             value={selectedLocation}
             labelClassName="!font-semibold"
             options={[
@@ -163,21 +166,21 @@ const ProfessionalAddNewWorkshop = ({
           {selectedLocation === "offline" ? (
             <ReuseInput
               name="location"
-              label="Event Location"
-              placeholder="Enter Event Location"
+              label="Miesto konania"
+              placeholder="Zadajte miesto konania"
               rules={[
-                { required: true, message: "Event Location is required" },
+                { required: true, message: "Miesto konania je povinné" },
               ]}
               labelClassName="!font-semibold"
             />
           ) : (
             <ReuseInput
               name="workshopLink"
-              label="Online Link"
-              placeholder="Enter Online Link"
+              label="Odkaz na stretnutie"
+              placeholder="Zadajte odkaz na stretnutie"
               type="url"
               rules={[
-                { required: true, message: "Event Location is required" },
+                { required: true, message: "Odkaz na stretnutie je povinný" },
               ]}
               labelClassName="!font-semibold"
             />
@@ -185,25 +188,25 @@ const ProfessionalAddNewWorkshop = ({
 
           <ReuseInput
             name="price"
-            label="Price"
-            placeholder="Enter Price"
-            rules={[{ required: true, message: "Price is required" }]}
+            label="Cena"
+            placeholder="Zadajte cenu"
+            rules={[{ required: true, message: "Cena je povinná" }]}
             labelClassName="!font-semibold"
             type="number"
           />
 
           <ReuseInput
             name="vatAmount"
-            label="VAT Amount % (optional) "
-            placeholder="Enter VAT Amount"
+            label="DPH % (voliteľné)"
+            placeholder="Zadajte DPH"
             labelClassName="!font-semibold"
             type="number"
           />
 
           <ReuseInput
             name="mainPrice"
-            label="Package Price After Adding Service Fee and VAT"
-            placeholder="Enter Package Price"
+            label="Konečná cena po pridaní servisného poplatku a DPH"
+            placeholder="Zadajte konečnú cenu"
             disabled
             type="number"
             rules={[{ required: true, message: "Package Price is required" }]}
@@ -214,23 +217,26 @@ const ProfessionalAddNewWorkshop = ({
             inputType="textarea"
             rows={4}
             name="description"
-            label="Event Description"
-            placeholder="Enter Description"
-            rules={[{ required: true, message: "Description is required" }]}
+            label="Popis kurzu"
+            placeholder="Zadajte popis kurzu"
+            rules={[{ required: true, message: "Popis kurzu je povinný" }]}
             labelClassName="!font-semibold mt-4"
           />
           <ReuseUpload
-            label="Upload Thumbnail"
+            label="Nahrať náhľad"
             name="image"
-            buttonText="Upload Image"
+            buttonText="Nahrať obrázok"
             accept="image/png, image/jpeg"
             maxCount={1}
             labelClassName="!font-semibold"
-            rules={[{ required: true, message: "Workshop Image is required" }]}
+            rules={[{ required: true, message: "Obrázok kurzu je povinný" }]}
           />
 
-          <ReuseButton htmlType="submit" variant="secondary" className="mt-2">
+          {/* <ReuseButton htmlType="submit" variant="secondary" className="mt-2">
             Add Workshop
+          </ReuseButton> */}
+          <ReuseButton htmlType="submit" variant="secondary" className="mt-2">
+            Pridať kurz
           </ReuseButton>
         </ReusableForm>
       </div>

@@ -35,20 +35,23 @@ const ProfessionalEventOrderTable: React.FC<
 
   const columns = [
     {
-      title: "Client Name",
+      /* title: "Client Name", */
+      title: "Meno klienta",
       dataIndex: "userId",
       key: "userId",
       render: (_: unknown, record: IEventOrder) =>
         record?.companyName || record?.name || record?.userId?.name,
     },
     {
-      title: "Service Type",
+      /* title: "Service Type", */
+      title: "Typ služby",
       dataIndex: "serviceType",
       key: "serviceType",
-      render: (text: string) => <span className="capitalize">{text === "both" ? "Photography & Videography" : text}</span>,
+      render: (text: string) => <span className="capitalize">{text === "both" ? /* "Photography & Videography" */ "Fotografia a video" : text}</span>,
     },
     {
-      title: "Event Name",
+      /* title: "Event Name", */
+      title: "Názov",
       dataIndex: ["packageId", "title"],
       key: "packageId",
       render: (_: unknown, record: IEventOrder) => (
@@ -88,19 +91,22 @@ const ProfessionalEventOrderTable: React.FC<
       ),
     },
     {
-      title: "Location",
+      /* title: "Location", */
+      title: "Lokalita",
       dataIndex: "location",
       key: "location",
       width: 300,
     },
     {
-      title: "Event Date",
+      /* title: "Event Date", */
+      title: "Dátum",
       dataIndex: "date",
       key: "date",
       render: (text: string) => formatDate(text),
     },
     {
-      title: "Price",
+      /* title: "Price", */
+      title: "Cena",
       dataIndex: "totalPrice",
       key: "totalPrice",
       render: (text: string, record: IEventOrder) => (
@@ -176,12 +182,13 @@ const ProfessionalEventOrderTable: React.FC<
     //   ]
     //   : []),
     {
-      title: "Action",
+      /* title: "Action", */
+      title: "Akcia",
       key: "action",
       render: (_: unknown, record: IEventOrder) => (
         <Space size="middle">
           {/* View Details Tooltip */}
-          <Tooltip placement="right" title="View Details">
+          <Tooltip placement="right" /* title="View Details" */ title="Zobraziť detaily">
             <button
               className="!p-0 !bg-transparent !border-none !text-base-color cursor-pointer"
               onClick={() => showViewModal(record)}

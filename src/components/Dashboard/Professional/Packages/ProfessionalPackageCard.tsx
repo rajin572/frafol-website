@@ -100,7 +100,8 @@ const ProfessionalPackageCard = ({
             <div className="flex items-center gap-1">
               <BsCurrencyDollar className="text-secondary-color text-sm sm:text-base lg:text-lg" />
               <p className="text-sm sm:text-sm lg:text-base font-semibold">
-                Total Price:
+                {/* Total Price: */}
+                Celková cena:
               </p>
             </div>
             <p className="text-sm sm:text-sm lg:text-base">
@@ -111,7 +112,8 @@ const ProfessionalPackageCard = ({
             <div className="flex items-center gap-1">
               <LuClock className="text-secondary-color text-sm sm:text-base lg:text-lg" />
               <p className="text-sm sm:text-sm lg:text-base font-semibold">
-                Duration:
+                {/* Duration: */}
+                Trvanie:
               </p>
             </div>
             <p className="text-sm sm:text-sm lg:text-base">{item?.duration}</p>

@@ -75,21 +75,21 @@ const EarningViewModal: React.FC<Props> = ({ isVisible, onClose, record, type })
     const eventOrder = record.eventOrderId;
     return (
       <>
-        <Row label="Event Name" value={eventOrder?.title} />
-        <Row label="Transaction ID" value={<span className="text-xs break-all">{record.transactionId}</span>} />
-        <Row label="Payment Method" value={capitalize(record.paymentMethod)} />
+        <Row /* label="Event Name" */ label="Názov podujatia" value={eventOrder?.title} />
+        <Row /* label="Transaction ID" */ label="ID transakcie" value={<span className="text-xs break-all">{record.transactionId}</span>} />
+        <Row /* label="Payment Method" */ label="Spôsob platby" value={capitalize(record.paymentMethod)} />
         <Row
           label="Payment Status"
           value={<Tag color={record.paymentStatus === "completed" ? "green" : "orange"}>{capitalize(record.paymentStatus)}</Tag>}
         />
-        <Row label="Service Type" value={capitalize(eventOrder?.serviceType)} />
+        <Row /* label="Service Type" */ label="Typ služby" value={capitalize(eventOrder?.serviceType)} />
         <Row
           label="Order Type"
           value={<Tag color={eventOrder?.orderType === "direct" ? "blue" : "purple"}>{capitalize(eventOrder?.orderType)}</Tag>}
         />
-        <Row label="Event Date" value={formatDate(eventOrder?.date)} />
+        <Row /* label="Event Date" */ label="Dátum" value={formatDate(eventOrder?.date)} />
         <Row label="Created At" value={formatDate(record.createdAt)} />
-        <Row label="Total Amount" value={<span>{record.amount?.toFixed(2)} €</span>} />
+        <Row /* label="Total Amount" */ label="Celková suma" value={<span>{record.amount?.toFixed(2)} €</span>} />
         <Row label="Commission" value={<span className="text-red-500">- {record.commission?.toFixed(2)} €</span>} />
         {record.couponDiscount > 0 && (
           <Row label="Coupon Discount" value={<span className="text-orange-500">- {record.couponDiscount?.toFixed(2)} €</span>} />
@@ -178,7 +178,7 @@ const EarningViewModal: React.FC<Props> = ({ isVisible, onClose, record, type })
     return (
       <>
         <Row label="Order ID" value={record.orderId} />
-        <Row label="Workshop Title" value={workshop?.title} />
+        <Row /* label="Workshop Title" */ label="Názov kurzu" value={workshop?.title} />
         <Row label="Workshop Date" value={formatDate(workshop?.date)} />
         <Row label="Workshop Price" value={<span>{workshop?.price?.toFixed(2)} €</span>} />
         {workshop?.vatAmount > 0 && (
@@ -213,7 +213,7 @@ const EarningViewModal: React.FC<Props> = ({ isVisible, onClose, record, type })
         {record.instructorPayment?.paidAt && (
           <Row label="Instructor Paid At" value={formatDate(record.instructorPayment.paidAt)} />
         )}
-        <Row label="Location" value={`${record.town}, ${record.country}`} />
+        <Row /* label="Location" */ label="Lokalita" value={`${record.town}, ${record.country}`} />
       </>
     );
   };

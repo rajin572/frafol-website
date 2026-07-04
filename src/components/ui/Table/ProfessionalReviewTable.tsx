@@ -21,13 +21,15 @@ const ProfessionalReviewTable = ({
         page * limit - limit + index + 1,
     },
     {
-      title: "Client Name",
+      /* title: "Client Name", */
+      title: "Meno klienta",
       dataIndex: "userId",
       key: "userId",
       render: (user: any) => user?.name || "N/A", // uses actual user name
     },
     {
-      title: "Feedback",
+      /* title: "Feedback", */
+      title: "Recenzia",
       dataIndex: "message",
       key: "message",
       render: (message: string) => (
@@ -37,7 +39,8 @@ const ProfessionalReviewTable = ({
       ),
     },
     {
-      title: "Rating",
+      /* title: "Rating", */
+      title: "Hodnotenie",
       dataIndex: "rating",
       key: "rating",
       render: (rating: number) => (
@@ -53,19 +56,21 @@ const ProfessionalReviewTable = ({
       ),
     },
     {
-      title: "Date",
+      /* title: "Date", */
+      title: "Dátum",
       dataIndex: "createdAt",
       key: "createdAt",
       render: (date: string) => <p>{formatDate(date)}</p>,
     },
     {
-      title: "Action",
+      /* title: "Action", */
+      title: "Akcia",
       key: "action",
       render: (_: any, record: any) => (
         <>
           <Space size="middle">
             {/* View Details Tooltip */}
-            <Tooltip placement="right" title="View Details">
+            <Tooltip placement="right" /* title="View Details" */ title="Zobraziť podrobnosti">
               <button
                 className="!p-0 !bg-transparent !border-none !text-secondary-color !cursor-pointer"
                 onClick={() => showViewModal(record)}

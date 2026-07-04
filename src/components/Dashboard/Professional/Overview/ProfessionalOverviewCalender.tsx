@@ -54,7 +54,8 @@ const ProfessionalOverviewCalendar = ({
   );
 
   const renderDays = () => {
-    const days = ["Mo", "Tu", "We", "Th", "Fr", "Sa", "Su"];
+    /* const days = ["Mo", "Tu", "We", "Th", "Fr", "Sa", "Su"]; */
+    const days = ["Po", "Ut", "St", "Št", "Pi", "So", "Ne"];
     return (
       <div className="grid grid-cols-7 text-center text-sm font-semibold text-red-800 mb-2">
         {days.map((day, index) => (

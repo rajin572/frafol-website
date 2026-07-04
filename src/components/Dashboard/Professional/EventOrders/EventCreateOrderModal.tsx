@@ -111,7 +111,8 @@ const EventCreateOrderModal = ({
         <div className="grid grid-cols-1  gap-1">
           <ReuseInput
             name="price"
-            label="Total Price (€)"
+            /* label="Total Price (€)" */
+            label="Celková cena (€)"
             placeholder="Enter Total Price"
             rules={[{ required: true, message: "Total Price is required" }]}
             labelClassName="!font-semibold"
@@ -143,9 +144,11 @@ const EventCreateOrderModal = ({
           inputType="textarea"
           rows={4}
           name="description"
-          label="Description"
+          /* label="Description" */
+          label="Popis"
           placeholder="Enter Description"
-          rules={[{ required: true, message: "Description is required" }]}
+          /* rules={[{ required: true, message: "Description is required" }]} */
+          rules={[{ required: true, message: "Popis je povinný" }]}
           labelClassName="!font-semibold mt-4"
         />
         <ReuseButton htmlType="submit" variant="secondary" className="mt-2">

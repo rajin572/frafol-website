@@ -122,7 +122,8 @@ export default function PricingCard({
                 {!isSubscribed && <PricingCardPaymentButton plan={plan} pack={pack} />}
                 {isSubscribed && (
                     <ReuseButton variant="outline" onClick={handleDownloadInvoice}>
-                        Download Invoice
+                        {/* Download Invoice */}
+                        Stiahnuť faktúru
                     </ReuseButton>
                 )}
             </div>

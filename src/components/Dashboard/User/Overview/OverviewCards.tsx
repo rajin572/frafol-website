@@ -9,28 +9,32 @@ const OverviewCard = ({ overview }: { overview: IDashboardStats }) => {
     {
       id: 1,
       background: "#ffffff",
-      name: "Active Order",
+      /* name: "Active Order", */
+      name: "Aktívna objednávka",
       icon: <LuShoppingBag className="size-5 text-secondary-color" />,
       count: overview.totalActiveOrders,
     },
     {
       id: 2,
       background: "#ffffff",
-      name: "Pending Confirmation",
+      /* name: "Pending Confirmation", */
+      name: "Čaká na potvrdenie",
       icon: <FaHourglassEnd className="size-5 text-secondary-color" />,
       count: overview.totalPendingConfirmation,
     },
     {
       id: 3,
       background: "#ffffff",
-      name: "Total Spent",
+      /* name: "Total Spent", */
+      name: "Celková minutá suma",
       icon: <RiMoneyEuroCircleFill className="size-6 text-secondary-color" />,
       count: `${overview.totalSpent}€`,
     },
     {
       id: 4,
       background: "#ffffff",
-      name: "Completed Orders",
+      /* name: "Completed Orders", */
+      name: "Dokončené objednávky",
       icon: <IoCheckmarkDoneCircle className="size-6 text-secondary-color" />,
       count: overview.totalCompletedOrders,
     },

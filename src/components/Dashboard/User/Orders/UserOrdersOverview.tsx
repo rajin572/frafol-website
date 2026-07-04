@@ -9,21 +9,24 @@ const UserOrdersOverview = ({ states }: { states: IUserEventOrderStats }) => {
     {
       id: 3,
       background: "#ffffff",
-      name: "Current Order",
+      /* name: "Current Order", */
+      name: "Aktuálna objednávka",
       icon: <RiMoneyEuroCircleFill className="size-6 text-secondary-color" />,
       count: states?.totalCurrentOrders,
     },
     {
       id: 2,
       background: "#ffffff",
-      name: "To Confirm",
+      /* name: "To Confirm", */
+      name: "Na potvrdenie",
       icon: <FaHourglassEnd className="size-5 text-secondary-color" />,
       count: states?.totalToConfirm,
     },
     {
       id: 1,
       background: "#ffffff",
-      name: "Delivered",
+      /* name: "Delivered", */
+      name: "Doručené",
       icon: (
         <IoCheckmarkDoneCircleOutline className="size-6 text-secondary-color" />
       ),
@@ -32,7 +35,8 @@ const UserOrdersOverview = ({ states }: { states: IUserEventOrderStats }) => {
     {
       id: 4,
       background: "#ffffff",
-      name: "Pending",
+      /* name: "Pending", */
+      name: "Čakajúce",
       icon: <FaHourglassEnd className="size-6 text-secondary-color" />,
       count: states?.totalPendingEvents,
     },

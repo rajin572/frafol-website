@@ -40,7 +40,8 @@ const GearMarketPlaceTable: React.FC<GearMarketPlaceTableProps> = ({
         page * limit - limit + index + 1,
     },
     {
-      title: "Item Image",
+      /* title: "Item Image", */
+      title: "Obrázok",
       dataIndex: "gallery",
       key: "gallery",
       render: (text: string[]) => (
@@ -54,17 +55,20 @@ const GearMarketPlaceTable: React.FC<GearMarketPlaceTableProps> = ({
       ),
     },
     {
-      title: "Item Name",
+      /* title: "Item Name", */
+      title: "Názov",
       dataIndex: "name",
       key: "name",
     },
     {
-      title: "Item Category",
+      /* title: "Item Category", */
+      title: "Kategória",
       dataIndex: ["categoryId", "title"],
       key: "categoryId",
     },
     {
-      title: "Item Price (€)",
+      /* title: "Item Price (€)", */
+      title: "Cena (€)",
       dataIndex: "price",
       key: "price",
       align: "center",
@@ -83,7 +87,8 @@ const GearMarketPlaceTable: React.FC<GearMarketPlaceTableProps> = ({
     },
 
     {
-      title: "Condition",
+      /* title: "Condition", */
+      title: "Stav",
       dataIndex: "condition",
       key: "condition",
       render: (text: string) => <span className="capitalize">{text}</span>,
@@ -134,18 +139,20 @@ const GearMarketPlaceTable: React.FC<GearMarketPlaceTableProps> = ({
       ),
     },
     {
-      title: "Status",
+      /* title: "Status", */
+      title: "Stav",
       dataIndex: "status",
       key: "status",
       align: "center",
     },
     {
-      title: "Action",
+      /* title: "Action", */
+      title: "Akcia",
       key: "action",
       render: (_: unknown, record: any) => (
         <Space size="middle">
           {/* View Details Tooltip */}
-          <Tooltip placement="right" title="View Details">
+          <Tooltip placement="right" /* title="View Details" */ title="Zobraziť detaily">
             <button
               className="!p-0 !bg-transparent !border-none !text-base-color cursor-pointer"
               onClick={() => showEditModal(record)}
@@ -153,7 +160,7 @@ const GearMarketPlaceTable: React.FC<GearMarketPlaceTableProps> = ({
               <MdEdit style={{ fontSize: "24px" }} />
             </button>
           </Tooltip>
-          <Tooltip placement="right" title="View Details">
+          <Tooltip placement="right" /* title="View Details" */ title="Zobraziť detaily">
             <button
               className="!p-0 !bg-transparent !border-none !text-base-color cursor-pointer"
               onClick={() => showDeleteModal(record)}
@@ -161,7 +168,7 @@ const GearMarketPlaceTable: React.FC<GearMarketPlaceTableProps> = ({
               <MdDelete style={{ fontSize: "24px", color: "red" }} />
             </button>
           </Tooltip>
-          <Tooltip placement="right" title="View Details">
+          <Tooltip placement="right" /* title="View Details" */ title="Zobraziť detaily">
             <button
               className="!p-0 !bg-transparent !border-none !text-base-color cursor-pointer"
               onClick={() => showViewModal(record)}

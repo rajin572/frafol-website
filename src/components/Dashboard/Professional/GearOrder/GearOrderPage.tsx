@@ -89,8 +89,11 @@ const GearOrderPage = ({
       <div className=" min-h-[80vh] rounded-xl px-4">
         <div className=" w-full p-4   rounded-tl-xl rounded-tr-xl">
           <div className=" flex items-center justify-between">
-            <h1 className="text-xl sm:text-2xl lg:text-3xl xl:text-4xl font-bold mb-5">
+            {/* <h1 className="text-xl sm:text-2xl lg:text-3xl xl:text-4xl font-bold mb-5">
               Gear Orders
+            </h1> */}
+            <h1 className="text-xl sm:text-2xl lg:text-3xl xl:text-4xl font-bold mb-5">
+              Objednávky príslušenstva
             </h1>
             <SearchInput placeholder="Search ..." />
           </div>
@@ -121,7 +124,7 @@ const GearOrderPage = ({
         <AcceptModal
           isModalVisible={isDeliverModalVisible}
           handleCancel={() => setIsDeliverModalVisible(false)}
-          description="Are you sure you want to mark this order as delivered?"
+          description="Ste si istí, že chcete túto objednávku označiť ako doručenú?"
           currentRecord={currentRecord}
           handleConfirm={handleDeliverGearOrder}
         />

@@ -606,8 +606,11 @@ const MessagePage = () => {
               className={`!bg-[#FFFFFF] m-2  duration-200 !pl-5`}
             >
               <div className="sticky top-0 z-20 !bg-[#FFFFFF]  py-5 mb-3 ">
-                <div className=" flex justify-between items-center pe-4  text-base sm:text-xl md:text-2xl lg:text-3xl text-secondary-color font-bold mt-3">
+                {/* <div className=" flex justify-between items-center pe-4  text-base sm:text-xl md:text-2xl lg:text-3xl text-secondary-color font-bold mt-3">
                   Messages
+                </div> */}
+                <div className=" flex justify-between items-center pe-4  text-base sm:text-xl md:text-2xl lg:text-3xl text-secondary-color font-bold mt-3">
+                  Správy
                 </div>
                 <div className="h-0.5 w-full bg-[#EFEFEF] my-5"></div>
                 <Input
@@ -683,30 +686,30 @@ const MessagePage = () => {
                         <div key={msg.id}>
                           <p
                             className={`py-1 px-3 my-2 rounded-md ${msg.sender === "You"
-                                ? "w-fit ml-auto text-right  text-white bg-secondary-color"
-                                : "w-fit text-left text-base-color bg-[#F1F1F1]"
+                              ? "w-fit ml-auto text-right  text-white bg-secondary-color"
+                              : "w-fit text-left text-base-color bg-[#F1F1F1]"
                               }`}
                           >
                             {msg.text}
                           </p>
                           <div
                             className={`flex items-center gap-2 w-full ${msg.sender === "You"
-                                ? "justify-end"
-                                : "justify-start"
+                              ? "justify-end"
+                              : "justify-start"
                               }`}
                           >
                             <p
                               className={`font-bold text-sm ${msg.sender === "You"
-                                  ? "text-right"
-                                  : "text-left"
+                                ? "text-right"
+                                : "text-left"
                                 }`}
                             >
                               {msg.sender}
                             </p>
                             <p
                               className={`font-bold text-sm text-secondary-color ${msg.sender === "You"
-                                  ? "text-right"
-                                  : "text-left"
+                                ? "text-right"
+                                : "text-left"
                                 }`}
                             >
                               10:40 AM

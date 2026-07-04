@@ -28,7 +28,7 @@ const UserGearViewModal: React.FC<UserGearViewModalProps> = ({
   const serverUrl = getServerUrl();
 
   const handleClientGearInvoiceDownload = (currentRecord: IGearOrder) => {
-    const toastId = toast.loading("Downloading...", {
+    const toastId = toast.loading(/* "Downloading..." */ "Sťahuje sa...", {
       duration: 2000,
     });
     // Generate the PDF using @react-pdf/renderer's pdf function
@@ -39,11 +39,11 @@ const UserGearViewModal: React.FC<UserGearViewModalProps> = ({
       .then((blob: any) => {
         // Use file-saver to trigger the download
         saveAs(blob, `${currentRecord.orderId}-invoice.pdf`);
-        toast.success("Downloaded successfully!", { id: toastId });
+        toast.success(/* "Downloaded successfully!" */ "Úspešne stiahnuté!", { id: toastId });
       })
       .catch((error: any) => {
         console.log(error);
-        toast.error("Download failed", { id: toastId });
+        toast.error(/* "Download failed" */ "Sťahovanie zlyhalo", { id: toastId });
       });
   };
   return (
@@ -69,12 +69,12 @@ const UserGearViewModal: React.FC<UserGearViewModalProps> = ({
             />
             <div>
               <h2 className="text-lg font-medium">
-                {currentRecord?.gearMarketplaceId?.name || "Product Name"}
+                {currentRecord?.gearMarketplaceId?.name || /* "Product Name" */ "Názov produktu"}
               </h2>
             </div>
           </div>
           <div className="text-right">
-            <span className=" text-sm">Price</span>
+            <span className=" text-sm">{/* Price */}Cena</span>
             <p className="text-xl font-semibold">
               {currentRecord?.gearMarketplaceId?.mainPrice?.toFixed(2) || 0}€
             </p>
@@ -116,14 +116,14 @@ const UserGearViewModal: React.FC<UserGearViewModalProps> = ({
 
           {/* Payment Details */}
           <div className="bg-white rounded-lg border border-[#E1E1E1] p-4">
-            <h3 className="font-semibold mb-4">Payment Details</h3>
+            <h3 className="font-semibold mb-4">{/* Payment Details */}Detaily platby</h3>
             <div className="text-sm ">
               <p>
-                <span className="font-semibold">Transaction ID:</span>{" "}
+                <span className="font-semibold">{/* Transaction ID: */}ID transakcie:</span>{" "}
                 {currentRecord?.paymentId?.transactionId || "N/A"}
               </p>
               <p>
-                <span className="font-semibold">Payment Method:</span>{" "}
+                <span className="font-semibold">{/* Payment Method: */}Spôsob platby:</span>{" "}
                 {currentRecord?.paymentId?.paymentMethod || "N/A"}
                 Card
               </p>
@@ -169,7 +169,8 @@ const UserGearViewModal: React.FC<UserGearViewModalProps> = ({
               }
               className="!bg-secondary-color hover:!bg-secondary-color text-white px-4 py-2 rounded !cursor-pointer w-full"
             >
-              Download Invoice
+              {/* Download Invoice */}
+              Stiahnuť faktúru
             </button>
           )}
         </div>

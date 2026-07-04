@@ -217,8 +217,11 @@ const EventOrdersPage = ({
       <div className=" min-h-[80vh] rounded-xl px-4">
         <div className=" w-full p-4   rounded-tl-xl rounded-tr-xl">
           <div className=" flex items-center justify-between">
-            <h1 className="text-xl sm:text-2xl lg:text-3xl xl:text-4xl font-bold mb-5">
+            {/* <h1 className="text-xl sm:text-2xl lg:text-3xl xl:text-4xl font-bold mb-5">
               Event Orders
+            </h1> */}
+            <h1 className="text-xl sm:text-2xl lg:text-3xl xl:text-4xl font-bold mb-5">
+              Foto/video objednávky
             </h1>
           </div>
         </div>
@@ -229,7 +232,7 @@ const EventOrdersPage = ({
             align="left"
             tabs={[
               {
-                label: "Pending Request",
+                label: "Čakajúca žiadosť",
                 value: "pending",
                 content: (
                   <ProfessionalEventOrderTable
@@ -244,7 +247,7 @@ const EventOrdersPage = ({
                 ),
               },
               {
-                label: "Waiting for Payment",
+                label: "Čaká sa na platbu",
                 value: "accepted",
                 content: (
                   <ProfessionalEventOrderTable
@@ -259,7 +262,7 @@ const EventOrdersPage = ({
                 ),
               },
               {
-                label: "Upcoming Event",
+                label: "Nadchádzajúce objednávky",
                 value: "upcoming",
                 content: (
                   <ProfessionalEventOrderTable
@@ -274,7 +277,7 @@ const EventOrdersPage = ({
                 ),
               },
               {
-                label: "In Progress",
+                label: "Prebieha",
                 value: "inProgress",
                 content: (
                   <ProfessionalEventOrderTable
@@ -289,7 +292,7 @@ const EventOrdersPage = ({
                 ),
               },
               {
-                label: "Delivered",
+                label: "Doručené",
                 value: "delivered",
                 content: (
                   <ProfessionalEventOrderTable
@@ -304,7 +307,7 @@ const EventOrdersPage = ({
                 ),
               },
               {
-                label: "Cancel Confirmation",
+                label: "Potvrdenie zrušenia",
                 value: "cancelRequest",
                 content: (
                   <ProfessionalEventOrderTable
@@ -319,7 +322,7 @@ const EventOrdersPage = ({
                 ),
               },
               {
-                label: "Cancelled",
+                label: "Zrušené",
                 value: "cancelled",
                 content: (
                   <ProfessionalEventOrderTable

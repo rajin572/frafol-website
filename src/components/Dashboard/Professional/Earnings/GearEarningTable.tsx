@@ -26,7 +26,8 @@ const GearEarningTable = ({
 
   const columns = [
     {
-      title: "Client",
+      /* title: "Client", */
+      title: "Meno klienta",
       key: "client",
       render: (_: any, record: any) => (
         <span className="font-medium">{record.clientId?.name || record.name || "—"}</span>
@@ -97,16 +98,18 @@ const GearEarningTable = ({
       align: "center",
     },
     {
-      title: "Date",
+      /* title: "Date", */
+      title: "Dátum",
       key: "date",
       render: (_: any, record: any) => formatDate(record.createdAt),
     },
     {
-      title: "Action",
+      /* title: "Action", */
+      title: "Akcia",
       key: "action",
       render: (_: any, record: any) => (
         <Space size="middle">
-          <Tooltip placement="right" title="View Details">
+          <Tooltip placement="right" /* title="View Details" */ title="Zobraziť detaily">
             <button
               className="!p-0 !bg-transparent !border-none !text-base-color cursor-pointer"
               onClick={() => onView(record)}

@@ -94,11 +94,12 @@ const UserOrderCard = ({
           </h3>{" "}
           <div className="flex items-center gap-2">
             <p className="px-2 py-0.5 rounded-full bg-secondary-color text-primary-color w-fit capitalize">
-              {data?.orderType}
+              {/* {data?.orderType} */}
+              <span className="capitalize">{data?.orderType}</span>
             </p>
             {activeTab !== "extension" && (
               <p className="px-2 py-0.5 rounded-full bg-yellow-500 text-primary-color w-fit capitalize">
-                {data?.status === "accepted"
+                {/* {data?.status === "accepted"
                   ? "Payment Required"
                   : data?.status === "inProgress"
                     ? "In Progress"
@@ -106,20 +107,31 @@ const UserOrderCard = ({
                       ? "In Progress"
                       : data?.status === "cancelRequest"
                         ? "Cancel Requested"
+                        : data?.status} */}
+                {data?.status === "accepted"
+                  ? "Vyžaduje sa platba"
+                  : data?.status === "inProgress"
+                    ? "Prebieha"
+                    : data?.status === "deliveryRequestDeclined"
+                      ? "Prebieha"
+                      : data?.status === "cancelRequest"
+                        ? "Žiadosť o zrušenie odoslaná"
                         : data?.status}
               </p>
             )}
             {
               (data?.status !== "deliveryRequest" && data?.extensionRequests?.[extensionLength - 1]?.status === "pending") && (
                 <p className="px-2 py-0.5 rounded-full bg-blue-500 text-primary-color w-fit capitalize">
-                  Extension Requested
+                  {/* Extension Requested */}
+                  Žiadosť o predĺženie odoslaná
                 </p>
               )
             }
           </div>
         </div>
         <h4 className="text-sm sm:text-sm lg:text-base xl:text-lg font-bold mb-1 capitalize">
-          {data?.serviceType === "both" ? "Photography & Videography" : data?.serviceType}
+          {/* {data?.serviceType === "both" ? "Photography & Videography" : data?.serviceType} */}
+          {data?.serviceType === "both" ? "Fotografia a Video" : data?.serviceType}
         </h4>
         <Link href={`/professionals/${data?.serviceProviderId?._id}`} className="w-fit! inline-block  my-3">
           <div className="text-sm sm:text-base lg:text-lg text-gray-700 flex items-center gap-1">
@@ -150,7 +162,8 @@ const UserOrderCard = ({
         </div>
         <div className="text-sm sm:text-sm text-[#5D5D5D] flex items-start gap-2 my-1">
           <div className="flex items-center text-nowrap  gap-1">
-            <FaMapMarkerAlt /> <span>Location : </span>
+            <FaMapMarkerAlt /> {/* <span>Location : </span> */}
+            <span>Lokalita: </span>
           </div>
           {data?.location}
         </div>
@@ -159,13 +172,15 @@ const UserOrderCard = ({
             {" "}
             <div className="text-sm sm:text-sm lg:text-base font-bold text-secondary-color flex items-start gap-2 my-1">
               <p className="flex items-center text-nowrap gap-1">
-                <FaClock /> <span>Delivery Date : </span>
+                <FaClock /> {/* <span>Delivery Date : </span> */}
+                <span>Dátum doručenia: </span>
               </p>
               {formatDate(data?.deliveryDate)}
             </div>
             <div className="text-sm sm:text-sm lg:text-base font-bold text-green-800 flex items-start gap-2 my-1">
               <p className="flex items-center text-nowrap gap-1">
-                <FaClock /> <span>Extended Date : </span>
+                <FaClock /> {/* <span>Extended Date : </span> */}
+                <span>Predĺžený termín: </span>
               </p>
               {formatDate(
                 data?.extensionRequests?.[extensionLength - 1]?.newDeliveryDate
@@ -173,7 +188,8 @@ const UserOrderCard = ({
             </div>
             <div className=" mt-5 bg-secondary-color/10 p-2 rounded text-sm sm:text-sm lg:text-base gap-2 my-1">
               <p className="flex items-center text-nowrap gap-1 font-bold">
-                <TbBubbleText /> <span>Extension Reason : </span>
+                <TbBubbleText /> {/* <span>Extension Reason : </span> */}
+                <span>Dôvod predĺženia: </span>
               </p>
               <p className="mt-1 px-4 text-base-color/80">
 
@@ -187,12 +203,14 @@ const UserOrderCard = ({
           <div className="my-5">
             {" "}
             <p className="text-sm sm:text-base lg:text-lg font-semibold flex items-start gap-2 my-1">
-              <div className="flex items-center text-nowrap gap-1">Reason:</div>
+              {/* <div className="flex items-center text-nowrap gap-1">Reason:</div> */}
+              <div className="flex items-center text-nowrap gap-1">Dôvod:</div>
               {data?.cancelReason}
             </p>
             <p className="text-sm sm:text-base lg:text-lg font-semibold flex items-start gap-2 my-1">
               <div className="flex items-center text-nowrap gap-1">
-                Cancel By:{" "}
+                {/* Cancel By: */}
+                Zrušil/a:
               </div>
               {data?.cancelRequestedBy === user?.userId
                 ? "You"
@@ -255,12 +273,13 @@ const UserOrderCard = ({
                   >
                     <div>
                       <p className="text-sm">
-                        Agree to <Link href="/terms-of-service" target="_blank" className="text-secondary-color underline">
-                          Terms of Service Conceptural
-                        </Link>{" "}
-                        and{" "}
-                        <Link href="/terms-of-service-marketplace" target="_blank" className="text-secondary-color underline">
-                          Terms of Service Marketplace.
+                        {/* Agree to */}
+                        Súhlasím so <Link href="/terms-of-service" target="_blank" className="text-secondary-color underline">
+                          všeobecnými obchodnými podmienkami Zmluvné vzťahy
+                        </Link>
+                        {/* and{" "} */}
+                        a <Link href="/terms-of-service-marketplace" target="_blank" className="text-secondary-color underline">
+                          všeobecnými obchodnými podmienkami Marketplace.
                         </Link>
                       </p>
 
@@ -336,14 +355,16 @@ const UserOrderCard = ({
                 className="flex items-center gap-1 px-3 py-1 border border-[#00C566] text-[#00C566] rounded bg-[#00C56633] text-sm transition cursor-pointer"
               >
                 <IoCheckmarkSharp size={16} />
-                Complete
+                {/* Complete */}
+                Dokončiť
               </button>
               <button
                 onClick={() => openModal(data)}
                 className="flex items-center gap-1 px-3 py-1 border border-gray-300 rounded hover:bg-gray-100 text-sm transition cursor-pointer"
               >
                 <BsEye size={16} />
-                View Details
+                {/* View Details */}
+                Zobraziť detaily
               </button>
             </div>
           ) : activeTab === "orderOffer" ? (
@@ -353,14 +374,16 @@ const UserOrderCard = ({
                 className="disabled:cursor-not-allowed flex items-center gap-1 px-3 py-1 border border-[#00C566] text-primary-color rounded bg-[#00C566] text-sm transition cursor-pointer"
               >
                 <IoCheckmarkSharp size={16} />
-                Accept Order
+                {/* Accept Order */}
+                Prijať objednávku
               </button>
               <button
                 onClick={() => openModal(data)}
                 className="flex items-center gap-1 px-3 py-1 border border-gray-300 rounded hover:bg-gray-100 text-sm transition cursor-pointer"
               >
                 <BsEye size={16} />
-                View Details
+                {/* View Details */}
+                Zobraziť detaily
               </button>
             </div>
           ) : activeTab === "accepted" ? (
@@ -370,14 +393,16 @@ const UserOrderCard = ({
                 className="disabled:cursor-not-allowed flex items-center gap-1 px-3 py-1 border border-[#00C566] text-primary-color rounded bg-[#00C566] text-sm transition cursor-pointer"
               >
                 <FaEuroSign size={16} />
-                Pay
+                {/* Pay */}
+                Zaplatiť
               </button>
               <button
                 onClick={() => openModal(data)}
                 className="flex items-center gap-1 px-3 py-1 border border-gray-300 rounded hover:bg-gray-100 text-sm transition cursor-pointer"
               >
                 <BsEye size={16} />
-                View Details
+                {/* View Details */}
+                Zobraziť detaily
               </button>
             </div>
           ) : activeTab === "extension" ? (
@@ -387,21 +412,24 @@ const UserOrderCard = ({
                 className="flex items-center gap-1 px-3 py-1 border border-[#00C566] text-primary-color rounded bg-[#00C566] text-sm transition cursor-pointer"
               >
                 <IoCheckmarkSharp size={16} />
-                Accept
+                {/* Accept */}
+                Prijať
               </button>
               <button
                 onClick={() => showRejectExtensionModal(data)}
                 className="flex items-center gap-1 px-3 py-1 border border-red-700 text-primary-color rounded bg-red-700 text-sm transition cursor-pointer"
               >
                 <IoClose size={16} />
-                Reject
+                {/* Reject */}
+                Odmietnuť
               </button>
               <button
                 onClick={() => openModal(data)}
                 className="flex items-center gap-1 px-3 py-1 border border-gray-300 rounded hover:bg-gray-100 text-sm transition cursor-pointer"
               >
                 <BsEye size={16} />
-                View Details
+                {/* View Details */}
+                Zobraziť detaily
               </button>
             </div>
           ) : activeTab === "cancelRequest" ? (
@@ -413,14 +441,16 @@ const UserOrderCard = ({
                     className="flex items-center gap-1 px-3 py-1 border border-[#00C566] text-primary-color rounded bg-[#00C566] text-sm transition cursor-pointer"
                   >
                     <IoCheckmarkSharp size={16} />
-                    Accept
+                    {/* Accept */}
+                    Prijať
                   </button>
                   <button
                     onClick={() => showDeclineModal(data)}
                     className="flex items-center gap-1 px-3 py-1 border border-red-700 text-primary-color rounded bg-red-700 text-sm transition cursor-pointer"
                   >
                     <IoClose size={16} />
-                    Reject
+                    {/* Reject */}
+                    Odmietnuť
                   </button>
                 </div>
               )}{" "}
@@ -429,7 +459,8 @@ const UserOrderCard = ({
                 className="flex items-center gap-1 px-3 py-1 border border-gray-300 rounded hover:bg-gray-100 text-sm transition cursor-pointer"
               >
                 <BsEye size={16} />
-                View Details
+                {/* View Details */}
+                Zobraziť detaily
               </button>
             </div>
           ) : (
@@ -439,7 +470,8 @@ const UserOrderCard = ({
                 className="flex items-center gap-1 px-3 py-1 border border-gray-300 rounded hover:bg-gray-100 text-sm transition cursor-pointer"
               >
                 <BsEye size={16} />
-                View Details
+                {/* View Details */}
+                Zobraziť detaily
               </button>
             </div>
           )}

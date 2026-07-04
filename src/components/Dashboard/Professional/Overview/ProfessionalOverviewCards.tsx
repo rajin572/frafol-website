@@ -28,7 +28,8 @@ const ProfessionalOverviewCards = async () => {
     {
       id: 1,
       background: "#ffffff",
-      name: "Pending Gear Order",
+      /* name: "Pending Gear Order", */
+      name: "Čakajúca objednávka príslušenstva",
       icon: <LuShoppingBag className="size-5 text-secondary-color" />,
       count: overview?.totalPendingGearOrders,
       // message: "2  Due This week",
@@ -36,21 +37,24 @@ const ProfessionalOverviewCards = async () => {
     {
       id: 2,
       background: "#ffffff",
-      name: "Upcoming Events",
+      /* name: "Upcoming Events", */
+      name: "Plánované objednávky",
       icon: <IoCameraSharp className="size-5 text-secondary-color" />,
       count: overview?.totalUpcomingEvents,
     },
     {
       id: 3,
       background: "#ffffff",
-      name: "Earnings",
+      /* name: "Earnings", */
+      name: "Zárobky",
       icon: <RiMoneyEuroCircleFill className="size-6 text-secondary-color" />,
       count: `${overview?.totalOverallEarnings?.toFixed(2)}€`,
     },
     {
       id: 4,
       background: "#ffffff",
-      name: "Reviews Received",
+      /* name: "Reviews Received", */
+      name: "Prijaté recenzie",
       icon: <FaStar className="size-6 text-secondary-color" />,
       count: overview?.totalReviewsReceived,
     },
@@ -58,12 +62,18 @@ const ProfessionalOverviewCards = async () => {
   return (
     <div>
       <div className="mb-10">
-        <h1 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl  font-bold mb-5 ">
+        {/* <h1 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl  font-bold mb-5 ">
           Welcome back, {overview?.user}!
+        </h1> */}
+        <h1 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl  font-bold mb-5 ">
+          Vitajte späť, {overview?.user}!
         </h1>
-        <h3 className="text-lg sm:text-xl lg:text-2xl xl:text-34xl font-semibold mb-5">
-          Here&apos;s what&apos;s happening with your photography business
+        {/* <h3 className="text-lg sm:text-xl lg:text-2xl xl:text-34xl font-semibold mb-5">
+          Here's what's happening with your photography business
           today.
+        </h3> */}
+        <h3 className="text-lg sm:text-xl lg:text-2xl xl:text-34xl font-semibold mb-5">
+          Tu je dnešný prehľad vášho účtu.
         </h3>
       </div>
       <div className="flex flex-row flex-wrap gap-1 lg:gap-5 mb-5 ">

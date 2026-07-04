@@ -67,7 +67,8 @@ const UserReviewCreateModal: React.FC<UserReviewCreateModalProps> = ({
               className="!text-base-color !font-normal"
               level={5}
             >
-              Rating
+              {/* Rating */}
+              Hodnotenie
             </Typography.Title>
             <Form.Item name={"review"} rules={[{ required: true }]}>
               <Rate
@@ -84,7 +85,8 @@ const UserReviewCreateModal: React.FC<UserReviewCreateModalProps> = ({
           <ReuseInput
             rows={4}
             inputType="textarea"
-            label="Review"
+            /* label="Review" */
+            label="Recenzia"
             name="message"
             type="text"
             placeholder="Enter Review"
@@ -94,7 +96,8 @@ const UserReviewCreateModal: React.FC<UserReviewCreateModalProps> = ({
           </Form.Item>
 
           <ReuseButton variant="secondary" htmlType="submit">
-            Submit
+            {/* Submit */}
+            Odoslať
           </ReuseButton>
         </ReusableForm>
       </div>

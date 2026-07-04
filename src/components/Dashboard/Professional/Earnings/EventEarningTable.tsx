@@ -28,12 +28,14 @@ const EventEarningTable = ({
 
   const columns = [
     {
-      title: "Client",
+      /* title: "Client", */
+      title: "Meno klienta",
       key: "client",
       render: (_: any, record: any) => <span className="font-medium">{record.userId?.name || "—"}</span>,
     },
     {
-      title: "Service Type",
+      /* title: "Service Type", */
+      title: "Typ služby",
       key: "serviceType",
       render: (_: any, record: any) => capitalize(record.eventOrderId?.serviceType),
     },
@@ -47,17 +49,20 @@ const EventEarningTable = ({
       ),
     },
     {
-      title: "Event Date",
+      /* title: "Event Date", */
+      title: "Dátum",
       key: "eventDate",
       render: (_: any, record: any) => formatDate(record.eventOrderId?.date),
     },
     {
-      title: "Amount",
+      /* title: "Amount", */
+      title: "Suma",
       key: "amount",
       render: (_: any, record: any) => <span>€{record?.eventOrderId?.price?.toFixed(2)}</span>,
     },
     {
-      title: "Amount",
+      /* title: "Amount", */
+      title: "Suma",
       key: "amount",
       render: (_: any, record: any) => <span>€{record?.eventOrderId?.vatAmount?.toFixed(2)}</span>,
     },
@@ -86,11 +91,12 @@ const EventEarningTable = ({
       align: "center",
     },
     {
-      title: "Action",
+      /* title: "Action", */
+      title: "Akcia",
       key: "action",
       render: (_: any, record: any) => (
         <Space size="middle">
-          <Tooltip placement="right" title="View Details">
+          <Tooltip placement="right" /* title="View Details" */ title="Zobraziť detaily">
             <button
               className="!p-0 !bg-transparent !border-none !text-base-color cursor-pointer"
               onClick={() => onView(record)}
