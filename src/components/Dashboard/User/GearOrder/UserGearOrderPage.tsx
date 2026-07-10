@@ -6,6 +6,7 @@ import UserCurrentGearOrder from "../Orders/UserCurrentGearOrder";
 import UserDeliveriedGearOrder from "../Orders/UserDeliveriedGearOrder";
 // import UserOrdersOverview from "../Orders/UserOrdersOverview";
 import { IGearOrder } from "@/types";
+import { usePathname } from "next/navigation";
 
 const UserGearOrderPage = ({
   activeTab,
@@ -20,12 +21,14 @@ const UserGearOrderPage = ({
   myGearOrderData: IGearOrder[];
   limit: number;
 }) => {
+  const url = usePathname();
+  console.log(url)
   return (
     <div>
       <div className="flex lg:flex-row flex-col justify-between items-center ">
         <h1 className="text-xl sm:text-2xl lg:text-3xl xl:text-4xl  font-bold mb-10">
           {/* Orders */}
-          Objednávky
+          {url === "/dashboard/professional/gear-purchases" ? "Nákupy z bazáru" : "Objednávky"}
         </h1>
       </div>
       {/* <UserOrdersOverview /> */}

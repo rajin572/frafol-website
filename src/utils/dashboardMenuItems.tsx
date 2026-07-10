@@ -268,6 +268,24 @@ export const useProfessionalPaths = () => {
       ),
     },
     {
+      key: "gear-purchases",
+      label: <Link onClick={handleToggleCollapse}
+        href="/dashboard/professional/gear-purchases">{/* Gear Purchases */}Nákupy z bazáru</Link>,
+      icon: (
+        <Image
+          src={gearOrder}
+          alt="icon"
+          width={20}
+          className="mr-2"
+          style={{
+            filter: pathname.includes("/gear-purchases")
+              ? "invert(1) sepia(1) saturate(0) brightness(200%) contrast(100%)"
+              : undefined,
+          }}
+        />
+      ),
+    },
+    {
       key: "gear-marketPlace",
       label: (
         <Link onClick={handleToggleCollapse}
