@@ -313,12 +313,12 @@ const ProfessionalEventViewModal: React.FC<ProfessionalEventViewModalProps> = ({
             <FaCalendarAlt className="shrink-0" /> <span>{/* Event Date : */}Dátum podujatia: </span>
             {formatDate(currentRecord?.date)}
           </p>
-          <p className="text-sm sm:text-sm lg:text-base flex items-start gap-2 mb-2">
+          <div className="text-sm sm:text-sm lg:text-base flex items-start gap-2 mb-2">
             <div className="flex items-center gap-2 text-nowrap">
               <FaMapMarkerAlt className="shrink-0" /> <span>{/* Location : */}Miesto: </span>
             </div>
             {currentRecord?.location}
-          </p>
+          </div>
           <p className="text-sm sm:text-sm lg:text-base flex items-center gap-2 mb-2">
             <FaClock className="shrink-0" /> <span>{/* Time : */}Čas: </span>
             {formetTime(currentRecord?.time)}

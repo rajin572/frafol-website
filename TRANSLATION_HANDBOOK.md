@@ -372,8 +372,6 @@ src/
 - Lines 1-356 translated
 - Covers: All pages and components mentioned in Part 1 & Part 2 tasks
 
-<<<<<<< HEAD
-
 ### File: `Frafol Drive Issues - Translation Dashboard for user and professional.csv`
 
 - Lines 1-376 – User & Professional dashboard pages/components
@@ -383,10 +381,6 @@ src/
   (User & Professional), Message Layout
 - Profile Settings rows applied to the shared `EditProfile.tsx` form on a **CSV-listed
   fields only** basis (other form fields intentionally left in English)
-
-=======
-
-> > > > > > > 6c7a5cefe27de8140aba8d28b8aea82ae33543d8
 
 ### File: `Frafol Drive Issues - Translation Website Auth.csv`
 

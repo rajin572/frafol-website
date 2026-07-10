@@ -207,7 +207,7 @@ const UserOrderCard = ({
               <div className="flex items-center text-nowrap gap-1">Dôvod:</div>
               {data?.cancelReason}
             </p>
-            <p className="text-sm sm:text-base lg:text-lg font-semibold flex items-start gap-2 my-1">
+            <div className="text-sm sm:text-base lg:text-lg font-semibold flex items-start gap-2 my-1">
               <div className="flex items-center text-nowrap gap-1">
                 {/* Cancel By: */}
                 Zrušil/a:
@@ -215,7 +215,7 @@ const UserOrderCard = ({
               {data?.cancelRequestedBy === user?.userId
                 ? "You"
                 : data?.serviceProviderId?.name}
-            </p>
+            </div>
           </div>
         )}
         <div className="flex items-center justify-between">

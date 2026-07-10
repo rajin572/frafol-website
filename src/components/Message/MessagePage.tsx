@@ -722,16 +722,16 @@ const MessagePage = () => {
 
                   <div className="w-full !bg-white ">
                     <div className=" absolute -bottom-5 flex justify-center items-center w-full p-4">
-                      <div className="w-full rounded-full bg-white px-4 py-2 flex items-center space-x-4">
+                      <div className="flex-1 min-w-0 rounded-full bg-white px-4 py-2 flex items-center space-x-4">
                         {/* Emoji Icon */}
 
                         {/* Input Field */}
                         <Input
                           placeholder="Send your message..."
-                          className="border-none focus:ring-0 outline-none !bg-transparent text-black"
+                          className="border-none focus:ring-0 outline-none !bg-transparent text-black w-full min-w-0"
                         />
                       </div>
-                      <div>
+                      <div className="flex-shrink-0">
                         <FaTelegramPlane className="cursor-pointer text-white bg-secondary-color rounded-full p-2 text-4xl ms-3" />
                       </div>
                     </div>

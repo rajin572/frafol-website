@@ -56,12 +56,12 @@ const ReviewCard = ({
               Completed on:{" "}
               {formatDate(data?.eventOrderId?.statusTimestamps?.deliveredAt)}
             </div>
-            <p className="text-sm sm:text-sm text-[#5D5D5D] flex items-start gap-2 my-2">
+            <div className="text-sm sm:text-sm text-[#5D5D5D] flex items-start gap-2 my-2">
               <div className="flex items-center text-nowrap  gap-1">
                 <FaMapMarkerAlt /> <span>{/* Location : */}Miesto: </span>
               </div>
               {data?.eventOrderId?.location}
-            </p>
+            </div>
             <p className="text-sm sm:text-base lg:text-lg xl:text-xl font-bold text-secondary-color mt-1">
               <span>{data?.eventOrderId?.totalPrice?.toFixed(2)}€</span>
             </p>

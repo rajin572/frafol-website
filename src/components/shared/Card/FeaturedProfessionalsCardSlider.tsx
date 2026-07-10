@@ -16,7 +16,6 @@ const FeaturedProfessionalsCardSlider = ({ item }: { item: IProfessional }) => {
 
     const [isVideoPlaying, setIsVideoPlaying] = useState(false);
     const [isVideoMuted, setIsVideoMuted] = useState(true);
-    const [allowHoverAutoplay, setAllowHoverAutoplay] = useState(true);
     const videoRef = useRef<HTMLVideoElement>(null);
 
 
@@ -101,6 +100,7 @@ const FeaturedProfessionalsCardSlider = ({ item }: { item: IProfessional }) => {
     // Poster shown instantly while the (heavy) video defers downloading until hover/play
     const posterCandidate =
         displayGallery.find((m) => m.type === "image")?.src ?? item?.profileImage;
+    // item?.profileImage;
     const posterSrc =
         typeof posterCandidate === "string"
             ? (getImageSrc(posterCandidate) as string)
@@ -115,7 +115,6 @@ const FeaturedProfessionalsCardSlider = ({ item }: { item: IProfessional }) => {
             videoRef.current.pause();
         }
         setIsVideoPlaying(false);
-        setAllowHoverAutoplay(true);  // reset for new media
     };
 
     const handlePrev = (e: React.MouseEvent) => {
@@ -129,7 +128,6 @@ const FeaturedProfessionalsCardSlider = ({ item }: { item: IProfessional }) => {
             videoRef.current.pause();
         }
         setIsVideoPlaying(false);
-        setAllowHoverAutoplay(true);  // reset for new media
     };
 
 
@@ -140,9 +138,6 @@ const FeaturedProfessionalsCardSlider = ({ item }: { item: IProfessional }) => {
         e.stopPropagation();
 
         if (!videoRef.current) return;
-
-        // User explicitly interacted → don't auto-play on hover anymore
-        setAllowHoverAutoplay(false);
 
         if (videoRef.current.paused) {
             videoRef.current.play();
@@ -163,29 +158,8 @@ const FeaturedProfessionalsCardSlider = ({ item }: { item: IProfessional }) => {
         setIsVideoMuted(videoRef.current.muted);
     };
 
-    const handleVideoHover = () => {
-        if (
-            isCurrentMediaVideo &&
-            videoRef.current &&
-            allowHoverAutoplay &&      // only if hover autoplay is allowed
-            videoRef.current.paused
-        ) {
-            videoRef.current.play();
-            setIsVideoPlaying(true);
-        }
-    };
-
-    const handleVideoLeave = () => {
-        if (isCurrentMediaVideo && videoRef.current) {
-            videoRef.current.pause();
-            setIsVideoPlaying(false);
-            setAllowHoverAutoplay(true);
-        }
-    };
-
     return (
-        <div className="relative w-full aspect-video bg-gray-200 overflow-hidden rounded-tl-lg rounded-tr-lg" onMouseEnter={handleVideoHover}
-            onMouseLeave={handleVideoLeave}>
+        <div className="relative w-full aspect-video bg-gray-200 overflow-hidden rounded-tl-lg rounded-tr-lg">
             {/* Frafol Choice Badge */}
             {item?.hasActiveSubscription && (
                 <div className="absolute top-2 left-2 flex items-center gap-1 bg-secondary-color px-2 py-1 rounded-full z-10 shadow-md">

@@ -204,14 +204,14 @@ const UserOrderViewModal: React.FC<UserOrderViewModalProps> = ({
             {/* Event Details */}
             Detaily podujatia
           </h4>
-          <p className="text-sm sm:text-sm lg:text-base flex items-start gap-2 mb-2">
+          <div className="text-sm sm:text-sm lg:text-base flex items-start gap-2 mb-2">
             <div className="flex items-center gap-2 text-nowrap">
               <FaMapMarkerAlt className="shrink-0" />
               {/* <span>Location : </span> */}
               <span>Lokalita: </span>
             </div>
             {currentRecord?.location}
-          </p>
+          </div>
           <p className="text-sm sm:text-sm lg:text-base flex items-center gap-2 mb-2">
             <FaCalendarAlt className="shrink-0" />
             {/* <span>Date : </span> */}
