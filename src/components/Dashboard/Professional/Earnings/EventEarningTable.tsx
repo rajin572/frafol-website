@@ -62,7 +62,7 @@ const EventEarningTable = ({
     },
     {
       /* title: "Amount", */
-      title: "Suma",
+      title: "VAT",
       key: "amount",
       render: (_: any, record: any) => <span>€{record?.eventOrderId?.vatAmount?.toFixed(2)}</span>,
     },
