@@ -21,7 +21,7 @@ const PaymentsCard = ({
               ? data.eventOrderId?.title
               : data?.eventOrderId?.packageId?.title || "Podujatie"
             : data.paymentType === "gear"
-              ? data?.gearOrderIds?.map((gear) => gear?.gearMarketplaceId?.name)
+              ? data?.gearOrderIds?.map((gear) => gear?.gearMarketplaceId?.name)?.join(", ")
               : data.paymentType === "workshop"
                 ? data.workshopId?.title || "Kurz"
                 : ""}

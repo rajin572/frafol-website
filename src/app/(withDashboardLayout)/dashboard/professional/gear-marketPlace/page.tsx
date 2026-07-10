@@ -13,8 +13,10 @@ const page = async ({
   const page = Number(params?.page) || 1;
   const limit = 10;
   const search = params?.search || "";
+  const filter = (params?.filter as string) || "";
+  const statusQuery = filter ? `&status=${encodeURIComponent(filter)}` : "";
   const res = await fetchWithAuth(
-    `/marketPlace/my?page=${page}&limit=${limit}&searchTerm=${search}`,
+    `/marketPlace/my?page=${page}&limit=${limit}&searchTerm=${search}${statusQuery}`,
     {
       next: {
         tags: [TagTypes.gear],

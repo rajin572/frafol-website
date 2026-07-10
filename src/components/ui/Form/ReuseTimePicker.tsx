@@ -109,6 +109,10 @@ const ReuseTimePicker = ({
           style={style}
           format={format}
           placeholder={placeholder}
+          // Prevent the mobile keyboard from opening (it covers the panel on tablets/phones)
+          inputReadOnly
+          // Scoped popup class: bigger touch targets + stops scroll from leaking to the page (see globals.css)
+          popupClassName="frafol-time-popup"
           disabledTime={date ? disabledTime : undefined} // Disable time selection logic based on the date
         />
       </Form.Item>

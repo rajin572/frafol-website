@@ -257,7 +257,7 @@ const ProfessionalBookingModal: React.FC<ProfessionalBookingModalProps> = ({
       centered
       className="lg:!w-[900px]"
     >
-      <div className="p-5 text-base-color">
+      <div className="p-5 text-base-color  max-h-[90vh] overflow-y-auto !p-0">
         <h1 className="text-lg sm:text-xl lg:text-2xl font-bold mb-2">
           Contact {professionalUser?.name} for Booking
         </h1>

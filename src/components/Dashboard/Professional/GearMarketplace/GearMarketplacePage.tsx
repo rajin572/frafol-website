@@ -12,6 +12,8 @@ import { ICategory, IGear } from "@/types";
 import { FaPlus } from "react-icons/fa6";
 import tryCatchWrapper from "@/utils/tryCatchWrapper";
 import { deleteGear } from "@/services/GearService/GearServiceApi";
+import { Select } from "antd";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 
 const GearMarketplacePage = ({
   page,
@@ -35,6 +37,24 @@ const GearMarketplacePage = ({
   const [isEditModalVisible, setIsEditModalVisible] = useState(false);
   const [isDeleteModalVisible, setIsDeleteModalVisible] = useState(false);
   const [currentRecord, setCurrentRecord] = useState<any | null>(null);
+
+  const searchParams = useSearchParams();
+  const pathName = usePathname();
+  const { replace } = useRouter();
+
+  const currentFilter = searchParams.get("filter") || "";
+
+  // Status filter (matches backend enum: "In Stock" | "Sold Out"). Writes ?filter= to the URL.
+  const handleFilterChange = (value: string) => {
+    const params = new URLSearchParams(searchParams);
+    if (value) {
+      params.set("filter", value);
+    } else {
+      params.delete("filter");
+    }
+    params.set("page", "1");
+    replace(`${pathName}?${params.toString()}`, { scroll: false });
+  };
 
   const showAddModal = () => {
     setIsAddModalVisible(true);
@@ -103,7 +123,17 @@ const GearMarketplacePage = ({
             </ReuseButton>
           </div>
         </div>
-        <div className="flex justify-end mb-5">
+        <div className="flex justify-end items-center gap-3 mb-5">
+          <Select
+            value={currentFilter}
+            onChange={handleFilterChange}
+            className="!w-40 !h-10"
+            options={[
+              { value: "", label: "Všetky" },
+              { value: "In Stock", label: "Na sklade" },
+              { value: "Sold Out", label: "Vypredané" },
+            ]}
+          />
           <SearchInput placeholder="Search ..." />
         </div>
         <GearMarketPlaceTable

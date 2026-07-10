@@ -18,6 +18,10 @@ const FeaturedProfessionalsCardSlider = ({ item }: { item: IProfessional }) => {
     const [isVideoMuted, setIsVideoMuted] = useState(true);
     const videoRef = useRef<HTMLVideoElement>(null);
 
+    // Touch swipe tracking (mobile)
+    const touchStart = useRef<{ x: number; y: number } | null>(null);
+    const touchDelta = useRef<{ x: number; y: number }>({ x: 0, y: 0 });
+
 
     const getImageSrc = (src: string | StaticImageData): string | StaticImageData => {
         // If it's a static import (not a string), return as-is
@@ -106,28 +110,63 @@ const FeaturedProfessionalsCardSlider = ({ item }: { item: IProfessional }) => {
             ? (getImageSrc(posterCandidate) as string)
             : undefined;
 
-    const handleNext = (e: React.MouseEvent) => {
-        e.preventDefault();
-        e.stopPropagation();
+    const goToNext = () => {
         setCurrentIndex((prev) => (prev + 1) % displayGallery.length);
-
         if (videoRef.current) {
             videoRef.current.pause();
         }
         setIsVideoPlaying(false);
     };
 
-    const handlePrev = (e: React.MouseEvent) => {
-        e.preventDefault();
-        e.stopPropagation();
+    const goToPrev = () => {
         setCurrentIndex((prev) =>
             prev === 0 ? displayGallery.length - 1 : prev - 1
         );
-
         if (videoRef.current) {
             videoRef.current.pause();
         }
         setIsVideoPlaying(false);
+    };
+
+    const handleNext = (e: React.MouseEvent) => {
+        e.preventDefault();
+        e.stopPropagation();
+        goToNext();
+    };
+
+    const handlePrev = (e: React.MouseEvent) => {
+        e.preventDefault();
+        e.stopPropagation();
+        goToPrev();
+    };
+
+    // Swipe to change the image/video on touch screens
+    const handleTouchStart = (e: React.TouchEvent) => {
+        touchStart.current = { x: e.touches[0].clientX, y: e.touches[0].clientY };
+        touchDelta.current = { x: 0, y: 0 };
+    };
+
+    const handleTouchMove = (e: React.TouchEvent) => {
+        if (!touchStart.current) return;
+        touchDelta.current = {
+            x: e.touches[0].clientX - touchStart.current.x,
+            y: e.touches[0].clientY - touchStart.current.y,
+        };
+    };
+
+    const handleTouchEnd = () => {
+        const { x, y } = touchDelta.current;
+        const SWIPE_THRESHOLD = 50; // px
+        // Only act on a mostly-horizontal swipe so vertical page scrolling still works
+        if (Math.abs(x) > SWIPE_THRESHOLD && Math.abs(x) > Math.abs(y)) {
+            if (x < 0) {
+                goToNext(); // swipe left → next
+            } else {
+                goToPrev(); // swipe right → previous
+            }
+        }
+        touchStart.current = null;
+        touchDelta.current = { x: 0, y: 0 };
     };
 
 
@@ -159,7 +198,12 @@ const FeaturedProfessionalsCardSlider = ({ item }: { item: IProfessional }) => {
     };
 
     return (
-        <div className="relative w-full aspect-video bg-gray-200 overflow-hidden rounded-tl-lg rounded-tr-lg">
+        <div
+            className={`relative w-full aspect-video bg-gray-200 overflow-hidden rounded-tl-lg rounded-tr-lg ${hasMultipleItems ? "swiper-no-swiping" : ""}`}
+            onTouchStart={hasMultipleItems ? handleTouchStart : undefined}
+            onTouchMove={hasMultipleItems ? handleTouchMove : undefined}
+            onTouchEnd={hasMultipleItems ? handleTouchEnd : undefined}
+        >
             {/* Frafol Choice Badge */}
             {item?.hasActiveSubscription && (
                 <div className="absolute top-2 left-2 flex items-center gap-1 bg-secondary-color px-2 py-1 rounded-full z-10 shadow-md">

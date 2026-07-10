@@ -19,7 +19,7 @@ const page = async ({
   const token = (await cookies()).get("frafolMainAccessToken")?.value;
   const user: ISignInUser = jwtDecode(token!);
   const allReviewRes = await fetchWithAuth(
-    `/review/service-provider/${user?.userId}?page=${1}&limit=${2}`,
+    `/review/service-provider/${user?.userId}?page=${1}&limit=${10}`,
     {
       next: {
         tags: [TagTypes.review],
