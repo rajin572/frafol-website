@@ -22,7 +22,8 @@ const UserGearOrderPage = ({
   limit: number;
 }) => {
   const url = usePathname();
-  console.log(url)
+
+  console.log(myGearOrderData)
   return (
     <div>
       <div className="flex lg:flex-row flex-col justify-between items-center ">

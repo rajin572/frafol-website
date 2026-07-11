@@ -31,6 +31,14 @@ const InvoiceWorkshopFromClientSide = ({ record, professional }: { record: any; 
   const workshop = record.workshopId;
   const client = record.clientId;
 
+  // Street + number, zip code, town (company registered address)
+  const professionalAddressParts = [
+    professional?.address,
+    [professional?.zipCode, professional?.town].filter(Boolean).join(" "),
+  ].filter(Boolean);
+  const professionalFullAddress =
+    professionalAddressParts.length > 0 ? professionalAddressParts.join(", ") : "____";
+
   const price = workshop?.price || 0;
   const vatAmount = workshop?.vatAmount || 0;
   const mainPrice = workshop?.mainPrice || 0;
@@ -62,13 +70,10 @@ const InvoiceWorkshopFromClientSide = ({ record, professional }: { record: any; 
           <View style={styles.section}>
             <Text style={styles.subHeader}>DODÁVATEĽ / SUPPLIER (Instructor)</Text>
             <Text style={styles.text}>
-              <Text style={styles.textBold}>Meno / Name:</Text> {professional?.name || "____"}
-            </Text>
-            <Text style={styles.text}>
               <Text style={styles.textBold}>Názov firmy / Company name:</Text> {professional?.companyName || "____"}
             </Text>
             <Text style={styles.text}>
-              <Text style={styles.textBold}>Adresa sídla / Company address:</Text> {professional?.address || "____"}
+              <Text style={styles.textBold}>Adresa sídla / Company address:</Text> {professionalFullAddress}
             </Text>
             <Text style={styles.text}>
               <Text style={styles.textBold}>IČO / Company ID:</Text> {professional?.ico || "__________"}
@@ -92,6 +97,9 @@ const InvoiceWorkshopFromClientSide = ({ record, professional }: { record: any; 
             </Text>
             <Text style={styles.text}>
               <Text style={styles.textBold}>Adresa / Address:</Text> {record.streetAddress || "__________"}
+            </Text>
+            <Text style={styles.text}>
+              <Text style={styles.textBold}>PSČ / Zip code:</Text> {record.zipCode || "____"}
             </Text>
             <Text style={styles.text}>
               <Text style={styles.textBold}>Mesto / Town:</Text> {record.town || "____"}

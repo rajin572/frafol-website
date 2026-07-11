@@ -72,6 +72,7 @@ interface IWorkshopParticipants {
   paymentStatus: "pending" | "completed";
   streetAddress: string;
   town: string;
+  zipCode?: string;
   country: string;
   isRegisterAsCompany: boolean;
   IC_DPH: string;

@@ -78,6 +78,7 @@ const RegisterWrokshopModal: React.FC<RegisterWrokshopModalProps<any>> = ({
                 name: values.name,
                 streetAddress: values.streetAddress,
                 town: values.town,
+                zipCode: values.zipCode,
                 country: values.country,
                 companyName: values.companyName,
                 ICO: values.ICO,
