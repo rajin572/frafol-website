@@ -136,7 +136,7 @@ const ProfessionalWorkshopPage = ({
             label: "Aktívne",
             value: "approved",
             content: (
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 items-start gap-4">
                 {workshops?.map((workshop: IWorkshop) => (
                   <ProfessionalWorkshopCard
                     key={workshop._id}

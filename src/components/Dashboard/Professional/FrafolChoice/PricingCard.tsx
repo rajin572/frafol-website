@@ -67,7 +67,7 @@ export default function PricingCard({
 
             {/* Icon + Plan Name */}
             <div className="">
-                <div className="flex items-center justify-between gap-2">
+                <div className="flex flex-wrap items-center justify-between gap-2">
                     <h3 className="text-xl sm:text-2xl lg:text-3xl text-base-color font-bold">
                         {period} month
                     </h3>

@@ -41,16 +41,15 @@ const PaymentsCard = ({
               <div key={gear._id} className="mb-1">
                 <p>
                   <span className="font-bold">
-                    {gear.gearMarketplaceId.description}
+                    {gear.gearMarketplaceId.name}
                   </span>{" "}
-                  - ${gear.gearMarketplaceId.price?.toFixed(2)}
                 </p>
                 <p className="text-gray-500 text-sm">
                   {/* Seller: */}
                   Predajca:{" "}
                   <Link
                     href={`/professionals/${gear?.sellerId?._id}`}
-                    className="text-secondary-color text-sm sm:text-sm lg:text-base font-bold cursor-pointer"
+                    className="text-secondary-color! text-sm sm:text-sm lg:text-base font-bold cursor-pointer"
                   >
                     {gear?.sellerId?.name}
                   </Link>

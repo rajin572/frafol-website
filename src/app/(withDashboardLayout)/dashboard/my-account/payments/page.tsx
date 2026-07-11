@@ -22,6 +22,8 @@ const page = async ({
   const myPaymnetData: IPayment[] = paymnetData?.data?.payments || [];
   const totalData = paymnetData?.data?.meta?.total;
 
+  console.log("my pay", myPaymnetData?.[1])
+
   const paymentStatesRes = await fetchWithAuth(`/payment/my-stats`);
   const paymentStatesData = await paymentStatesRes.json();
 

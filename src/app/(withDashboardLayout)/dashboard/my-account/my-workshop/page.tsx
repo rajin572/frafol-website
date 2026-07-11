@@ -27,7 +27,6 @@ const page = async ({
 
   const workshops: IMyRegisteredWorkshop[] = data?.data?.result || [];
 
-  console.log(workshops)
   return (
     <div>
       <UserWorkshopPage
