@@ -30,8 +30,6 @@ const UserReviewPage = async ({
 
     const allReviewData = await allReviewRes.json();
 
-    console.log(allReviewData)
-
     allReviews = allReviewData?.data?.result || [];
     total = allReviewData?.data?.meta?.total;
   } else if (activeTab === "pendingReviews") {
