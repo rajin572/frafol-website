@@ -20,6 +20,7 @@ const page = async ({
     },
   });
   const resdata = await res.json();
+
   const conversation: IConversation[] = resdata?.data || [];
 
   let allMessages = [];
@@ -36,9 +37,11 @@ const page = async ({
       }
     );
     const roomResdata = await roomRes.json();
+    console.log(roomResdata)
     allMessages = roomResdata?.data?.data || [];
     totalMessages = roomResdata?.data?.meta || {};
   }
+
 
 
 

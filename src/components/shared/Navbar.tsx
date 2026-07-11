@@ -29,6 +29,7 @@ import { formatDateTime } from "@/utils/dateFormet";
 import { useSocket } from "@/context/socket-context";
 import { toast } from "sonner";
 import { clearCart } from "@/redux/features/cart/cartSlice";
+import { clearSelectedChatUser } from "@/redux/features/conversation/conversationSlice";
 
 const NavItems = [
   { id: "1", name: "Photography", route: "/photography" },
@@ -52,6 +53,7 @@ const Navbar = ({ notifications }: { notifications: INotification[] }) => {
   const [scrolled, setScrolled] = useState(false);
   const [height, setHeight] = useState(0);
   const [notificationCount, setNotificationCount] = useState(0);
+  const [messageCount, setMessageCount] = useState(0);
   const [allNotifications, setAllNotifications] = useState<INotification[]>([]);
   const navbarRef = useRef<HTMLDivElement>(null);
   const navbarWrapperRef = useRef<HTMLDivElement>(null);
@@ -161,6 +163,7 @@ const Navbar = ({ notifications }: { notifications: INotification[] }) => {
       router.push("/");
     });
     dispatch(clearCart());
+    dispatch(clearSelectedChatUser());
     // setIsLoading(true);
     // if (protectedRoutes.some((route) => pathname.match(route))) {
     //   router.push("/");
@@ -196,6 +199,13 @@ const Navbar = ({ notifications }: { notifications: INotification[] }) => {
     }
   }, []);
 
+  // Unread message count from socket. res: { statusCode, success, unreadCount }
+  const handleMessageCount = useCallback((data: any) => {
+    console.log(data)
+    const count = typeof data === "number" ? data : data?.unreadCount;
+    setMessageCount(count ?? 0);
+  }, []);
+
   useEffect(() => {
     if (!socket) return;
 
@@ -204,16 +214,33 @@ const Navbar = ({ notifications }: { notifications: INotification[] }) => {
     }
 
     socket.on(`notification`, handleNotification);
+    socket.on(`message_count`, handleMessageCount);
 
     return () => {
       socket.off(`notification`, handleNotification);
+      socket.off(`message_count`, handleMessageCount);
     };
-  }, [socket, handleNotification]);
+  }, [socket, handleNotification, handleMessageCount]);
 
   const handleResetNotification = async () => {
     if (notificationCount > 0) {
       try {
         socket?.emit("readNotification");
+      } catch (error: any) {
+        toast.error(
+          error?.data?.message || error?.message || "Something went wrong!",
+          { duration: 2000 }
+        );
+      }
+    }
+  };
+
+  const handleResetMessage = () => {
+    if (messageCount > 0) {
+      try {
+        socket?.emit("readMessage");
+        setMessageCount(0);
+        dispatch(clearSelectedChatUser());
       } catch (error: any) {
         toast.error(
           error?.data?.message || error?.message || "Something went wrong!",
@@ -337,9 +364,14 @@ const Navbar = ({ notifications }: { notifications: INotification[] }) => {
           <div className="lg:flex items-center gap-2 hidden">
             {userData?.email ? (
               <div className="flex items-center gap-5">
-                <Link href="/message">
-                  <AiFillMessage className="text-2xl cursor-pointer" />
-                </Link>
+                <div className="relative">
+                  <Link href="/message" onClick={handleResetMessage}>
+                    <AiFillMessage className="text-2xl cursor-pointer" />
+                  </Link>
+                  {messageCount > 0 && (
+                    <div className="absolute -top-2 -right-2 bg-third-color text-secondary-color rounded-full min-w-4 min-h-4 text-sm font-semibold flex justify-center items-center">{messageCount}</div>
+                  )}
+                </div>
 
                 <Dropdown
                   overlay={notificationMenu}
@@ -352,14 +384,18 @@ const Navbar = ({ notifications }: { notifications: INotification[] }) => {
                 >
                   <div className="relative">
                     <GoBellFill className="text-2xl cursor-pointer" />
-                    <div className="absolute -top-2 -right-2 bg-third-color text-secondary-color rounded-full w-4 h-4 text-sm font-semibold flex justify-center items-center">{notificationCount}</div>
+                    {notificationCount > 0 && (
+                      <div className="absolute -top-2 -right-2 bg-third-color text-secondary-color rounded-full min-w-4 min-h-4 text-sm font-semibold flex justify-center items-center">{notificationCount}</div>
+                    )}
                   </div>
                 </Dropdown>
                 <div className="relative">
                   <Link href="/cart">
                     <IoMdCart className="text-2xl cursor-pointer" />
                   </Link>
-                  <div className="absolute -top-2 -right-2 bg-third-color text-secondary-color rounded-full w-4 h-4 text-sm font-semibold flex justify-center items-center">{totalCart}</div>
+                  {totalCart > 0 && (
+                    <div className="absolute -top-2 -right-2 bg-third-color text-secondary-color rounded-full min-w-4 min-h-4 text-sm font-semibold flex justify-center items-center">{totalCart}</div>
+                  )}
                 </div>
                 <Dropdown
                   menu={{ items }}
@@ -426,9 +462,14 @@ const Navbar = ({ notifications }: { notifications: INotification[] }) => {
           <div className="lg:hidden select-none flex items-center gap-5">
             {userData?.email && (
               <div className="flex items-center gap-5">
-                <Link href="/message">
-                  <AiFillMessage className="text-2xl cursor-pointer" />
-                </Link>
+                <div className="relative">
+                  <Link href="/message" onClick={handleResetMessage}>
+                    <AiFillMessage className="text-2xl cursor-pointer" />
+                  </Link>
+                  {messageCount > 0 && (
+                    <div className="absolute -top-2 -right-2 bg-third-color text-secondary-color rounded-full w-4 h-4 text-sm font-semibold flex justify-center items-center">{messageCount}</div>
+                  )}
+                </div>
 
                 <Dropdown
                   overlay={notificationMenu}

@@ -84,6 +84,14 @@ const ConversationMessage = ({
   useEffect(() => {
     if (!allMessages) return;
 
+    // `room` is the conversation `allMessages` was fetched for. While switching
+    // conversations, the selected id updates instantly (Redux) but `allMessages`
+    // lags behind (server refetch), so skip applying stale data for another
+    // conversation. Also re-run on id change so the loader always clears once the
+    // matching data is present (otherwise the reset effect can leave it stuck on).
+    const selectedId = selectedConversation?.chat?._id;
+    if (selectedId && room !== selectedId) return;
+
     const container = messagesContainerRef.current;
     const prevScrollHeight = container?.scrollHeight || 0;
 
@@ -107,7 +115,7 @@ const ConversationMessage = ({
       setIsInitialLoading(false);
       setIsLoadingMore(false);
     }, 100);
-  }, [allMessages, page]);
+  }, [allMessages, page, room, selectedConversation?.chat?._id]);
 
   // Infinite scroll handler
   useEffect(() => {
