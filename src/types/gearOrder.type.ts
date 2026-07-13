@@ -5,6 +5,8 @@ interface Client {
   email: string;
   phone: string;
   address: string;
+  town?: string;
+  zipCode?: string;
   ico: string;
   dic: string;
   ic_dph: string;
@@ -16,6 +18,8 @@ interface Seller {
   companyName: string;
   email: string;
   address: string;
+  town?: string;
+  zipCode?: string;
   phone: string;
   ico: string;
   dic: string;
@@ -65,6 +69,7 @@ interface IGearOrder {
   mobileNumber: string;
   email: string;
   loginAsCompany: boolean;
+  companyName?: string;
   ico: string;
   dic: string;
   ic_dph?: string;

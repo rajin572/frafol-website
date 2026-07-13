@@ -30,7 +30,13 @@ const styles = StyleSheet.create({
 const InvoiceGearFromClientSide = ({ currentRecord }: { currentRecord: IGearOrder }) => {
   const gear = currentRecord.gearMarketplaceId;
   const seller = currentRecord.sellerId;
-  const client = currentRecord.clientId;
+
+  // Street + number, zip code, town (seller's registered address)
+  const sellerAddressParts = [
+    seller?.address,
+    [seller?.zipCode, seller?.town].filter(Boolean).join(" "),
+  ].filter(Boolean);
+  const sellerFullAddress = sellerAddressParts.length > 0 ? sellerAddressParts.join(", ") : "____";
 
   const gearPrice = gear.price || 0;
   const shippingPrice = gear.shippingCompany?.price || 0;
@@ -74,7 +80,7 @@ const InvoiceGearFromClientSide = ({ currentRecord }: { currentRecord: IGearOrde
               <Text style={styles.textBold}>Názov firmy / Company name:</Text> {seller?.companyName || "____"}
             </Text>
             <Text style={styles.text}>
-              <Text style={styles.textBold}>Adresa sídla / Company address:</Text> {seller?.address || "____"}
+              <Text style={styles.textBold}>Adresa sídla / Company address:</Text> {sellerFullAddress}
             </Text>
             <Text style={styles.text}>
               <Text style={styles.textBold}>IČO / Company ID:</Text> {seller?.ico || "__________"}
@@ -94,11 +100,17 @@ const InvoiceGearFromClientSide = ({ currentRecord }: { currentRecord: IGearOrde
             <Text style={styles.subHeader}>ODBERATEĽ / CLIENT</Text>
             <Text style={styles.text}>
               <Text style={styles.textBold}>Meno / Name or company name:</Text>{" "}
-              {client?.companyName || client?.name || currentRecord.name || "____"}
+              {currentRecord.companyName || currentRecord.name || "____"}
             </Text>
             <Text style={styles.text}>
               <Text style={styles.textBold}>Adresa / Address:</Text>{" "}
               {currentRecord.shippingAddress || "__________"}
+            </Text>
+            <Text style={styles.text}>
+              <Text style={styles.textBold}>PSČ / Zip code:</Text> {currentRecord.postCode || "____"}
+            </Text>
+            <Text style={styles.text}>
+              <Text style={styles.textBold}>Mesto / Town:</Text> {currentRecord.town || "____"}
             </Text>
             {currentRecord.loginAsCompany && (
               <>

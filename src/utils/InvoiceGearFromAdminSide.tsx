@@ -32,6 +32,13 @@ const InvoiceGearFromAdminSide = ({ currentRecord }: { currentRecord: IGearOrder
   const seller = currentRecord.sellerId;
   const platformCommission = gear.platformCommission || 0;
 
+  // Street + number, zip code, town (seller's registered address)
+  const sellerAddressParts = [
+    seller?.address,
+    [seller?.zipCode, seller?.town].filter(Boolean).join(" "),
+  ].filter(Boolean);
+  const sellerFullAddress = sellerAddressParts.length > 0 ? sellerAddressParts.join(", ") : "__________";
+
   return (
     <Document language="sk">
       <Page size="A4" style={styles.page}>
@@ -84,7 +91,7 @@ const InvoiceGearFromAdminSide = ({ currentRecord }: { currentRecord: IGearOrder
               {seller?.companyName || seller?.name || "____"}
             </Text>
             <Text style={styles.text}>
-              <Text style={styles.textBold}>Adresa / Address:</Text> {seller?.address || "__________"}
+              <Text style={styles.textBold}>Adresa / Address:</Text> {sellerFullAddress}
             </Text>
             {seller?.ico && (
               <Text style={styles.text}>
@@ -117,7 +124,8 @@ const InvoiceGearFromAdminSide = ({ currentRecord }: { currentRecord: IGearOrder
             <Text style={styles.textBold}>ID objednávky (Order ID):</Text> {currentRecord.orderId}
           </Text>
           <Text style={styles.text}>
-            <Text style={styles.textBold}>Kupujúci (Buyer):</Text> {currentRecord.clientId.name} ({currentRecord.clientId.email})
+            <Text style={styles.textBold}>Kupujúci (Buyer):</Text>{" "}
+            {currentRecord.companyName || currentRecord.name} ({currentRecord.email})
           </Text>
           <Text style={styles.text}>
             <Text style={styles.textBold}>Dodacia adresa (Shipping Address):</Text>{" "}
