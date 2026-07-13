@@ -35,7 +35,6 @@ const RegisterWrokshopModal: React.FC<RegisterWrokshopModalProps<any>> = ({
     currentRecord,
     myData,
 }) => {
-    console.log(currentRecord)
     const [form] = Form.useForm();
     const [couponStatus, setCouponStatus] = useState<any>(null);
     const [type, setType] = useState<"user" | "company">("user");
@@ -48,7 +47,6 @@ const RegisterWrokshopModal: React.FC<RegisterWrokshopModalProps<any>> = ({
     const serverUrl = getServerUrl();
     const userData = useGetUserData();
 
-    console.log(myData?.ic_dph)
 
     useEffect(() => {
         form.setFieldsValue({

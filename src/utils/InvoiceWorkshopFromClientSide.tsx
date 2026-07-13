@@ -93,7 +93,7 @@ const InvoiceWorkshopFromClientSide = ({ record, professional }: { record: any; 
             <Text style={styles.subHeader}>ODBERATEĽ / CLIENT (Participant)</Text>
             <Text style={styles.text}>
               <Text style={styles.textBold}>Meno / Name or company name:</Text>{" "}
-              {client?.name || record.name || "____"}
+              {record.companyName || client?.name || record.name || "____"}
             </Text>
             <Text style={styles.text}>
               <Text style={styles.textBold}>Adresa / Address:</Text> {record.streetAddress || "__________"}

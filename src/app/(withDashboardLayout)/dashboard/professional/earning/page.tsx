@@ -29,7 +29,6 @@ const page = async ({
   const result = earningData?.data?.result ?? [];
   const total = earningData?.data?.meta?.total ?? 0;
 
-  console.log(result)
 
   return (
     <EarningsPage

@@ -60,9 +60,7 @@ const page = async ({
   } else {
     participantsData = undefined;
   }
-
-  console.log(participantsData)
-
+  console.log("participantsData", participantsData);
 
   return (
     <ProfessionalWorkshopPage

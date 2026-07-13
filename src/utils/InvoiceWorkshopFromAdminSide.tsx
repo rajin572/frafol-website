@@ -34,6 +34,14 @@ const InvoiceWorkshopFromAdminSide = ({ record, professional }: { record: any; p
   const mainPrice = workshop?.mainPrice || 0;
   const platformCommission = mainPrice - price - vatAmount;
 
+  // Street + number, zip code, town (professional's registered address)
+  const professionalAddressParts = [
+    professional?.address,
+    [professional?.zipCode, professional?.town].filter(Boolean).join(" "),
+  ].filter(Boolean);
+  const professionalFullAddress =
+    professionalAddressParts.length > 0 ? professionalAddressParts.join(", ") : "__________";
+
   return (
     <Document language="sk">
       <Page size="A4" style={styles.page}>
@@ -83,7 +91,7 @@ const InvoiceWorkshopFromAdminSide = ({ record, professional }: { record: any; p
               {professional?.companyName || professional?.name || "____"}
             </Text>
             <Text style={styles.text}>
-              <Text style={styles.textBold}>Adresa / Address:</Text> {professional?.address || "__________"}
+              <Text style={styles.textBold}>Adresa / Address:</Text> {professionalFullAddress}
             </Text>
             {professional?.ico && (
               <Text style={styles.text}>
@@ -110,7 +118,19 @@ const InvoiceWorkshopFromAdminSide = ({ record, professional }: { record: any; p
             <Text style={styles.textBold}>Workshop:</Text> {workshop?.title}
           </Text>
           <Text style={styles.text}>
-            <Text style={styles.textBold}>Účastník / Participant:</Text> {record.clientId?.name} ({record.clientId?.email})
+            <Text style={styles.textBold}>Účastník / Participant:</Text> {record?.companyName || record?.name || "____"} ({record.clientId?.email})
+          </Text>
+          <Text style={styles.text}>
+            <Text style={styles.textBold}>Adresa / Address:</Text> {record.streetAddress || "__________"}
+          </Text>
+          <Text style={styles.text}>
+            <Text style={styles.textBold}>PSČ / Zip code:</Text> {record.zipCode || "____"}
+          </Text>
+          <Text style={styles.text}>
+            <Text style={styles.textBold}>Mesto / Town:</Text> {record.town || "____"}
+          </Text>
+          <Text style={styles.text}>
+            <Text style={styles.textBold}>Krajina / Country:</Text> {record.country || "____"}
           </Text>
         </View>
 

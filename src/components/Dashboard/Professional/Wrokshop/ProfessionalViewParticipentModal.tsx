@@ -34,7 +34,7 @@ const ProfessionalViewParticipentModal = ({
     }
   };
 
-  console.log(participantsData)
+  console.log("participantsData", participantsData);
 
   const columns = [
     {
@@ -44,8 +44,8 @@ const ProfessionalViewParticipentModal = ({
     },
     {
       title: "Meno klienta",
-      dataIndex: "name",
       key: "name",
+      render: (record: IWorkshopParticipants) => record.companyName || record.name,
     },
     {
       title: "E-mail",

@@ -2,8 +2,15 @@ interface Author {
   _id: string;
   name: string;
   sureName: string;
+  companyName?: string;
   profileImage: string;
   role: string;
+  address?: string;
+  town?: string;
+  zipCode?: string;
+  ico?: string;
+  dic?: string;
+  ic_dph?: string;
 }
 
 interface IWorkshop {
@@ -34,6 +41,9 @@ interface Client {
   name: string;
   email: string;
   profileImage: string;
+  address?: string;
+  town?: string;
+  zipCode?: string;
 }
 
 interface WorkshopPayment {
@@ -47,6 +57,9 @@ interface WorkshopParticipantInstructor {
   name: string;
   email: string;
   profileImage: string;
+  address?: string;
+  town?: string;
+  zipCode?: string;
   ico?: string;
   dic?: string;
   ic_dph?: string;
@@ -75,7 +88,9 @@ interface IWorkshopParticipants {
   zipCode?: string;
   country: string;
   isRegisterAsCompany: boolean;
+  companyName?: string;
   IC_DPH: string;
+  couponDiscount?: number;
   name: string;
   isDeleted: boolean;
   joinedAt: string;
@@ -83,14 +98,6 @@ interface IWorkshopParticipants {
   updatedAt: string;
   __v: number;
   instructorPayment: WorkshopPayment;
-}
-
-interface Author {
-  _id: string;
-  name: string;
-  sureName: string;
-  profileImage: string;
-  role: string; // 'both' or any other role
 }
 
 interface InstructorPayment {
@@ -104,8 +111,16 @@ interface IMyRegisteredWorkshop {
   orderId: string;
   clientId: string; // Client ID as a string
   instructorId: string;
-  workshopId: string; // Can be either string or full workshop object
+  workshopId: IWorkshop; // Full workshop object (includes authorId)
   paymentStatus: string; // 'completed' | 'pending'
+  streetAddress?: string;
+  town?: string;
+  zipCode?: string;
+  country?: string;
+  isRegisterAsCompany?: boolean;
+  companyName?: string;
+  IC_DPH?: string;
+  couponDiscount?: number;
   isDeleted: boolean;
   joinedAt: string; // ISO format date string
   createdAt: string; // ISO format date string

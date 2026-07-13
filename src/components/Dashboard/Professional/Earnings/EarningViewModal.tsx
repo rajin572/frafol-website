@@ -7,7 +7,6 @@ import { AllImages } from "../../../../../public/assets/AllImages";
 import { pdf } from "@react-pdf/renderer";
 import { saveAs } from "file-saver";
 import { toast } from "sonner";
-import { useGetUserData } from "@/context/useGetUserData";
 import InvoiceEarningEventClientSide from "@/utils/InvoiceEarningEventClientSide";
 import InvoiceEarningEventAdminSide from "@/utils/InvoiceEarningEventAdminSide";
 import InvoiceGearFromClientSide from "@/utils/InvoiceGearFromClientSide";
@@ -27,7 +26,6 @@ interface Props {
 
 const EarningViewModal: React.FC<Props> = ({ isVisible, onClose, record, type }) => {
   const serverUrl = getServerUrl();
-  const professional = useGetUserData();
 
   console.log(record)
 
@@ -311,7 +309,7 @@ const EarningViewModal: React.FC<Props> = ({ isVisible, onClose, record, type })
                 className="!w-fit"
                 onClick={() =>
                   handleInvoiceDownload(
-                    <InvoiceWorkshopFromClientSide record={record} professional={professional} />,
+                    <InvoiceWorkshopFromClientSide record={record} professional={record.instructorId} />,
                     `${record.orderId}-client-invoice.pdf`
                   )
                 }
@@ -323,7 +321,7 @@ const EarningViewModal: React.FC<Props> = ({ isVisible, onClose, record, type })
                 className="!w-fit"
                 onClick={() =>
                   handleInvoiceDownload(
-                    <InvoiceWorkshopFromAdminSide record={record} professional={professional} />,
+                    <InvoiceWorkshopFromAdminSide record={record} professional={record.instructorId} />,
                     `${record.orderId}-admin-invoice.pdf`
                   )
                 }
