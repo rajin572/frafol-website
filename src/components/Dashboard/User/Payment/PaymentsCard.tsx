@@ -16,7 +16,7 @@ const PaymentsCard = ({
     <div className="p-4 rounded-md border border-[#E1E1E1] shadow-xs hover:shadow-md transition-all duration-200">
       <div>
         <h3 className="text-sm sm:text-base lg:text-lg xl:text-xl font-bold text-secondary-color mb-1">
-          {data.paymentType === "event"
+          {data?.paymentType === "subscription" ? "Subscription" : data.paymentType === "event"
             ? data.eventOrderId?.title
               ? data.eventOrderId?.title
               : data?.eventOrderId?.packageId?.title || "Podujatie"
