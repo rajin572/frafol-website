@@ -45,7 +45,7 @@ const page = async ({
   const totalData = eventData?.data?.meta?.total;
 
 
-  console.log(myEventData)
+  console.log("User Event Orders Data", eventData);
 
   const stateRes = await fetchWithAuth(`/event-order/user/stats`, {
     next: {

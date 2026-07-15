@@ -32,10 +32,11 @@ const page = async ({
 
   const eventData = await eventRes.json();
 
-  console.log(eventData)
 
   const myEventData = eventData?.data?.data || [];
   const totalData = eventData?.data?.meta?.total;
+
+  console.log("Professional Event Orders Data", eventData);
 
   const serviceChargeRes = await fetchWithAuth(`/commissionSetup`, {
     next: {

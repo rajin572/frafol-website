@@ -105,6 +105,14 @@ const InvoiceDocumentFromClientSide = ({
   const couponDiscountAmount = currentRecord.couponDiscount || 0;
   const effectiveTotalPrice = (currentRecord.totalPrice as number || 0) - couponDiscountAmount;
 
+  // Street + number, zip code, town (professional's registered address)
+  const professionalAddressParts = [
+    currentRecord.serviceProviderId?.address,
+    [currentRecord.serviceProviderId?.zipCode, currentRecord.serviceProviderId?.town].filter(Boolean).join(" "),
+  ].filter(Boolean);
+  const professionalFullAddress =
+    professionalAddressParts.length > 0 ? professionalAddressParts.join(", ") : "__";
+
   return (
     <Document language="sk">
       <Page size="A4" style={styles.page}>
@@ -144,7 +152,7 @@ const InvoiceDocumentFromClientSide = ({
             </Text>
             <Text style={styles.text}>
               <Text style={styles.textBold}>Adresa sídla / Company address:</Text>{" "}
-              {currentRecord.serviceProviderId.address || "__"}
+              {professionalFullAddress}
             </Text>
             <Text style={styles.text}>
               <Text style={styles.textBold}>IČO / Company ID:</Text> {currentRecord.serviceProviderId.ico || "__________"}
@@ -168,24 +176,33 @@ const InvoiceDocumentFromClientSide = ({
             <Text style={styles.subHeader}>ODBERATEĽ / CLIENT</Text>
             <Text style={styles.text}>
               <Text style={styles.textBold}>Meno / Name or company name:</Text>{" "}
-              {currentRecord.userId.companyName || currentRecord.userId.name || "___"}
+              {currentRecord.companyName || currentRecord.name || "___"}
             </Text>
             <Text style={styles.text}>
-              <Text style={styles.textBold}>Adresa / Address:</Text> {currentRecord.userId.address || "__________"}
+              <Text style={styles.textBold}>Adresa / Address:</Text> {currentRecord.streetAddress || "__________"}
             </Text>
-            {currentRecord.userId.ico && (
+            <Text style={styles.text}>
+              <Text style={styles.textBold}>PSČ / Zip code:</Text> {currentRecord.zipCode || "____"}
+            </Text>
+            <Text style={styles.text}>
+              <Text style={styles.textBold}>Mesto / Town:</Text> {currentRecord.town || "____"}
+            </Text>
+            <Text style={styles.text}>
+              <Text style={styles.textBold}>Krajina / Country:</Text> {currentRecord.country || "____"}
+            </Text>
+            {currentRecord.ICO && (
               <Text style={styles.text}>
-                <Text style={styles.textBold}>IČO / Company ID:</Text> {currentRecord.userId.ico}
+                <Text style={styles.textBold}>IČO / Company ID:</Text> {currentRecord.ICO}
               </Text>
             )}
-            {currentRecord.userId.dic && (
+            {currentRecord.DIC && (
               <Text style={styles.text}>
-                <Text style={styles.textBold}>DIČ / Tax ID:</Text> {currentRecord.userId.dic}
+                <Text style={styles.textBold}>DIČ / Tax ID:</Text> {currentRecord.DIC}
               </Text>
             )}
-            {currentRecord.userId.ic_dph && (
+            {currentRecord.IC_DPH && (
               <Text style={styles.text}>
-                <Text style={styles.textBold}>IČ DPH / VAT ID:</Text> {currentRecord.userId.ic_dph}
+                <Text style={styles.textBold}>IČ DPH / VAT ID:</Text> {currentRecord.IC_DPH}
               </Text>
             )}
           </View>
@@ -209,10 +226,9 @@ const InvoiceDocumentFromClientSide = ({
           {/* Main Service */}
           <View style={styles.tableRow}>
             <Text style={styles.tableCellDark}>
-              {currentRecord.packageId?.title || "Service Package"} /{" "}
-              {currentRecord.serviceType === "photography"
-                ? "Wedding video"
-                : "Wedding photography"}
+              {(currentRecord.orderType === "custom"
+                ? currentRecord.packageName
+                : currentRecord.packageId?.title) || currentRecord.title} /{" "}
             </Text>
             <Text style={styles.tableCellDark}>1 ks/pc</Text>
             <Text style={styles.tableCellDark}>{subtotal.toFixed(2)}€</Text>

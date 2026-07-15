@@ -46,6 +46,18 @@ const InvoiceEarningEventClientSide = ({ record }: { record: any }) => {
   const vatPercent = price > 0 ? Math.round((vatAmount / price) * 100) : 0;
   const couponDiscount = record.couponDiscount || 0;
 
+  // Street + number, zip code, town (professional's registered address)
+  const providerAddressParts = [
+    provider?.address,
+    [provider?.zipCode, provider?.town].filter(Boolean).join(" "),
+  ].filter(Boolean);
+  const providerFullAddress = providerAddressParts.length > 0 ? providerAddressParts.join(", ") : "____";
+
+  const orderName =
+    (eventOrder?.orderType === "custom"
+      ? eventOrder?.packageName
+      : eventOrder?.packageId?.title) || eventOrder?.title || "Service Package";
+
   return (
     <Document language="sk">
       <Page size="A4" style={styles.page}>
@@ -55,7 +67,7 @@ const InvoiceEarningEventClientSide = ({ record }: { record: any }) => {
           <Image src={AllImages.logo.src} style={styles.image} />
           <View style={styles.section}>
             <Text style={styles.text}>
-              <Text style={styles.textBold}>Číslo faktúry / Invoice number:</Text> {record._id}
+              <Text style={styles.textBold}>Číslo faktúry / Invoice number:</Text> {record?.eventOrderId?.orderId}
             </Text>
             <Text style={styles.text}>
               <Text style={styles.textBold}>Dátum vystavenia / Issue date:</Text> {formatDate(record.createdAt)}
@@ -79,7 +91,7 @@ const InvoiceEarningEventClientSide = ({ record }: { record: any }) => {
               <Text style={styles.textBold}>Názov firmy / Company name:</Text> {provider?.companyName || "____"}
             </Text>
             <Text style={styles.text}>
-              <Text style={styles.textBold}>Adresa sídla / Company address:</Text> {provider?.address || "____"}
+              <Text style={styles.textBold}>Adresa sídla / Company address:</Text> {providerFullAddress}
             </Text>
             <Text style={styles.text}>
               <Text style={styles.textBold}>IČO / Company ID:</Text> {provider?.ico || "__________"}
@@ -103,6 +115,12 @@ const InvoiceEarningEventClientSide = ({ record }: { record: any }) => {
             </Text>
             <Text style={styles.text}>
               <Text style={styles.textBold}>Adresa / Address:</Text> {client?.address || "__________"}
+            </Text>
+            <Text style={styles.text}>
+              <Text style={styles.textBold}>PSČ / Zip code:</Text> {client?.zipCode || "____"}
+            </Text>
+            <Text style={styles.text}>
+              <Text style={styles.textBold}>Mesto / Town:</Text> {client?.town || "____"}
             </Text>
             {client?.ico && (
               <Text style={styles.text}>
@@ -133,7 +151,7 @@ const InvoiceEarningEventClientSide = ({ record }: { record: any }) => {
 
           <View style={styles.tableRow}>
             <Text style={styles.tableCellDark}>
-              {serviceTypeLabel(eventOrder?.serviceType)} / Event Service
+              {orderName}
             </Text>
             <Text style={styles.tableCellDark}>1 ks/pc</Text>
             <Text style={styles.tableCellDark}>{price.toFixed(2)}€</Text>

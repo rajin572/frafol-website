@@ -68,6 +68,8 @@ interface IEventOrder {
     email: string;
     profileImage: string;
     address?: string; // Adding optional address field to user
+    town?: string;
+    zipCode?: string;
     phone?: string; // Optional phone field for the user
     ico?: string;
     dic?: string;
@@ -84,6 +86,8 @@ interface IEventOrder {
     dic: string;
     ico: string;
     address: string;
+    town?: string;
+    zipCode?: string;
     companyName: string;
   };
   date: Date;

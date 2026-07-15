@@ -106,6 +106,19 @@ const InvoiceDocumentFromAdminSide = ({
 
   const clientIsCompany = !!(currentRecord.serviceProviderId?.ico);
 
+  // Street + number, zip code, town (professional's registered address)
+  const professionalAddressParts = [
+    currentRecord.serviceProviderId?.address,
+    [currentRecord.serviceProviderId?.zipCode, currentRecord.serviceProviderId?.town].filter(Boolean).join(" "),
+  ].filter(Boolean);
+  const professionalFullAddress =
+    professionalAddressParts.length > 0 ? professionalAddressParts.join(", ") : "__________";
+
+  const orderName =
+    (currentRecord.orderType === "custom"
+      ? currentRecord.packageName
+      : currentRecord.packageId?.title) || currentRecord.title;
+
   return (
     <Document language="sk">
       <Page size="A4" style={styles.page}>
@@ -162,7 +175,7 @@ const InvoiceDocumentFromAdminSide = ({
             </Text>
             <Text style={styles.text}>
               <Text style={styles.textBold}>Adresa / Address:</Text>{" "}
-              {currentRecord.serviceProviderId.address || "__________"}
+              {professionalFullAddress}
             </Text>
             {clientIsCompany && (
               <>
@@ -200,7 +213,7 @@ const InvoiceDocumentFromAdminSide = ({
           {/* Service Fee Row */}
           <View style={styles.tableRow}>
             <Text style={styles.tableCellDark}>
-              Servisný poplatok / Service fee
+              {orderName}
             </Text>
             <Text style={styles.tableCellDark}>
               1 ks / <Text style={{ color: "#ad2b08" }}>pc</Text>

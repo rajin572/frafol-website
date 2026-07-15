@@ -38,6 +38,18 @@ const InvoiceEarningEventAdminSide = ({ record }: { record: any }) => {
   const provider = record.serviceProviderId;
   const commission = record.commission || 0;
 
+  // Street + number, zip code, town (professional's registered address)
+  const providerAddressParts = [
+    provider?.address,
+    [provider?.zipCode, provider?.town].filter(Boolean).join(" "),
+  ].filter(Boolean);
+  const providerFullAddress = providerAddressParts.length > 0 ? providerAddressParts.join(", ") : "__________";
+
+  const orderName =
+    (eventOrder?.orderType === "custom"
+      ? eventOrder?.packageName
+      : eventOrder?.packageId?.title) || eventOrder?.title;
+
   return (
     <Document language="sk">
       <Page size="A4" style={styles.page}>
@@ -47,7 +59,7 @@ const InvoiceEarningEventAdminSide = ({ record }: { record: any }) => {
           <Image src={AllImages.logo.src} style={styles.image} />
           <View style={styles.section}>
             <Text style={styles.text}>
-              <Text style={styles.textBold}>Číslo faktúry / Invoice number:</Text> {record._id}
+              <Text style={styles.textBold}>Číslo faktúry / Invoice number:</Text> {record?.eventOrderId?.orderId}
             </Text>
             <Text style={styles.text}>
               <Text style={styles.textBold}>Dátum vystavenia / Issue date:</Text> {formatDate(record.createdAt)}
@@ -89,7 +101,7 @@ const InvoiceEarningEventAdminSide = ({ record }: { record: any }) => {
               {provider?.companyName || provider?.name || "____"}
             </Text>
             <Text style={styles.text}>
-              <Text style={styles.textBold}>Adresa / Address:</Text> {provider?.address || "__________"}
+              <Text style={styles.textBold}>Adresa / Address:</Text> {providerFullAddress}
             </Text>
             {provider?.ico && (
               <Text style={styles.text}>
@@ -119,7 +131,7 @@ const InvoiceEarningEventAdminSide = ({ record }: { record: any }) => {
           </View>
 
           <View style={styles.tableRow}>
-            <Text style={styles.tableCellDark}>Servisný poplatok / Service fee</Text>
+            <Text style={styles.tableCellDark}>{orderName}</Text>
             <Text style={styles.tableCellDark}>1 ks / <Text style={{ color: "#ad2b08" }}>pc</Text></Text>
             <Text style={styles.tableCellDark}>{commission.toFixed(2)}€</Text>
             <Text style={styles.tableCellDark}>{commission.toFixed(2)}€</Text>
