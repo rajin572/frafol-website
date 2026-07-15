@@ -21,7 +21,7 @@ export async function proxy(request: Request) {
   const accessToken = (await cookies()).get("frafolMainAccessToken")?.value;
 
   if (!accessToken) {
-    return NextResponse.redirect(new URL("/", request.nextUrl.href));
+    return NextResponse.redirect(new URL("/sign-in", request.nextUrl.href));
   }
 
   try {
@@ -49,7 +49,7 @@ export async function proxy(request: Request) {
       if (role === "company" || role === "user") {
         return NextResponse.next();
       } else {
-        return NextResponse.redirect(new URL("/", request.nextUrl.href));
+        return NextResponse.redirect(new URL("/sign-in", request.nextUrl.href));
       }
     }
 
@@ -77,7 +77,7 @@ export async function proxy(request: Request) {
       ) {
         return NextResponse.next();
       } else {
-        return NextResponse.redirect(new URL("/", request.nextUrl.href));
+        return NextResponse.redirect(new URL("/sign-in", request.nextUrl.href));
       }
     }
 
@@ -87,11 +87,11 @@ export async function proxy(request: Request) {
       if (email) {
         return NextResponse.next();
       } else {
-        return NextResponse.redirect(new URL("/", request.nextUrl.href));
+        return NextResponse.redirect(new URL("/sign-in", request.nextUrl.href));
       }
     }
   } catch (error: any) {
-    return NextResponse.redirect(new URL("/", request.nextUrl.href));
+    return NextResponse.redirect(new URL("/sign-in", request.nextUrl.href));
   }
 }
 
