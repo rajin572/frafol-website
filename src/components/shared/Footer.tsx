@@ -55,10 +55,10 @@ export default function Footer() {
   };
   return (
     <div
-      className="relative  lg:h-[530px]"
-      style={{ clipPath: "polygon(0% 0, 100% 0%, 100% 100%, 0 100%)" }}
+      className="relative"
+    // style={{ clipPath: "polygon(0% 0, 100% 0%, 100% 100%, 0 100%)" }}
     >
-      <div className="lg:fixed lg:bottom-0 h-auto w-full">
+      <div className="h-auto w-full">
         <footer className="bg-[#A82B0F] text-white px-6 md:px-16 py-10 text-sm">
           <Container>
             <div className="flex flex-col  gap-10 pb-8">

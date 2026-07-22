@@ -336,9 +336,13 @@ const SignUpUser = ({ townData }: { townData: ITown[] }) => {
           </Checkbox>
         </div>
         {type !== "company"
-          ? userInputStructure.map((input, index) => (
+          ? userInputStructure.map((input) => (
             <ReuseInput
-              key={index}
+              // Key includes `type` so switching user/company remounts fresh inputs
+              // instead of reusing DOM nodes. Google Translate rewrites label text
+              // nodes in place, and React can't update those reused nodes — which
+              // left stale labels (duplicated Street/Country/Postal code) on toggle.
+              key={`${type}-${input.name}`}
               name={input.name}
               Typolevel={5}
               inputType={input.inputType}
@@ -351,9 +355,9 @@ const SignUpUser = ({ townData }: { townData: ITown[] }) => {
               rules={input.rules}
             />
           ))
-          : companyInputStructure.map((input, index) => (
+          : companyInputStructure.map((input) => (
             <ReuseInput
-              key={index}
+              key={`${type}-${input.name}`}
               name={input.name}
               Typolevel={5}
               inputType={input.inputType}

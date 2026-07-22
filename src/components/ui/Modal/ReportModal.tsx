@@ -44,7 +44,7 @@ const ReportModal: React.FC<ReportModalProps> = ({
       message: values.message,
       agreement: values.agreement
     };
-    if (user?.email) {
+    if (user?.email || values.email) {
       data.email = values.email;
     }
     if (values.image) {

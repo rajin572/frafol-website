@@ -220,9 +220,12 @@ const RegisterWrokshopModal: React.FC<RegisterWrokshopModalProps<any>> = ({
                         </Checkbox>
                     </div>
                     {type !== "company"
-                        ? userInputStructure?.map((input, index) => (
+                        ? userInputStructure?.map((input) => (
                             <ReuseInput
-                                key={index}
+                                // Key includes `type` so toggling user/company remounts
+                                // fresh inputs; reused nodes keep stale labels when the
+                                // page is machine-translated (Google Translate).
+                                key={`${type}-${input.name}`}
                                 name={input.name}
                                 Typolevel={5}
                                 inputType={input.inputType}
@@ -235,9 +238,9 @@ const RegisterWrokshopModal: React.FC<RegisterWrokshopModalProps<any>> = ({
                                 disabled={input.disabled}
                             />
                         ))
-                        : companyInputStructure?.map((input, index) => (
+                        : companyInputStructure?.map((input) => (
                             <ReuseInput
-                                key={index}
+                                key={`${type}-${input.name}`}
                                 name={input.name}
                                 Typolevel={5}
                                 inputType={input.inputType}

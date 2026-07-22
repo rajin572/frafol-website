@@ -235,9 +235,11 @@ const ProfessionalServiceBookingModal: React.FC<
               </Checkbox>
             </div>
             {type !== "company"
-              ? userInputStructure?.map((input, index) => (
+              ? userInputStructure?.map((input) => (
                 <ReuseInput
-                  key={index}
+                  // Key includes `type` so toggling user/company remounts fresh inputs;
+                  // reused nodes keep stale labels when the page is machine-translated.
+                  key={`${type}-${input.name}`}
                   name={input.name}
                   Typolevel={5}
                   inputType={input.inputType}
@@ -250,9 +252,9 @@ const ProfessionalServiceBookingModal: React.FC<
                   disabled={input.disabled}
                 />
               ))
-              : companyInputStructure?.map((input, index) => (
+              : companyInputStructure?.map((input) => (
                 <ReuseInput
-                  key={index}
+                  key={`${type}-${input.name}`}
                   name={input.name}
                   Typolevel={5}
                   inputType={input.inputType}
