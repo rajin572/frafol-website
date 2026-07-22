@@ -265,7 +265,8 @@ export default function Footer() {
       <ReportModal
         isReportModalVisible={isReportModalOpen}
         handleCancel={hancleCancel}
-        description="Something went wrong? Please let us know."
+        /* description="Something went wrong? Please let us know." */
+        description="FORMULÁRA PRE NAHLÁSENIE NEZÁKONNÉHO OBSAHU"
       />
       <FeedbackModal
         isFeedbackModalVisible={isFeedbackModalOpen}
