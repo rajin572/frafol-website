@@ -262,7 +262,7 @@ const RegisterWrokshopModal: React.FC<RegisterWrokshopModalProps<any>> = ({
                                     value
                                         ? Promise.resolve()
                                         : Promise.reject(
-                                            new Error("Should accept with terms and conditions")
+                                            new Error(/* "Should accept with terms and conditions" */ "Zaškrtnite pole a potvrďte, že ste sa oboznámili s obchodnými podmienkami.")
                                         ),
                             },
                         ]}
@@ -293,7 +293,7 @@ const RegisterWrokshopModal: React.FC<RegisterWrokshopModalProps<any>> = ({
                                     value
                                         ? Promise.resolve()
                                         : Promise.reject(
-                                            new Error("Should accept with terms and conditions")
+                                            new Error(/* "Should accept with terms and conditions" */ "Zaškrtnite pole a potvrďte, že ste sa oboznámili s obchodnými podmienkami.")
                                         ),
                             },
                         ]}
@@ -318,7 +318,7 @@ const RegisterWrokshopModal: React.FC<RegisterWrokshopModalProps<any>> = ({
                                     value
                                         ? Promise.resolve()
                                         : Promise.reject(
-                                            new Error("Should accept with terms and conditions")
+                                            new Error(/* "Should accept with terms and conditions" */ "Zaškrtnite pole a potvrďte, že ste sa oboznámili s obchodnými podmienkami.")
                                         ),
                             },
                         ]}

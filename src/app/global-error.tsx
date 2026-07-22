@@ -56,12 +56,15 @@ export default function GlobalError({
                 </div>
 
                 <h1 className="text-3xl font-bold text-gray-900 mb-4">
-                  Oops! Something went wrong
+                  {/* Oops! Something went wrong */}
+                  Ups! Niečo sa pokazilo
                 </h1>
 
                 <p className="text-gray-600 mb-2 leading-relaxed">
-                  We encountered an unexpected error. Don&apos;t worry, our team has
-                  been notified and we&apos;re working to fix it.
+                  {/* We encountered an unexpected error. Don't worry, our team has
+                      been notified and we're working to fix it. */}
+                  Vyskytla sa neočakávaná chyba, ale nebojte sa, náš tím bol
+                  upozornený a pracuje na jej odstránení.
                 </p>
 
                 {process.env.NODE_ENV === "development" && (
@@ -91,13 +94,15 @@ export default function GlobalError({
                     }
                   >
                     <RotateCcw className="w-4 h-4" />
-                    Try Again
+                    {/* Try Again */}
+                    Skúsiť znova
                   </button>
                 </div>
 
                 <div className="mt-8 pt-6 border-t border-gray-200">
                   <p className="text-sm text-gray-500 mb-3">
-                    Still having trouble?
+                    {/* Still having trouble? */}
+                    Stále to nefunguje?
                   </p>
                   <button
                     onClick={handleContact}

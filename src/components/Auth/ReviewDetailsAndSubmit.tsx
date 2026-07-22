@@ -193,7 +193,7 @@ const ReviewDetailsAndSubmit = () => {
                 value
                   ? Promise.resolve()
                   : Promise.reject(
-                    new Error("Should accept with terms and conditions")
+                    new Error(/* "Should accept with terms and conditions" */ "Zaškrtnite pole a potvrďte, že ste sa oboznámili s obchodnými podmienkami.")
                   ),
             },
           ]}
@@ -234,7 +234,7 @@ const ReviewDetailsAndSubmit = () => {
                 value
                   ? Promise.resolve()
                   : Promise.reject(
-                    new Error("Should accept with rámcová zmluva contract")
+                    new Error(/* "Should accept with rámcová zmluva contract" */ "Zaškrtnite pole a potvrďte, že ste sa oboznámili s GDPR.")
                   ),
             },
           ]}

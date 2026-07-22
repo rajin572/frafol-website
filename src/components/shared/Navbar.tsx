@@ -32,11 +32,16 @@ import { clearCart } from "@/redux/features/cart/cartSlice";
 import { clearSelectedChatUser } from "@/redux/features/conversation/conversationSlice";
 
 const NavItems = [
-  { id: "1", name: "Photography", route: "/photography" },
-  { id: "2", name: "Videography", route: "/videography" },
-  { id: "1", name: "Marketplace", route: "/marketplace" },
-  { id: "1", name: "Forums", route: "/forums" },
-  { id: "1", name: "Workshops", route: "/workshops" },
+  /* { id: "1", name: "Photography", route: "/photography" }, */
+  { id: "1", name: "Fotografi", route: "/photography" },
+  /* { id: "2", name: "Videography", route: "/videography" }, */
+  { id: "2", name: "Kameramani", route: "/videography" },
+  /* { id: "1", name: "Marketplace", route: "/marketplace" }, */
+  { id: "1", name: "Bazár", route: "/marketplace" },
+  /* { id: "1", name: "Forums", route: "/forums" }, */
+  { id: "1", name: "Fórum", route: "/forums" },
+  /* { id: "1", name: "Workshops", route: "/workshops" }, */
+  { id: "1", name: "Kurzy", route: "/workshops" },
 ];
 
 
@@ -347,14 +352,16 @@ const Navbar = ({ notifications }: { notifications: INotification[] }) => {
                       href="/sign-in"
                       className="px-4 py-1 text-primary-color font-semibold rounded-full border-2 border-primary-color mb-1"
                     >
-                      Sign In
+                      {/* Sign In */}
+                      Prihlásenie
                     </Link>
                     <Link
                       onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
                       href="/join"
                       className="px-4 py-1 rounded-full border-2 border-primary-color bg-primary-color text-secondary-color font-semibold"
                     >
-                      Join
+                      {/* Join */}
+                      Registrácia
                     </Link>
                   </div>
                 )}
@@ -434,7 +441,8 @@ const Navbar = ({ notifications }: { notifications: INotification[] }) => {
                   className={` "!text-lg px-2 py-1 font-semibold  mt-0.5 " ${scrolled ? "text-primary-color" : "text-primary-color"
                     } `}
                 >
-                  Sign In
+                  {/* Sign In */}
+                  Prihlásenie
                 </Link>
                 <Link href="/join">
                   <Button
@@ -443,7 +451,8 @@ const Navbar = ({ notifications }: { notifications: INotification[] }) => {
                       : "!border-primary-color !bg-primary-color !text-secondary-color "
                       }`}
                   >
-                    <p className="font-semibold text-base">Join</p>
+                    {/* <p className="font-semibold text-base">Join</p> */}
+                    <p className="font-semibold text-base">Registrácia</p>
                     <div
                       className={`${scrolled ? "bg-secondary-color" : "bg-secondary-color"
                         } p-0.5 rounded-full`}

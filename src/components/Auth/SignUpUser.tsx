@@ -423,7 +423,7 @@ const SignUpUser = ({ townData }: { townData: ITown[] }) => {
                 value
                   ? Promise.resolve()
                   : Promise.reject(
-                    new Error("Should accept with terms and conditions")
+                    new Error(/* "Should accept with terms and conditions" */ "Zaškrtnite pole a potvrďte, že ste sa oboznámili s obchodnými podmienkami.")
                   ),
             },
           ]}
@@ -464,7 +464,7 @@ const SignUpUser = ({ townData }: { townData: ITown[] }) => {
                 value
                   ? Promise.resolve()
                   : Promise.reject(
-                    new Error("Should accept with GDPR contract")
+                    new Error(/* "Should accept with GDPR contract" */ "Zaškrtnite pole a potvrďte, že ste sa oboznámili s GDPR.")
                   ),
             },
           ]}

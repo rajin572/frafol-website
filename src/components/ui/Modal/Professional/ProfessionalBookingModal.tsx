@@ -438,7 +438,7 @@ const ProfessionalBookingModal: React.FC<ProfessionalBookingModalProps> = ({
                   value
                     ? Promise.resolve()
                     : Promise.reject(
-                      new Error("Should accept with terms and conditions")
+                      new Error("Zaškrtnite pole a potvrďte, že ste sa oboznámili s obchodnými podmienkami.")
                     ),
               },
             ]}
