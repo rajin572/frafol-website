@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { useEffect, useRef, useState } from "react";
+import { sanitizeHtml } from "@/lib/sanitizeHtml";
 import {
     Bold,
     Italic,
@@ -190,7 +191,8 @@ export function RichTextRenderer({
     return (
         <div
             className={className}
-            dangerouslySetInnerHTML={{ __html: html || "" }}
+            // Stored rich-text HTML — sanitize before injecting (prevents stored XSS).
+            dangerouslySetInnerHTML={{ __html: sanitizeHtml(html) }}
         />
     );
 }
@@ -1033,7 +1035,8 @@ const RichTextEditor: React.FC<RichTextEditorProps> = ({
                             style={{
                                 maxHeight: "calc(85vh - 70px)",
                             }}
-                            dangerouslySetInnerHTML={{ __html: content }}
+                            // Preview mirrors what viewers will actually see post-sanitize.
+                            dangerouslySetInnerHTML={{ __html: sanitizeHtml(content) }}
                             onClick={handleLinkClickOpenNewTab as any}
                         />
                     </div>

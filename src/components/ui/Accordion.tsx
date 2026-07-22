@@ -46,7 +46,7 @@ const Accordion: React.FC<AccordionProps> = ({
         onClick={onToggle}
       >
         <div className="flex items-center gap-5">
-          <span className="text-[#3C3C4380] !text-lg sm:!text-xl md:!text-2xl lg:!text-3xl xl:!text-4xl font-semibold">
+          <span className="text-[#3C3C4380] !text-lg sm:!text-xl md:!text-2xl lg:!text-3xl xl:!text-4xl font-semibold text-nowrap whitespace-nowrap shrink-0">
             0{index + 1}
           </span>
           <h3 className="text-base-color text-base md:text-lg lg:text-xl font-semibold">

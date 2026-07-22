@@ -8,6 +8,7 @@ import { formatDateTime } from "@/utils/dateFormet";
 import { getServerUrl } from "@/helpers/config/envConfig";
 import ForumAllComents from "./ForumAllComents";
 import ForumPostLikeSection from "./ForumPostLikeSection";
+import { sanitizeHtml } from "@/lib/sanitizeHtml";
 
 const ForumDetailsPage = ({
   communityPosts,
@@ -87,7 +88,10 @@ const ForumDetailsPage = ({
             }
             {communityPosts?.text && (
               <div
-                dangerouslySetInnerHTML={{ __html: communityPosts?.text }}
+                // User-authored HTML — sanitize to prevent stored XSS.
+                dangerouslySetInnerHTML={{
+                  __html: sanitizeHtml(communityPosts?.text),
+                }}
               ></div>
             )}
           </div>{" "}
