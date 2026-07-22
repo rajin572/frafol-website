@@ -120,7 +120,7 @@ const MarketPlaceSeacrhFiltre = () => {
           onChange={handleSearch}
           name="search"
           inputClassName="!bg-background-color !rounded-lg !text-base-color !border-none !shadow-none text-lg font-semibold !w-full lg:!w-96 !py-2.5"
-          placeholder="Search"
+          placeholder="Hľadať..."
           type="text"
         />
         <div className="relative z-10! -mt-5 ">
@@ -138,7 +138,7 @@ const MarketPlaceSeacrhFiltre = () => {
                 level={5}
                 className="!text-base-color !font-normal"
               >
-                Price Range
+                {/* Price Range */} Cenové rozpätie
               </Typography.Title>
               <div className="flex items-center gap-3">
                 <ReuseInput name="min" placeholder="Min" type="text" />
@@ -146,20 +146,22 @@ const MarketPlaceSeacrhFiltre = () => {
               </div>
               <ReuseSelect
                 name="condition"
-                label="Condition"
-                placeholder="Condition"
+                // label="Condition"
+                label="Stav"
+                // placeholder="Condition"
+                placeholder="Stav"
                 options={[
                   {
                     value: "all",
-                    label: "All",
+                    label: "Všetky",
                   },
                   {
                     value: "new",
-                    label: "New",
+                    label: "Nové",
                   },
                   {
                     value: "used",
-                    label: "Used",
+                    label: "Použité",
                   },
                 ]}
               />
@@ -167,14 +169,14 @@ const MarketPlaceSeacrhFiltre = () => {
                 className="cursor-pointer text-secondary-color text-end mb-5 font-semibold !text-sm sm:!text-sm lg:!text-base"
                 onClick={HandleReset}
               >
-                Reset
+                Obnoviť
               </p>
               <ReuseButton
                 htmlType="submit"
                 variant="secondary"
                 className="w-full !text-sm sm:!text-sm lg:!text-base"
               >
-                Apply Filters
+                Použiť filtre
               </ReuseButton>
             </div>
           </div>

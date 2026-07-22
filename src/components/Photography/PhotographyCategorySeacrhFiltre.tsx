@@ -131,7 +131,8 @@ const PhotographyCategorySeacrhFiltre = ({ townData }: { townData: ITown[] }) =>
         onChange={handleSearch}
         name="search"
         inputClassName="!bg-background-color !rounded-lg !text-base-color !border-none !shadow-none text-lg font-semibold !w-full lg:!w-96 !py-2.5"
-        placeholder="Search"
+        /* placeholder="Search" */
+        placeholder="Hľadať"
         type="text"
       />
       <div className="relative z-20! -mt-5">
@@ -156,20 +157,24 @@ const PhotographyCategorySeacrhFiltre = ({ townData }: { townData: ITown[] }) =>
                 level={5}
                 className="!text-base-color !font-normal"
               >
-                Price Range
+                {/* Price Range */}
+                Cenové rozpätie
               </Typography.Title>
               <div className="flex items-center gap-3">
                 <ReuseInput name="min" placeholder="Min" type="text" />
                 <ReuseInput name="max" placeholder="Max" type="text" />
               </div>
-              <ReuseDatePicker name="date" label="Available Date" />
+              {/* <ReuseDatePicker name="date" label="Available Date" /> */}
+              <ReuseDatePicker name="date" label="Dátum" />
 
               {townData && townData.length > 0 && (
                 <ReuseSelect
                   mode="multiple"
                   name="towns"
-                  label="Towns"
-                  placeholder="Select towns"
+                  /* label="Towns" */
+                  label="Mestá"
+                  /* placeholder="Select towns" */
+                  placeholder="Vyberte mestá"
                   labelClassName="!text-base-color !font-normal"
                   allowClear={true}
                   selectClassName="!h-auto !min-h-10"
@@ -184,14 +189,16 @@ const PhotographyCategorySeacrhFiltre = ({ townData }: { townData: ITown[] }) =>
                 className="cursor-pointer text-secondary-color text-end mb-5 font-semibold !text-sm sm:!text-sm lg:!text-base"
                 onClick={HandleReset}
               >
-                Reset
+                {/* Reset */}
+                Obnoviť
               </p>
               <ReuseButton
                 htmlType="submit"
                 variant="secondary"
                 className="w-full !text-sm sm:!text-sm lg:!text-base"
               >
-                Apply Filters
+                {/* Apply Filters */}
+                Použiť filtre
               </ReuseButton>
             </div>
           </ReusableForm>

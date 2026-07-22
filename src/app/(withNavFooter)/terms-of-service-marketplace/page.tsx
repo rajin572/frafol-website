@@ -10,7 +10,7 @@ const PrivacyPolicy = async () => {
   return (
     <Container>
       <div className=" py-10 text-gray-800 min-h-[100vh]">
-        <SectionHeader title="Terms of Service Marketplace" />
+        <SectionHeader title="Všeobecné obchodné podmienky Online trh" />
         <div dangerouslySetInnerHTML={{ __html: sanitizeHtml(data?.data?.content) }}></div>
       </div>
     </Container>

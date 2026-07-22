@@ -19,7 +19,7 @@ const BannerSearch = () => {
         {/* Google Autocomplete SearchBox */}
         <Form.Item name="search" className="!m-0 !p-0 w-full">
           <Input
-            placeholder="Search..."
+            placeholder="Hľadať..."
             className="!bg-background-color !rounded-full !text-base-color !ring-0 !outline-none !border-none !shadow-none !text-lg !font-semibold w-full sm:!w-96 lg:!w-[500px] !py-2"
           />
         </Form.Item>

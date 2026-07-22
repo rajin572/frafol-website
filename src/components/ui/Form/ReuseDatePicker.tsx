@@ -34,7 +34,8 @@ const ReuseDatePicker = ({
   disabled = false,
   className,
   style,
-  placeholder = "Select date",
+  /* placeholder = "Select date", */
+  placeholder = "Vyberte dátum",
   labelClassName,
   wrapperClassName,
   unAllowedDate,

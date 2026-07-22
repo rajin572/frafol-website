@@ -225,7 +225,7 @@ const CartDeliveryOption = ({
                 </Link>{" "}
                 and{" "}
                 <Link href="/terms-of-service-marketplace" target="_blank" className="text-secondary-color! underline">
-                  Terms of Service Marketplace.
+                  Všeobecné obchodné podmienky Online trh.
                 </Link>
               </p>
 

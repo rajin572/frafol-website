@@ -35,7 +35,8 @@ const VideographyCategoryDetails = ({
             className="w-fit !text-sm sm:!text-base lg:!text-xl  !flex !items-center gap-2"
           >
             <FaArrowLeftLong className="!mt-1" />
-            Back To Categories
+            {/* Back To Categories */}
+            Späť na kategórie
           </ReuseButton>
           <PhotographyCategorySeacrhFiltre townData={townData} />
         </div>
@@ -47,7 +48,8 @@ const VideographyCategoryDetails = ({
           </div>
         ) : (
           <div className="py-20">
-            <NoResultFound title="No Videographer Available" />
+            {/* <NoResultFound title="No Videographer Available" /> */}
+            <NoResultFound title="Nenašiel sa žiadny výsledok" />
           </div>
         )}
       </Container>

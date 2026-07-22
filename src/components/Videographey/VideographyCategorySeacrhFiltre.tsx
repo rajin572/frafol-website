@@ -32,7 +32,8 @@ const VideographyCategorySeacrhFiltre = () => {
         }
         name="search"
         inputClassName="!bg-background-color !rounded-lg !text-base-color !border-none !shadow-none text-lg font-semibold !w-full lg:!w-96 !py-2.5"
-        placeholder="Search"
+        /* placeholder="Search" */
+        placeholder="Hľadať"
         type="text"
       />
       <div className="relative z-10! -mt-5">
@@ -48,27 +49,32 @@ const VideographyCategorySeacrhFiltre = () => {
           <div className="w-full p-4">
             <ReuseInput
               name="town"
-              label="Town"
-              placeholder="Town"
+              /* label="Town" */
+              label="Mesto"
+              /* placeholder="Town" */
+              placeholder="Mesto"
               type="text"
             />
             <Typography.Title
               level={5}
               className="!text-base-color !font-normal"
             >
-              Price Range
+              {/* Price Range */}
+              Cenové rozpätie
             </Typography.Title>
             <div className="flex items-center gap-3">
               <ReuseInput name="min" placeholder="Min" type="text" />
               <ReuseInput name="max" placeholder="Max" type="text" />
             </div>
-            <ReuseDatePicker name="date" label="Available From" />
+            {/* <ReuseDatePicker name="date" label="Available From" /> */}
+            <ReuseDatePicker name="date" label="Dátum" />
 
             <ReuseButton
               variant="secondary"
               className="w-full !text-sm sm:!text-sm lg:!text-base"
             >
-              Apply Filters
+              {/* Apply Filters */}
+              Použiť filtre
             </ReuseButton>
           </div>
         </div>

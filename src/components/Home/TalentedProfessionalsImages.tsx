@@ -28,7 +28,7 @@ const TalentedProfessionalsImages = async () => {
   return (
     <section className="pb-28">
       <Container>
-        <SectionHeader title="From Our Talented Professionals" />
+        <SectionHeader title="Od našich talentovaných tvorcov" />
         <div className="mt-16">
           <ImageGallery<IRandomImages>
             data={randomImages}
