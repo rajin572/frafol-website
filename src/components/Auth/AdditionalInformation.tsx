@@ -18,7 +18,8 @@ const inputStructure = [
     placeholder: "Napíšte krátke bio o sebe a svojej práci",
     labelClassName: "!font-semibold !text-secondary-color",
     // rules: [{ required: true, type: "string", min: 100, max: 2000 }]
-    rules: [{ required: true, type: "string", min: 100, max: 2000, message: "Popis je povinný" }],
+    /* rules: [{ required: true, type: "string", min: 100, max: 2000, message: "Popis je povinný" }], */
+    rules: [{ required: true, type: "string", min: 100, max: 2000, message: "Opis musí obsahovať minimálne 100 a maximálne 2000 znakov" }],
   },
   {
     name: "minHourlyRate",
