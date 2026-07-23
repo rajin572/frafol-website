@@ -13,6 +13,7 @@ import Link from "next/link";
 import { IProfessionalUser, IProfile, ISignInUser } from "@/types";
 import { getServerUrl } from "@/helpers/config/envConfig";
 import { fetchWithAuth } from "@/lib/fetchWraper";
+import { getAuthToken } from "@/lib/getAuthToken";
 import TagTypes from "@/helpers/config/TagTypes";
 import { getCurrentUser } from "@/services/AuthService";
 import CreateConversionButton from "./CreateConversionButton";
@@ -30,14 +31,23 @@ const ProfessionalPageDetails = async ({
   const userData: ISignInUser = await getCurrentUser();
   const serverUrl = getServerUrl();
 
-  const res = await fetchWithAuth("/users/my-profile", {
-    next: {
-      tags: [TagTypes.profile],
-    },
-  });
+  // Only fetch the logged-in user's profile when there is an access token. Guests have
+  // no profile, so this authed call would just fail for them. Consumers below already
+  // guard with optional chaining (myData?.role / myData?._id).
+  const accessToken = await getAuthToken();
 
-  const data = await res.json();
-  const myData: IProfile = data?.data;
+  let myData: IProfile = undefined as unknown as IProfile;
+
+  if (accessToken) {
+    const res = await fetchWithAuth("/users/my-profile", {
+      next: {
+        tags: [TagTypes.profile],
+      },
+    });
+
+    const data = await res.json();
+    myData = data?.data;
+  }
 
   return (
     <main className="pb-20 pt-10">

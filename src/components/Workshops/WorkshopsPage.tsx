@@ -17,7 +17,8 @@ const WorkshopsPage = ({
   totalData: number;
   page: number;
   limit: number;
-  myData: IProfile
+  // Optional: guests have no profile, so the page skips that fetch for them.
+  myData?: IProfile
 }) => {
 
   const [isModalOpen, setIsModalOpen] = React.useState(false);

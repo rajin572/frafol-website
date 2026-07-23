@@ -21,6 +21,14 @@ const AddNewForumMoidal: React.FC<AddNewForumMoidalProps> = ({
   const [form] = Form.useForm();
   const [content, setContent] = useState("");
 
+  // The editor's value lives in local state, so form.resetFields() alone can't clear it.
+  // Reset both before closing, otherwise the old text is still there on reopen.
+  const resetAndClose = () => {
+    form.resetFields();
+    setContent("");
+    handleCancel();
+  };
+
   const onSubmit = async (values: any) => {
     const formData = new FormData();
 
@@ -49,14 +57,13 @@ const AddNewForumMoidal: React.FC<AddNewForumMoidalProps> = ({
     );
 
     if (res?.success) {
-      form.resetFields();
-      handleCancel();
+      resetAndClose();
     }
   };
   return (
     <Modal
       open={isAddModalVisible}
-      onCancel={handleCancel}
+      onCancel={resetAndClose}
       footer={null}
       centered
       className="lg:!w-[800px]"

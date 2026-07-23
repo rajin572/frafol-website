@@ -6,6 +6,7 @@ import { AllImages } from "../../../../public/assets/AllImages";
 import TagTypes from "@/helpers/config/TagTypes";
 import { IProfile, IWorkshop } from "@/types";
 import { fetchWithAuth } from "@/lib/fetchWraper";
+import { getAuthToken } from "@/lib/getAuthToken";
 
 export const metadata = {
   title: "Frafol – Kurzy",
@@ -37,14 +38,22 @@ const page = async ({
 
   const workshops: IWorkshop[] = data?.data?.result || [];
 
-  const profileRes = await fetchWithAuth("/users/my-profile", {
-    next: {
-      tags: [TagTypes.profile],
-    },
-  });
+  // Only fetch the logged-in user's profile when there is an access token. Guests have
+  // no profile, so this authed call would just fail for them.
+  const accessToken = await getAuthToken();
 
-  const profiledata = await profileRes.json();
-  const myData: IProfile = profiledata?.data;
+  let myData: IProfile | undefined;
+
+  if (accessToken) {
+    const profileRes = await fetchWithAuth("/users/my-profile", {
+      next: {
+        tags: [TagTypes.profile],
+      },
+    });
+
+    const profiledata = await profileRes.json();
+    myData = profiledata?.data;
+  }
 
   return (
     <main>
