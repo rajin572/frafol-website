@@ -77,6 +77,8 @@ const ExtenstionRequestModal: React.FC<ExtenstionRequestModalProps<any>> = ({
         >
           <DatePicker
             className="!py-1.5 !px-3 !text-lg !bg-[#EFEFEF] border !border-[#EFEFEF]  !text-base-color rounded-lg w-full"
+            /* Day-Month-Year, matching ReuseDatePicker across the app (default was YYYY-MM-DD) */
+            format="DD-MM-YYYY"
             placeholder="Select date"
             disabledDate={disabledDate}
           />

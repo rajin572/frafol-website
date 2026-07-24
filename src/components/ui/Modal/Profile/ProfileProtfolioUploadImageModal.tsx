@@ -1,7 +1,8 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 
-import { Form, Modal } from "antd";
+import { Form, Modal, Select, Typography } from "antd";
+import { useState } from "react";
 import ReusableForm from "../../Form/ReuseForm";
 import ReuseButton from "../../Button/ReuseButton";
 import ReuseUpload from "../../Form/ReuseUpload";
@@ -18,6 +19,11 @@ const ProfileProtfolioUploadImageModal: React.FC<
   ProfileProtfolioUploadImageModalProps
 > = ({ isModalVisible, handleCancel, type }) => {
   const [form] = Form.useForm();
+  // For the gallery ("both") uploader: pick whether to upload photos or a video.
+  const [mediaType, setMediaType] = useState<"image" | "video">("image");
+
+  // Whether the current upload should behave as a (single) video upload.
+  const isVideoUpload = type === "both" ? mediaType === "video" : type === "video";
 
   const onSubmit = async (values: any) => {
     const formData = new FormData();
@@ -84,6 +90,7 @@ const ProfileProtfolioUploadImageModal: React.FC<
 
   const handleModalCancel = () => {
     form.resetFields();
+    setMediaType("image");
     handleCancel();
   };
 
@@ -107,15 +114,39 @@ const ProfileProtfolioUploadImageModal: React.FC<
         </p>
 
         <ReusableForm form={form} handleFinish={onSubmit}>
+          {/* Gallery uploader: choose whether to add photos (multiple) or a video (one at a time) */}
+          {type === "both" && (
+            <div className="mb-4">
+              <Typography.Title level={5} className="!font-semibold">
+                Upload Type
+              </Typography.Title>
+              <Select
+                value={mediaType}
+                onChange={(value) => {
+                  setMediaType(value);
+                  // Clear any files picked under the previous type.
+                  form.resetFields(["image"]);
+                }}
+                className="!w-40 !h-10"
+                options={[
+                  { value: "image", label: "Photo" },
+                  { value: "video", label: "Video" },
+                ]}
+              />
+            </div>
+          )}
+
           <ReuseUpload
+            // Remount when switching photo/video so the upload UI resets cleanly.
+            key={isVideoUpload ? "video" : "image"}
             name="image"
-            buttonText={type === "video" ? "Upload Video (Max 100mb)" : "Upload Max 10"}
-            label={type === "video" ? "Video" : "Image"}
+            buttonText={isVideoUpload ? "Upload Video (Max 100mb)" : "Upload Max 10"}
+            label={isVideoUpload ? "Video" : "Image"}
             labelClassName="!font-semibold"
-            maxCount={type === "video" ? 1 : 10}
-            accept={type === "both" ? "image/*,video/*" : type === "video" ? "video/*" : "image/*"}
-            multiple={type === "video" ? false : true}
-            rules={[{ required: true, message: type === "video" ? "Video is required" : "Image is required" }]}
+            maxCount={isVideoUpload ? 1 : 10}
+            accept={isVideoUpload ? "video/*" : "image/*"}
+            multiple={isVideoUpload ? false : true}
+            rules={[{ required: true, message: isVideoUpload ? "Video is required" : "Image is required" }]}
           />
           <ReuseButton htmlType="submit" variant="secondary" className="mt-2">
             Upload
