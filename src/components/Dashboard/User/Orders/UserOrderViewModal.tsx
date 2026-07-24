@@ -15,6 +15,7 @@ import { saveAs } from "file-saver";
 import { pdf } from "@react-pdf/renderer";
 import { toast } from "sonner";
 import Link from "next/link";
+import CreateConversionButton from "@/components/Professional/CreateConversionButton";
 
 interface UserOrderViewModalProps {
   isViewModalVisible: boolean;
@@ -196,6 +197,17 @@ const UserOrderViewModal: React.FC<UserOrderViewModalProps> = ({
               </div>
             </div>
           </Link>
+
+          {/* Create a chat with the creator and open the message page filtered by their name */}
+          <div className="mt-2">
+            <CreateConversionButton
+              userId={currentRecord?.serviceProviderId?._id}
+              // Search the message list by the person's account name (conversations are
+              // keyed on `name`, not companyName — which may include a role suffix).
+              name={currentRecord?.serviceProviderId?.name}
+              className="!w-fit"
+            />
+          </div>
         </div>
 
         {/* Event Details */}

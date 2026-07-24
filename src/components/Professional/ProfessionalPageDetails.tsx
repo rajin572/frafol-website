@@ -110,7 +110,7 @@ const ProfessionalPageDetails = async ({
           </p>
           {myData?.role === "user" ? (
             <div className="flex items-center gap-2">
-              <CreateConversionButton professionalUser={professionalUser} />
+              <CreateConversionButton userId={professionalUser?._id} name={professionalUser?.name} />
               <ProfessionalPageDetailsBookSession
                 myData={myData}
                 professionalUser={professionalUser}
@@ -118,7 +118,7 @@ const ProfessionalPageDetails = async ({
             </div>
           ) : myData?.role === "company" ? (
             <div className="flex items-center gap-2">
-              <CreateConversionButton professionalUser={professionalUser} />
+              <CreateConversionButton userId={professionalUser?._id} name={professionalUser?.name} />
 
               <ProfessionalPageDetailsBookSession
                 myData={myData}
@@ -127,7 +127,7 @@ const ProfessionalPageDetails = async ({
             </div>
           ) : myData?.role && userData?.userId !== professionalUser?._id ? (
             <div className="flex items-center gap-2">
-              <CreateConversionButton professionalUser={professionalUser} />
+              <CreateConversionButton userId={professionalUser?._id} name={professionalUser?.name} />
             </div>
           ) : (
             !myData?._id && (

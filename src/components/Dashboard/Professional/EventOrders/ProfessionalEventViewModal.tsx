@@ -19,7 +19,7 @@ import { toast } from "sonner";
 import InvoiceDocumentFromAdminSide from "@/utils/InvoiceDocumentFromAdminSide";
 import { useGetUserData } from "@/context/useGetUserData";
 import Link from "next/link";
-import { AiFillMessage } from "react-icons/ai";
+import CreateConversionButton from "@/components/Professional/CreateConversionButton";
 
 interface ProfessionalEventViewModalProps {
   showCreateOrderModal: ({ record }: { record: IEventOrder | null }) => void;
@@ -210,20 +210,14 @@ const ProfessionalEventViewModal: React.FC<ProfessionalEventViewModalProps> = ({
             </div>
           </div>
 
-          {/* Message the client — opens the message page filtered by their name */}
-          <ReuseButton
-            variant="secondary"
-            url={`/message?search=${encodeURIComponent(
-              currentRecord?.companyName ||
-                currentRecord?.name ||
-                currentRecord?.userId?.name ||
-                ""
-            )}`}
-            className="!w-fit !py-4 !px-3 !text-sm flex items-center gap-1"
-          >
-            {/* Message */}
-            <AiFillMessage /> Napísať správu
-          </ReuseButton>
+          {/* Create a chat with the client and open the message page filtered by their name */}
+          <CreateConversionButton
+            userId={currentRecord?.userId?._id}
+            // Search the message list by the client's account name (conversations are
+            // keyed on the registered user's `name`, not the order's company/contact name).
+            name={currentRecord?.userId?.name}
+            className="!w-fit"
+          />
           {/* {currentRecord?.userId?.email ? (
             <p className="text-sm font-semibold">
               Email :{" "}
