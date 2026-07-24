@@ -1,8 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import Image from "next/image";
-import React from "react";
 import { AllImages } from "../../../../../public/assets/AllImages";
-import { BsCurrencyDollar } from "react-icons/bs";
+import { BsCurrencyEuro } from "react-icons/bs";
 import { LuClock } from "react-icons/lu";
 import ReuseButton from "@/components/ui/Button/ReuseButton";
 import { MdDelete } from "react-icons/md";
@@ -76,7 +75,7 @@ const ProfessionalPackageCard = ({
         <div className="flex flex-col gap-1 mt-3">
           <div className="flex items-center gap-3">
             <div className="flex items-center gap-1">
-              <BsCurrencyDollar className="text-secondary-color text-sm sm:text-base lg:text-lg" />
+              <BsCurrencyEuro className="text-secondary-color text-sm sm:text-base lg:text-lg" />
               <p className="text-sm sm:text-sm lg:text-base font-semibold">
                 Price Without Service Fee:
               </p>
@@ -87,7 +86,7 @@ const ProfessionalPackageCard = ({
           </div>
           <div className="flex items-center gap-3">
             <div className="flex items-center gap-1">
-              <BsCurrencyDollar className="text-secondary-color text-sm sm:text-base lg:text-lg" />
+              <BsCurrencyEuro className="text-secondary-color text-sm sm:text-base lg:text-lg" />
               <p className="text-sm sm:text-sm lg:text-base font-semibold">
                 Service Fee:
               </p>
@@ -98,7 +97,7 @@ const ProfessionalPackageCard = ({
           </div>
           <div className="flex items-center gap-3">
             <div className="flex items-center gap-1">
-              <BsCurrencyDollar className="text-secondary-color text-sm sm:text-base lg:text-lg" />
+              <BsCurrencyEuro className="text-secondary-color text-sm sm:text-base lg:text-lg" />
               <p className="text-sm sm:text-sm lg:text-base font-semibold">
                 {/* Total Price: */}
                 Celková cena:
