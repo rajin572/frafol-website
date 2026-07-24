@@ -101,7 +101,6 @@ export const fetchWithAuth = async (url: string, options: RequestInit = {}) => {
       ...options,
       headers,
     });
-    console.log("Ei tomra satar paro to, parte hobe", response.status)
     if (REFRESH_STATUSES.includes(response.status)) {
       const newAccessToken = await refreshAccessToken();
 

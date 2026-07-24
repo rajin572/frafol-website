@@ -28,6 +28,10 @@ const ConversationChatList = ({
 
   const handleNewMessage = useCallback((message: any) => {
     const { chatId, text, sender, time } = message;
+    // Guarantee a valid, recent timestamp. If the socket payload omits/malforms `time`,
+    // an undefined lastMessageCreatedAt sorts as epoch 1970 → the conversation sinks to
+    // the bottom instead of rising to the top.
+    const messageTime = time || message?.createdAt || new Date().toISOString();
 
     // Find if this conversation already exists
     setChatList((prevChatList: IConversation[]) => {
@@ -36,17 +40,18 @@ const ConversationChatList = ({
       );
 
       if (existingIndex !== -1) {
-        // Update the existing conversation's lastMessage and updatedAt
-        const updatedList = [...prevChatList];
-        updatedList[existingIndex] = {
-          ...updatedList[existingIndex],
+        // Update the existing conversation and move it to the top of the list
+        const updated: IConversation = {
+          ...prevChatList[existingIndex],
           lastMessage: text,
           lastMessageSender: sender._id,
-          lastMessageCreatedAt: time,
-          unreadMessageCount: updatedList[existingIndex].unreadMessageCount + 1,
+          lastMessageCreatedAt: messageTime,
+          unreadMessageCount:
+            prevChatList[existingIndex].unreadMessageCount + 1,
         };
 
-        return updatedList;
+        const rest = prevChatList.filter((_, index) => index !== existingIndex);
+        return [updated, ...rest];
       } else {
         // If this is a new conversation
         const newConversation: IConversation = {
@@ -56,15 +61,15 @@ const ConversationChatList = ({
             createdBy: sender._id,
             unreadCounts: 1,
             blockedUsers: null,
-            createdAt: time,
-            updatedAt: time,
+            createdAt: messageTime,
+            updatedAt: messageTime,
             __v: 0,
           },
           lastMessage: text,
           message: text,
           lastMessageSender: sender._id,
           unreadMessageCount: 1,
-          lastMessageCreatedAt: time,
+          lastMessageCreatedAt: messageTime,
         };
 
         return [newConversation, ...prevChatList];
@@ -82,6 +87,7 @@ const ConversationChatList = ({
     }
 
     socket.on(`newMessage`, (message: any) => {
+      console.log("new massage", message);
       handleNewMessage(message);
     });
     socket.on("onlineUser", (online: any) => {
@@ -103,10 +109,16 @@ const ConversationChatList = ({
     }
   }, [conversation]);
 
+  // Newest activity first. Fall back to the chat's updatedAt when a conversation has no
+  // lastMessageCreatedAt yet, so the initial server list is ordered too.
   const filteredConversations = useMemo(() => {
     return chatList?.slice()?.sort((a: any, b: any) => {
-      const dateA = new Date(a?.lastMessageCreatedAt || 0).getTime();
-      const dateB = new Date(b?.lastMessageCreatedAt || 0).getTime();
+      const dateA = new Date(
+        a?.lastMessageCreatedAt || a?.chat?.updatedAt || 0
+      ).getTime();
+      const dateB = new Date(
+        b?.lastMessageCreatedAt || b?.chat?.updatedAt || 0
+      ).getTime();
       return dateB - dateA;
     });
   }, [chatList]);
