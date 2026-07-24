@@ -65,7 +65,7 @@ const GearMarketViewModal: React.FC<GearMarketViewModalProps> = ({
                   Stav
                 </h4>
                 <p className="text-sm sm:text-sm lg:text-base bg-zinc-100 p-2 rounded mb-5">
-                  {currentRecord?.condition}
+                  {currentRecord?.condition === "new" ? "Nové" : "Použité"}
                 </p>
               </div>
               <div>

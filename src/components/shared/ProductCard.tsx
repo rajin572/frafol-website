@@ -62,7 +62,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
             </p>
             <p className=" mb-2">
               Condition:{" "}
-              <span className="font-medium">{product?.condition}</span>
+              <span className="font-medium">{product?.condition ? product?.condition === "new" ? "Nové" : "Použité" : "N/A"}</span>
             </p>
             <span className="text-sm sm:text-lg lg:text-xl font-bold">
               {product?.mainPrice?.toFixed(2)}€

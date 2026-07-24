@@ -46,7 +46,7 @@ const UserGearOrderCard = ({
           </Link>
         </h4>
         <p className="text-sm sm:text-sm lg:text-base text-gray-700 capitalize">
-          {/* Condition : */}Stav: {data?.gearMarketplaceId?.condition || "N/A"}
+          {/* Condition : */}Stav: {data?.gearMarketplaceId?.condition ? data?.gearMarketplaceId?.condition === "new" ? "Nové" : "Použité" : "N/A"}
         </p>
         <div className="text-sm sm:text-sm text-[#5D5D5D] flex items-center gap-1 mt-1">
           <IoCalendarOutline />

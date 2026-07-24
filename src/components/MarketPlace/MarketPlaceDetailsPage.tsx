@@ -51,7 +51,7 @@ const MarketPlaceDetailsPage = ({ data }: { data: IGear }) => {
         </p>
         <p className="text-sm sm:text-sm md:text-base lg:text-lg xl:text-xl font-semibold mt-4">
           Condition:{" "}
-          <span className="font-bold capitalize"> {data?.condition}</span>
+          <span className="font-bold capitalize"> {data?.condition ? data?.condition === "new" ? "Nové" : "Použité" : "N/A"}</span>
         </p>
         <div className="flex flex-col w-full mt-10">
           <AddToCardButton gear={data} />

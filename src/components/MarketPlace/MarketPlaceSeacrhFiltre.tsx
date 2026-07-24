@@ -152,10 +152,6 @@ const MarketPlaceSeacrhFiltre = () => {
                 placeholder="Stav"
                 options={[
                   {
-                    value: "all",
-                    label: "Všetky",
-                  },
-                  {
                     value: "new",
                     label: "Nové",
                   },

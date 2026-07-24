@@ -91,7 +91,7 @@ const GearMarketPlaceTable: React.FC<GearMarketPlaceTableProps> = ({
       title: "Stav",
       dataIndex: "condition",
       key: "condition",
-      render: (text: string) => <span className="capitalize">{text}</span>,
+      render: (text: string) => <span className="capitalize">{text === "new" ? "Nové" : "Použité"}</span>,
     },
     // {
     //   title: "Status",
@@ -124,10 +124,10 @@ const GearMarketPlaceTable: React.FC<GearMarketPlaceTableProps> = ({
       render: (status: string) => (
         <span
           className={`text-sm font-semibold capitalize ${status === "approved"
-              ? "text-green-600"
-              : status === "cancelled"
-                ? "text-red-500"
-                : "text-yellow-500"
+            ? "text-green-600"
+            : status === "cancelled"
+              ? "text-red-500"
+              : "text-yellow-500"
             }`}
         >
           {status === "approved"

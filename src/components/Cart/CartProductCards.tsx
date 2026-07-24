@@ -44,7 +44,7 @@ const CartCard = ({ product }: { product: IGear }) => {
               Condition:
             </p>
             <p className="text-sm sm:text-sm lg:text-base">
-              {product?.condition}
+              {product?.condition === "new" ? "Nové" : "Použité"}
             </p>
           </div>
           <div className="flex items-center gap-2">
